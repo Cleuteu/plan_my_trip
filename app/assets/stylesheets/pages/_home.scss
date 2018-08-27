@@ -1,3 +1,4 @@
+// CSS for branches
     .text {
       font: 600 13px helvetica;
     }
@@ -10,3 +11,20 @@
     .branch {
       font: 600 17px helvetica;
     }
+
+// Specific CSS for your home-page
+.body {
+  background-color: rgba(0, 0, 0, 0.1)
+}
+
+// Specific CSS for your home-page
+.wrapper {
+  margin-right: auto; /* 1 */
+  margin-left:  auto; /* 1 */
+
+  max-width: 960px; /* 2 */
+
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+}
+
