@@ -9,9 +9,6 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.integer :duration
       t.text :description
       t.string :url
-      t.integer :grid_location_x
-      t.integer :grid_location_y
-
       t.timestamps
     end
   end
