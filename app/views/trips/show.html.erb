@@ -1,2 +1,10 @@
 <!-- navbar à insérer -->
 
+<h1><%= @trip.name %></h1>
+
+<p>Events:</p>
+<% @branches.each do |branch| %>
+  <% branch.events.each do |event| %>
+    <li><%= event.name %></li>
+  <% end %>
+<% end %>
