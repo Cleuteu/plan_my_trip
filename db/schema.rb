@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_08_27_141808) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "type"
-    t.boolean "confirmed"
+    t.boolean "confirmed", default: false
     t.string "location"
     t.date "date"
     t.integer "duration"

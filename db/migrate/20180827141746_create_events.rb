@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
     create_table :events do |t|
       t.string :name
       t.string :type
-      t.boolean :confirmed
+      t.boolean :confirmed, default: false
       t.string :location
       t.date :date
       t.integer :duration
