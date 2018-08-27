@@ -61,8 +61,7 @@ branch.save!
 
 event = Event.new(
   name: 'White House',
-  type: 'visite',
-  #TODO changer type en category
+  category: 'visite',
   location: 'Washington',
   date: DateTime.now,
   duration: 9
@@ -76,3 +75,4 @@ branch_event = BranchEvent.new(
 
 branch_event.branch = branch
 branch_event.event = event
+branch_event.save!
