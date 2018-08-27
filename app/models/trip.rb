@@ -2,7 +2,7 @@ class Trip < ApplicationRecord
   has_many :user_trips
   has_many :branches, dependent: :destroy
   has_many :users, through: :user_trips
-  belong_to :user
+  belongs_to :user
 
   validates :user_id, presence: true
   validates :name, presence: true
