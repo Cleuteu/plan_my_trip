@@ -46,9 +46,9 @@
         <% branch.events.each do |event| %>
           <% parent = event.branch_events.first.parent_event %>
           <% if parent == 0 %>
-            0(( ))--- <%= event.id %>(( ))
+            0(( ))---<%= event.id %>(( ))
           <% else %>
-            <%= parent %>(( ))---| |<%= event.id %>(( ))
+            <%= parent %>(( ))---<%= event.id %>(( ))
           <% end %>
         <% end %>
       <% end %>
