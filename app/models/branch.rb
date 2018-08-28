@@ -4,5 +4,5 @@ class Branch < ApplicationRecord
   has_many :events, through: :branch_events
 
   validates :trip_id, presence: true
-  validates :master, presence: true
+  validates :master, inclusion: { in: [ true, false ] }
 end

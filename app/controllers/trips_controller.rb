@@ -7,6 +7,8 @@ class TripsController < ApplicationController
 
   def show
     @branches = @trip.branches
+    @branch = Branch.new
+    @event = Event.new
 
     # Pour afficher sur la trip-show la map avec des points sur chaque event
     @events = Event.where.not(latitude: nil, longitude: nil)
