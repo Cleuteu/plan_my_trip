@@ -40,19 +40,18 @@
 <h2>Create a new branch</h2>
 
 <div class="container text-right">
-      <div class="mermaid">
-        graph TD
-          <% @branches.each do |branch| %>
-            <% branch.events.each do |event| %>
-              <% parent = event.branch_events.first.parent_event %>
-              <% if parent == 0 %>
-                0((start))--- <%= event.id %>(( <%= event.name %> ))
-              <% else %>
-                <%= parent %>(( <%= Event.find(parent).name %> ))---| |<%= event.id %>(( <%= event.name %> ))
-              <% end %>
-            <% end %>
+  <div class="mermaid">
+    graph TD
+      <% @branches.each do |branch| %>
+        <% branch.events.each do |event| %>
+          <% parent = event.branch_events.first.parent_event %>
+          <% if parent == 0 %>
+            0(( ))--- <%= event.id %>(( ))
+          <% else %>
+            <%= parent %>(( ))---| |<%= event.id %>(( ))
           <% end %>
-        </div>
+        <% end %>
+      <% end %>
     </div>
-
+  </div>
 </div>
