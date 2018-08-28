@@ -3,15 +3,36 @@
 
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(46, 64, 88,0.8) 0%, rgba(46, 64, 88,0.8) 50%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c2e086325efab49ac1c075b97afc495b&auto=format&fit=crop&w=1308&q=80');">
   <div class="banner-content">
-    <h1>Tired of wasting time planning your trip?</h1>
-    <p>Build your trip, visualize your different options and choose the best one.</p>
+    <%= link_to image_tag('logo-treep.png'), root_path %>
+    <p>Tired of wasting time planning your trip?</p>
 
-  <div class= "landing-page-form">
-    <input type="text" class="form-control form-element input-country" placeholder="Which country do you want to visit?"  style=" margin: 0, 5px;">
-    <input type="text" class="form-control form-element input-date" placeholder="Starting date" style=" margin: 0, 5px;">
-    <input type="text" class="form-control form-element input-date" placeholder="Ending Date" style=" margin: 0, 5px;">
-    <button type="submit" class="btn btn-primary form-element" style=" margin: 0, 5px;">Create my trip</button>
+    <div class= "landing-page-form">
+      <input type="text" class="form-control form-element input-country" placeholder="Which country do you want to visit?"  style=" margin: 0, 5px;">
+      <input type="text" class="form-control form-element input-date" placeholder="Starting date" style=" margin: 0, 5px;">
+      <input type="text" class="form-control form-element input-date" placeholder="Ending Date" style=" margin: 0, 5px;">
+      <button type="submit" class="btn btn-primary form-element" style=" margin: 0, 5px;">Create my trip <i class="fas fa-paper-plane"></i>
+
+</button>
+    </div>
   </div>
 
+</div>
+
+<div class="arguments">
+  <div class="argument">
+    <img class="argument-img" src="/assets/calendar-788e58f395023a2c094d3338f1722b62cf5b1d3eab96e447098cfeaa96c95b15.png" alt="Calendar">
+    <h3>Build your trip, visualize your different options</h3>
+    <h4>With Treep, gather all the points of interest along your route</h4>
+  </div>
+  <div class="argument" %="">
+    <img class="argument-img" id="first-paragraph" src="/assets/bars-3f44cc77f45e93bc1e0dc2a852ad47396beccf1326197cf113a5c2e424e4d9d0.png" alt="Bars">
+    <h3>Collaborate with your friends</h3>
+    <h4> Add your fellow travelers to your trip to choose the best options.
+    </h4>
+  </div>
+  <div class="argument">
+    <img class="argument-img" src="/assets/rocket-ec460853ec244709382cd77f6772659a4c013f54e6311e85947ba4eee22a6a14.png" alt="Rocket">
+    <h3> Ready? Export and enjoy your trip! </h3>
+    <h4></h4>
   </div>
 </div>
