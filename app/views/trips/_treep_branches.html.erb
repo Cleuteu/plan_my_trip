@@ -11,9 +11,15 @@
   </div>
 
   <div class="treep-branch">
-    <p> Branch: <%= branch.id %></p>
+    <p class="text-center"> Branch: <%= branch.id %></p>
     <% branch.events.each do |event| %>
-      <p><i class="fas fa-map-marker"></i> <%= event.name %></p>
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-map-marker"></i> <%= event.name %></h5>
+          <p class="card-text"> </p>
+          <a href="#" class="btn yellow-btn">More info</a>
+        </div>
+      </div>
     <% end %>
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= branch.id %>">
