@@ -8,6 +8,7 @@ class TripsController < ApplicationController
   def show
     @branches = @trip.branches
     @branch = Branch.new
+    @event = Event.new
   end
 
   private
