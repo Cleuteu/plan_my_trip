@@ -34,24 +34,26 @@
       <%= render partial: 'treep_branches' %>
     </div>
   </div>
+
 </div>
 
-
 <h2>Create a new branch</h2>
+<div class="container-mermaid">
 
-<div class="container text-right">
-  <div class="mermaid">
-    graph TD
-      <% @branches.each do |branch| %>
-        <% branch.events.each do |event| %>
-          <% if event.branch_events.first.parent_event == 0 %>
-            start(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
-          <% else %>
-            <% parent = Event.find(event.branch_events.first.parent_event) %>
-            <%= parent.name.gsub(/\s/,'-') %>(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
+  <div class="container text-right">
+    <div class="mermaid">
+      graph TD
+        <% @branches.each do |branch| %>
+          <% branch.events.each do |event| %>
+            <% if event.branch_events.first.parent_event == 0 %>
+              start(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
+            <% else %>
+              <% parent = Event.find(event.branch_events.first.parent_event) %>
+              <%= parent.name.gsub(/\s/,'-') %>(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

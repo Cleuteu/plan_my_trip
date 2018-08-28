@@ -10,7 +10,7 @@ function textCircle() {
     const circles = document.querySelectorAll(".node")
     circles.forEach((circle) => {
         var id = circle.getAttribute('id').replace(/-/, ' ').replace(/-/, ' ');
-        var text ="<text x=20 y=40 transform=translate(10,-38)>"+id+"</text>"
+        var text ="<text x=20 y=40 transform=translate(-8,-36)>"+id+"</text>"
         circle.insertAdjacentHTML("afterbegin", text)
     })
   }, 2000)
