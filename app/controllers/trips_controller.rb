@@ -7,6 +7,7 @@ class TripsController < ApplicationController
 
   def show
     @branches = @trip.branches
+    @branch = Branch.new
   end
 
   private

@@ -4,7 +4,17 @@
 
 <p>Events:</p>
 <% @branches.each do |branch| %>
+  <%= branch.id %>
   <% branch.events.each do |event| %>
     <li><%= event.name %></li>
   <% end %>
 <% end %>
+
+<h2>Create a new branch</h2>
+
+<div class="branch-create-form">
+  <%= simple_form_for [@trip, @branch] do |f| %>
+    <%= f.input :master, :as => :hidden, :input_html => { :value => false }%>
+    <%= f.submit "+", class: "btn yellow-btn" %>
+  <% end %>
+</div>
