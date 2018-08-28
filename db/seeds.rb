@@ -33,7 +33,7 @@ trip = Trip.new(
     start_location: 'New-York',
     end_location: 'Dallas',
     start_date: DateTime.now,
-    end_date: DateTime.now
+    end_date: Date.new(2018,8,31)
     # reset_password_token: '',
     # reset_password_sent_at: '',
     # remember_created_at: '',
@@ -70,7 +70,6 @@ event = Event.new(
 event.save!
 
 branch_event = BranchEvent.new(
-  event_position: 1
   )
 
 branch_event.branch = branch

@@ -14,8 +14,8 @@ class TripsController < ApplicationController
     @events = Event.where.not(latitude: nil, longitude: nil)
     @markers = @events.map do |event|
       {
-        lat: flat.latitude,
-        lng: flat.longitude#,
+        lat: event.latitude,
+        lng: event.longitude#,
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
