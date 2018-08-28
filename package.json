@@ -6,6 +6,7 @@
     "bootstrap": "3",
     "jquery": "^3.3.1",
     "mermaid": "^8.0.0-rc.8"
+    "gmaps": "^0.4.24",
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
