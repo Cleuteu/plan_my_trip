@@ -8,11 +8,9 @@ function init_mermaid() {
 function textCircle() {
   setTimeout(() => {
     const circles = document.querySelectorAll(".node")
-    console.log(circles)
     circles.forEach((circle) => {
-        var id = circle.getAttribute('id');
-        var text ="<text x=20 y=40 transform=translate(10,35)>"+id+"</text>"
-        console.log(text)
+        var id = circle.getAttribute('id').replace(/-/, ' ').replace(/-/, ' ');
+        var text ="<text x=20 y=40 transform=translate(10,-38)>"+id+"</text>"
         circle.insertAdjacentHTML("afterbegin", text)
     })
   }, 2000)
