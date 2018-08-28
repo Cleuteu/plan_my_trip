@@ -44,11 +44,11 @@
     graph TD
       <% @branches.each do |branch| %>
         <% branch.events.each do |event| %>
-          <% parent = event.branch_events.first.parent_event %>
-          <% if parent == 0 %>
-            0(( ))---<%= event.id %>(( ))
+          <% if event.branch_events.first.parent_event == 0 %>
+            start(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
           <% else %>
-            <%= parent %>(( ))---<%= event.id %>(( ))
+            <% parent = Event.find(event.branch_events.first.parent_event) %>
+            <%= parent.name.gsub(/\s/,'-') %>(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
           <% end %>
         <% end %>
       <% end %>

@@ -10,8 +10,9 @@ function textCircle() {
     const circles = document.querySelectorAll(".node")
     console.log(circles)
     circles.forEach((circle) => {
-        var id = console.log(circle.getAttribute('id'));
-        var text ="<text x=20 y=40 transform=translate(10,35)>#{event.name}</text>"
+        var id = circle.getAttribute('id');
+        var text ="<text x=20 y=40 transform=translate(10,35)>"+id+"</text>"
+        console.log(text)
         circle.insertAdjacentHTML("afterbegin", text)
     })
   }, 2000)
