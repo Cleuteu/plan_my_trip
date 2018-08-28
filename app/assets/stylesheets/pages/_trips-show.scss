@@ -30,7 +30,7 @@
 
 
 .treep-container {
-  background-color: rgba(255, 255, 0, 0.7);
+  background-color: white;
   width: 100%;
   .flex-grow {
   flex: 1 0 auto;
@@ -39,4 +39,9 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+}
+
+.treep-flexbox {
+  display: flex;
+  justify-content: space-around;
 }

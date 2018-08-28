@@ -21,42 +21,20 @@
   </div>
   <div class="treep-container">
     <h1>Treep</h1>
+    <div class="branch-create-form">
+      <%= simple_form_for [@trip, @branch] do |f| %>
+        <%= f.input :master, :as => :hidden, :input_html => { :value => false }%>
+        <%= f.submit "+ Add a branch", class: "btn yellow-btn" %>
+      <% end %>
+    </div>
+    <div class="treep-flexbox">
+      <%= render partial: 'treep_branches' %>
+    </div>
   </div>
 </div>
 
-<p>Events:</p>
-<% @trip.branches.each do |branch| %>
-  <%= branch.id %>
-  <% branch.events.each do |event| %>
-    <li><%= event.name %></li>
-  <% end %>
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= branch.id %>">
-    Add an event
-  </button>
-  <%= render partial: 'events/modal_form', locals: { id: branch.id, branch: branch } %>
-
-  <div class="event-create-form">
-    <%#= simple_form_for [branch, @event] do |f| %>
-      <%#= f.input :name %>
-      <%#= f.input :category %>
-      <%#= f.input :confirmed %>
-      <%#= f.input :location %>
-      <%#= f.input :date %>
-      <%#= f.input :duration %>
-      <%#= f.input :description %>
-      <%#= f.input :url %>
-      <%#= f.submit "Add event", class: "btn" %>
-    <%# end %>
-  </div>
-<% end %>
 
 <h2>Create a new branch</h2>
 
-<div class="branch-create-form">
-  <%= simple_form_for [@trip, @branch] do |f| %>
-    <%= f.input :master, :as => :hidden, :input_html => { :value => false }%>
-    <%= f.submit "+", class: "btn yellow-btn" %>
-  <% end %>
-</div>
+
 </div>
