@@ -62,7 +62,7 @@ branch.save!
 event = Event.new(
   name: 'White House',
   category: 'visite',
-  location: 'Washington',
+  # location: 'Washington',
   date: DateTime.now,
   duration: 9
   )
@@ -74,4 +74,24 @@ branch_event = BranchEvent.new(
 
 branch_event.branch = branch
 branch_event.event = event
+branch_event.parent_event = 0
 branch_event.save!
+
+event2 = Event.new(
+  name: 'Meet Donald',
+  category: 'visite',
+  # location: 'Washington',
+  date: DateTime.now,
+  duration: 9
+
+  )
+
+event2.save!
+
+branch_event2 = BranchEvent.new(
+  )
+
+branch_event2.branch = branch
+branch_event2.event = event2
+branch_event2.parent_event = event.id
+branch_event2.save!

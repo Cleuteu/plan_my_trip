@@ -1,0 +1,11 @@
+<div class="container text-right">
+      <div class="mermaid">
+        graph TD
+          <% @branches.each do |branch| %>
+            <% branch.events.each do |event| %>
+            <% parent = Event.find(event.branch_events.first %>
+               <%= parent.id %>(( ))---| |<%= event.id %>(( ))
+            <% end %>
+          <% end %>
+        </div>
+    </div>
