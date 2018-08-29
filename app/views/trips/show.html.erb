@@ -72,88 +72,45 @@
     <div class="container-fluid">
       <!-- <div class="row"> -->
 
-        <% @trip.branches.each do |branch| %>
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= branch.id %>">
-            Add an event
-          </button>
-          <%= render partial: 'events/modal_form', locals: { id: branch.id, branch: branch } %>
-
-          <div class="event-create-form">
-            <%#= simple_form_for [branch, @event] do |f| %>
-              <%#= f.input :name %>
-              <%#= f.input :category %>
-              <%#= f.input :confirmed %>
-              <%#= f.input :location %>
-              <%#= f.input :date %>
-              <%#= f.input :duration %>
-              <%#= f.input :description %>
-              <%#= f.input :url %>
-              <%#= f.submit "Add event", class: "btn" %>
-            <%# end %>
+        <!-- <div class="treep-container"> -->
+          <div class="branch-create-form">
+            <%= simple_form_for [@trip, @branch] do |f| %>
+              <%= f.input :master, :as => :hidden, :input_html => { :value => false }%>
+              <%= f.submit "+ Add a branch", class: "btn yellow-btn" %>
+            <% end %>
           </div>
-        <% end %>
+          <div class="treep-flexbox">
+            <%= render partial: 'treep_branches' %>
+          </div>
+        <!-- </div> -->
 
-        <h2>Create a new branch</h2>
 
-        <div class="branch-create-form">
-          <%= simple_form_for [@trip, @branch] do |f| %>
-            <%= f.input :master, :as => :hidden, :input_html => { :value => false }%>
-            <%= f.submit "+", class: "btn yellow-btn" %>
-          <% end %>
-        </div>
+        <div class="container">
+          <div class="mermaid">
+            graph TD
+              <% @branches.each do |branch| %>
+                <% branch.events.each do |event| %>
+                  <% if event.branch_events.first.parent_event == 0 %>
+                    start(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
+                  <% else %>
+                    <% parent = Event.find(event.branch_events.first.parent_event) %>
+                    <%= parent.name.gsub(/\s/,'-') %>(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
 
       <!-- </div> -->
     </div>
   </div>
-  
-</div>
-
-
-
-
-
-
-
-
-<div class="dashboard-content">
-  <div class="left-sidebar-with-map">
-    <div class="left-sidebar">
-      <h2><%= @trip.name %></h2>
-      
-      <p>Events:</p>
-      
-      <div class="treep-container">
-    <h1>Treep</h1>
-    <div class="branch-create-form">
-      <%= simple_form_for [@trip, @branch] do |f| %>
-        <%= f.input :master, :as => :hidden, :input_html => { :value => false }%>
-        <%= f.submit "+ Add a branch", class: "btn yellow-btn" %>
-      <% end %>
-    </div>
-    <div class="treep-flexbox">
-      <%= render partial: 'treep_branches' %>
-    </div>
-  </div>
 
 </div>
 
-<h2>Create a new branch</h2>
-<div class="container-mermaid">
 
-  <div class="container text-right">
-    <div class="mermaid">
-      graph TD
-        <% @branches.each do |branch| %>
-          <% branch.events.each do |event| %>
-            <% if event.branch_events.first.parent_event == 0 %>
-              start(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
-            <% else %>
-              <% parent = Event.find(event.branch_events.first.parent_event) %>
-              <%= parent.name.gsub(/\s/,'-') %>(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+
+
+
+
+
+
