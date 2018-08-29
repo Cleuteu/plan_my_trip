@@ -1,5 +1,3 @@
-<% @trip.branches.each do |branch| %>
-
   <div class="treep-dates">
     <h2>Dates</h2>
     <% while @trip.start_date <= @trip.end_date do %>
@@ -8,28 +6,12 @@
   </div>
 
   <div class="treep-branch">
-    <p class="text-center"> Branch: <%= branch.id %></p>
-    <% branch.events.each do |event| %>
-      <div class="card text-center">
-        <div class="card-body">
-          <h5 class="card-title"><i class="fas fa-map-marker"></i> <%= event.name %></h5>
-          <p class="card-text"> </p>
-            <button type="button" class="btn" data-toggle="modal" data-target="#update_event<%= event.id %>">
-              Update
-            </button>
-            <div class="modal fade" id="update_event<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <%= render partial: 'events/modal_form', locals: { branch: branch, event: event } %>
-            </div>
-          <%= link_to "Delete", branch_event_path(branch.id, event.id), data: { confirm: "Are you sure?" }, method: :delete %>
-        </div>
-      </div>
-    <% end %>
+
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#branch<%= branch.id %>">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEvent">
     Add an event
   </button>
-  <div class="modal fade" id="branch<%= branch.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%= render partial: 'events/modal_form', locals: { branch: branch, event: @event } %>
+  <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
   </div>
   </div>
-<% end %>
