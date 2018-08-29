@@ -8,8 +8,14 @@ body {
   background: transparent;
   box-shadow: none;
   .navbar-wagon-link {
-    color: white;
+    color: rgba(255,255,255,0.7);
     font-weight: bold;
+  }
+  .navbar-wagon-link:hover {
+    color: rgba(253, 179, 35, 0.8);
+  }
+  img {
+    visibility: hidden;
   }
 }
 
@@ -60,10 +66,45 @@ body {
     margin-right: 5px;
   }
   .input-date {
-  max-width: 190px;
+    max-width: 190px;
   }
 }
 
 // 3 elements sous la banner
+
+.arguments {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  h4 {
+    text-align: center;
+    color: rgb(46, 64, 88)
+  }
+  p {
+    text-align: center;
+    color: rgba(46, 64, 88, 0.8)
+  }
+}
+
+.argument {
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 22px -1px #dcdcdc;
+  border-radius: 6px;
+  padding: 35px 30px;
+  margin: 0 1vw;
+  border-top: 4px solid rgb(46, 64, 88);
+  img {
+    width: 5vw;
+    margin-bottom: 37px
+  }
+  .build-icon {
+    width: 8vw;
+  }
+}
 
 
