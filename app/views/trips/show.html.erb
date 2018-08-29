@@ -11,9 +11,9 @@
       <% @branches.each do |branch| %>
         <% branch.events.each do |event| %>
           <li>
-            <a href="#">
+            <a href="#" class="nav-link">
               <i class="fas fa-monument"></i>
-              <p><%= event.name %> (id: <%= branch.id %>)</p>
+              <p><%= event.name %></p>
             </a>
           </li>
         <% end %>
@@ -21,8 +21,8 @@
     </ul>
   </div>
 
-  <div width="260px" height="260px" id="map" data-markers="<%= @markers.to_json %>">
-  </div>
+  <!-- <div width="260px" height="260px" id="map" data-markers="<#%= @markers.to_json %>"> -->
+  <!-- </div> -->
 </div>
 
 <div class="main-panel">
