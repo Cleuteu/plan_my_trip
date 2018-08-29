@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index]
 
   resources :branches, only: [:index] do
-    resources :events, only: [:create]
+    resources :events, only: [:create, :destroy]
   end
 
   resources :branch_events, only: [:index]

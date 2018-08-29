@@ -5,9 +5,6 @@
     <% while @trip.start_date <= @trip.end_date do %>
       <p><%= @trip.start_date += 1 %></p>
     <% end %>
-    <%# date1 = DateTime.parse(@trip.start_date) %>
-    <%#= date1.day %>
-    <%#= (DateTime.parse(@trip.start_date)..DateTime.parse(@trip.end_date)).to_a %>
   </div>
 
   <div class="treep-branch">
@@ -17,12 +14,12 @@
         <div class="card-body">
           <h5 class="card-title"><i class="fas fa-map-marker"></i> <%= event.name %></h5>
           <p class="card-text"> </p>
-          <a href="#" class="btn yellow-btn">More info</a>
+          <%= link_to "Delete", branch_event_path(branch.id, event.id), data: { confirm: "Are you sure?" }, method: :delete %>
         </div>
       </div>
     <% end %>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= branch.id %>">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#branch<%= branch.id %>">
     Add an event
   </button>
   <%= render partial: 'events/modal_form', locals: { id: branch.id, branch: branch } %>

@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'Cleaning database...'
+BranchEvent.destroy_all
+Branch.destroy_all
+Event.destroy_all
 UserTrip.destroy_all
 Trip.destroy_all
 User.destroy_all
