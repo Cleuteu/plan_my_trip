@@ -17,6 +17,7 @@ class TripsController < ApplicationController
       @start.save!
       @end = Event.new(name: "End", category: "settings", date: @trip.end_date, location: @trip.end_location, trip_id: @trip.id, duration: 1)
       @end.save!
+      Relationship.create!(parent_id: @start.id, child_id: @end.id)
       redirect_to trip_path(@trip)
     else
       render :new
@@ -27,10 +28,12 @@ class TripsController < ApplicationController
     # @branches = @trip.branches
     # @branch = Branch.new
     @event = Event.new
-
+    @trip = Trip.find(params[:id])
+    @events_parents = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:parent_id))
+    @events_children = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:child_id))
     # Pour afficher sur la trip-show la map avec des points sur chaque event
-    @events = Event.where.not(latitude: nil, longitude: nil)
-    @markers = @events.map do |event|
+    @map_events = Event.where.not(latitude: nil, longitude: nil)
+    @markers = @map_events.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude#,

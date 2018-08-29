@@ -3,9 +3,13 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @trip = Trip.find(params[:trip_id])
+    @event.trip_id = @trip.id
+    @parent_id = params[:event][:parent_ids]
+    @child_id = params[:event][:child_ids]
     if @event.save!
-      @branch_event = BranchEvent.new(branch_id: @branch.id, event_id: @event.id)
-      @branch_event.save!
+      @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
+      @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
+      Relationship.destroy(Relationship.where(parent_id: @parent_id, child_id: @child_id).first.id)
       redirect_to trip_path(@trip)
     else
       render './trips/show'
