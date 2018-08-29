@@ -6,20 +6,7 @@
   visibility: hidden;
   height: 0;
 }
-svg {
-  overflow: visible;
-}
-// .treep-container {
-//   background-color: white;
-//   width: 100%;
-//   .flex-grow {
-//   flex: 1 0 auto;
-//   }
-//   h1 {
-//     margin-top: 0;
-//     margin-bottom: 0;
-//   }
-// }
+
 .treep-flexbox {
   display: flex;
   justify-content: space-around;
@@ -113,3 +100,13 @@ svg {
 // .main-panel .navbar {
 //     margin-bottom: 0;
 // }
+
+
+// CSS pour Cytoscape
+#cy {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

@@ -4,9 +4,10 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
+    "cytoscape": "^3.2.16",
+    "gmaps": "^0.4.24",
     "jquery": "^3.3.1",
-    "mermaid": "^8.0.0-rc.8",
-    "gmaps": "^0.4.24"
+    "mermaid": "^8.0.0-rc.8"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
