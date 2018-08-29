@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  has_many :branch_events, dependent: :destroy
+  has_many :branch_events
   has_many :branches, through: :branch_events
 
   validates :name, presence: true, length: { maximum: 15 }

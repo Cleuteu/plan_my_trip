@@ -14,7 +14,7 @@
         <div class="card-body">
           <h5 class="card-title"><i class="fas fa-map-marker"></i> <%= event.name %></h5>
           <p class="card-text"> </p>
-          <a href="#" class="btn yellow-btn">More info</a>
+          <%= link_to "Delete", branch_event_path(branch.id, event.id), data: { confirm: "Are you sure?" }, method: :delete %>
         </div>
       </div>
     <% end %>
