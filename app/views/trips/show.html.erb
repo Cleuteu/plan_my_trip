@@ -11,9 +11,9 @@
       <% @branches.each do |branch| %>
         <% branch.events.each do |event| %>
           <li>
-            <a href="#">
+            <a href="#" class="nav-link">
               <i class="fas fa-monument"></i>
-              <p><%= event.name %> (id: <%= branch.id %>)</p>
+              <p><%= event.name %></p>
             </a>
           </li>
         <% end %>
@@ -21,8 +21,8 @@
     </ul>
   </div>
 
-  <div width="260px" height="260px" id="map" data-markers="<%= @markers.to_json %>">
-  </div>
+  <!-- <div width="260px" height="260px" id="map" data-markers="<#%= @markers.to_json %>"> -->
+  <!-- </div> -->
 </div>
 
 <div class="main-panel">
@@ -99,6 +99,8 @@
   <br>
 
   <div class="content">
+    <%= render 'cytoscape' %>
+    
     <div class="container-fluid">
 
       <!-- <div class="treep-container"> -->
@@ -112,23 +114,6 @@
           <%= render partial: 'treep_branches' %>
         </div>
       <!-- </div> -->
-
-      <div class="container">
-        <div class="mermaid">
-          graph TD
-            <% @branches.each do |branch| %>
-              <% branch.events.each do |event| %>
-                <% if event.branch_events.first.parent_event == 0 %>
-                  start(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
-                <% else %>
-                  <% parent = Event.find(event.branch_events.first.parent_event) %>
-                  <%= parent.name.gsub(/\s/,'-') %>(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-
     </div>
 
 
