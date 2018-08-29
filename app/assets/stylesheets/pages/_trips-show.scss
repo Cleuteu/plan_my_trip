@@ -27,8 +27,6 @@ svg {
 .node {
   font-size: 12px;
 }
-
-
 .sidebar {
     position: fixed;
     top: 0;
@@ -107,9 +105,74 @@ svg {
     width: calc(100% - 260px);
 }
 .main-panel > .content {
-    padding: 30px 15px;
-    min-height: calc(100% - 123px);
+    // padding: 30px 15px;
+    // min-height: calc(100% - 123px);
 }
-// .main-panel .navbar {
-//     margin-bottom: 0;
-// }
+.navbar {
+    // border: 0;
+    // font-size: 16px;
+    border-radius: 0;
+    // min-height: 50px;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 5px 15px;
+}
+.navbar .navbar-brand {
+    // font-weight: 400;
+    margin: 5px 0px;
+    // font-size: 20px;
+    color: #888888;
+}
+.navbar .navbar-toggler {
+    // width: 37px;
+    // height: 27px;
+    // vertical-align: middle;
+    outline: 0;
+    // cursor: pointer;
+}
+.navbar .navbar-toggler .burger-lines {
+    display: block;
+    // position: relative;
+    background-color: #888;
+    width: 24px;
+    height: 2px;
+    border-radius: 1px;
+    margin: 4px auto;
+}
+.navbar .dropdown.nav-item .dropdown-toggle:after {
+    margin-top: 8px;
+}
+.navbar .navbar-nav {
+    align-items: center;
+}
+.navbar .navbar-nav .nav-item .nav-link {
+    color: #888888;
+    padding: 10px 15px;
+    // position: relative;
+    display: inline-flex;
+    line-height: 1.2;
+}
+.navbar .navbar-nav .nav-item .nav-link:hover {
+    color: #1DC7EA;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu .divider {
+    height: 1px;
+    margin: 5px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+.navbar .navbar-nav .notification {
+    position: absolute;
+    background-color: #FB404B;
+    text-align: center;
+    border-radius: 10px;
+    min-width: 18px;
+    // padding: 0 5px;
+    // height: 18px;
+    font-size: 12px;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 18px;
+    top: 0;
+    left: 7px;
+}
