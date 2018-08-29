@@ -6,7 +6,24 @@
   visibility: hidden;
   height: 0;
 }
-
+.logo-treep-blue {
+   vertical-align: middle;
+  max-height: 45px;
+}
+svg {
+  overflow: visible;
+}
+// .treep-container {
+//   background-color: white;
+//   width: 100%;
+//   .flex-grow {
+//   flex: 1 0 auto;
+//   }
+//   h1 {
+//     margin-top: 0;
+//     margin-bottom: 0;
+//   }
+// }
 .treep-flexbox {
   display: flex;
   justify-content: space-around;
