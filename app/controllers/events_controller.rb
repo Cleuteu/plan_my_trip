@@ -6,7 +6,6 @@ class EventsController < ApplicationController
     @trip = @branch.trip
     if @event.save!
       @branch_event = BranchEvent.new(branch_id: @branch.id, event_id: @event.id)
-      @branch_event.event_position = 2
       @branch_event.save!
       redirect_to trip_path(@trip)
     else

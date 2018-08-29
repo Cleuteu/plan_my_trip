@@ -1,68 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-   viewBox="0 0 850 600" enable-background="new 0 0 850 600" xml:space="preserve">
-  <!-- commit circles -->
-  <circle id="commit_easy" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="719" cy="519" r="19"/>
-  <circle id="commit_color" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="619" cy="419" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_easy.mouseover;commit_merge.mouseover" end="commit_easy.mouseout;commit_merge.mouseout"/>
-  </circle>
-  <circle id="commit_animation" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="519" cy="419" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_easy.mouseover;commit_color.mouseover;commit_merge.mouseover" end="commit_easy.mouseout;commit_color.mouseout;commit_merge.mouseout"/>
-  </circle>
-  <circle id="commit_frameinterval" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="419" cy="419" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_easy.mouseover;commit_color.mouseover;commit_animation.mouseover;commit_merge.mouseover" end="commit_easy.mouseout;commit_color.mouseout;commit_animation.mouseout;commit_merge.mouseout"/>
-  </circle>
-  <circle id="commit_ipad" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="319" cy="419" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_easy.mouseover;commit_color.mouseover;commit_animation.mouseover;commit_frameinterval.mouseover;commit_merge.mouseover" end="commit_easy.mouseout;commit_color.mouseout;commit_animation.mouseout;commit_frameinterval.mouseout;commit_merge.mouseout"/>
-  </circle>
-  <circle id="commit_fixscreentypo" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="219" cy="419" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_easy.mouseover;commit_color.mouseover;commit_animation.mouseover;commit_frameinterval.mouseover;commit_merge.mouseover;commit_ipad.mouseover" end="commit_easy.mouseout;commit_color.mouseout;commit_animation.mouseout;commit_frameinterval.mouseout;commit_merge.mouseout;commit_ipad.mouseout"/>
-  </circle>
-  <circle id="commit_revertcontrols" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="119" cy="319" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_easy.mouseover;commit_color.mouseover;commit_animation.mouseover;commit_frameinterval.mouseover;commit_merge.mouseover;commit_ipad.mouseover;commit_fixscreentypo.mouseover;commit_shipsoncoins.mouseover;commit_coincollection.mouseover;commit_helperfns.mouseover;commit_firstcoinscommit.mouseover" end="commit_easy.mouseout;commit_color.mouseout;commit_animation.mouseout;commit_frameinterval.mouseout;commit_merge.mouseout;commit_ipad.mouseout;commit_fixscreentypo.mouseout;commit_shipsoncoins.mouseout;commit_coincollection.mouseout;commit_helperfns.mouseout;commit_firstcoinscommit.mouseout"/>
-  </circle>
-  <circle id="commit_firstcoinscommit" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="219" cy="219" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_merge.mouseover;commit_shipsoncoins.mouseover;commit_coincollection.mouseover;commit_helperfns.mouseover" end="commit_merge.mouseout;commit_shipsoncoins.mouseout;commit_coincollection.mouseout;commit_helperfns.mouseout"/>
-  </circle>
-  <circle id="commit_helperfns" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="319" cy="219" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_merge.mouseover;commit_shipsoncoins.mouseover;commit_coincollection.mouseover" end="commit_merge.mouseout;commit_shipsoncoins.mouseout;commit_coincollection.mouseout"/>
-  </circle>
-  <circle id="commit_coincollection" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="419" cy="219" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_merge.mouseover;commit_shipsoncoins.mouseover" end="commit_merge.mouseout;commit_shipsoncoins.mouseout"/>
-  </circle>
-  <circle id="commit_shipsoncoins" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="519" cy="219" r="19">
-    <set attributeName="fill" to="#4e9683" begin="commit_merge.mouseover" end="commit_merge.mouseout"/>
-  </circle>
-  <circle id="commit_merge" fill="#ffffff" stroke="#4e9683" stroke-width="6" cx="719" cy="319" r="19"/>
-  <!-- connection lines -->
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="600" y1="768" x2="538" y2="419"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="132.435" y1="305.565" x2="205.565" y2="232.435"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="132.435" y1="332.435" x2="205.565" y2="405.565"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="535.994" y1="227.497" x2="702.007" y2="310.503"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="632.435" y1="405.565" x2="705.565" y2="332.435"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="632.435" y1="432.435" x2="705.565" y2="505.565"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="500" y1="419" x2="438" y2="419"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="400" y1="419" x2="338" y2="419"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="300" y1="419" x2="238" y2="419"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="300" y1="219" x2="238" y2="219"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="400" y1="219" x2="338" y2="219"/>
-  <line fill="none" stroke="#4e9683" stroke-width="6" stroke-linecap="square" x1="500" y1="219" x2="438" y2="219"/>
-  <!-- text labels -->
-  <text class="title" x="10" y="40" fill="#000">Git Branch Diagram</text>
-  <text class="desc" x="10" y="70" fill="#000">Filled circles are "reachable" from the mouseovered commit</text>
-  <text x="719" y="519" fill="#4e9683" transform="translate(3, -25) rotate(-90, 719, 519)">easy</text>
-  <text class="branch" x="719" y="519" fill="#fa9926" transform="translate(25, -25) rotate(-45, 719, 519)">easy-mode branch</text>
-  <text x="619" y="419" fill="#4e9683" transform="translate(3, -25) rotate(-90, 619, 419)">color</text>
-  <text x="519" y="419" fill="#4e9683" transform="translate(3, -25) rotate(-90, 519, 419)">animation</text>
-  <text x="419" y="419" fill="#4e9683" transform="translate(3, -25) rotate(-90, 419, 419)">frame interval</text>
-  <text x="319" y="419" fill="#4e9683" transform="translate(3, -25) rotate(-90, 319, 419)">ipad</text>
-  <text x="219" y="419" fill="#4e9683" transform="translate(3, -25) rotate(-90, 219, 419)">fix screen typo</text>
-  <text x="119" y="319" fill="#4e9683" transform="translate(3, -25) rotate(-90, 119, 319)">revert controls</text>
-  <text x="219" y="219" fill="#4e9683" transform="translate(3, -25) rotate(-90, 219, 219)">first coins commit</text>
-  <text x="319" y="219" fill="#4e9683" transform="translate(3, -25) rotate(-90, 319, 219)">helper fns</text>
-  <text x="419" y="219" fill="#4e9683" transform="translate(3, -25) rotate(-90, 419, 219)">coin collection</text>
-  <text x="519" y="219" fill="#4e9683" transform="translate(3, -25) rotate(-90, 519, 219)">ships on coins</text>
-  <text x="719" y="319" fill="#4e9683" transform="translate(3, -25) rotate(-90, 719, 319)">merge</text>
-  <text class="branch" x="719" y="319" fill="#fa9926" transform="translate(25, -25) rotate(-45, 719, 319)">master branch</text>
-</svg>
+<%= content_for(:navbar_class, "navbar-home") %>
+
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(46, 64, 88,0.8) 0%, rgba(46, 64, 88,0.8) 50%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c2e086325efab49ac1c075b97afc495b&auto=format&fit=crop&w=1308&q=80');">
+  <div class="banner-content">
+    <%= link_to image_tag('logo-treep.png'), root_path %>
+    <p>Tired of wasting time planning your trip?</p>
+
+    <div class= "landing-page-form">
+      <input type="text" class="form-control form-element input-country" placeholder="Which country do you want to visit?"  style=" margin: 0, 5px;">
+      <input type="text" class="form-control form-element input-date" placeholder="Starting date" style=" margin: 0, 5px;">
+      <input type="text" class="form-control form-element input-date" placeholder="Ending Date" style=" margin: 0, 5px;">
+      <button type="submit" class="btn btn-primary form-element" style=" margin: 0, 5px;">Create my trip <i class="fas fa-paper-plane"></i>
+
+</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="arguments">
+  <div class="argument">
+    <img class="argument-img" src="/assets/calendar-788e58f395023a2c094d3338f1722b62cf5b1d3eab96e447098cfeaa96c95b15.png" alt="Calendar">
+    <h3>Build your trip, visualize your different options</h3>
+    <h4>With Treep, gather all the points of interest along your route</h4>
+  </div>
+  <div class="argument" %="">
+    <img class="argument-img" id="first-paragraph" src="/assets/bars-3f44cc77f45e93bc1e0dc2a852ad47396beccf1326197cf113a5c2e424e4d9d0.png" alt="Bars">
+    <h3>Collaborate with your friends</h3>
+    <h4> Add your fellow travelers to your trip to choose the best options.
+    </h4>
+  </div>
+  <div class="argument">
+    <img class="argument-img" src="/assets/rocket-ec460853ec244709382cd77f6772659a4c013f54e6311e85947ba4eee22a6a14.png" alt="Rocket">
+    <h3> Ready? Export and enjoy your trip! </h3>
+    <h4></h4>
+  </div>
+</div>

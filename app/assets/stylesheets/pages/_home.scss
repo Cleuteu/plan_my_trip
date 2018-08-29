@@ -1,30 +1,69 @@
-// CSS for branches
-.text {
-  font: 600 13px helvetica;
-}
-.title {
-  font: 600 30px helvetica;
-}
-.desc {
-  font: 400 20px helvetica;
-}
-.branch {
-  font: 600 17px helvetica;
+body {
+  background-color: rgb(246, 246, 246);
 }
 
-// Specific CSS for your home-page
-.body {
-  background-color: rgba(0, 0, 0, 0.1)
+.navbar-home {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  .navbar-wagon-link {
+    color: white;
+    font-weight: bold;
+  }
 }
 
-// Specific CSS for your home-page
-.wrapper {
-  margin-right: auto; /* 1 */
-  margin-left:  auto; /* 1 */
+.banner {
+  color: white;
+  text-align: center;
+  height: 570px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  background-position: 0% 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 320px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  p {
+    font-size: 45px;
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    opacity: 0.8;
+    margin-bottom: 30px;
+  }
 
-  max-width: 960px; /* 2 */
+  .landing-page-form{
+    display: flex;
+    justify-content: center;
+    width: 1000px;
+    margin:0 auto;
+    .btn {
+      margin-left: 5px;
+    }
+  }
 
-  padding-right: 10px; /* 3 */
-  padding-left:  10px; /* 3 */
+  .form-element {
+    font-size: 20px;
+    height: 55px;
+  }
+
+  .form-control{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .input-date {
+  max-width: 190px;
+  }
 }
+
+// 3 elements sous la banner
+
 
