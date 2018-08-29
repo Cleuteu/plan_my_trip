@@ -8,15 +8,8 @@
 
   <div style="height: calc(100vh - 320px); overflow: scroll;">
     <ul class="nav">
-      <% @branches.each do |branch| %>
-        <% branch.events.each do |event| %>
-          <li>
-            <a href="#">
-              <i class="fas fa-monument"></i>
-              <p><%= event.name %> (id: <%= branch.id %>)</p>
-            </a>
-          </li>
-        <% end %>
+      <% @trip.events.each do |event| %>
+        <li><i class="fas fa-monument"></i><%= event.name %></li>
       <% end %>
     </ul>
   </div>
@@ -100,31 +93,12 @@
 
       <!-- <div class="treep-container"> -->
         <div class="branch-create-form">
-          <%= simple_form_for [@trip, @branch] do |f| %>
-            <%= f.input :master, :as => :hidden, :input_html => { :value => false }%>
-            <%= f.submit "+ Add a branch", class: "btn yellow-btn" %>
-          <% end %>
+
         </div>
         <div class="treep-flexbox">
-          <%= render partial: 'treep_branches' %>
+          <%#= render partial: 'treep_branches' %>
         </div>
       <!-- </div> -->
-
-      <div class="container">
-        <div class="mermaid">
-          graph TD
-            <% @branches.each do |branch| %>
-              <% branch.events.each do |event| %>
-                <% if event.branch_events.first.parent_event == 0 %>
-                  start(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
-                <% else %>
-                  <% parent = Event.find(event.branch_events.first.parent_event) %>
-                  <%= parent.name.gsub(/\s/,'-') %>(( ))---<%= event.name.gsub(/\s/,'-') %>(( ))
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
 
     </div>
 

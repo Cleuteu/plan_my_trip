@@ -12,6 +12,7 @@ class Event < ApplicationRecord
   # validates :location, presence: true
   validates :date, presence: true
   validates :duration, presence: true
+  validates :trip_id, presence: true
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
