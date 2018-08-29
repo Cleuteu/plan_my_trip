@@ -14,8 +14,8 @@
     </ul>
   </div>
 
-  <div width="260px" height="260px" id="map" data-markers="<%= @markers.to_json %>">
-  </div>
+  <!-- <div width="260px" height="260px" id="map" data-markers="<#%= @markers.to_json %>"> -->
+  <!-- </div> -->
 </div>
 
 <div class="main-panel">
@@ -57,6 +57,9 @@
             </a>
           </li>
         </ul>
+        <%= link_to root_path, class: "logo-treep-blue" do %>
+          <%= image_tag("logo-treep-blue.png", class: "logo-treep-blue") %>
+        <% end %>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="#pablo">
@@ -89,6 +92,8 @@
   <br>
 
   <div class="content">
+    <%= render 'cytoscape' %>
+    
     <div class="container-fluid">
 
       <!-- <div class="treep-container"> -->
@@ -99,8 +104,6 @@
           <%#= render partial: 'treep_branches' %>
         </div>
       <!-- </div> -->
-
     </div>
-
 
 <%= content_for(:footer_class, "footer-show") %>

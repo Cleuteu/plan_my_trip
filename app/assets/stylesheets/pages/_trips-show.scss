@@ -6,6 +6,10 @@
   visibility: hidden;
   height: 0;
 }
+.logo-treep-blue {
+   vertical-align: middle;
+  max-height: 45px;
+}
 svg {
   overflow: visible;
 }
@@ -24,9 +28,7 @@ svg {
   display: flex;
   justify-content: space-around;
 }
-.node {
-  font-size: 12px;
-}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -39,7 +41,9 @@ svg {
     font-weight: 200;
 }
 .sidebar {
-    background: linear-gradient(to bottom, #777777 0%, #777777 100%);
+    background: linear-gradient(to bottom, rgba(66, 82, 102, 0.95) 0%, rgba(66, 82, 102, 0.94) 100%),
+    url(img-road-sidebar);
+    background-size: cover;
 }
 .sidebar .logo {
     padding: 10px 15px;
@@ -53,53 +57,64 @@ svg {
     font-weight: 400;
     line-height: 30px;
 }
-.sidebar .nav > li.active-pro{
-    position: absolute;
-    width: 100%;
-    bottom: 10px;
-}
-.sidebar .nav > li.active-pro a{
-    background: rgba(255, 255, 255, 0.14);
-    opacity: 1;
-    color: #FFFFFF;
-}
+// .sidebar .nav > li.active-pro{
+//     position: absolute;
+//     width: 100%;
+//     bottom: 10px;
+// }
+// .sidebar .nav > li.active-pro a{
+//     background: rgba(255, 255, 255, 0.14);
+//     color: #FFFFFF;
+// }
 .sidebar .nav a,
 .table > tbody > tr .td-actions .btn {
     transition: all 150ms ease-in;
 }
 .sidebar .nav {
     margin-top: 20px;
-    float: none;
 }
 .sidebar .nav .open > a,
 .sidebar .nav li.dropdown .dropdown-menu li:hover > a,
 .sidebar .nav li:hover > a {
     background-color: rgba(255, 255, 255, 0.13);
-    opacity: 1;
 }
 .sidebar .nav li > a {
     color: #FFFFFF;
     margin: 5px 15px;
     opacity: .86;
     border-radius: 4px;
-    display: block;
 }
 .sidebar .nav p {
     margin: 0;
-    line-height: 30px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
+    // line-height: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    // text-transform: uppercase;
     margin-left: 45px;
 }
 .sidebar .nav i {
-    font-size: 28px;
+    font-size: 22px;
     float: left;
-    margin-right: 15px;
-    line-height: 30px;
+    // margin-right: 15px;
+    // line-height: 30px;
     width: 30px;
     text-align: center;
 }
+.sidebar .nav,
+body>.navbar-collapse .nav {
+    // margin-top: 20px;
+    // float: none;
+    display: block;
+}
+// .sidebar .nav li .nav-link,
+// body>.navbar-collapse .nav li .nav-link {
+//     color: #FFFFFF;
+//     margin: 5px 15px;
+//     opacity: .86;
+//     border-radius: 4px;
+//     display: block;
+//     padding: 10px 15px;
+// }
 .main-panel {
     float: right;
     width: calc(100% - 260px);
@@ -122,6 +137,9 @@ svg {
     margin: 5px 0px;
     // font-size: 20px;
     color: #888888;
+}
+.navbar .navbar-brand:hover {
+    color: #5e5e5e;
 }
 .navbar .navbar-toggler {
     // width: 37px;
@@ -176,3 +194,18 @@ svg {
     top: 0;
     left: 7px;
 }
+
+// .main-panel .navbar {
+//     margin-bottom: 0;
+// }
+
+
+// CSS pour Cytoscape
+#cy {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
