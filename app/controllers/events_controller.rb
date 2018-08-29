@@ -13,6 +13,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to trip_path(@event.branches.first.trip)
+  end
+
   def destroy
     @event_to_delete = Event.find(params[:id])
     @branch = Branch.find(params[:branch_id])
