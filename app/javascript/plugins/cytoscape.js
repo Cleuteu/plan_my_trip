@@ -76,16 +76,65 @@ const cy = cytoscape({
     name: 'breadthfirst',
     directed: true,
     roots: '#a',
-    padding: 10
+    padding: 20
     },
 
   style: [
     {
-        selector: 'node',
-        style: {
-        label: 'data(id)'
-        }
-    }]
+      selector: 'node:unselected',
+      style: {
+        label: 'data(id)',
+        'text-halign': 'right',
+        'text-valign': 'center',
+        'text-margin-x': 8,
+        'text-transform': 'uppercase',
+        'color': 'gray',
+        'width': 60,
+        'height': 60,
+        'background-color': 'white',
+        'border-width': 5,
+        'border-color': '#4469B0'
+      }
+    },{
+    selector: 'node:selected',
+      style: {
+        label: 'data(id)',
+        'text-halign': 'right',
+        'text-valign': 'center',
+        'text-margin-x': 8,
+        'text-transform': 'uppercase',
+        'color': 'gray',
+        'width': 60,
+        'height': 60,
+        'background-color': '#4469B0',
+        'border-width': 5,
+        'border-color': '#4469B0'
+      }
+    },{
+      selector: 'edge:unselected',
+      style: {
+        'width': 20,
+        'line-color': '#ccc'
+      }
+    },{
+      selector: 'edge:selected',
+      style: {
+        'width': 20,
+        'line-color': 'lightgray'
+      }
+    },{
+      selector: 'core',
+      style: {
+        'active-bg-opacity': 0
+      }
+    }],
+
+  // interaction options:
+  userZoomingEnabled: false,
+  userPanningEnabled: false,
+  boxSelectionEnabled: false,
+  autoungrabify: true,
+
   });
 
   // for (var i = 0; i < 3; i++) {
@@ -105,4 +154,3 @@ const cy = cytoscape({
   //  cy.layout({
   //      name: 'breadthfirst'
   //  }).run();
-
