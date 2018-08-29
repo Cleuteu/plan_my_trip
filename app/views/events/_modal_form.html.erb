@@ -2,14 +2,14 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      <h4 class="modal-title" id="myModalLabel">Add an event</h4>
     </div>
-    <% child_events = [] %>
-    <% BranchEvent.where(parent_event: event.id).select do |branch| %>
-      <% child_events << Event.find(branch.event_id) %>
-    <% end %>
+    <%# child_events = [] %>
+    <%# BranchEvent.where(parent_event: event.id).select do |branch| %>
+      <%# child_events << Event.find(branch.event_id) %>
+    <%# end %>
     <div class="modal-body">
-      <%= simple_form_for [branch, event] do |f| %>
+      <%= simple_form_for [trip, event] do |f| %>
         <%= f.input :name %>
         <%= f.input :category %>
         <%= f.input :confirmed %>
@@ -18,9 +18,8 @@
         <%= f.input :duration %>
         <%= f.input :description %>
         <%= f.input :url %>
-        <%= f.simple_fields_for :branch_events do |b| %>
-          <%= b.input :parent_event, collection: child_events %>
-        <% end %>
+        <%= f.input :parent_ids, :collection => events_parents %>
+        <%= f.input :child_ids, :collection => events_children %>
         <%= f.submit "Add event", class: "btn" %>
       <% end %>
     </div>
