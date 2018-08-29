@@ -1,7 +1,11 @@
 .navbar-show {
-
+  visibility: hidden;
+  height: 0;
 }
-
+.footer-show {
+  visibility: hidden;
+  height: 0;
+}
 svg {
   overflow: visible;
 }
@@ -23,6 +27,7 @@ svg {
 .node {
   font-size: 12px;
 }
+
 
 .sidebar {
     position: fixed;
