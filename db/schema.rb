@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_163104) do
+ActiveRecord::Schema.define(version: 2018_08_29_134522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2018_08_28_163104) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.bigint "child_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_relationships_on_child_id"
+    t.index ["parent_id"], name: "index_relationships_on_parent_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -89,6 +98,8 @@ ActiveRecord::Schema.define(version: 2018_08_28_163104) do
   add_foreign_key "branch_events", "branches"
   add_foreign_key "branch_events", "events"
   add_foreign_key "branches", "trips"
+  add_foreign_key "relationships", "events", column: "child_id"
+  add_foreign_key "relationships", "events", column: "parent_id"
   add_foreign_key "trips", "users"
   add_foreign_key "user_trips", "trips"
   add_foreign_key "user_trips", "users"

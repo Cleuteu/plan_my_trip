@@ -14,9 +14,12 @@ class EventsController < ApplicationController
   end
 
   def update
+    raise
     @event = Event.find(params[:id])
-    @event.update(event_params)
-    redirect_to trip_path(@event.branches.first.trip)
+    if @event.update(event_params)
+      @branch_event = BranchEvent.new(branch_id: @branch.id, event_id: @event.id)
+      redirect_to trip_path(@event.branches.first.trip)
+    end
   end
 
   def destroy
