@@ -4,7 +4,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @trip = Trip.find(params[:trip_id])
     if @event.save!
-      @event.
       @branch_event = BranchEvent.new(branch_id: @branch.id, event_id: @event.id)
       @branch_event.save!
       redirect_to trip_path(@trip)
