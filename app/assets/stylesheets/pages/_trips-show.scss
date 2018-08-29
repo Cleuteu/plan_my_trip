@@ -2,6 +2,28 @@
 
 }
 
+svg {
+  overflow: visible;
+}
+// .treep-container {
+//   background-color: white;
+//   width: 100%;
+//   .flex-grow {
+//   flex: 1 0 auto;
+//   }
+//   h1 {
+//     margin-top: 0;
+//     margin-bottom: 0;
+//   }
+// }
+.treep-flexbox {
+  display: flex;
+  justify-content: space-around;
+}
+.node {
+  font-size: 12px;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -86,75 +108,3 @@
 // .main-panel .navbar {
 //     margin-bottom: 0;
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-.dashboard-content {
-  display: flex;
-  height: 100vh;
-}
-
-.left-sidebar-with-map {
-  width: 400px;
-  height: 100%;
-  .left-sidebar {
-    background-color: rgba(0, 38, 255, 0.7);
-    height: 70%;
-    h2 {
-      margin-top: 0;
-      padding: 0 5px;
-      text-align: center;
-    }
-    p {
-      padding: 0 5px;
-    }
-  }
-  .map-dashboard {
-    background-color: rgba(8, 163, 0, 0.7);
-    height: 30%;
-    h1 {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-}
-
-svg {
-  overflow: visible;
-}
-
-.treep-container {
-  background-color: white;
-  width: 100%;
-  .flex-grow {
-  flex: 1 0 auto;
-  }
-  h1 {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.treep-flexbox {
-  display: flex;
-  justify-content: space-around;
-}
-
-.container-mermaid {
-  width: 100vh;
-  height: 100vh
-}
-
-.node {
-  font-size: 12px;
-}
-
