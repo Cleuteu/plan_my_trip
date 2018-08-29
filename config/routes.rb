@@ -6,10 +6,4 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: [:index]
-
-  resources :branches, only: [:index] do
-    resources :events, only: [:create, :edit, :update, :destroy]
-  end
-
-  resources :branch_events, only: [:index]
 end
