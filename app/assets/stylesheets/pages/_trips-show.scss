@@ -1,42 +1,84 @@
-.dashboard-content {
-  display: flex;
-  height: 100vh;
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 260px;
+    display: block;
+    z-index: 1;
+    color: #fff;
+    font-weight: 200;
 }
-
-.left-sidebar-with-map {
-  width: 400px;
-  height: 100%;
-  .left-sidebar {
-    background-color: rgba(0, 38, 255, 0.7);
-    height: 70%;
-    h2 {
-      margin-top: 0;
-      padding: 0 5px;
-      text-align: center;
-    }
-    p {
-      padding: 0 5px;
-    }
-  }
-  .map-dashboard {
-    background-color: rgba(8, 163, 0, 0.7);
-    height: 30%;
-    h1 {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
+.sidebar {
+    background: linear-gradient(to bottom, #777777 0%, #777777 100%);
 }
-
-
-.treep-container {
-  background-color: rgba(255, 255, 0, 0.7);
-  width: 100%;
-  .flex-grow {
-  flex: 1 0 auto;
-  }
-  h1 {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+.sidebar .logo {
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+.sidebar .logo .simple-text {
+    padding: 5px 0px;
+    display: block;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 400;
+    line-height: 30px;
+}
+.sidebar .nav > li.active-pro{
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+.sidebar .nav > li.active-pro a{
+    background: rgba(255, 255, 255, 0.14);
+    opacity: 1;
+    color: #FFFFFF;
+}
+.sidebar .nav a,
+.table > tbody > tr .td-actions .btn {
+    transition: all 150ms ease-in;
+}
+.sidebar .nav {
+    margin-top: 20px;
+    float: none;
+}
+.sidebar .nav .open > a,
+.sidebar .nav li.dropdown .dropdown-menu li:hover > a,
+.sidebar .nav li:hover > a {
+    background-color: rgba(255, 255, 255, 0.13);
+    opacity: 1;
+}
+.sidebar .nav li > a {
+    color: #FFFFFF;
+    margin: 5px 15px;
+    opacity: .86;
+    border-radius: 4px;
+    display: block;
+}
+.sidebar .nav p {
+    margin: 0;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 45px;
+}
+.sidebar .nav i {
+    font-size: 28px;
+    float: left;
+    margin-right: 15px;
+    line-height: 30px;
+    width: 30px;
+    text-align: center;
+}
+.main-panel {
+    float: right;
+    width: calc(100% - 260px);
+}
+.main-panel > .content {
+    padding: 30px 15px;
+    min-height: calc(100% - 123px);
+}
+// .main-panel .navbar {
+//     margin-bottom: 0;
+// }
