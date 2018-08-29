@@ -2,4 +2,6 @@
   <% @trips.each do |trip| %>
     <p><%= link_to trip.name, trip_path(trip) %></p>
   <% end %>
+
+  <%= link_to "New trip", new_trip_path(@trip) %>
 </div>
