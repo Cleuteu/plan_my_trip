@@ -14,6 +14,12 @@
         <div class="card-body">
           <h5 class="card-title"><i class="fas fa-map-marker"></i> <%= event.name %></h5>
           <p class="card-text"> </p>
+            <button type="button" class="btn" data-toggle="modal" data-target="#update_event<%= event.id %>">
+              Update
+            </button>
+            <div class="modal fade" id="update_event<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <%= render partial: 'events/modal_form', locals: { branch: branch, event: event } %>
+            </div>
           <%= link_to "Delete", branch_event_path(branch.id, event.id), data: { confirm: "Are you sure?" }, method: :delete %>
         </div>
       </div>
@@ -22,6 +28,8 @@
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#branch<%= branch.id %>">
     Add an event
   </button>
-  <%= render partial: 'events/modal_form', locals: { id: branch.id, branch: branch } %>
+  <div class="modal fade" id="branch<%= branch.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render partial: 'events/modal_form', locals: { branch: branch, event: @event } %>
+  </div>
   </div>
 <% end %>
