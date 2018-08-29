@@ -5,9 +5,6 @@
     <% while @trip.start_date <= @trip.end_date do %>
       <p><%= @trip.start_date += 1 %></p>
     <% end %>
-    <%# date1 = DateTime.parse(@trip.start_date) %>
-    <%#= date1.day %>
-    <%#= (DateTime.parse(@trip.start_date)..DateTime.parse(@trip.end_date)).to_a %>
   </div>
 
   <div class="treep-branch">
@@ -22,7 +19,7 @@
       </div>
     <% end %>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= branch.id %>">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#branch<%= branch.id %>">
     Add an event
   </button>
   <%= render partial: 'events/modal_form', locals: { id: branch.id, branch: branch } %>
