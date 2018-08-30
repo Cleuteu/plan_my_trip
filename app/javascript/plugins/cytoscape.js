@@ -5,31 +5,18 @@ const graph = document.getElementById('cy');
 const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
-var elements1 = [];
 
 console.log(nodes)
 // console.log(relationships)
 
 var y = 0;
 nodes.forEach((node) => {
-  if (nodes[y].name === 'Airbnb Toronto 2' ) {
-    elements.push({ data:
+  elements.push({ data:
                     { id: nodes[y].id,
                       name: nodes[y].name,
-                      weight: 1000000000
                     }
                   },
                   );
-  }
-  else {
-    elements.push({ data:
-                    { id: nodes[y].id,
-                      name: nodes[y].name,
-                      weight: 50
-                    }
-                  },
-                  );
-  }
   y += 1;
   });
 
