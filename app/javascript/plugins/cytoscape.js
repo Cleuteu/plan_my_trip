@@ -6,16 +6,26 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
+console.log(nodes)
+// console.log(relationships)
+
+var y = 0;
 nodes.forEach((node) => {
-  elements.push({ data: { id: node } },)
+  elements.push({ data:
+                  { id: `${nodes[y].id}`,
+                    name: `${nodes[y].name}`
+                  }
+                },
+                )
+  y += 1;
   });
 
 var i = 0;
 relationships.forEach((relationship) => {
   elements.push({ data:
-                  { id: `${relationships[i].parent_name}` + `${relationships[i].child_name}`,
-                    source: `${relationships[i].parent_name}`,
-                    target: `${relationships[i].child_name}`
+                  { id: `${relationships[i].parent_id}` + `${relationships[i].child_id}`,
+                    source: `${relationships[i].parent_id}`,
+                    target: `${relationships[i].child_id}`
                   }
                 },
                 )
@@ -23,7 +33,6 @@ relationships.forEach((relationship) => {
   });
 
 console.log(elements)
-
 
 const cy = cytoscape({
   container: document.getElementById('cy'),
@@ -102,31 +111,34 @@ const cy = cytoscape({
   layout: {
     name: 'breadthfirst',
     directed: true,
-    roots: '#Avion-Montreal',
-    padding: 100
+    roots: `#${nodes[0].id}`,
+    // padding: 20,
+    fit: true,
+    // spacingFactor: 1.75,
+    height: undefined
     },
 
   style: [
     {
       selector: 'node:unselected',
       style: {
-        label: 'data(id)',
+        label: 'data(name)',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
+        'font-size': 16,
         'text-transform': 'uppercase',
         'color': 'gray',
-        'width': 56,
-        'height': 56,
-        'background-color': '#4DABE4',
-        'border-width': 4,
+        'width': 64,
+        'height': 64,
+        'background-color': '#106BA5',
+        'border-width': 2,
         'border-color': 'gray',
-        'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 2,
+        // 'border-style': 'solid',
+        'overlay-color': 'black',
         'ghost': 'yes',
         'ghost-offset-x': 0,
-        'ghost-offset-y': 1,
+        'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
         'transition-property': 'overlay-opacity, background-color',
         'transition-duration': 100
@@ -134,23 +146,24 @@ const cy = cytoscape({
     },{
     selector: 'node:selected',
       style: {
-        label: 'data(id)',
+        label: 'data(name)',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
+        'font-size': 16,
         'text-transform': 'uppercase',
         'color': 'gray',
-        'width': 56,
-        'height': 56,
-        'background-color': '#2696DD',
-        'border-width': 4,
+        'width': 64,
+        'height': 64,
+        'background-color': 'orange',
+        'border-width': 2,
         'border-color': 'gray',
-        // 'border-style': 'double'
+        // 'border-style': 'double',
         'overlay-color': 'gray',
         'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
-        'ghost-offset-y': 1,
+        'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
         'transition-property': 'overlay-opacity, background-color',
         'transition-duration': 200
@@ -160,18 +173,18 @@ const cy = cytoscape({
       style: {
         label: '+',
         // 'font-family': 'Font Awesome Free 5',
-        // 'font-weight': '900',
         // 'label': '\uf055',
+        'font-weight': '900',
         'font-size': '30',
-        'color': 'black',
-        'width': 13,
+        'color': 'gray',
+        'width': 5,
         'line-color': 'lightgray',
+        'line-style': 'dashed',
         'overlay-color': 'gray',
-        'overlay-padding': 14,
-        'overlay-opacity': 2,
+        // 'overlay-padding': 14,
         'curve-style': 'bezier',
         'target-arrow-color': 'lightgray',
-        'target-arrow-shape': 'vee',
+        // 'target-arrow-shape': 'vee',
         'arrow-scale': 1,
         'ghost': 'yes',
         'ghost-offset-x': 0,
@@ -184,16 +197,18 @@ const cy = cytoscape({
       selector: 'edge:selected',
       style: {
         label: '+',
+        'font-weight': '900',
         'font-size': '30',
-        'color': 'black',
-        'width': 13,
-        'line-color': '#BABABA',
-        'overlay-padding': 14,
+        'color': 'gray',
+        'width': 5,
+        'line-color': 'lightgray',
+        'line-style': 'dashed',
+        // 'overlay-padding': 14,
         'overlay-color': 'gray',
         'overlay-opacity': 0,
         'curve-style': 'bezier',
         'target-arrow-color': '#BABABA',
-        'target-arrow-shape': 'vee',
+        // 'target-arrow-shape': 'vee',
         'arrow-scale': 1,
         'ghost': 'yes',
         'ghost-offset-x': 0,
@@ -210,7 +225,10 @@ const cy = cytoscape({
     }],
 
   // interaction options:
+  // minZoom: 0.5,
+  // maxZoom: 1,
   userZoomingEnabled: false,
+  zoomingEnabled: true,
   userPanningEnabled: false,
   boxSelectionEnabled: false,
   autoungrabify: true,
@@ -220,7 +238,9 @@ cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
 cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
-cy.on('click', 'node', () => { document.getElementById('show-node').click(); });
+cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
 cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
-
+cy.on('click', function(evt){
+  console.log( document.getElementById('show-node'+ evt.target.id()) );
+});
