@@ -12,8 +12,8 @@ console.log(relationships)
 var y = 0;
 nodes.forEach((node) => {
   elements.push({ data:
-                  { id: `${nodes[y].id}`,
-                    name: `${nodes[y].name}`
+                  { id: nodes[y].id,
+                    name: nodes[y].name
                   }
                 },
                 )
@@ -23,9 +23,9 @@ nodes.forEach((node) => {
 var i = 0;
 relationships.forEach((relationship) => {
   elements.push({ data:
-                  { id: `${relationships[i].parent_id}` + `${relationships[i].child_id}`,
-                    source: `${relationships[i].parent_id}`,
-                    target: `${relationships[i].child_id}`
+                  { id: `${relationships[i].parent_id}-${relationships[i].child_id}`,
+                    source: relationships[i].parent_id,
+                    target: relationships[i].child_id
                   }
                 },
                 )
@@ -144,7 +144,7 @@ const cy = cytoscape({
     },{
     selector: 'node:selected',
       style: {
-        label: 'data(id)',
+        label: 'data(name)',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
@@ -231,7 +231,15 @@ cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
 cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
 cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
+cy.on('click', 'edge', (evt) => {
+  let event_node_id = evt.target.id();
+  event_node_id = event_node_id.split("-");
+  let event_parent_id = event_node_id[0];
+  let event_child_id = event_node_id[1];
+  let child_id_form = document.getElementById('event_child_id');
+  let parent_id_form = document.getElementById('event_parent_id');
+  child_id_form.value = event_child_id
+  parent_id_form.value = event_parent_id
+} );
 cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
-cy.on('click', function(evt){
-  console.log( document.getElementById('show-node'+ evt.target.id()) );
-});
+
