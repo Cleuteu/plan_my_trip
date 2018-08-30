@@ -93,7 +93,9 @@ const cy = cytoscape({
         'height': 60,
         'background-color': 'white',
         'border-width': 5,
-        'border-color': '#4469B0'
+        'border-color': '#4469B0',
+        'overlay-color': '#4469B0',
+        'overlay-opacity': 2,
       }
     },{
     selector: 'node:selected',
@@ -108,18 +110,29 @@ const cy = cytoscape({
         'height': 60,
         'background-color': '#4469B0',
         'border-width': 5,
-        'border-color': '#4469B0'
+        'border-color': '#4469B0',
+        'overlay-color': '#4469B0',
+        'overlay-opacity': 2,
+        'border-style': 'double'
       }
     },{
       selector: 'edge:unselected',
       style: {
-        'width': 20,
+        label: '+',
+        // 'font-family': 'FontAwesome 5 Free',
+        // 'label': '\uf055 User',
+        'font-size': '32',
+        'color': 'black',
+        'width': 19,
         'line-color': '#ccc'
       }
     },{
       selector: 'edge:selected',
       style: {
-        'width': 20,
+        label: '+',
+        'font-size': '32',
+        'color': 'black',
+        'width': 19,
         'line-color': 'lightgray'
       }
     },{
@@ -154,3 +167,16 @@ const cy = cytoscape({
   //  cy.layout({
   //      name: 'breadthfirst'
   //  }).run();
+
+cy.on('mouseover', 'node', function (evt) {
+                        $('html,body').css('cursor', 'pointer');
+                    } );
+cy.on('mouseout', 'node', function (evt) {
+                        $('html,body').css('cursor', 'default');
+                    });
+cy.on('mouseover', 'edge', function (evt) {
+                        $('html,body').css('cursor', 'pointer');
+                    } );
+cy.on('mouseout', 'edge', function (evt) {
+                        $('html,body').css('cursor', 'default');
+                    });

@@ -6,6 +6,7 @@
   visibility: hidden;
   height: 0;
 }
+
 .logo-treep-blue {
    vertical-align: middle;
   max-height: 45px;
@@ -13,108 +14,11 @@
 svg {
   overflow: visible;
 }
-// .treep-container {
-//   background-color: white;
-//   width: 100%;
-//   .flex-grow {
-//   flex: 1 0 auto;
-//   }
-//   h1 {
-//     margin-top: 0;
-//     margin-bottom: 0;
-//   }
-// }
 .treep-flexbox {
   display: flex;
   justify-content: space-around;
 }
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 260px;
-    display: block;
-    z-index: 1;
-    color: #fff;
-    font-weight: 200;
-}
-.sidebar {
-    background: linear-gradient(to bottom, rgba(66, 82, 102, 0.95) 0%, rgba(66, 82, 102, 0.94) 100%),
-    url(img-road-sidebar);
-    background-size: cover;
-}
-.sidebar .logo {
-    padding: 10px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-.sidebar .logo .simple-text {
-    padding: 5px 0px;
-    display: block;
-    color: #FFFFFF;
-    text-align: center;
-    font-weight: 400;
-    line-height: 30px;
-}
-// .sidebar .nav > li.active-pro{
-//     position: absolute;
-//     width: 100%;
-//     bottom: 10px;
-// }
-// .sidebar .nav > li.active-pro a{
-//     background: rgba(255, 255, 255, 0.14);
-//     color: #FFFFFF;
-// }
-.sidebar .nav a,
-.table > tbody > tr .td-actions .btn {
-    transition: all 150ms ease-in;
-}
-.sidebar .nav {
-    margin-top: 20px;
-}
-.sidebar .nav .open > a,
-.sidebar .nav li.dropdown .dropdown-menu li:hover > a,
-.sidebar .nav li:hover > a {
-    background-color: rgba(255, 255, 255, 0.13);
-}
-.sidebar .nav li > a {
-    color: #FFFFFF;
-    margin: 5px 15px;
-    opacity: .86;
-    border-radius: 4px;
-}
-.sidebar .nav p {
-    margin: 0;
-    // line-height: 30px;
-    font-size: 14px;
-    font-weight: 400;
-    // text-transform: uppercase;
-    margin-left: 45px;
-}
-.sidebar .nav i {
-    font-size: 22px;
-    float: left;
-    // margin-right: 15px;
-    // line-height: 30px;
-    width: 30px;
-    text-align: center;
-}
-.sidebar .nav,
-body>.navbar-collapse .nav {
-    // margin-top: 20px;
-    // float: none;
-    display: block;
-}
-// .sidebar .nav li .nav-link,
-// body>.navbar-collapse .nav li .nav-link {
-//     color: #FFFFFF;
-//     margin: 5px 15px;
-//     opacity: .86;
-//     border-radius: 4px;
-//     display: block;
-//     padding: 10px 15px;
-// }
 .main-panel {
     float: right;
     width: calc(100% - 260px);
@@ -173,6 +77,10 @@ body>.navbar-collapse .nav {
 .navbar .navbar-nav .nav-item .nav-link:hover {
     color: #1DC7EA;
 }
+.navbar .navbar-nav .nav-item .dropdown-menu {
+    border-radius: 9px;
+    margin-top: -5px;
+}
 .navbar .navbar-nav .nav-item .dropdown-menu .divider {
     height: 1px;
     margin: 5px 0;
@@ -198,14 +106,3 @@ body>.navbar-collapse .nav {
 // .main-panel .navbar {
 //     margin-bottom: 0;
 // }
-
-
-// CSS pour Cytoscape
-// #cy {
-//     width: 100%;
-//     height: 100%;
-//     position: absolute;
-//     top: 0px;
-//     left: 0px;
-// }
-
