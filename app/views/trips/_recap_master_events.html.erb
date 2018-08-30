@@ -1,0 +1,10 @@
+  <ul class="nav">
+    <% @events_master.each do |event| %>
+    <li>
+      <a class="nav-link" href="#">
+        <i class="fas fa-monument"></i>
+        <p><%= event.name %></p>
+      </a>
+    </li>
+    <% end %>
+  </ul>

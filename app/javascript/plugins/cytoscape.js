@@ -103,7 +103,7 @@ const cy = cytoscape({
     name: 'breadthfirst',
     directed: true,
     roots: '#Avion-Montreal',
-    padding: 20
+    padding: 100
     },
 
   style: [

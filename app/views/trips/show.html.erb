@@ -6,16 +6,7 @@
     <span class="simple-text"><%= @trip.name.upcase %></span>
   </div>
 
-  <ul class="nav">
-    <% @trip.events.each do |event| %>
-    <li>
-      <a class="nav-link" href="#">
-        <i class="fas fa-monument"></i>
-        <p><%= event.name %></p>
-      </a>
-    </li>
-    <% end %>
-  </ul>
+  <%= render 'recap_master_events' %>
 
   <!-- <div width="260px" height="260px" id="map" data-markers="<#%= @markers.to_json %>"> -->
   <!-- </div> -->
