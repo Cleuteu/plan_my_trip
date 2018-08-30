@@ -24,7 +24,6 @@ relationships.forEach((relationship) => {
 
 console.log(elements)
 
-
 const cy = cytoscape({
   container: document.getElementById('cy'),
     elements:
@@ -103,7 +102,10 @@ const cy = cytoscape({
     name: 'breadthfirst',
     directed: true,
     roots: '#Avion-Montreal',
-    padding: 20
+    padding: 20,
+    fit: true,
+    // spacingFactor: 1.75,
+    height: undefined
     },
 
   style: [
@@ -116,14 +118,13 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'text-transform': 'uppercase',
         'color': 'gray',
-        'width': 56,
-        'height': 56,
+        'width': 59,
+        'height': 59,
         'background-color': '#106BA5',
         'border-width': 2,
         'border-color': 'gray',
         // 'border-style': 'solid',
         'overlay-color': 'black',
-        'overlay-opacity': 2,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
@@ -140,8 +141,8 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'text-transform': 'uppercase',
         'color': 'gray',
-        'width': 56,
-        'height': 56,
+        'width': 59,
+        'height': 59,
         'background-color': 'orange',
         'border-width': 2,
         'border-color': 'gray',
@@ -160,15 +161,15 @@ const cy = cytoscape({
       style: {
         label: '+',
         // 'font-family': 'Font Awesome Free 5',
-        // 'font-weight': '900',
         // 'label': '\uf055',
+        'font-weight': '900',
         'font-size': '30',
-        'color': 'black',
-        'width': 12,
+        'color': 'gray',
+        'width': 5,
         'line-color': 'lightgray',
+        'line-style': 'dashed',
         'overlay-color': 'gray',
-        'overlay-padding': 14,
-        'overlay-opacity': 2,
+        // 'overlay-padding': 14,
         'curve-style': 'bezier',
         'target-arrow-color': 'lightgray',
         // 'target-arrow-shape': 'vee',
@@ -184,11 +185,13 @@ const cy = cytoscape({
       selector: 'edge:selected',
       style: {
         label: '+',
+        'font-weight': '900',
         'font-size': '30',
-        'color': 'black',
-        'width': 12,
-        'line-color': '#BABABA',
-        'overlay-padding': 14,
+        'color': 'gray',
+        'width': 5,
+        'line-color': 'lightgray',
+        'line-style': 'dashed',
+        // 'overlay-padding': 14,
         'overlay-color': 'gray',
         'overlay-opacity': 0,
         'curve-style': 'bezier',
@@ -210,7 +213,10 @@ const cy = cytoscape({
     }],
 
   // interaction options:
+  // minZoom: 0.5,
+  // maxZoom: 1,
   userZoomingEnabled: false,
+  zoomingEnabled: true,
   userPanningEnabled: false,
   boxSelectionEnabled: false,
   autoungrabify: true,
