@@ -1,3 +1,7 @@
 .container-index {
-  height: calc(100vh - 170px);
+  min-height: calc(100vh - 205px);
+  margin-top: 20px;
+  margin-left: 25px;
+  display: flex;
+  justify-content: center;
 }

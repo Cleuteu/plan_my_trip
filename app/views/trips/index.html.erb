@@ -1,7 +1,31 @@
 <div class="container-index">
-  <% @trips.each do |trip| %>
-    <p><%= link_to trip.name, trip_path(trip) %></p>
-  <% end %>
+  <div class="row">
 
-  <%= link_to "New trip", new_trip_path(@trip) %>
+    <div class="col-lg">
+      <% @trips.each do |trip| %>
+
+        <figure class="front">
+          <img src="https://images.unsplash.com/photo-1518929794142-503f5015bad6" alt="front" height="260px", width="433px">
+          <div class="caption">
+            <h2><span><%= trip.name %></span></h2>
+            <p>Manage trip</p>
+            <%= link_to trip.name, trip_path(trip) %>
+          </div>
+        </figure>
+
+      <% end %>
+    </div>
+
+    <div class="col-lg">
+      <figure class="front">
+        <img src="http://www.jboeijenga.nl/img/front.jpg" alt="front">
+        <div class="caption">
+          <h2><span>+</span></h2>
+          <p>Add new trip</p>
+          <%= link_to "New trip", new_trip_path(@trip) %>
+        </div>
+      </figure>
+    </div>
+
+  </div>
 </div>
