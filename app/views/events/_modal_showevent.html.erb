@@ -1,32 +1,31 @@
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
 
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel"><%= event.name %> </h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <h5 class="modal-title" id="exampleModalLabel"><%= event.name %> - Category: <%= event.category %> </h5>
+      <button type="button" class="btn btn-primary modal-header-btn-right" data-toggle="modal" data-target="#update_event<%= event.id %>" data-dismiss="modal">Edit event</button>
     </div>
 
     <div class="modal-body modal-event">
-      <%= image_tag("montreal.jpg", class: "event-img")%>
-      <h4>Category</h4>
-      <p><%= event.category %></p>
-      <h4>Confirmed?</h4>
-      <p><%= event.confirmed %></p>
-      <p>From <%= event.date %> to <%= event.date %> (<%= event.duration %> days)</p>
-      <h4>Description</h4>
-      <p><%= event.description %></p>
-      <h4>More infos:</h4>
-      <p><%= event.url %></p>
+      <div class="event-show-modal-container">
+          <div class="event-show-modal-image">
+            <%= image_tag("montreal.jpg", class: "event-img")%>
+          </div>
+          <div class="event-show-modal-content">
+            <p>On <%= event.date %> (<%= event.duration %> hours)</p>
+            <h4>Description</h4>
+            <p><%= event.description %></p>
+            <p class="text-right"><%= link_to "More info", event.url, target: '_blank'%></p>
+          </div>
+          </div>
     </div>
 
-    <div class="modal-footer">
+    <!-- <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+ -->
       <!--   Modal pour l'édition d'un event -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_event<%= event.id %>" data-dismiss="modal">Edit event</button>
-    </div>
+<!--       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_event<%= event.id %>" data-dismiss="modal">Edit event</button>
+    </div> -->
 
   </div>
 </div>
