@@ -1,29 +1,35 @@
-  <div class="treep-dates">
-    <h2>Dates</h2>
-    <% while @trip.start_date <= @trip.end_date do %>
-      <p><%= @trip.start_date += 1 %></p>
-    <% end %>
-  </div>
+  <!-- <div class="treep-dates"> -->
+    <!-- <h2>Dates</h2> -->
+    <%# while @trip.start_date <= @trip.end_date do %>
+      <!-- <p><%#= @trip.start_date += 1 %></p> -->
+    <!-- <%# end %> -->
+  <!-- </div> -->
 
-  <div class="treep-branch">
+  <!-- <div class="treep-branch"> -->
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEvent">
-    Add an event
-  </button>
-  <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
-  </div>
 
+    <button type="button" class="d-none" id="modal-btn" data-toggle="modal" data-target="#addEvent">
+      Add an event
+    </button>
+    <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
+    </div>
 
-<!--   Modal pour le show d'un event
- -->
- <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showEvent">
-    Show an event
-  </button>
-  <div class="modal fade" id="showEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <%= render partial: 'events/modal_showevent', locals: {event: @event_show} %>
-</div>
+    <% start_event = @trip.events.first %>
+    <button type="button" class="btn" data-toggle="modal" data-target="#update_event<%= start_event.id %>">
+      Update
+    </button>
+    <div class="modal fade" id="update_event<%= start_event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <%= render partial: 'events/modal_form', locals: { trip: @trip, event: start_event, events_parents: @events_parents, events_children: @events_children } %>
+    </div>
 
+    <!--   Modal pour le show d'un event -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showEvent">
+      Show an event
+    </button>
+    <div class="modal fade" id="showEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <%= render partial: 'events/modal_showevent', locals: {event: @event_show} %>
+    </div>
   </div>
