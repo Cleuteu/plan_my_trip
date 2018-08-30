@@ -8,10 +8,18 @@
   <!-- <div class="treep-branch"> -->
 
   <!-- Button trigger modal -->
-  <button type="button" class="d-none" id="modal-btn" data-toggle="modal" data-target="#addEvent">
-    Add an event
-  </button>
-  <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
+    <button type="button" class="d-none" id="modal-btn" data-toggle="modal" data-target="#addEvent">
+      Add an event
+    </button>
+    <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
+    </div>
+
+    <% start_event = @trip.events.first %>
+    <button type="button" class="btn" data-toggle="modal" data-target="#update_event<%= start_event.id %>">
+      Update
+    </button>
+    <div class="modal fade" id="update_event<%= start_event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <%= render partial: 'events/modal_form', locals: { trip: @trip, event: start_event, events_parents: @events_parents, events_children: @events_children } %>
+    </div>
   </div>
-  <!-- </div> -->
