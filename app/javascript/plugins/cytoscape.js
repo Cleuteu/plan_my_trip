@@ -6,16 +6,26 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
+console.log(nodes)
+console.log(relationships)
+
+var y = 0;
 nodes.forEach((node) => {
-  elements.push({ data: { id: node } },)
+  elements.push({ data:
+                  { id: `${nodes[y].id}`,
+                    name: `${nodes[y].name}`
+                  }
+                },
+                )
+  y += 1;
   });
 
 var i = 0;
 relationships.forEach((relationship) => {
   elements.push({ data:
-                  { id: `${relationships[i].parent_name}` + `${relationships[i].child_name}`,
-                    source: `${relationships[i].parent_name}`,
-                    target: `${relationships[i].child_name}`
+                  { id: `${relationships[i].parent_id}` + `${relationships[i].child_id}`,
+                    source: `${relationships[i].parent_id}`,
+                    target: `${relationships[i].child_id}`
                   }
                 },
                 )
@@ -102,7 +112,7 @@ const cy = cytoscape({
   layout: {
     name: 'breadthfirst',
     directed: true,
-    roots: '#Avion-Montreal',
+    roots: '#176',
     padding: 20
     },
 
@@ -110,7 +120,7 @@ const cy = cytoscape({
     {
       selector: 'node:unselected',
       style: {
-        label: 'data(id)',
+        label: 'data(name)',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
@@ -220,7 +230,8 @@ cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
 cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
-cy.on('click', 'node', () => { document.getElementById('show-node').click(); });
+cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
 cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
-
-
+cy.on('click', function(evt){
+  console.log( document.getElementById('show-node'+ evt.target.id()) );
+});
