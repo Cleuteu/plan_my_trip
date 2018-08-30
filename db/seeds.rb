@@ -163,7 +163,20 @@ voiture_saguenay_event = Event.create!(
   trip_id: trip.id,
   master: true
   )
-Relationship.create!(parent_id: hotel_quebec_event.id, child_id: voiture_saguenay_event.id)
+
+phoques_event = Event.create!(
+  name: 'Seals diving',
+  category: 'Activité',
+  # location: 'Washington',
+  date: Date.new(2018,9,02),
+  duration: 2,
+  trip_id: trip.id,
+  master: true
+  )
+
+Relationship.create!(parent_id: hotel_quebec_event.id, child_id: phoques_event.id)
+
+Relationship.create!(parent_id: phoques_event_event.id, child_id: voiture_saguenay.id)
 
 randonnee_event = Event.create!(
   name: 'Randonnée',
