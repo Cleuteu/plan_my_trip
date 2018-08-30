@@ -1,4 +1,4 @@
-<div id="cy"></div>
+<div id="cy" data-nodes="<%= @array_nodes.to_json %>" data-relationships="<%= @array_relationships.to_json %>"></div>
 <% content_for :after_js do %>
   <%= javascript_pack_tag 'diagramme' %>
 <% end %>

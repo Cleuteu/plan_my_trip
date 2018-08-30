@@ -1,81 +1,108 @@
 import cytoscape from 'cytoscape';
 
+const graph = document.getElementById('cy');
+
+const nodes = JSON.parse(graph.dataset.nodes);
+const relationships = JSON.parse(graph.dataset.relationships);
+var elements = [];
+
+nodes.forEach((node) => {
+  elements.push({ data: { id: node } },)
+  });
+
+var i = 0;
+relationships.forEach((relationship) => {
+  elements.push({ data:
+                  { id: `${relationships[i].parent_name}` + `${relationships[i].child_name}`,
+                    source: `${relationships[i].parent_name}`,
+                    target: `${relationships[i].child_name}`
+                  }
+                },
+                )
+  i += 1;
+  });
+
+console.log(elements)
+
+
 const cy = cytoscape({
   container: document.getElementById('cy'),
-    elements: [
-  // nodes
-  { data: { id: 'a' } },
-  { data: { id: 'b' } },
-  { data: { id: 'c' } },
-  { data: { id: 'd' } },
-  { data: { id: 'g' } },
-  { data: { id: 'h' } },
-  { data: { id: 'e' } },
-  { data: { id: 'f' } },
+    elements:
+      elements
+  // [
+  // // nodes
+  // { data: { id: 'a' } },
+  // { data: { id: 'b' } },
+  // { data: { id: 'c' } },
+  // { data: { id: 'd' } },
+  // { data: { id: 'g' } },
+  // { data: { id: 'h' } },
+  // { data: { id: 'e' } },
+  // { data: { id: 'f' } },
 
-  // edges
-  {
-    data: {
-      id: 'ab',
-      source: 'a',
-      target: 'b'
-    }
-  },
-  {
-    data: {
-      id: 'bc',
-      source: 'b',
-      target: 'c'
-    }
-  },
-  {
-    data: {
-      id: 'cd',
-      source: 'c',
-      target: 'd'
-    }
-  },
-  {
-    data: {
-      id: 'ce',
-      source: 'c',
-      target: 'e'
-    }
-  },
-  {
-    data: {
-      id: 'ef',
-      source: 'e',
-      target: 'f'
-    }
-  },
-    {
-  data: {
-      id: 'dg',
-      source: 'd',
-      target: 'g'
-    }
-  },
-    {
-  data: {
-      id: 'gh',
-      source: 'g',
-      target: 'h',
-    }
-  },
-    {
-  data: {
-      id: 'fh',
-      source: 'f',
-      target: 'h',
-    }
-  }
-  ],
+  // // edges
+  // {
+  //   data: {
+  //     id: 'ab',
+  //     source: 'a',
+  //     target: 'b'
+  //   }
+  // },
+  // {
+  //   data: {
+  //     id: 'bc',
+  //     source: 'b',
+  //     target: 'c'
+  //   }
+  // },
+  // {
+  //   data: {
+  //     id: 'cd',
+  //     source: 'c',
+  //     target: 'd'
+  //   }
+  // },
+  // {
+  //   data: {
+  //     id: 'ce',
+  //     source: 'c',
+  //     target: 'e'
+  //   }
+  // },
+  // {
+  //   data: {
+  //     id: 'ef',
+  //     source: 'e',
+  //     target: 'f'
+  //   }
+  // },
+  //   {
+  // data: {
+  //     id: 'dg',
+  //     source: 'd',
+  //     target: 'g'
+  //   }
+  // },
+  //   {
+  // data: {
+  //     id: 'gh',
+  //     source: 'g',
+  //     target: 'h',
+  //   }
+  // },
+  //   {
+  // data: {
+  //     id: 'fh',
+  //     source: 'f',
+  //     target: 'h',
+  //   }
+  // }]
+,
 
   layout: {
     name: 'breadthfirst',
     directed: true,
-    roots: '#a',
+    roots: '#Avion-Montreal',
     padding: 20
     },
 
