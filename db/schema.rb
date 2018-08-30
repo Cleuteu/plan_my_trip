@@ -15,24 +15,6 @@ ActiveRecord::Schema.define(version: 2018_08_29_141952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "branch_events", force: :cascade do |t|
-    t.bigint "branch_id"
-    t.bigint "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "parent_event"
-    t.index ["branch_id"], name: "index_branch_events_on_branch_id"
-    t.index ["event_id"], name: "index_branch_events_on_event_id"
-  end
-
-  create_table "branches", force: :cascade do |t|
-    t.bigint "trip_id"
-    t.boolean "master"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_branches_on_trip_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "category"
@@ -97,9 +79,6 @@ ActiveRecord::Schema.define(version: 2018_08_29_141952) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "branch_events", "branches"
-  add_foreign_key "branch_events", "events"
-  add_foreign_key "branches", "trips"
   add_foreign_key "relationships", "events", column: "child_id"
   add_foreign_key "relationships", "events", column: "parent_id"
   add_foreign_key "trips", "users"

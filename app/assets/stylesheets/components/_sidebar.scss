@@ -10,13 +10,14 @@
     font-weight: 200;
 }
 .sidebar {
-    background: linear-gradient(to bottom, rgba(66, 82, 102, 0.95) 0%, rgba(66, 82, 102, 0.94) 100%),
+    background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%),
     url(img-road-sidebar);
     background-size: cover;
 }
 .sidebar .logo {
     padding: 10px 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .sidebar .logo .simple-text {
     padding: 5px 0px;
