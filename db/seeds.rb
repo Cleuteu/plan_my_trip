@@ -186,7 +186,6 @@ voiture_montreal_event = Event.create!(
   duration: 5,
   trip_id: trip.id
   )
-Relationship.create!(parent_id: airbnb_saguenay_event.id, child_id: voiture_montreal_event.id)
 
 retour_montreal_event = Event.create!(
   name: 'Retour Montréal',
@@ -206,7 +205,7 @@ voiture_perce_event = Event.create!(
   duration: 8,
   trip_id: trip.id
   )
-Relationship.create!(parent_id: retour_montreal_event.id, child_id: voiture_perce_event.id)
+Relationship.create!(parent_id: hotel_quebec_event.id, child_id: voiture_perce_event.id)
 
 airbnb_perce_event = Event.create!(
   name: 'Airbnb Percé',
@@ -259,7 +258,7 @@ visite_toronto_event = Event.create!(
 Relationship.create!(parent_id: airbnb_toronto_event.id, child_id: visite_toronto_event.id)
 
 voiture_niagarafalls_event = Event.create!(
-  name: 'Visite Niagara Falls',
+  name: 'Voiture Niagara Falls',
   category: 'Activité',
   # location: 'Washington',
   date: Date.new(2018,9,02),
@@ -279,7 +278,7 @@ visite_niagarafalls_event = Event.create!(
 Relationship.create!(parent_id: voiture_niagarafalls_event.id, child_id: visite_niagarafalls_event.id)
 
 airbnb_toronto_2_event = Event.create!(
-  name: 'Airbnb Toronto',
+  name: 'Airbnb Toronto 2',
   category: 'Hébergement',
   # location: 'Washington',
   date: Date.new(2018,9,02),
@@ -289,7 +288,7 @@ airbnb_toronto_2_event = Event.create!(
 Relationship.create!(parent_id: visite_niagarafalls_event.id, child_id: airbnb_toronto_2_event.id)
 
 voiture_montreal_1_event = Event.create!(
-  name: 'Voiture Montréal',
+  name: 'Voiture Montréal retour',
   category: 'Transport',
   # location: 'Washington',
   date: Date.new(2018,9,03),
@@ -301,7 +300,9 @@ Relationship.create!(parent_id: airbnb_toronto_2_event.id, child_id: voiture_mon
 
 # DERNIERES RELATIONSHIPS AVEC END
 Relationship.create!(parent_id: retour_montreal_event.id, child_id: event_end.id)
-Relationship.create!(parent_id: bateau_perce_event.id, child_id: event_end.id)
-Relationship.create!(parent_id: voiture_montreal_1_event.id, child_id: event_end.id)
+Relationship.create!(parent_id: bateau_perce_event.id, child_id: voiture_montreal_1_event.id)
+Relationship.create!(parent_id: airbnb_saguenay_event.id, child_id: voiture_montreal_1_event.id)
+Relationship.create!(parent_id: voiture_montreal_1_event.id, child_id: retour_montreal_event.id)
+
 
 puts 'Done!'
