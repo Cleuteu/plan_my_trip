@@ -9,11 +9,11 @@
       <%# child_events << Event.find(branch.event_id) %>
     <%# end %>
     <div class="modal-body">
-      <%= simple_form_for [trip, event] do |f| %>
-        <%= f.input :name, input_html: { id: event.id ? "edit_event_name" : "event_name" } %>
-        <%= f.input :category, input_html: { id: event.id ? "edit_event_category" : "event_category" } %>
+      <%= simple_form_for [trip, event], wrapper: :horizontal_form do |f| %>
+        <%= f.input :name, input_html: { id: event.id ? "edit_event_name" : "event_name", placeholder: 'Name' } %>
+        <%= f.input :category, input_html: { id: event.id ? "edit_event_category" : "event_category" }, collection: ["Housing", "Travel", "Activity"], prompt: 'Category' %>
         <%= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed" : "event_confirmed" } %>
-        <%= f.input :location, input_html: { id: event.id ? "edit_event_location" : "event_location" } %>
+        <%= f.input :location, input_html: { id: event.id ? "edit_event_location" : "event_location", placeholder: 'Location' } %>
         <%= f.input :date %>
         <%= f.input :duration, input_html: { id: event.id ? "edit_event_duration" : "event_duration" } %>
         <%= f.input :description, input_html: { id: event.id ? "edit_event_description" : "event_description" } %>

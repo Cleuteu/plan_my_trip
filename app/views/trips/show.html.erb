@@ -27,18 +27,7 @@
 
   <div class="content">
     <%= render 'cytoscape' %>
-
-    <div class="container-fluid">
-
-      <!-- <div class="treep-container"> -->
-        <div class="branch-create-form">
-
-        </div>
-        <div class="treep-flexbox">
-          <%= render partial: 'treep_branches' %>
-        </div>
-      <!-- </div> -->
-    </div>
+    <%= render partial: 'treep_branches' %>
   </div>
 
 <%= content_for(:footer_class, "footer-show") %>
