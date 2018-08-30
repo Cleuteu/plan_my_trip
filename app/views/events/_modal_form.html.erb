@@ -10,22 +10,21 @@
     <%# end %>
     <div class="modal-body">
       <%= simple_form_for [trip, event] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :category %>
-        <%= f.input :confirmed %>
-        <%= f.input :location %>
+        <%= f.input :name, input_html: { id: event.id ? "edit_event_name" : "event_name" } %>
+        <%= f.input :category, input_html: { id: event.id ? "edit_event_category" : "event_category" } %>
+        <%= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed" : "event_confirmed" } %>
+        <%= f.input :location, input_html: { id: event.id ? "edit_event_location" : "event_location" } %>
         <%= f.input :date %>
-        <%= f.input :duration %>
-        <%= f.input :description %>
-        <%= f.input :url %>
-        <%= f.input :parent_ids, :collection => events_parents %>
-        <%= f.input :child_ids, :collection => events_children %>
-        <%= f.submit "Add event", class: "btn" %>
-      <% end %>
+        <%= f.input :duration, input_html: { id: event.id ? "edit_event_duration" : "event_duration" } %>
+        <%= f.input :description, input_html: { id: event.id ? "edit_event_description" : "event_description" } %>
+        <%= f.input :url, input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
+        <%= f.input :parent_ids, :collection => events_parents, input_html: { id: event.id ? "edit_event_parent_ids" : "event_parent_ids" } %>
+        <%= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids" : "event_child_ids" } %>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+        <%= f.submit "Add event", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
