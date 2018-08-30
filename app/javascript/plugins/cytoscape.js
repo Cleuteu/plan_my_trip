@@ -191,20 +191,9 @@ const cy = cytoscape({
 
 cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
-
-cy.on('mouseover', 'edge', function (evt) {
-                        $('html,body').css('cursor', 'pointer');
-                    } );
-cy.on('mouseout', 'edge', function (evt) {
-                        $('html,body').css('cursor', 'default');
-                    });
-
-cy.on('click', 'node', function(evt){
-  // alert("");
-});
-cy.on('click', 'edge', function(evt){
-  const modalBtn = document.getElementById('modal-btn');
-  modalBtn.click();
-});
+cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
+cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
+cy.on('click', 'node', () => { document.getElementById('show-node').click(); });
+cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
 
