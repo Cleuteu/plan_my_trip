@@ -1,29 +1,36 @@
 <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"><%= event.name %> </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body modal-event">
-          <%= image_tag("montreal.jpg", class: "event-img")%>
-          <h4>Category</h4>
-          <p><%= event.category %></p>
-          <h4>Confirmed?</h4>
-          <p><%= event.confirmed %></p>
-          <h4>Date</h4>
-          <p><%= event.date %></p>
-          <h4>Duration</h4>
-          <p><%= event.duration %> jours</p>
-          <h4>Description</h4>
-          <p><%= event.description %></p>
-          <h4>More infos:</h4>
-          <p><%= event.url %></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Edit event</button>
-        </div>
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel"><%= event.name %> </h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body modal-event">
+      <%= image_tag("montreal.jpg", class: "event-img")%>
+      <h4>Category</h4>
+      <p><%= event.category %></p>
+      <h4>Confirmed?</h4>
+      <p><%= event.confirmed %></p>
+      <p>From <%= event.date %> to <%= event.date %> (<%= event.duration %> days)</p>
+      <h4>Description</h4>
+      <p><%= event.description %></p>
+      <h4>More infos:</h4>
+      <p><%= event.url %></p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      <!--   Modal pour l'édition d'un event -->
+      <% start_event = @trip.events.first %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_event<%= start_event.id %>">Edit event</button>
+      <div class="modal fade" id="update_event<%= start_event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <%= render partial: 'events/modal_form', locals: { trip: @trip, event: start_event, events_parents: @events_parents, events_children: @events_children } %>
       </div>
     </div>
+
+  </div>
+</div>

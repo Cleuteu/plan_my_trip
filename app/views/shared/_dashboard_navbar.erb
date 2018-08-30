@@ -40,9 +40,9 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span class="no-icon">My trips</span>
-            </a>
+            <%= link_to trips_path, class: "nav-link" do %>
+            <span class="no-icon">My trips</span>
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
