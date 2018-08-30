@@ -53,7 +53,7 @@ class TripsController < ApplicationController
     end
 
     # Afficher les events masters dans le récapitulatif
-    @events_master = Event.where(master: true).order(:date)
+    @events_master = Event.where(trip_id: @trip.id).where(master: true).order(:date)
 
     # Pour afficher sur la trip-show la map avec des points sur chaque event
     @map_events = Event.where.not(latitude: nil, longitude: nil)

@@ -5,18 +5,31 @@ const graph = document.getElementById('cy');
 const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
+var elements1 = [];
 
 console.log(nodes)
 // console.log(relationships)
 
 var y = 0;
 nodes.forEach((node) => {
-  elements.push({ data:
-                  { id: nodes[y].id,
-                    name: nodes[y].name
-                  }
-                },
-                )
+  if (nodes[y].name === 'Airbnb Toronto 2' ) {
+    elements.push({ data:
+                    { id: nodes[y].id,
+                      name: nodes[y].name,
+                      weight: 1000000000
+                    }
+                  },
+                  );
+  }
+  else {
+    elements.push({ data:
+                    { id: nodes[y].id,
+                      name: nodes[y].name,
+                      weight: 50
+                    }
+                  },
+                  );
+  }
   y += 1;
   });
 
@@ -37,76 +50,7 @@ console.log(elements)
 const cy = cytoscape({
   container: document.getElementById('cy'),
     elements:
-      elements
-  // [
-  // // nodes
-  // { data: { id: 'a' } },
-  // { data: { id: 'b' } },
-  // { data: { id: 'c' } },
-  // { data: { id: 'd' } },
-  // { data: { id: 'g' } },
-  // { data: { id: 'h' } },
-  // { data: { id: 'e' } },
-  // { data: { id: 'f' } },
-
-  // // edges
-  // {
-  //   data: {
-  //     id: 'ab',
-  //     source: 'a',
-  //     target: 'b'
-  //   }
-  // },
-  // {
-  //   data: {
-  //     id: 'bc',
-  //     source: 'b',
-  //     target: 'c'
-  //   }
-  // },
-  // {
-  //   data: {
-  //     id: 'cd',
-  //     source: 'c',
-  //     target: 'd'
-  //   }
-  // },
-  // {
-  //   data: {
-  //     id: 'ce',
-  //     source: 'c',
-  //     target: 'e'
-  //   }
-  // },
-  // {
-  //   data: {
-  //     id: 'ef',
-  //     source: 'e',
-  //     target: 'f'
-  //   }
-  // },
-  //   {
-  // data: {
-  //     id: 'dg',
-  //     source: 'd',
-  //     target: 'g'
-  //   }
-  // },
-  //   {
-  // data: {
-  //     id: 'gh',
-  //     source: 'g',
-  //     target: 'h',
-  //   }
-  // },
-  //   {
-  // data: {
-  //     id: 'fh',
-  //     source: 'f',
-  //     target: 'h',
-  //   }
-  // }]
-,
+      elements,
 
   layout: {
     name: 'breadthfirst',
@@ -114,8 +58,8 @@ const cy = cytoscape({
     roots: `#${nodes[0].id}`,
     // padding: 20,
     fit: true,
-    // spacingFactor: 1.75,
-    height: undefined
+    spacingFactor: 1.75,
+    height: undefined,
     },
 
   style: [
