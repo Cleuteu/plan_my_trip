@@ -48,8 +48,8 @@ trip = Trip.new(
     name: 'Voyage au Canada',
     start_location: 'New-York, USA',
     end_location: 'Dallas, USA',
-    start_date: DateTime.now,
-    end_date: Date.new(2018,8,31)
+    start_date: Date.new(2018,8,30),
+    end_date: Date.new(2018,9,04)
     # reset_password_token: '',
     # reset_password_sent_at: '',
     # remember_created_at: '',
@@ -65,9 +65,9 @@ user_trip.user = user
 user_trip.trip = trip
 user_trip.save!
 
-event_start = Event.new(name: "Start", category: "settings", date: trip.start_date, location: trip.start_location, trip_id: trip.id, duration: 1)
+event_start = Event.new(name: "Start", category: "settings", date: trip.start_date, location: trip.start_location, trip_id: trip.id, duration: 1, master: true)
 event_start.save!
-event_end = Event.new(name: "End", category: "settings", date: trip.end_date, location: trip.end_location, trip_id: trip.id, duration: 1)
+event_end = Event.new(name: "End", category: "settings", date: trip.end_date, location: trip.end_location, trip_id: trip.id, duration: 1, master: true)
 event_end.save!
 
 
@@ -91,7 +91,8 @@ avion_montreal_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,8,31),
   duration: 9,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: event_start.id, child_id: avion_montreal_event.id)
 
@@ -104,7 +105,8 @@ visite_montreal_event = Event.create!(
   duration: 8,
   description: "Nous irons visiter Montreal et Marc sera notre guide. Il y habite depuis 4 ans et connait les bonnes adresses non touristiques.",
   url: "https://www.votretourdumonde.com/que-visiter-a-montreal/",
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: avion_montreal_event.id, child_id: visite_montreal_event.id)
 
@@ -114,7 +116,8 @@ airbnb_montreal_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,8,31),
   duration: 8,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: visite_montreal_event.id, child_id: airbnb_montreal_event.id)
 
@@ -124,7 +127,8 @@ bus_quebec_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,01),
   duration: 3,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: bus_quebec_event.id)
 
@@ -134,7 +138,8 @@ visite_chateau_quebec_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,01),
   duration: 3,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: bus_quebec_event.id, child_id: visite_chateau_quebec_event.id)
 
@@ -144,7 +149,8 @@ hotel_quebec_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,01),
   duration: 8,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: visite_chateau_quebec_event.id, child_id: hotel_quebec_event.id)
 
@@ -154,7 +160,8 @@ voiture_saguenay_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,02),
   duration: 2,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: hotel_quebec_event.id, child_id: voiture_saguenay_event.id)
 
@@ -164,7 +171,8 @@ randonnee_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,02),
   duration: 5,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: voiture_saguenay_event.id, child_id: randonnee_event.id)
 
@@ -174,7 +182,8 @@ airbnb_saguenay_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,02),
   duration: 8,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: randonnee_event.id, child_id: airbnb_saguenay_event.id)
 
@@ -184,7 +193,8 @@ voiture_montreal_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,03),
   duration: 5,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 
 retour_montreal_event = Event.create!(
@@ -193,7 +203,8 @@ retour_montreal_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,03),
   duration: 3,
-  trip_id: trip.id
+  trip_id: trip.id,
+  master: true
   )
 Relationship.create!(parent_id: voiture_montreal_event.id, child_id: retour_montreal_event.id)
 
