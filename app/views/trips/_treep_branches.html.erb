@@ -1,17 +1,17 @@
-  <div class="treep-dates">
-    <h2>Dates</h2>
-    <% while @trip.start_date <= @trip.end_date do %>
-      <p><%= @trip.start_date += 1 %></p>
-    <% end %>
-  </div>
+  <!-- <div class="treep-dates"> -->
+    <!-- <h2>Dates</h2> -->
+    <%# while @trip.start_date <= @trip.end_date do %>
+      <!-- <p><%#= @trip.start_date += 1 %></p> -->
+    <!-- <%# end %> -->
+  <!-- </div> -->
 
-  <div class="treep-branch">
+  <!-- <div class="treep-branch"> -->
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEvent">
+  <button type="button" class="d-none" id="modal-btn" data-toggle="modal" data-target="#addEvent">
     Add an event
   </button>
   <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
   </div>
-  </div>
+  <!-- </div> -->
