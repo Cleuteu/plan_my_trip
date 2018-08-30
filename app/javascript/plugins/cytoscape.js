@@ -7,7 +7,7 @@ const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
 console.log(nodes)
-console.log(relationships)
+// console.log(relationships)
 
 var y = 0;
 nodes.forEach((node) => {
@@ -111,8 +111,8 @@ const cy = cytoscape({
   layout: {
     name: 'breadthfirst',
     directed: true,
-    roots: '#176',
-    padding: 20,
+    roots: `#${nodes[0].id}`,
+    // padding: 20,
     fit: true,
     // spacingFactor: 1.75,
     height: undefined
@@ -126,10 +126,11 @@ const cy = cytoscape({
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
+        'font-size': 16,
         'text-transform': 'uppercase',
         'color': 'gray',
-        'width': 59,
-        'height': 59,
+        'width': 64,
+        'height': 64,
         'background-color': '#106BA5',
         'border-width': 2,
         'border-color': 'gray',
@@ -145,14 +146,15 @@ const cy = cytoscape({
     },{
     selector: 'node:selected',
       style: {
-        label: 'data(id)',
+        label: 'data(name)',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
+        'font-size': 16,
         'text-transform': 'uppercase',
         'color': 'gray',
-        'width': 59,
-        'height': 59,
+        'width': 64,
+        'height': 64,
         'background-color': 'orange',
         'border-width': 2,
         'border-color': 'gray',
