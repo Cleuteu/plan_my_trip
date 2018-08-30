@@ -27,10 +27,27 @@ class TripsController < ApplicationController
   def show
     # @branches = @trip.branches
     # @branch = Branch.new
+    @event_show = Event.all[3]
     @event = Event.new
     @trip = Trip.find(params[:id])
     @events_parents = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:parent_id))
     @events_children = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:child_id))
+
+    # Envoie des datas au JS de Cytoscape
+    @relationships = Relationship.where(parent: @trip.events)
+    @array_relationships = []
+    @array_nodes = []
+    hash_relationship = {}
+    @relationships.each do |relationship|
+      hash_relationship[:child_name] = Event.find(relationship.child_id).name.gsub(/\s/, '-')
+      hash_relationship[:parent_name] = Event.find(relationship.parent_id).name.gsub(/\s/, '-')
+      @array_relationships << hash_relationship
+      hash_relationship = {}
+      unless @array_nodes.include?(relationship.child_id)
+        @array_nodes << Event.find(relationship.child_id).name.gsub(/\s/, '-')
+      end
+    end
+
     # Pour afficher sur la trip-show la map avec des points sur chaque event
     @map_events = Event.where.not(latitude: nil, longitude: nil)
     @markers = @map_events.map do |event|
