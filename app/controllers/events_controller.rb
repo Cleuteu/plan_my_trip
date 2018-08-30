@@ -25,6 +25,23 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @trip = Trip.find(params[:trip_id])
+    @event_parent = Relationship.where(child: @event).first.parent
+    @event_child = Relationship.where(parent: @event).first.child
+
+    if Relationship.where(parent: @event).count + Relationship.where(child: @event).count >= 3
+      flash[:alert] = "Cant delete this event!"
+      redirect_to trip_path(@trip)
+    else
+      Relationship.create!(parent_id: @event_parent.id, child_id: @event_child.id)
+      Relationship.destroy(Relationship.where(parent_id: @event_parent.id, child_id: @event.id).first.id)
+      Relationship.destroy(Relationship.where(parent_id: @event.id, child_id: @event_child.id).first.id)
+      @event.destroy!
+      flash[:success] = "Event deleted"
+      redirect_to trip_path(@trip)
+    end
+
     # @event_to_delete = Event.find(params[:id])
     # @branch = Branch.find(params[:branch_id])
     # branch_events = BranchEvent.where(event_id: @event_to_delete.id)
