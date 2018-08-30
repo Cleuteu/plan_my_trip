@@ -36,13 +36,19 @@ class TripsController < ApplicationController
     @array_relationships = []
     @array_nodes = []
     hash_relationship = {}
+    hash_nodes = {}
     @relationships.each do |relationship|
+      hash_relationship[:child_id] = Event.find(relationship.child_id).id
       hash_relationship[:child_name] = Event.find(relationship.child_id).name.gsub(/\s/, '-')
+      hash_relationship[:parent_id] = Event.find(relationship.parent_id).id
       hash_relationship[:parent_name] = Event.find(relationship.parent_id).name.gsub(/\s/, '-')
       @array_relationships << hash_relationship
       hash_relationship = {}
       unless @array_nodes.include?(relationship.child_id)
-        @array_nodes << Event.find(relationship.child_id).name.gsub(/\s/, '-')
+        hash_nodes[:id] = Event.find(relationship.child_id).id
+        hash_nodes[:name] = Event.find(relationship.child_id).name.gsub(/\s/, '-')
+        @array_nodes << hash_nodes
+        hash_nodes = {}
       end
     end
 

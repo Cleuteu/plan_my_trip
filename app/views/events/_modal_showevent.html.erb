@@ -25,11 +25,7 @@
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
       <!--   Modal pour l'édition d'un event -->
-      <% start_event = @trip.events.first %>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_event<%= start_event.id %>">Edit event</button>
-      <div class="modal fade" id="update_event<%= start_event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <%= render partial: 'events/modal_form', locals: { trip: @trip, event: start_event, events_parents: @events_parents, events_children: @events_children } %>
-      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_event<%= event.id %>" data-dismiss="modal">Edit event</button>
     </div>
 
   </div>
