@@ -1,71 +1,22 @@
-  <!-- <div class="treep-dates"> -->
-    <!-- <h2>Dates</h2> -->
-    <%# while @trip.start_date <= @trip.end_date do %>
-      <!-- <p><%#= @trip.start_date += 1 %></p> -->
-    <!-- <%# end %> -->
-  <!-- </div> -->
+<!-- <div class="treep-dates"> -->
+  <!-- <h2>Dates</h2> -->
+  <%# while @trip.start_date <= @trip.end_date do %>
+    <!-- <p><%#= @trip.start_date += 1 %></p> -->
+  <!-- <%# end %> -->
+<!-- </div> -->
 
-  <!-- <div class="treep-branch"> -->
+<!--   Modal pour l'ajout d'un event -->
+<button type="button" class="d-none" id="add-node" data-toggle="modal" data-target="#addEvent">
+  Add an event
+</button>
+<div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
+</div>
 
-  <!-- Button trigger modal -->
-
-    <button type="button" class="d-none" id="modal-btn" data-toggle="modal" data-target="#addEvent">
-      Add an event
-    </button>
-    <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
-    </div>
-
-    <% start_event = @trip.events.first %>
-    <button type="button" class="btn" data-toggle="modal" data-target="#update_event<%= start_event.id %>">
-      Update
-    </button>
-    <div class="modal fade" id="update_event<%= start_event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <%= render partial: 'events/modal_form', locals: { trip: @trip, event: start_event, events_parents: @events_parents, events_children: @events_children } %>
-    </div>
-
-    <!--   Modal pour le show d'un event -->
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showEvent">
-      Show an event
-    </button>
-    <div class="modal fade" id="showEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <%= render partial: 'events/modal_showevent', locals: {event: @event_show} %>
-    </div>
-
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteTest">
-      Delete Test
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="deleteTest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <% @trip.events.each do |event| %>
-              <ul>
-              <li>
-                <%= event.name %> <%= link_to trip_event_path(@trip, event), method: :delete,
-                data: { confirm: "Delete this event?" }, class: "btn btn-link" do %>
-                <i class="far fa-trash-alt" style="font-size: 24px; color:gray;""></i><% end %>
-              </li>
-            </ul>
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+<!--   Modal pour le show d'un event -->
+<button type="button" class="d-none" id="show-node" data-toggle="modal" data-target="#showEvent">
+  Show an event
+</button>
+<div class="modal fade" id="showEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <%= render partial: 'events/modal_showevent', locals: {event: @event_show} %>
+</div>
