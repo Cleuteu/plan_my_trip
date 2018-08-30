@@ -98,9 +98,12 @@ Relationship.create!(parent_id: event_start.id, child_id: avion_montreal_event.i
 visite_montreal_event = Event.create!(
   name: 'Visite Montreal',
   category: 'Activité',
+  confirmed: false,
   # location: 'Washington',
   date: Date.new(2018,8,31),
   duration: 8,
+  description: "Nous irons visiter Montreal et Marc sera notre guide. Il y habite depuis 4 ans et connait les bonnes adresses non touristiques.",
+  url: "https://www.votretourdumonde.com/que-visiter-a-montreal/",
   trip_id: trip.id
   )
 Relationship.create!(parent_id: avion_montreal_event.id, child_id: visite_montreal_event.id)
