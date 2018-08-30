@@ -10,8 +10,9 @@
     font-weight: 200;
 }
 .sidebar {
-    background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%),
-    url(img-road-sidebar);
+    // background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%),
+    // url(img-road-sidebar);
+    background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%);
     background-size: cover;
 }
 .sidebar .logo {

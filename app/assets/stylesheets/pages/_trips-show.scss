@@ -20,6 +20,16 @@ svg {
 //   z-index: 1,
 // }
 
+.content {
+  background: linear-gradient(180deg, rgba(246,246,246,1), rgba(246,246,246,.8)),
+  url('https://images.unsplash.com/photo-1500757045557-7864506cf31c');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin-bottom: -40px;
+}
+
 .main-panel {
     float: right;
     width: calc(100% - 260px);
