@@ -195,5 +195,3 @@ cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
 cy.on('click', 'node', () => { document.getElementById('show-node').click(); });
 cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
-
-
