@@ -12,11 +12,11 @@ console.log(nodes)
 var y = 0;
 nodes.forEach((node) => {
   elements.push({ data:
-                    { id: nodes[y].id,
-                      name: nodes[y].name,
-                    }
-                  },
-                  );
+                  { id: nodes[y].id,
+                    name: nodes[y].name,
+                  }
+                },
+                );
   y += 1;
   });
 
