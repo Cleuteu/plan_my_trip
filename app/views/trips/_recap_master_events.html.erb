@@ -1,6 +1,14 @@
   <ul class="nav list-group">
+    <% date_before = @events_master.first.date %>
+    <p><%= date_before.strftime('%a %d %b %Y') %></p>
     <% @events_master.each do |event| %>
       <% unless event.name == "End" || event.name == "Start" %>
+        <% if date_before != event.date %>
+        <br>
+        <br>
+          <p><%= event.date.strftime('%a %d %b %Y') %></p>
+          <% date_before = event.date %>
+        <% end %>
         <li class="list-group-item d-flex justify-content-between align-items-center">
            <p><%= event.name %></p>
            <span class="badge badge-primary badge-pill"><%= event.price %>€</span>
@@ -8,6 +16,8 @@
       <% end %>
     <% end %>
      <li class="list-group-item d-flex justify-content-between align-items-center">
+      <br>
+      <br>
       <br>
       <br>
       <p>Price of your trip</p>
