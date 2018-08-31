@@ -49,7 +49,7 @@ trip = Trip.new(
     start_location: 'Montreal',
     end_location: 'Dallas, USA',
     start_date: Date.new(2018,9,20),
-    end_date: Date.new(2018,9,29)
+    end_date: Date.new(2018,9,24)
     # reset_password_token: '',
     # reset_password_sent_at: '',
     # remember_created_at: '',
@@ -264,11 +264,12 @@ voiture_perce_event = Event.create!(
   name: 'Ride to Percé',
   category: 'Travel',
   location: '1200 Rue Stanley, Montréal, QC H3B 2S8, Canada',
-  date: Date.new(2018,9,25),
+  date: Date.new(2018,9,23),
   duration: 8,
   description: "We booked a nice Audi at Alamo Rent a Car",
   url: "https://www.alamo.ca/fr_CA/car-rental/locations/ca/ymqc71-montreal-stanley-st.html?mcid=yext:245709",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 90
   )
 Relationship.create!(parent_id: hotel_quebec_event.id, child_id: voiture_perce_event.id)
 
@@ -276,11 +277,12 @@ airbnb_perce_event = Event.create!(
   name: 'Airbnb Percé',
   category: 'Accommodation',
   location: '125 QC-132, Percé, QC G0C 2L0, Canada',
-  date: Date.new(2018,9,25),
+  date: Date.new(2018,9,23),
   duration: 8,
   description: "It's next to the La Maison Rouge Youth Hostel so we'll be able to meet a lot of people",
   url: "https://www.airbnb.fr/rooms/10546184?location=Perc%C3%A9%2C%20QC%2C%20Canada&search_id=d17d0a05-c71e-4d6f-a403-fdce94e8933c&federated_search_id=e005b1e9-cc30-4659-b380-0b8346989c8f",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 76
   )
 Relationship.create!(parent_id: voiture_perce_event.id, child_id: airbnb_perce_event.id)
 
@@ -288,11 +290,12 @@ bateau_perce_event = Event.create!(
   name: 'Bonaventure Island',
   category: 'Activity',
   location: '9 Rue du Quai, Percé, QC G0C 2L0, Canada',
-  date: Date.new(2018,9,26),
+  date: Date.new(2018,9,23),
   duration: 3,
   description: "Julien Cloutier will take us to the Bonaventure Island with his boat. 218 different species of birds have been recorded as visiting, migrating to, or living on Bonaventure island. The most common bird found on the island is the northern gannet. The island is home to one of the largest colonies of gannets in the world, with 51,700 pairs in 2011.",
   url: "https://www.sepaq.com/pq/bon/index.dot?language_id=2",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 17
   )
 Relationship.create!(parent_id: airbnb_perce_event.id, child_id: bateau_perce_event.id)
 
@@ -300,11 +303,12 @@ voiture_toronto_event = Event.create!(
   name: 'Ride to Toronto',
   category: 'Travel',
   # location: 'Washington',
-  date: Date.new(2018,9,26),
+  date: Date.new(2018,9,22),
   duration: 3,
   description: "We need to make a quick stop at St Lewis Village along the way.",
   url: "",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 35
   )
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: voiture_toronto_event.id)
 
@@ -312,11 +316,12 @@ airbnb_toronto_event = Event.create!(
   name: 'Airbnb Toronto',
   category: 'Accommodation',
   location: '5 Selby St, Toronto, ON M4Y 1W3, Canada',
-  date: Date.new(2018,9,26),
+  date: Date.new(2018,9,22),
   duration: 8,
   description: "Pick up the keys at the laundry",
   url: "https://www.airbnb.fr/rooms/plus/10521800?location=Toronto%2C%20ON%2C%20Canada&children=0&guests=1&search_id=7617340e-4a5a-42d1-9dfe-5bf6dc2c805a&federated_search_id=e83c328e-9116-4ebb-8f33-04a6716eb18f",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 69
   )
 Relationship.create!(parent_id: voiture_toronto_event.id, child_id: airbnb_toronto_event.id)
 
@@ -324,11 +329,12 @@ visite_toronto_event = Event.create!(
   name: 'Visit Toronto',
   category: 'Activity',
   location: 'Toronto',
-  date: Date.new(2018,9,27),
+  date: Date.new(2018,9,23),
   duration: 3,
   description: "We need to choose among the unique Bata Shoe Museum, the Royal Ontario Museum (ROM),St Lawrence Market and the the CN Tower.",
   url: "https://everynationgta.org/2018/the-5-things-you-need-to-do-in-toronto/?gclid=CjwKCAjwzqPcBRAnEiwAzKRgS5GK56BLLezHApq-SVPF1vPeGGcLTMLd9c7k2krrBb5gkrtwvTfrGxoCc6oQAvD_BwE",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 0
   )
 Relationship.create!(parent_id: airbnb_toronto_event.id, child_id: visite_toronto_event.id)
 
@@ -336,11 +342,12 @@ voiture_niagarafalls_event = Event.create!(
   name: 'Ride Niagara Falls',
   category: 'Activity',
   location: 'Toronto',
-  date: Date.new(2018,9,28),
+  date: Date.new(2018,9,23),
   duration: 1,
   description: "We can either keep the car we used or ride motorbikes",
   url: "",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 24
   )
 Relationship.create!(parent_id: visite_toronto_event.id, child_id: voiture_niagarafalls_event.id)
 
@@ -348,11 +355,12 @@ visite_niagarafalls_event = Event.create!(
   name: 'Visite Niagara Falls',
   category: 'Activity',
   location: 'Niagara Falls',
-  date: Date.new(2018,9,28),
+  date: Date.new(2018,9,23),
   duration: 4,
   description: "I'm so excited about this visit !!! Take your gopro Tom !",
   url: "https://fr.niagarafallstourism.com/",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 8
   )
 Relationship.create!(parent_id: voiture_niagarafalls_event.id, child_id: visite_niagarafalls_event.id)
 
@@ -360,11 +368,12 @@ airbnb_toronto_2_event = Event.create!(
   name: 'Airbnb Toronto 2',
   category: 'Accommodation',
   location: 'Pick up the keys at the laundry',
-  date: Date.new(2018,9,28),
+  date: Date.new(2018,9,23),
   duration: 8,
   description: "5 Selby St, Toronto, ON M4Y 1W3, Canada",
   url: "https://www.airbnb.fr/rooms/plus/10521800?location=Toronto%2C%20ON%2C%20Canada&children=0&guests=1&search_id=7617340e-4a5a-42d1-9dfe-5bf6dc2c805a&federated_search_id=e83c328e-9116-4ebb-8f33-04a6716eb18f",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 84
   )
 Relationship.create!(parent_id: visite_niagarafalls_event.id, child_id: airbnb_toronto_2_event.id)
 
@@ -372,11 +381,12 @@ voiture_montreal_1_event = Event.create!(
   name: 'Ride back to Montréal',
   category: 'Travel',
   location: 'Toronto',
-  date: Date.new(2018,9,29),
+  date: Date.new(2018,9,24),
   duration: 4,
   description: "We'll be exhausted, let's take a better car this time",
   url: "",
-  trip_id: trip.id
+  trip_id: trip.id,
+  price: 38
   )
 Relationship.create!(parent_id: airbnb_toronto_2_event.id, child_id: voiture_montreal_1_event.id)
 
