@@ -13,9 +13,9 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.user = current_user
     if @trip.save
-      @start = Event.new(name: "Start", category: "settings", date: @trip.start_date, location: @trip.start_location, trip_id: @trip.id, duration: 1, master: true)
+      @start = Event.new(name: "Start", category: "settings", date: @trip.start_date, location: @trip.start_location, trip_id: @trip.id, duration: 1, price: 0, master: true)
       @start.save!
-      @end = Event.new(name: "End", category: "settings", date: @trip.end_date, location: @trip.end_location, trip_id: @trip.id, duration: 1, master: true)
+      @end = Event.new(name: "End", category: "settings", date: @trip.end_date, location: @trip.end_location, trip_id: @trip.id, duration: 1, price: 0, master: true)
       @end.save!
       Relationship.create!(parent_id: @start.id, child_id: @end.id)
       redirect_to trip_path(@trip)
@@ -54,6 +54,8 @@ class TripsController < ApplicationController
 
     # Afficher les events masters dans le récapitulatif
     @events_master = Event.where(trip_id: @trip.id).where(master: true).order(:date)
+    @total_price = 0
+    @events_master.each { |event| @total_price += event.price}
 
     # Pour afficher sur la trip-show la map avec des points sur chaque event
     @map_events = Event.where.not(latitude: nil, longitude: nil)
