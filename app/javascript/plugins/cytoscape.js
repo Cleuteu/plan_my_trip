@@ -106,6 +106,35 @@ const cy = cytoscape({
         'transition-duration': 200
       }
     },{
+    selector: "node[master = 'true']",
+      style: {
+        label: 'data(name)',
+        'text-halign': 'right',
+        'text-valign': 'center',
+        'text-margin-x': 8,
+        'font-size': 23,
+        'text-transform': 'uppercase',
+        'color': 'black',
+        'width': 60,
+        'height': 60,
+        'background-color': '#2E6AA0',
+        'background-image': [
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535122911/ha6k21dsh9xlal9iaykw.png'
+        ],
+        'background-fit': 'cover cover',
+        'border-width': 3,
+        'border-color': '#106BA5',
+        // 'border-style': 'double',
+        'overlay-color': 'gray',
+        'overlay-opacity': 0,
+        'ghost': 'yes',
+        'ghost-offset-x': 0,
+        'ghost-offset-y': 2,
+        'ghost-opacity': 0.1,
+        'transition-property': 'overlay-opacity, background-color',
+        'transition-duration': 200
+      }
+    },{
       selector: 'edge:unselected',
       style: {
         label: '+',
@@ -198,24 +227,7 @@ cy.on('click', 'node', (evt) => {
 } );
 cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
-
-let node = cy.nodes().last();
-console.log(node)
-
-let ref = node.popperRef(); // used only for positioning
-console.log(ref)
-
-// using tippy ^2.0.0
-let tippy_test = new Tippy(ref, { // tippy options:
-  html: (() => {
-    let content = document.createElement('div');
-
-    content.innerHTML = 'Tippy content';
-
-    return content;
-  })(),
-  trigger: 'manual' // probably want manual mode
-}).tooltips[0];
-
-node.on('tap', () => tippy_test.show());
 cy.on('click', 'node', (evt) => { console.log(evt.target) });
+
+var collection = cy.elements('node[master = "true"]');
+console.log(collection);
