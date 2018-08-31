@@ -21,13 +21,14 @@ svg {
 // }
 
 .content {
-  background: linear-gradient(180deg, rgba(246,246,246,1), rgba(246,246,246,.8)),
-  url('https://images.unsplash.com/photo-1500757045557-7864506cf31c');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  // background: linear-gradient(180deg, rgba(246,246,246,1), rgba(246,246,246,.8)),
+  // url('https://images.unsplash.com/photo-1520790552719-b5cfd6b21953');
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+  // background-position: center;
   margin-bottom: -40px;
+  padding-top: 50px;
 }
 
 .main-panel {
@@ -39,7 +40,9 @@ svg {
     // min-height: calc(100% - 123px);
 }
 .navbar {
-  position: relative;
+  position: fixed;
+  z-index: 1;
+  width: calc(100% - 250px);
     // border: 0;
     // font-size: 16px;
     border-radius: 0;
@@ -55,9 +58,9 @@ svg {
     // font-size: 20px;
     color: #888888;
 }
-.navbar .navbar-brand:hover {
-    color: #5e5e5e;
-}
+// .navbar .navbar-brand:hover {
+//     color: #5e5e5e;
+// }
 .navbar .navbar-toggler {
     // width: 37px;
     // height: 27px;
