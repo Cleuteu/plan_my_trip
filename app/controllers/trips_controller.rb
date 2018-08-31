@@ -56,7 +56,7 @@ class TripsController < ApplicationController
     # Afficher les events masters dans le récapitulatif
     @events_master = Event.where(trip_id: @trip.id).where(master: true).order(:date)
     @total_price = 0
-    @events_master.each { |event| @total_price += event.price}
+    @events_master.each { |event| @total_price += event.price if event.price.present?}
 
     # Pour afficher sur la trip-show la map avec des points sur chaque event
     @map_events = Event.where.not(latitude: nil, longitude: nil)
