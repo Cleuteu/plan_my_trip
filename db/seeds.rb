@@ -407,45 +407,45 @@ nuit_25_event = Event.create!(
 Relationship.create!(parent_id: retour_montreal_event.id, child_id: nuit_25_event.id)
 
 
-nuit_26_event = Event.create!(
-  name: 'Night of September 26th',
-  category: 'Accommodation',
-  location: 'Toronto',
-  date: Date.new(2018,9,26),
-  duration: 4,
-  description: "Where will I sleep?",
-  url: "",
-  trip_id: trip.id,
-  price: 0
-  )
-Relationship.create!(parent_id: nuit_25_event.id, child_id: nuit_26_event.id)
+# nuit_26_event = Event.create!(
+#   name: 'Night of September 26th',
+#   category: 'Accommodation',
+#   location: 'Toronto',
+#   date: Date.new(2018,9,26),
+#   duration: 4,
+#   description: "Where will I sleep?",
+#   url: "",
+#   trip_id: trip.id,
+#   price: 0
+#   )
+# Relationship.create!(parent_id: nuit_25_event.id, child_id: nuit_26_event.id)
 
-nuit_27_event = Event.create!(
-  name: 'Night of September 27th',
-  category: 'Accommodation',
-  location: 'Toronto',
-  date: Date.new(2018,9,27),
-  duration: 4,
-  description: "Where will I sleep?",
-  url: "",
-  trip_id: trip.id,
-  price: 0
-  )
-Relationship.create!(parent_id: nuit_26_event.id, child_id: nuit_27_event.id)
+# nuit_27_event = Event.create!(
+#   name: 'Night of September 27th',
+#   category: 'Accommodation',
+#   location: 'Toronto',
+#   date: Date.new(2018,9,27),
+#   duration: 4,
+#   description: "Where will I sleep?",
+#   url: "",
+#   trip_id: trip.id,
+#   price: 0
+#   )
+# Relationship.create!(parent_id: nuit_26_event.id, child_id: nuit_27_event.id)
 
-nuit_28_event = Event.create!(
-  name: 'Night of September 28th',
-  category: 'Accommodation',
-  location: 'Toronto',
-  date: Date.new(2018,9,28),
-  duration: 4,
-  description: "Where will I sleep?",
-  url: "",
-  trip_id: trip.id,
-  price: 0
-  )
-Relationship.create!(parent_id: nuit_27_event.id, child_id: nuit_28_event.id)
-Relationship.create!(parent_id: nuit_28_event.id, child_id: event_end.id)
+# nuit_28_event = Event.create!(
+#   name: 'Night of September 28th',
+#   category: 'Accommodation',
+#   location: 'Toronto',
+#   date: Date.new(2018,9,28),
+#   duration: 4,
+#   description: "Where will I sleep?",
+#   url: "",
+#   trip_id: trip.id,
+#   price: 0
+#   )
+# Relationship.create!(parent_id: nuit_27_event.id, child_id: nuit_28_event.id)
+Relationship.create!(parent_id: nuit_25_event.id, child_id: event_end.id)
 
 
 
