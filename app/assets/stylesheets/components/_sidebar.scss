@@ -1,19 +1,21 @@
+.logo-sidebar {
+  height: 37px;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
+    // left: 0;
     width: 260px;
-    display: block;
-    z-index: 1;
+    // display: block;
     color: #fff;
-    font-weight: 200;
 }
 .sidebar {
     // background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%),
     // url(img-road-sidebar);
+    // background-size: cover;
     background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%);
-    background-size: cover;
 }
 .sidebar .logo {
     padding: 10px 15px;
@@ -21,48 +23,35 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .sidebar .logo .simple-text {
-    padding: 5px 0px;
+    padding: 1px 0px;
     display: block;
-    color: #FFFFFF;
+    // color: #FFFFFF;
     text-align: center;
-    font-weight: 400;
+    // font-weight: 400;
     line-height: 30px;
 }
-// .sidebar .nav > li.active-pro{
-//     position: absolute;
-//     width: 100%;
-//     bottom: 10px;
-// }
-// .sidebar .nav > li.active-pro a{
-//     background: rgba(255, 255, 255, 0.14);
-//     color: #FFFFFF;
-// }
 .sidebar .nav a,
 .table > tbody > tr .td-actions .btn {
     transition: all 150ms ease-in;
 }
 .sidebar .nav {
-    margin-top: 20px;
+    margin-top: 10px;
 }
-
 .sidebar .nav .open > a,
 .sidebar .nav li.dropdown .dropdown-menu li:hover > a,
 .sidebar .nav li:hover > a {
     background-color: rgba(255, 255, 255, 0.13);
 }
 .sidebar .nav li > a {
-    color: #FFFFFF;
-    margin: 5px 15px;
+    // color: #FFFFFF;
+    margin: 2px 10px;
     opacity: .86;
     border-radius: 4px;
+    cursor: pointer;
 }
 .sidebar .nav p {
     margin: 0;
-    // line-height: 30px;
     font-size: 14px;
-    font-weight: 400;
-    // text-transform: uppercase;
-    margin-left: 5px;
 }
 .sidebar .nav i {
     font-size: 22px;
@@ -72,24 +61,16 @@
     width: 30px;
     text-align: center;
 }
-.sidebar .nav,
-body>.navbar-collapse .nav {
-    // margin-top: 20px;
-    // float: none;
-    display: block;
-}
-// .sidebar .nav li .nav-link,
-// body>.navbar-collapse .nav li .nav-link {
-//     color: #FFFFFF;
-//     margin: 5px 15px;
-//     opacity: .86;
-//     border-radius: 4px;
-//     display: block;
-//     padding: 10px 15px;
-// }
 
 
 .list-group-item {
   background-color: inherit;
+  padding: 0 20px 0 0;
   border: none;
+}
+
+
+.total {
+  background-color: rgba(255, 255, 255, 0.13);
+  padding: 10px 0px 20px 25px;
 }
