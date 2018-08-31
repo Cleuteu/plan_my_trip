@@ -22,9 +22,30 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @trip = Trip.find(params[:trip_id])
+    if event_params[:master] == "1"
+      parent_count = @event.relationships_as_child.count
+      child_count = @event.relationships_as_child.count
+      parent_event = @event
+      # if parent_count = 1
+      #   parent_event = @event.relationships_as_child.first.parent
+      #   parent_count = parent_event.relationships_as_child.count
+      #   parent_event.update!(master: true)
+
+      while (parent_count == 1 && child_count == 1)
+        parent_event = parent_event.relationships_as_child.first.parent
+        parent_count = parent_event.relationships_as_child.count
+
+        child_count = parent_event.relationships_as_parent.count
+
+        parent_event.update!(master: true)
+
+      end
+      # end
+    end
     if @event.update!(event_params)
       redirect_to trip_path(@trip)
     end
+  # raise
   end
 
   def destroy
