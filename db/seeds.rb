@@ -392,7 +392,64 @@ Relationship.create!(parent_id: airbnb_toronto_2_event.id, child_id: voiture_mon
 
 
 # DERNIERES RELATIONSHIPS AVEC END
-Relationship.create!(parent_id: retour_montreal_event.id, child_id: event_end.id)
+
+nuit_25_event = Event.create!(
+  name: 'Night of September 25th',
+  category: 'Accommodation',
+  location: 'Toronto',
+  date: Date.new(2018,9,25),
+  duration: 4,
+  description: "Where will I sleep?",
+  url: "",
+  trip_id: trip.id,
+  price: 0
+  )
+Relationship.create!(parent_id: retour_montreal_event.id, child_id: nuit_25_event.id)
+
+
+nuit_26_event = Event.create!(
+  name: 'Night of September 26th',
+  category: 'Accommodation',
+  location: 'Toronto',
+  date: Date.new(2018,9,26),
+  duration: 4,
+  description: "Where will I sleep?",
+  url: "",
+  trip_id: trip.id,
+  price: 0
+  )
+Relationship.create!(parent_id: nuit_25_event.id, child_id: nuit_26_event.id)
+
+nuit_27_event = Event.create!(
+  name: 'Night of September 27th',
+  category: 'Accommodation',
+  location: 'Toronto',
+  date: Date.new(2018,9,27),
+  duration: 4,
+  description: "Where will I sleep?",
+  url: "",
+  trip_id: trip.id,
+  price: 0
+  )
+Relationship.create!(parent_id: nuit_26_event.id, child_id: nuit_27_event.id)
+
+nuit_28_event = Event.create!(
+  name: 'Night of September 28th',
+  category: 'Accommodation',
+  location: 'Toronto',
+  date: Date.new(2018,9,28),
+  duration: 4,
+  description: "Where will I sleep?",
+  url: "",
+  trip_id: trip.id,
+  price: 0
+  )
+Relationship.create!(parent_id: nuit_27_event.id, child_id: nuit_28_event.id)
+Relationship.create!(parent_id: nuit_28_event.id, child_id: event_end.id)
+
+
+
+
 Relationship.create!(parent_id: bateau_perce_event.id, child_id: voiture_montreal_1_event.id)
 Relationship.create!(parent_id: airbnb_saguenay_event.id, child_id: voiture_montreal_1_event.id)
 Relationship.create!(parent_id: voiture_montreal_1_event.id, child_id: retour_montreal_event.id)
