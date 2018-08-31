@@ -49,7 +49,7 @@ trip = Trip.new(
     start_location: 'Montreal',
     end_location: 'Dallas, USA',
     start_date: Date.new(2018,9,20),
-    end_date: Date.new(2018,9,04)
+    end_date: Date.new(2018,9,29)
     # reset_password_token: '',
     # reset_password_sent_at: '',
     # remember_created_at: '',
@@ -250,7 +250,7 @@ retour_montreal_event = Event.create!(
   name: 'Montreal Pub Crawl Night',
   category: 'Activity',
   location: '3979 Rue Saint-Denis, Montreal, Canada',
-  date: Date.new(2018,10,24),
+  date: Date.new(2018,9,24),
   duration: 3,
   description: "It's a local tradition to do a pub crawl on the 1st of November !!!",
   url: "https://www.lockhartmtl.com/rservations",
