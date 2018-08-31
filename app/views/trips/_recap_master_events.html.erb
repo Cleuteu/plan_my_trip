@@ -1,20 +1,20 @@
-<div style="height: 85.1vh; overflow: scroll;">
-  <ul class="nav list-group">
+<div>
+  <ul class="nav list-group" style="padding-top: 80px;">
     <% date_before = @events_master.first.date %>
-    <p><%= date_before.strftime('%a %d %b %Y') %></p>
+    <p style="font-weight: lighter;"><%= date_before.strftime('%a %d %b') %></p>
     <% @events_master.each do |event| %>
       <% unless event.name == "End" || event.name == "Start" %>
         <% if date_before != event.date %>
-        <br>
-        <br>
-          <p><%= event.date.strftime('%a %d %b %Y') %></p>
+          <br><br>
+          <p style="font-weight: lighter;"><%= event.date.strftime('%a %d %b') %></p>
           <% date_before = event.date %>
         <% end %>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <a class="nav-link">
+          <i class="fas fa-home"></i>
+          <a>
             <p><%= event.name %></p>
           </a>
-          <span class="badge badge-primary badge-pill"><%= event.price %>€</span>
+          <span class="badge badge-info badge-pill"><%= event.price %>€</span>
         </li>
       <% end %>
     <% end %>
@@ -23,9 +23,9 @@
 
 <div class="total">
   <ul class="nav list-group">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
+    <li class="d-flex justify-content-between align-items-center">
       <p>TOTAL PRICE</p>
-      <span class="badge badge-primary badge-pill"><%= @total_price %>€</span>
+      <span class="badge badge-info badge-pill"><%= @total_price %>€</span>
     </li>
   </ul>
 </div>
