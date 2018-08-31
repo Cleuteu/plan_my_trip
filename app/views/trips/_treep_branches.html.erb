@@ -13,6 +13,13 @@
   <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
 </div>
 
+<!-- <button type="button" id="add-branch" data-toggle="modal" data-target="#addBranch">
+  Add a branch + event
+</button> -->
+<div class="modal fade" id="addBranch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= render partial: 'events/branch_modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
+</div>
+
 <!--   Modal pour le show d'un event -->
 <% @trip.events.each do |event| %>
   <button type="button" class="d-none" id="show-node<%= event.id %>" data-toggle="modal" data-target="#showEvent<%= event.id %>">
