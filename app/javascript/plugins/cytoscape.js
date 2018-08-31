@@ -10,7 +10,7 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
-// console.log(nodes)
+console.log(nodes)
 // console.log(relationships)
 
 var y = 0;
@@ -18,6 +18,8 @@ nodes.forEach((node) => {
   elements.push({ data:
                   { id: nodes[y].id,
                     name: nodes[y].name,
+                    category: nodes[y].category,
+                    master: nodes[y].master,
                   }
                 },
                 );

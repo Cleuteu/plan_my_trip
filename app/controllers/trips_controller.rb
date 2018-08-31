@@ -47,6 +47,8 @@ class TripsController < ApplicationController
       unless @array_nodes.include?(relationship.child_id)
         hash_nodes[:id] = Event.find(relationship.child_id).id
         hash_nodes[:name] = Event.find(relationship.child_id).name
+        hash_nodes[:category] = Event.find(relationship.child_id).category
+        hash_nodes[:master] = Event.find(relationship.child_id).master
         @array_nodes << hash_nodes
         hash_nodes = {}
       end
