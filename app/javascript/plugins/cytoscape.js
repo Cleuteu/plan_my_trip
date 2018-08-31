@@ -19,6 +19,7 @@ nodes.forEach((node) => {
                   { id: nodes[y].id,
                     name: nodes[y].name,
                     category: nodes[y].category,
+                    master: nodes[y].master,
                   }
                 },
                 );
