@@ -359,6 +359,7 @@ const cy = cytoscape({
   userPanningEnabled: false,
   boxSelectionEnabled: false,
   autoungrabify: true,
+  maximalAdjustments: 200,
   });
 
 cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
