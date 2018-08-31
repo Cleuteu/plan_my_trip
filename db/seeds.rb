@@ -16,10 +16,10 @@ User.destroy_all
 puts 'Creating users...'
 
 user = User.create!(
-    first_name: 'Toto',
-    last_name: 'Dupont',
-    email: 'toto@gmail.com',
-    password: 'totototo'
+    first_name: 'Alex',
+    last_name: 'Marichal',
+    email: 'alex@alex.com',
+    password: 'aaaaaa'
     # reset_password_token: '',
     # reset_password_sent_at: '',
     # remember_created_at: '',
@@ -91,6 +91,7 @@ avion_montreal_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,8,30),
   duration: 9,
+  description: "Notre numéro de réservation est le NBX87B. Bien penser à mettre les liquides en soute. Pas comme la dernière fois...",
   trip_id: trip.id,
   master: true,
   price: 350
@@ -104,7 +105,7 @@ visite_montreal_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,8,31),
   duration: 8,
-  description: "Nous irons visiter Montreal et Marc sera notre guide. Il y habite depuis 4 ans et connait les bonnes adresses non touristiques.",
+  description: "Marc sera notre guide. Il y habite depuis 4 ans et connait les bonnes adresses non touristiques.",
   url: "https://www.votretourdumonde.com/que-visiter-a-montreal/",
   trip_id: trip.id,
   master: true,
