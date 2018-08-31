@@ -26,7 +26,7 @@
     Show an event
   </button>
   <div class="modal fade" id="showEvent<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <%= render partial: 'events/modal_showevent', locals: {event: event} %>
+    <%= render partial: 'events/modal_showevent', locals: {event: event, trip: @trip} %>
   </div>
 
   <div class="modal fade" id="update_event<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
