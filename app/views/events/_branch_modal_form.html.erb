@@ -1,7 +1,7 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">Add an event</h4>
+      <h4 class="modal-title" id="myModalLabel">Add an event on a new branch</h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <%# child_events = [] %>
@@ -17,11 +17,11 @@
         <%= f.input :date %>
         <%= f.input :duration, input_html: { id: event.id ? "edit_event_duration" : "event_duration" } %>
         <%= f.input :description, input_html: { id: event.id ? "edit_event_description" : "event_description" } %>
-        <%= f.input :url, input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
+        <%#= f.input :url, input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
         <%#= f.input :parent_ids, :collection => events_parents, input_html: { id: event.id ? "edit_event_parent_ids" : "event_parent_ids" } %>
-        <%#= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids" : "event_child_ids" } %>
-        <%= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_child_id" } %>
-        <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_parent_id" } %>
+        <%#= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_child_id" } %>
+        <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "branch_event_parent_id" : "branch_event_parent_id" } %>
+        <%= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids" : "event_child_ids" } %>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

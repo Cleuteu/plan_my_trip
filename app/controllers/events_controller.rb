@@ -9,7 +9,10 @@ class EventsController < ApplicationController
     if @event.save!
       @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
       @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
-      Relationship.destroy(Relationship.where(parent_id: @parent_id, child_id: @child_id).first.id)
+      if Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
+      else
+        Relationship.destroy(Relationship.where(parent_id: @parent_id, child_id: @child_id).first.id)
+      end
       redirect_to trip_path(@trip)
     else
       render './trips/show'

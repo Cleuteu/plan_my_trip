@@ -1,8 +1,41 @@
-<%= simple_form_for @trip do |f| %>
-  <%= f.input :name %>
-  <%= f.input :start_date, as: :string, input_html: {class: "datepicker", id: "range_start" } %>
-  <%= f.input :end_date, as: :string, input_html: {class: "datepicker", id: "range_end" } %>
-  <%= f.input :start_location %>
-  <%= f.input :end_location %>
-  <%= f.submit "Add trip", class: "btn" %>
-<% end %>
+<div class="wrapper-new-trip">
+  <div class="container">
+    <div class="form-row">
+      <div class="col-sm-4 offset-sm-4">
+        <%= simple_form_for(@trip) do |f| %>
+          <%= f.input :name, label: false, placeholder: "Name your Trip" %>
+            <div class="form-row">
+              <%= f.input :start_date,
+                as: :string,
+                input_html: {class: "datepicker", id: "range_start" },
+                wrapper_html: {class: "col"},
+                label: false, placeholder: "Starting date"
+              %>
+              <%= f.input :end_date,
+                as: :string,
+                input_html: {class: "datepicker", id: "range_end" },
+                wrapper_html: {class: "col"},
+                label: false, placeholder: "Ending date"
+              %>
+            </div>
+            <div class="form-row">
+              <%= f.input :start_location,
+                as: :string,
+                input_html: {id: "start_location" },
+                wrapper_html: {class: "col"},
+                label: false, placeholder: "Starting city"
+              %>
+              <%= f.input :end_location,
+                as: :string,
+                input_html: {id: "end_location" },
+                wrapper_html: {class: "col"},
+                label: false,
+                placeholder: "Ending city"
+              %>
+            </div>
+          <%= f.submit "Create", class: "btn btn-primary btn-lg btn-block text-center"  %>
+        <% end %>
+      </div>
+    </div>
+      </div>
+</div>
