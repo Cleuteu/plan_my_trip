@@ -94,7 +94,7 @@ const cy = cytoscape({
         'color': 'black',
         'width': 40,
         'height': 40,
-        'background-color': '#106BA5',
+        'background-color': '#FDFDFD',
         'border-width': 3,
         'border-color': '#106BA5',
         // 'border-style': 'double',
@@ -108,7 +108,7 @@ const cy = cytoscape({
         'transition-duration': 200
       }
     },{
-    selector: "node[category = 'Hébergement']",
+    selector: "node[category = 'Accommodation']",
       style: {
         label: 'data(name)',
         'text-halign': 'right',
@@ -140,7 +140,7 @@ const cy = cytoscape({
         'transition-duration': 200
       }
     },{
-    selector: "node[category = 'Transport']",
+    selector: "node[category = 'Travel']",
       style: {
         label: 'data(name)',
         'text-halign': 'right',
@@ -170,7 +170,7 @@ const cy = cytoscape({
         'transition-duration': 200
       }
     },{
-    selector: "node[category = 'Activité']",
+    selector: "node[category = 'Activity']",
       style: {
         label: 'data(name)',
         'text-halign': 'right',
@@ -200,7 +200,7 @@ const cy = cytoscape({
         'transition-duration': 200
       }
     },{
-    selector: "node[category = 'Activité'][master = 'true']",
+    selector: "node[category = 'Activity'][master = 'true']",
       style: {
         label: 'data(name)',
         'text-halign': 'right',
@@ -232,7 +232,7 @@ const cy = cytoscape({
         'transition-duration': 200
       }
     },{
-    selector: "node[category = 'Transport'][master = 'true']",
+    selector: "node[category = 'Travel'][master = 'true']",
       style: {
         label: 'data(name)',
         'text-halign': 'right',
@@ -264,7 +264,7 @@ const cy = cytoscape({
         'transition-duration': 200
       }
     },{
-    selector: "node[category = 'Hébergement'][master = 'true']",
+    selector: "node[category = 'Accommodation'][master = 'true']",
       style: {
         label: 'data(name)',
         'text-halign': 'right',
