@@ -2,7 +2,7 @@
   <%= f.input :name %>
   <%= f.input :start_date, as: :string, input_html: {class: "datepicker", id: "range_start" } %>
   <%= f.input :end_date, as: :string, input_html: {class: "datepicker", id: "range_end" } %>
-  <%= f.input :start_location %>
-  <%= f.input :end_location %>
+  <%= f.input :start_location, as: :string, input_html: {id: "start_location" }, label: false, placeholder: "Starting city" %>
+  <%= f.input :end_location, as: :string, input_html: {id: "end_location" }, label: false, placeholder: "Ending city" %>
   <%= f.submit "Add trip", class: "btn" %>
 <% end %>

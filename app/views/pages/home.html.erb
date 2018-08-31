@@ -1,30 +1,50 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(46, 64, 88,0.8) 0%, rgba(46, 64, 88,0.8) 50%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c2e086325efab49ac1c075b97afc495b&auto=format&fit=crop&w=1308&q=80');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(46, 64, 88,0.4) 0%, rgba(46, 64, 88,0.5) 50%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c2e086325efab49ac1c075b97afc495b&auto=format&fit=crop&w=1308&q=80');">
+
+
   <div class="banner-content">
     <%= link_to image_tag('logo-treep-big.png'), root_path %>
     <h4>Tired of wasting time planning your trip?</h4>
+    <div class="container">
+      <div class="form-row">
+        <div class="col-sm-4 offset-sm-4">
+          <%= simple_form_for(@trip) do |f| %>
 
-        <%= simple_form_for(@trip) do |f| %>
-          <div class="input-to-center">
-            <div class="input-to-align">
-              <%= f.input :name, label: false, placeholder: "Name your Trip" %>
-              <div class="semi-input">
-                <%= f.input :start_date, as: :string, input_html: {class: "datepicker", id: "range_start" }, label: false, placeholder: "Starting date" %>
-                <%= f.input :end_date, as: :string, input_html: {class: "datepicker", id: "range_end" }, label: false, placeholder: "Ending date" %>
-              </div>
-              <div class="semi-input">
-                <%= f.input :start_location, label: false, placeholder: "Starting city" %>
-                <%= f.input :end_location, label: false, placeholder: "Ending city" %>
-              </div>
-            </div>
-            <%= f.submit "Create", class: "btn btn-primary"  %>
-          </div>
+                <%= f.input :name, label: false, placeholder: "Name your Trip" %>
+                <div class="form-row">
+                  <%= f.input :start_date,
+                    as: :string,
+                    input_html: {class: "datepicker", id: "range_start" },
+                    wrapper_html: {class: "col"},
+                    label: false, placeholder: "Starting date"
+                  %>
+                  <%= f.input :end_date,
+                    as: :string,
+                    input_html: {class: "datepicker", id: "range_end" },
+                    wrapper_html: {class: "col"},
+                    label: false, placeholder: "Ending date"
+                  %>
+                </div>
+                <div class="form-row">
+                  <%= f.input :start_location, as: :string, input_html: {id: "start_location" },
+                  wrapper_html: {class: "col"},
+                   label: false, placeholder: "Starting city" %>
+                  <%= f.input :end_location, as: :string, input_html: {id: "end_location" }, wrapper_html: {class: "col"},
+                   label: false, placeholder: "Ending city" %>
+                </div>
+              <%= f.submit "Create", class: "btn btn-primary btn-lg btn-block text-center"  %>
+
           <% end %>
 
-
+        </div>
+      </div>
+    </div>
   </div>
+
+
+
 </div>
 
 
