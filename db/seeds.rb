@@ -65,9 +65,9 @@ user_trip.user = user
 user_trip.trip = trip
 user_trip.save!
 
-event_start = Event.new(name: "Start", category: "settings", date: trip.start_date, location: trip.start_location, trip_id: trip.id, duration: 1, master: true)
+event_start = Event.new(name: "Start", category: "settings", date: trip.start_date, location: trip.start_location, trip_id: trip.id, duration: 1, price: 0, master: true)
 event_start.save!
-event_end = Event.new(name: "End", category: "settings", date: trip.end_date, location: trip.end_location, trip_id: trip.id, duration: 1, master: true)
+event_end = Event.new(name: "End", category: "settings", date: trip.end_date, location: trip.end_location, trip_id: trip.id, duration: 1, price: 0, master: true)
 event_end.save!
 
 
@@ -89,10 +89,11 @@ avion_montreal_event = Event.create!(
   name: 'Avion Montreal',
   category: 'Transport',
   # location: 'Washington',
-  date: Date.new(2018,8,31),
+  date: Date.new(2018,8,30),
   duration: 9,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 350
   )
 Relationship.create!(parent_id: event_start.id, child_id: avion_montreal_event.id)
 
@@ -106,7 +107,8 @@ visite_montreal_event = Event.create!(
   description: "Nous irons visiter Montreal et Marc sera notre guide. Il y habite depuis 4 ans et connait les bonnes adresses non touristiques.",
   url: "https://www.votretourdumonde.com/que-visiter-a-montreal/",
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 0
   )
 Relationship.create!(parent_id: avion_montreal_event.id, child_id: visite_montreal_event.id)
 
@@ -117,7 +119,8 @@ airbnb_montreal_event = Event.create!(
   date: Date.new(2018,8,31),
   duration: 8,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 67
   )
 Relationship.create!(parent_id: visite_montreal_event.id, child_id: airbnb_montreal_event.id)
 
@@ -128,7 +131,8 @@ bus_quebec_event = Event.create!(
   date: Date.new(2018,9,01),
   duration: 3,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 45
   )
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: bus_quebec_event.id)
 
@@ -139,7 +143,8 @@ visite_chateau_quebec_event = Event.create!(
   date: Date.new(2018,9,01),
   duration: 3,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 25
   )
 Relationship.create!(parent_id: bus_quebec_event.id, child_id: visite_chateau_quebec_event.id)
 
@@ -150,7 +155,8 @@ hotel_quebec_event = Event.create!(
   date: Date.new(2018,9,01),
   duration: 8,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 55
   )
 Relationship.create!(parent_id: visite_chateau_quebec_event.id, child_id: hotel_quebec_event.id)
 
@@ -161,7 +167,8 @@ voiture_saguenay_event = Event.create!(
   date: Date.new(2018,9,02),
   duration: 2,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 75
   )
 
 # Activer pour seed qui fonctionne
@@ -190,7 +197,8 @@ randonnee_event = Event.create!(
   date: Date.new(2018,9,02),
   duration: 5,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 10
   )
 Relationship.create!(parent_id: voiture_saguenay_event.id, child_id: randonnee_event.id)
 
@@ -201,7 +209,8 @@ airbnb_saguenay_event = Event.create!(
   date: Date.new(2018,9,02),
   duration: 8,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 45
   )
 Relationship.create!(parent_id: randonnee_event.id, child_id: airbnb_saguenay_event.id)
 
@@ -212,17 +221,19 @@ voiture_montreal_event = Event.create!(
   date: Date.new(2018,9,03),
   duration: 5,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 75
   )
 
 retour_montreal_event = Event.create!(
-  name: 'Retour Montréal',
+  name: 'Soirée Bars Montréal',
   category: 'Activité',
   # location: 'Washington',
   date: Date.new(2018,9,03),
   duration: 3,
   trip_id: trip.id,
-  master: true
+  master: true,
+  price: 50
   )
 Relationship.create!(parent_id: voiture_montreal_event.id, child_id: retour_montreal_event.id)
 

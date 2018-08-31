@@ -44,6 +44,7 @@
 .sidebar .nav {
     margin-top: 20px;
 }
+
 .sidebar .nav .open > a,
 .sidebar .nav li.dropdown .dropdown-menu li:hover > a,
 .sidebar .nav li:hover > a {
@@ -61,7 +62,7 @@
     font-size: 14px;
     font-weight: 400;
     // text-transform: uppercase;
-    margin-left: 45px;
+    margin-left: 5px;
 }
 .sidebar .nav i {
     font-size: 22px;
@@ -86,3 +87,9 @@ body>.navbar-collapse .nav {
 //     display: block;
 //     padding: 10px 15px;
 // }
+
+
+.list-group-item {
+  background-color: inherit;
+  border: none;
+}
