@@ -26,26 +26,27 @@ class EventsController < ApplicationController
       parent_count = @event.relationships_as_child.count
       child_count = @event.relationships_as_child.count
       parent_event = @event
-      # if parent_count = 1
-      #   parent_event = @event.relationships_as_child.first.parent
-      #   parent_count = parent_event.relationships_as_child.count
-      #   parent_event.update!(master: true)
-
       while (parent_count == 1 && child_count == 1)
         parent_event = parent_event.relationships_as_child.first.parent
         parent_count = parent_event.relationships_as_child.count
-
         child_count = parent_event.relationships_as_parent.count
-
         parent_event.update!(master: true)
-
       end
-      # end
+    end
+    if event_params[:master] == "0"
+      parent_count = @event.relationships_as_child.count
+      child_count = @event.relationships_as_child.count
+      parent_event = @event
+      while (parent_count == 1 && child_count == 1)
+        parent_event = parent_event.relationships_as_child.first.parent
+        parent_count = parent_event.relationships_as_child.count
+        child_count = parent_event.relationships_as_parent.count
+        parent_event.update!(master: false)
+      end
     end
     if @event.update!(event_params)
       redirect_to trip_path(@trip)
     end
-  # raise
   end
 
   def destroy
