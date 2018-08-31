@@ -1,15 +1,26 @@
 function autocomplete() {
   document.addEventListener("DOMContentLoaded", function() {
-    var flatAddress = document.getElementById('flat_address');
+    var start_location = document.getElementById('start_location');
+    var end_location = document.getElementById('end_location');
 
-    if (flatAddress) {
-      var autocomplete = new google.maps.places.Autocomplete(flatAddress, { types: [ 'geocode' ] });
-      google.maps.event.addDomListener(flatAddress, 'keydown', function(e) {
+    if (start_location) {
+      var autocomplete = new google.maps.places.Autocomplete(start_location, { types: [ 'geocode' ] });
+      google.maps.event.addDomListener(start_location, 'keydown', function(e) {
         if (e.key === "Enter") {
           e.preventDefault(); // Do not submit the form on Enter.
         }
       });
     }
+
+    if (end_location) {
+      var autocomplete = new google.maps.places.Autocomplete(end_location, { types: [ 'geocode' ] });
+      google.maps.event.addDomListener(end_location, 'keydown', function(e) {
+        if (e.key === "Enter") {
+          e.preventDefault(); // Do not submit the form on Enter.
+        }
+      });
+    };
+
   });
 }
 
