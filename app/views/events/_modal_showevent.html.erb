@@ -1,44 +1,45 @@
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
 
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel"><%= event.name %> - Category: <%= event.category %> </h5>
-      <button type="button" class="btn btn-primary modal-header-btn-right" data-toggle="modal" data-target="#update_event<%= event.id %>" data-dismiss="modal">Edit event</button>
-      <button type="button" class="btn btn-primary modal-header-btn-right" data-toggle="modal" data-target="#addBranch" data-dismiss="modal">Add Branch</button>
+    <div class="modal-header" style="display: flex;">
+      <h5 class="modal-title" id="exampleModalLabel" style="margin: 0;"><%= event.category %>: <%= event.name %></h5>
+      <p style="margin: 0;">On <%= event.date %> (<%= event.duration %> hours)</p>
     </div>
 
-
-     <div class="modal-body">
-      <%= simple_form_for [trip, event], wrapper: :horizontal_form do |f| %>
-        <%= f.input :master, :label => "Event in my Trip" %>
-        <%= f.submit "Submit", class: "btn btn-primary" %>
-      <% end %>
-
-    <script>
-      // document.getElementById(`edit_event_${id_node}`.submit());
-    </script>
-      </div>
-
-
     <div class="modal-body modal-event">
+
       <div class="event-show-modal-container">
-          <div class="event-show-modal-image">
-            <%= image_tag("montreal.jpg", class: "event-img")%>
-          </div>
+        <div class="event-show-modal-image">
+          <%= image_tag("montreal.jpg", class: "event-img")%>
+        </div>
           <div class="event-show-modal-content">
-            <p>On <%= event.date %> (<%= event.duration %> hours)</p>
-            <h4>Description</h4>
+            <!-- <h4>Description</h4> -->
             <p><%= event.description %></p>
             <p class="text-right"><%= link_to "More info", event.url, target: '_blank'%></p>
           </div>
-          </div>
+      </div>
+
+      <div class="modal-body" style="display: flex; justify-content: space-between;">
+        <%= simple_form_for [trip, event] do |f| %>
+          <%= f.input :master, :label => "Event in my Trip" %>
+          <%= f.submit "Submit", class: "btn btn-secondary" %>
+        <% end %>
+      <div style="margin-top: 42px;">
+        <button type="button" class="btn btn-primary modal-header-btn-right" data-toggle="modal" data-target="#update_event<%= event.id %>" data-dismiss="modal">Edit event</button>
+        <button type="button" class="btn btn-primary modal-header-btn-right" data-toggle="modal" data-target="#addBranch" data-dismiss="modal">Add Branch</button>
+      </div>
+      <script>
+        // document.getElementById(`edit_event_${id_node}`.submit());
+      </script>
+      </div>
+
     </div>
 
     <!-- <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
  -->
       <!--   Modal pour l'édition d'un event -->
-<!--       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_event<%= event.id %>" data-dismiss="modal">Edit event</button>
+<!--       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_event<%#= event.id %>" data-dismiss="modal">Edit event</button>
     </div> -->
 
   </div>
