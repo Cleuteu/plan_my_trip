@@ -1572,6 +1572,12 @@ cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
 
+cytoscape-popper@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/cytoscape-popper/-/cytoscape-popper-1.0.2.tgz#0c2bab6cf5ca504144c7eb42fe44638ff0e3bb9c"
+  dependencies:
+    popper.js "^1.0.0"
+
 cytoscape@^3.2.16:
   version "3.2.16"
   resolved "https://registry.yarnpkg.com/cytoscape/-/cytoscape-3.2.16.tgz#341027f066d0c63b4eae25e9b87e86b657371323"
@@ -3950,7 +3956,7 @@ pleeease-filters@^4.0.0:
     onecolor "^3.0.4"
     postcss "^6.0.1"
 
-popper.js@^1.0.2, popper.js@^1.14.4:
+popper.js@^1.0.0, popper.js@^1.0.2, popper.js@^1.14.3, popper.js@^1.14.4:
   version "1.14.4"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
 
@@ -5462,6 +5468,12 @@ timers-browserify@^2.0.4:
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.10.tgz#1d28e3d2aadf1d5a5996c4e9f95601cd053480ae"
   dependencies:
     setimmediate "^1.0.4"
+
+tippy.js@^2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-2.5.4.tgz#69155d673761275dbf874c93175df443a006de46"
+  dependencies:
+    popper.js "^1.14.3"
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"

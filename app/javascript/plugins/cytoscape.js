@@ -1,4 +1,8 @@
 import cytoscape from 'cytoscape';
+import tippy from 'tippy.js'
+import popper from 'cytoscape-popper';
+
+cytoscape.use( popper );
 
 const graph = document.getElementById('cy');
 
@@ -6,7 +10,7 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
-console.log(nodes)
+// console.log(nodes)
 // console.log(relationships)
 
 var y = 0;
@@ -170,6 +174,7 @@ cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
 cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
 cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
+// Recupérer les events parent et enfant quand on ajoute un event
 cy.on('click', 'edge', (evt) => {
   let event_node_id = evt.target.id();
   event_node_id = event_node_id.split("-");
@@ -180,5 +185,35 @@ cy.on('click', 'edge', (evt) => {
   child_id_form.value = event_child_id
   parent_id_form.value = event_parent_id
 } );
-cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
+cy.on('click', 'node', (evt) => {
+  console.log(evt.target.id())
+  let event_node_id = evt.target.id();
+  let branch_parent_id_form = document.getElementById('branch_event_parent_id');
+  console.log(event_node_id)
+  console.log(branch_parent_id_form)
+  branch_parent_id_form.value = event_node_id
+} );
+
+
+
+let node = cy.nodes().last();
+console.log(node)
+
+let ref = node.popperRef(); // used only for positioning
+console.log(ref)
+
+// using tippy ^2.0.0
+let tippy_test = new Tippy(ref, { // tippy options:
+  html: (() => {
+    let content = document.createElement('div');
+
+    content.innerHTML = 'Tippy content';
+
+    return content;
+  })(),
+  trigger: 'manual' // probably want manual mode
+}).tooltips[0];
+
+node.on('tap', () => tippy_test.show());
+cy.on('click', 'node', (evt) => { console.log(evt.target) });
