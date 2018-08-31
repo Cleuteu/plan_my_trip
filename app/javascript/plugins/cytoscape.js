@@ -194,7 +194,7 @@ cy.on('click', 'node', (evt) => {
   console.log(branch_parent_id_form)
   branch_parent_id_form.value = event_node_id
 } );
-
+cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
 
 let node = cy.nodes().last();
