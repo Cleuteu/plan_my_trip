@@ -44,23 +44,28 @@
 </div>
 
 <%# end %>
+<div class="wrapper-langing-page col-sm-10 offset-sm-1">
+  <div class="arguments">
+    <div class="argument">
+      <%= image_tag('1*qSYzfDqtyL6ESBzvxatL4A', class: 'arguments-icon git')%>
+      <h4>Build your trip, visualize your different options</h4>
+      <p>With Treep, gather all the points of interest along your route</p>
+    </div>
+    <div class="argument">
+      <%= image_tag("collaborate-icon.png", class: "arguments-icon collaborate-icon")%>
+      <h4>Collaborate with your friends</h4>
+      <p> Add your fellow travelers to your trip to choose the best options.
+      </p>
+    </div>
+    <div class="argument">
+      <%= image_tag("export-icon.png", class: "arguments-icon export-icon")%>
+      <h4> All set? Export and enjoy your trip! </h4>
+      <p>Now that you are ready, export your trip in PDF and to your calendar</p>
+    </div>
+  </div>
 
-<div class="arguments">
-  <div class="argument">
-    <%= image_tag('1*qSYzfDqtyL6ESBzvxatL4A', class: 'arguments-icon git')%>
-    <h4>Build your trip, visualize your different options</h4>
-    <p>With Treep, gather all the points of interest along your route</p>
-  </div>
-  <div class="argument">
-    <%= image_tag("collaborate-icon.png", class: "arguments-icon collaborate-icon")%>
-    <h4>Collaborate with your friends</h4>
-    <p> Add your fellow travelers to your trip to choose the best options.
-    </p>
-  </div>
-  <div class="argument">
-    <%= image_tag("export-icon.png", class: "arguments-icon export-icon")%>
-    <h4> All set? Export and enjoy your trip! </h4>
-    <p>Now that you are ready, export your trip in PDF and to your calendar</p>
+  <div class="pricing">
+    <%= render partial: 'pricing.html.erb' %>
   </div>
 </div>
 
