@@ -1,14 +1,13 @@
 .container-index {
-  min-height: calc(100vh - 205px);
-  margin-top: 20px;
-  margin-left: 25px;
-  display: flex;
-  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: 25px 0 0 0;
+  background: url('git.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: -25% 50%;
 }
-
-.add-trip-symbol
-{
-  font-size: 100px;
-  font-weight: lighter;
+.add-trip-symbol {
+  font-size: 50px;
+  // color: white;
+  // font-weight: lighter;
 }
-
