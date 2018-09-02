@@ -45,7 +45,7 @@ user2 = User.create!(
 puts 'Creating Canadian trip...'
 
 trip = Trip.new(
-    name: 'Voyage au Canada',
+    name: 'Road trip Canada',
     start_location: 'Montreal',
     end_location: 'Dallas, USA',
     start_date: Date.new(2018,9,20),

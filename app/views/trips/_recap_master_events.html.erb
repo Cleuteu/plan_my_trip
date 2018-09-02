@@ -1,20 +1,24 @@
+
 <div>
-  <ul class="nav list-group" style="padding-top: 80px;">
+  <ul class="nav list-group" style="padding-top: 85px;">
     <% date_before = @events_master.first.date %>
-    <p style="font-weight: lighter;"><%= date_before.strftime('%a %d %b') %></p>
+    <p style="font-weight: lighter; text-indent: 18px; margin-bottom: 5px;"><%= date_before.strftime('%a %d %b') %></p>
     <% @events_master.each do |event| %>
       <% unless event.name == "End" || event.name == "Start" %>
         <% if date_before != event.date %>
-          <br><br>
-          <p style="font-weight: lighter;"><%= event.date.strftime('%a %d %b') %></p>
+          <hr>
+          <p style="font-weight: lighter; text-indent: 18px; margin-bottom: 5px;"><%= event.date.strftime('%a %d %b') %></p>
           <% date_before = event.date %>
         <% end %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <i class="fas fa-home"></i>
-          <a>
-            <p><%= event.name %></p>
-          </a>
+        <li class="list-group-item">
+          <a class="d-flex justify-content-between align-items-center">
+          <% category = 'home' if event.category == 'Accommodation' %>
+          <% category = 'plane' if event.category == 'Travel' %>
+          <% category = 'camera-retro' if event.category == 'Activity' %>
+          <i class="fas fa-<%= category %>"></i>
+            <p style="font-weight: lighter;"><%= event.name %></p>
           <span class="badge badge-info badge-pill"><%= event.price %>€</span>
+          </a>
         </li>
       <% end %>
     <% end %>
