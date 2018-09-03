@@ -51,13 +51,13 @@ const cy = cytoscape({
       elements,
 
   layout: {
-    name: 'preset',
-    // directed: true,
-    // roots: `#${nodes[0].id}`,
+    name: 'breadthfirst',
+    directed: true,
+    roots: `#${nodes[0].id}`,
     padding: 20,
     fit: true,
-    // spacingFactor: 1.75,
-    // height: undefined,
+    spacingFactor: 1.75,
+    height: undefined,
     },
 
   style: [
@@ -65,6 +65,8 @@ const cy = cytoscape({
       selector: 'node:unselected',
       style: {
         label: 'data(name)',
+        // 'min-zoomed-font-size': 46,
+        'text-events': 'yes',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
@@ -74,8 +76,7 @@ const cy = cytoscape({
         'width': 60,
         'height': 60,
         'background-color': 'white',
-        'background-width': 30,
-        'background-height': 30,
+        'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
         'border-width': 3,
@@ -90,6 +91,8 @@ const cy = cytoscape({
     selector: 'node:selected',
       style: {
         label: 'data(name)',
+        // 'min-zoomed-font-size': 46,
+        'text-events': 'yes',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
@@ -99,8 +102,7 @@ const cy = cytoscape({
         'width': 60,
         'height': 60,
         'background-color': 'white',
-        'background-width': 30,
-        'background-height': 30,
+        'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
         'border-width': 3,
@@ -116,7 +118,7 @@ const cy = cytoscape({
       style: {
         label: 'data(name)',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720564/home-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965592/home-solid-padded.png'
         ],
         'border-color': '#E65158',
         'transition-property': 'background-color',
@@ -127,7 +129,7 @@ const cy = cytoscape({
       style: {
         label: 'data(name)',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720962/car-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
         ],
         'border-color': '#106BA5',
         'transition-property': 'background-color',
@@ -138,7 +140,7 @@ const cy = cytoscape({
       style: {
         label: 'data(name)',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535721084/camera-retro-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965516/camera-retro-solid-padded.png'
         ],
         'border-color': '#F3B548',
         'transition-property': 'background-color',
@@ -157,11 +159,10 @@ const cy = cytoscape({
         'width': 60,
         'height': 60,
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535721084/camera-retro-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965516/camera-retro-solid-padded.png'
         ],
         'background-color': '#54B589',
-        'background-width': 30,
-        'background-height': 30,
+        'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
         'border-width': 3,
@@ -184,11 +185,10 @@ const cy = cytoscape({
         'width': 60,
         'height': 60,
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720962/car-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
         ],
         'background-color': '#54B589',
-        'background-width': 30,
-        'background-height': 30,
+        'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
         'border-width': 3,
@@ -211,11 +211,10 @@ const cy = cytoscape({
         'width': 60,
         'height': 60,
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720564/home-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965592/home-solid-padded.png'
         ],
         'background-color': '#54B589',
-        'background-width': 30,
-        'background-height': 30,
+        'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
         'border-width': 3,
@@ -284,10 +283,9 @@ const cy = cytoscape({
         'height': 64,
         // 'background-color': '#24A2B7',
         'background-color': '#E2E6EA',
-        'background-width': 32,
-        'background-height': 32,
+        'background-fit': 'contain',
         'background-image-opacity': 1,
-        'transition-property': 'color, text-margin-x, width, height, background-color, background-width, background-height, background-image-opacity',
+        'transition-property': 'color, text-margin-x, width, height, background-color, background-image-opacity',
         'transition-timing-function': 'ease',
         'transition-duration': 150
       }
@@ -295,6 +293,10 @@ const cy = cytoscape({
       selector: 'edge.hover',
       style: {
         label: '+',
+        // 'text-halign': 'right',
+        // 'text-valign': 'center',
+        // 'text-margin-x': 8,
+        // 'text-margin-y': 8,
         'color': 'black',
         // 'line-color': 'green',
         'line-color': '#5A6268',
