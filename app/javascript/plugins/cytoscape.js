@@ -51,13 +51,13 @@ const cy = cytoscape({
       elements,
 
   layout: {
-    name: 'breadthfirst',
-    directed: true,
-    roots: `#${nodes[0].id}`,
-    padding: 20,
-    fit: true,
-    spacingFactor: 1.75,
-    height: undefined,
+    name: 'preset',
+    // directed: true,
+    // roots: `#${nodes[0].id}`,
+    // padding: 20,
+    // fit: true,
+    // spacingFactor: 1.75,
+    // height: undefined,
     },
 
   style: [
