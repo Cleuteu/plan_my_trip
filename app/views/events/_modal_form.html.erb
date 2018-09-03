@@ -23,24 +23,20 @@
 
                   <div class="form-check">
                     <input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Housing" name="event[category]">
-
-                    <label class="collection_radio_buttons category-choice" for="edit_event_category">Housing <i class="fas fa-home"></i>
-
-                    </label>
+                      <label class="collection_radio_buttons category-choice" for="edit_event_category"><i class="icon-category fas fa-home"></i>
+                      </label>
 
                   </div>
 
                   <div class="form-check">
                     <input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Travel" checked="checked" name="event[category]">
-                    <label class="collection_radio_buttons category-choice" for="edit_event_category">Travel <i class="fas fa-car"></i>
-
-</label>
+                      <label class="collection_radio_buttons category-choice" for="edit_event_category"><i class="icon-category fas fa-car"></i>
+                      </label>
                   </div>
 
                   <div class="form-check"><input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Activity" name="event[category]">
-                      <label class="collection_radio_buttons category-choice" for="edit_event_category">Activity <i class="far fa-eye"></i>
-
-</label>
+                      <label class="collection_radio_buttons category-choice" for="edit_event_category"><i class="icon-category fas fa-camera-retro"></i>
+                    </label>
 
               </div>
               </div>
@@ -60,7 +56,7 @@
         <%= f.input :description, placeholder: 'e.g., Tours are scheduled on a first come, first served basis. Requests can be submitted up to three months in advance and no less than 21 days in advance. You are encouraged to submit your request as early as possible as a limited number of spaces are available. The White House tour is free of charge.', input_html: { id: event.id ? "edit_event_description" : "event_description" } %>
         <div class="row">
           <div class="col-md-3">
-            <%= f.input :price,:label => "Price in €", placeholder: 0 %>
+            <%= f.input :price,:label => "Price in €", placeholder: "0" %>
           </div>
           <div class="col-md-9">
             <%= f.input :url, placeholder: 'https://www.nps.gov/whho/planyourvisit/the-white-house-tour.htm', input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
