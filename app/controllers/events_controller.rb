@@ -6,24 +6,37 @@ class EventsController < ApplicationController
     @event.trip_id = @trip.id
     @parent_id = params[:event][:parent_ids]
     @child_id = params[:event][:child_ids]
+    @parent_event = Event.find(@parent_id)
 
     #Création de la position et update des positions des descendants
     #Position de l'event créé
-    event_position_y = Event.find(@child_id).position_y
-    @events = Event.where("position_y >= ?", 150)
-    @event.position_x = Event.find(@child_id).position_x
+    event_position_y = @parent_event.position_y + 150
+    @events = Event.where("position_y >= ?", event_position_y)
     @event.position_y = event_position_y
     #Positions des events descendants
-    @events.each do |event|
-      event.update!(position_y: event.position_y + 150)
+
+    #Si nouvelle branche:
+    if Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
+      # @parent_event.position_x > 0? a = 300 : a = -300
+      a = 300
+      if Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).empty?
+        @event.position_x = @parent_event.position_x + a
+      elsif Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y).empty?
+        @event.position_x = @parent_event.position_x - a
+      else
+        raise
+      end
+    #Si branche exitante - mono branche
+    else
+      @event.position_x = @parent_event.position_x
+      @events.each { |event| event.update!(position_y: event.position_y + 150) }
     end
 
 
     if @event.save!
       @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
       @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
-      if Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
-      else
+      unless Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
         Relationship.destroy(Relationship.where(parent_id: @parent_id, child_id: @child_id).first.id)
       end
       redirect_to trip_path(@trip)
