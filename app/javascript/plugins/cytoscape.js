@@ -375,15 +375,17 @@ var makeTippy = function(node, text){
     })(),
     trigger: 'manual',
     arrow: true,
-    placement: 'top',
-    distance: 0,
+    placement: 'left-end',
+    distance: 10,
     sticky: true,
-    hideOnClick: true,
+    hideOnClick: false,
     maxWidth: 300,
     theme: 'treep',
     interactive: true,
     multiple: true,
     zIndex: 1000,
+    animateFill: true,
+    animation: 'fade',
   } ).tooltips[0];
 };
 
