@@ -10,8 +10,9 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
-console.log(nodes)
+// console.log(nodes)
 // console.log(relationships)
+
 
 var y = 0;
 nodes.forEach((node) => {
@@ -64,22 +65,22 @@ const cy = cytoscape({
         'text-valign': 'center',
         'text-margin-x': 8,
         'font-size': 23,
-        // 'font-weight': 'bold',
         'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 40,
-        'height': 40,
+        'color': 'grey',
+        'width': 60,
+        'height': 60,
         'background-color': 'white',
+        'background-width': 30,
+        'background-height': 30,
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
         'border-color': '#106BA5',
-        // 'border-style': 'solid',
-        'overlay-color': 'black',
+        'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 100
       }
     },{
     selector: 'node:selected',
@@ -89,114 +90,54 @@ const cy = cytoscape({
         'text-valign': 'center',
         'text-margin-x': 8,
         'font-size': 23,
-        // 'font-weight': 'bold',
         'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 40,
-        'height': 40,
-        'background-color': '#FDFDFD',
+        'color': 'gray',
+        'width': 60,
+        'height': 60,
+        'background-color': 'white',
+        'background-width': 30,
+        'background-height': 30,
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
         'border-color': '#106BA5',
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
         'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 200
       }
     },{
     selector: "node[category = 'Accommodation']",
       style: {
         label: 'data(name)',
-        'text-halign': 'right',
-        'text-valign': 'center',
-        'text-margin-x': 8,
-        'font-size': 18,
-        'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 50,
-        'height': 50,
-        // 'background-color': '#2E6AA0',
         'background-image': [
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720564/home-solid.svg'
         ],
-        'background-width': 30,
-        'background-height': 30,
-        'border-opacity': 0,
-        'opacity': 0.8,
-        // 'border-width': 3,
-        // 'border-color': '#106BA5',
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
-        'ghost': 'yes',
-        'ghost-offset-x': 0,
-        'ghost-offset-y': 2,
-        'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
+        'border-color': '#E65158',
+        'transition-property': 'background-color',
         'transition-duration': 200
       }
     },{
     selector: "node[category = 'Travel']",
       style: {
         label: 'data(name)',
-        'text-halign': 'right',
-        'text-valign': 'center',
-        'text-margin-x': 8,
-        'font-size': 18,
-        'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 45,
-        'height': 45,
-        // 'background-color': '#2E6AA0',
         'background-image': [
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720962/car-solid.svg'
         ],
-        'background-width': 25,
-        'background-height': 25,
-        'border-width': 3,
         'border-color': '#106BA5',
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
-        'ghost': 'yes',
-        'ghost-offset-x': 0,
-        'ghost-offset-y': 2,
-        'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
+        'transition-property': 'background-color',
         'transition-duration': 200
       }
     },{
     selector: "node[category = 'Activity']",
       style: {
         label: 'data(name)',
-        'text-halign': 'right',
-        'text-valign': 'center',
-        'text-margin-x': 8,
-        'font-size': 23,
-        'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 60,
-        'height': 60,
-        // 'background-color': '#2E6AA0',
         'background-image': [
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535721084/camera-retro-solid.svg'
         ],
-        'background-width': 30,
-        'background-height': 30,
-        'border-width': 3,
         'border-color': '#F3B548',
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
-        'ghost': 'yes',
-        'ghost-offset-x': 0,
-        'ghost-offset-y': 2,
-        'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
+        'transition-property': 'background-color',
         'transition-duration': 200
       }
     },{
@@ -208,28 +149,23 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'background-color': '#54B589',
         'color': 'black',
         'width': 60,
         'height': 60,
-        // 'background-color': '#2E6AA0',
         'background-image': [
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535721084/camera-retro-solid.svg'
         ],
+        'background-color': '#54B589',
         'background-width': 30,
         'background-height': 30,
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
         'border-color': '#54B589',
-        'opacity': 1,
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 200
       }
     },{
     selector: "node[category = 'Travel'][master = 'true']",
@@ -240,28 +176,23 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'background-color': '#54B589',
         'color': 'black',
         'width': 60,
         'height': 60,
-        // 'background-color': '#2E6AA0',
         'background-image': [
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720962/car-solid.svg'
         ],
+        'background-color': '#54B589',
         'background-width': 30,
         'background-height': 30,
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
         'border-color': '#54B589',
-        'opacity': 1,
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 200
       }
     },{
     selector: "node[category = 'Accommodation'][master = 'true']",
@@ -272,46 +203,41 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'background-color': '#54B589',
         'color': 'black',
         'width': 60,
         'height': 60,
-        // 'background-color': '#2E6AA0',
         'background-image': [
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720564/home-solid.svg'
         ],
+        'background-color': '#54B589',
         'background-width': 30,
         'background-height': 30,
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
         'border-color': '#54B589',
-        'opacity': 1,
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 200
       }
     },{
       selector: 'edge:unselected',
       style: {
-        label: '+',
+        label: '',
         // 'font-family': 'Font Awesome Free 5',
         // 'label': '\uf055',
         'font-weight': '900',
-        'font-size': '40',
+        'font-size': '50',
         'color': 'gray',
         'width': 3,
         'line-color': 'gray',
         'line-style': 'dashed',
         'overlay-color': 'gray',
         // 'overlay-padding': 14,
-        'curve-style': 'bezier',
-        'target-arrow-color': 'gray',
-        'target-arrow-shape': 'vee',
+        'curve-style': 'haystack',
+        // 'target-arrow-color': 'gray',
+        // 'target-arrow-shape': 'vee',
         'arrow-scale': 1,
         'ghost': 'yes',
         'ghost-offset-x': 0,
@@ -323,9 +249,9 @@ const cy = cytoscape({
     },{
       selector: 'edge:selected',
       style: {
-        label: '+',
+        label: '',
         'font-weight': '900',
-        'font-size': '40',
+        'font-size': '50',
         'color': 'gray',
         'width': 3,
         'line-color': 'gray',
@@ -333,17 +259,46 @@ const cy = cytoscape({
         // 'overlay-padding': 14,
         'overlay-color': 'gray',
         'overlay-opacity': 0,
-        'curve-style': 'bezier',
-        'target-arrow-color': '#BABABA',
-        'target-arrow-shape': 'vee',
+        'curve-style': 'haystack',
+        // 'target-arrow-color': '#BABABA',
+        // 'target-arrow-shape': 'vee',
         'arrow-scale': 1,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 1,
         'ghost-opacity': 0.1,
         'transition-property': 'line-color, target-arrow-color, overlay-opacity',
+        // 'transition-timing-function': 'ease',
         'transition-duration': 100
-      },
+      }
+    },{
+      selector: 'node.hover',
+      style: {
+        'color': 'black',
+        'text-margin-x': 6,
+        'width': 64,
+        'height': 64,
+        // 'background-color': '#24A2B7',
+        'background-color': '#E2E6EA',
+        'background-width': 32,
+        'background-height': 32,
+        'background-image-opacity': 1,
+        'transition-property': 'color, text-margin-x, width, height, background-color, background-width, background-height, background-image-opacity',
+        'transition-timing-function': 'ease',
+        'transition-duration': 150
+      }
+    },{
+      selector: 'edge.hover',
+      style: {
+        label: '+',
+        'color': 'black',
+        // 'line-color': 'green',
+        'line-color': '#5A6268',
+        'width': 4,
+        'transition-property': 'color, width',
+        // 'transition-timing-function': 'ease',
+        'transition-duration': 150
+      }
     },{
       selector: 'core',
       style: {
@@ -352,8 +307,6 @@ const cy = cytoscape({
     }],
 
   // interaction options:
-  // minZoom: 0.5,
-  // maxZoom: 1,
   userZoomingEnabled: false,
   zoomingEnabled: true,
   userPanningEnabled: false,
@@ -366,6 +319,11 @@ cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
 cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
+cy.on('mouseover', 'node', (e) => { e.target.addClass('hover'); });
+cy.on('mouseout', 'node', (e) => { e.target.removeClass('hover'); });
+cy.on('mouseover', 'edge', (e) => { e.target.addClass('hover'); });
+cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
+
 cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
 // Recupérer les events parent et enfant quand on ajoute un event
 cy.on('click', 'edge', (evt) => {
