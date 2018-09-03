@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @trip = Trip.find(params[:trip_id])
+    authorize @event
     @event.trip_id = @trip.id
     @parent_id = params[:event][:parent_ids]
     @child_id = params[:event][:child_ids]
@@ -14,7 +15,6 @@ class EventsController < ApplicationController
     @events = Event.where("position_y >= ?", event_position_y)
     @event.position_y = event_position_y
     #Positions des events descendants
-
     #Si nouvelle branche:
     if Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
       # @parent_event.position_x > 0? a = 300 : a = -300
