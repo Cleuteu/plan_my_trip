@@ -2,6 +2,7 @@
   "name": "plan_my_trip",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.3.1",
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
     "cytoscape": "^3.2.16",
