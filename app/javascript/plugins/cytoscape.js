@@ -295,7 +295,7 @@ const cy = cytoscape({
     },{
       selector: 'edge.hover',
       style: {
-        label: '+',
+        label: '',
         'color': 'black',
         'text-background-color': '#F5F5F5',
         'text-background-opacity': 1,
@@ -346,7 +346,7 @@ cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
 cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
 // Recupérer les events parent et enfant quand on ajoute un event
-cy.on('click', 'edge', (evt) => {
+cy.on('mouseover', 'edge', (evt) => {
   let event_node_id = evt.target.id();
   event_node_id = event_node_id.split("-");
   let event_parent_id = event_node_id[0];
@@ -400,3 +400,39 @@ cy.on('mouseover', 'node', (e) => {
   tippy_var.show();
 });
 cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
+
+
+// Click on edge to change master
+
+var makeTippyEdge = function(edge, text){
+  return tippy( edge.popperRef(), {
+    html: (function(){
+      const myTemplate = document.createElement('div');
+
+      myTemplate.innerHTML = text;
+
+      return myTemplate;
+    })(),
+    trigger: 'manual',
+    placement: 'left-end',
+    distance: 10,
+    sticky: true,
+    hideOnClick: false,
+    maxWidth: 30,
+    interactive: true,
+    multiple: true,
+    zIndex: 1000,
+    animateFill: true,
+    animation: 'fade',
+  } ).tooltips[0];
+};
+
+let tippy_edge = null;
+
+cy.on('mouseover', 'edge', (e) => {
+  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent">+</p>')
+  tippy_edge.show();
+});
+cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
+
+
