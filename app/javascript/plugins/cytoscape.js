@@ -20,12 +20,16 @@ nodes.forEach((node) => {
                   { id: nodes[y].id,
                     name: nodes[y].name,
                     category: nodes[y].category,
-                    master: nodes[y].master,
-                  }
+                    master: nodes[y].master
+                  },
+                  position: { x: nodes[y].position_x, y: nodes[y].position_y }
                 },
                 );
   y += 1;
   });
+
+ // data: { id: 'n3', parent: 'nparent' },
+ //      position: { x: 123, y: 234 }
 
 var i = 0;
 relationships.forEach((relationship) => {
@@ -47,13 +51,13 @@ const cy = cytoscape({
       elements,
 
   layout: {
-    name: 'breadthfirst',
-    directed: true,
-    roots: `#${nodes[0].id}`,
-    // padding: 20,
+    name: 'preset',
+    // directed: true,
+    // roots: `#${nodes[0].id}`,
+    padding: 20,
     fit: true,
-    spacingFactor: 1.75,
-    height: undefined,
+    // spacingFactor: 1.75,
+    // height: undefined,
     },
 
   style: [

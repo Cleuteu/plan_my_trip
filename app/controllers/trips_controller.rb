@@ -49,6 +49,8 @@ class TripsController < ApplicationController
         hash_nodes[:name] = Event.find(relationship.child_id).name
         hash_nodes[:category] = Event.find(relationship.child_id).category
         hash_nodes[:master] = Event.find(relationship.child_id).master.to_s
+        hash_nodes[:position_x] = Event.find(relationship.child_id).position_x
+        hash_nodes[:position_y] = Event.find(relationship.child_id).position_y
         @array_nodes << hash_nodes
         hash_nodes = {}
       end

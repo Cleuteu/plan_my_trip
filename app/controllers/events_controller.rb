@@ -6,6 +6,19 @@ class EventsController < ApplicationController
     @event.trip_id = @trip.id
     @parent_id = params[:event][:parent_ids]
     @child_id = params[:event][:child_ids]
+
+    #Création de la position et update des positions des descendants
+    #Position de l'event créé
+    event_position_y = Event.find(@child_id).position_y
+    @events = Event.where("position_y >= ?", 150)
+    @event.position_x = Event.find(@child_id).position_x
+    @event.position_y = event_position_y
+    #Positions des events descendants
+    @events.each do |event|
+      event.update!(position_y: event.position_y + 150)
+    end
+
+
     if @event.save!
       @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
       @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
