@@ -22,15 +22,21 @@
 
 <!--   Modal pour le show d'un event -->
 <% @trip.events.each do |event| %>
-  <button type="button" class="d-none" id="show-node<%= event.id %>" data-toggle="modal" data-target="#showEvent<%= event.id %>">
+<!--   <button type="button" class="d-none" id="show-node<%#= event.id %>" data-toggle="modal" data-target="#showEvent<%#= event.id %>">
     Show an event
   </button>
-  <div class="modal fade" id="showEvent<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <%= render partial: 'events/modal_showevent', locals: {event: event, trip: @trip} %>
+  <div class="modal fade" id="showEvent<%#= event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <%#= render partial: 'events/modal_showevent', locals: {event: event, trip: @trip} %>
   </div>
 
-  <div class="modal fade" id="update_event<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%= render partial: 'events/modal_form', locals: { trip: @trip, event: event, events_parents: @events_parents, events_children: @events_children } %>
+  <div class="modal fade" id="update_event<%#= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%#= render partial: 'events/modal_form', locals: { trip: @trip, event: event, events_parents: @events_parents, events_children: @events_children } %>
+  </div> -->
+
+  <div id="show-tippy<%= event.id %>" class="d-none">
+    <div class="test" style='color: pink;'>
+      <%= event.name %>
+    </div>
   </div>
 <% end %>
 

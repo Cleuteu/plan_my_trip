@@ -4,6 +4,7 @@ import popper from 'cytoscape-popper';
 
 cytoscape.use( popper );
 
+
 const graph = document.getElementById('cy');
 
 const nodes = JSON.parse(graph.dataset.nodes);
@@ -330,7 +331,11 @@ cy.on('mouseout', 'node', (e) => { e.target.removeClass('hover'); });
 cy.on('mouseover', 'edge', (e) => { e.target.addClass('hover'); });
 cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
 
-cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
+// cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
+
+// Trigger la modal d'ajout d'un event
+cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
+
 // Recupérer les events parent et enfant quand on ajoute un event
 cy.on('click', 'edge', (evt) => {
   let event_node_id = evt.target.id();
@@ -343,17 +348,40 @@ cy.on('click', 'edge', (evt) => {
   parent_id_form.value = event_parent_id
 } );
 
+// Recupérer l'event parent quand on ajoute un event sur une nouvelle branche
 cy.on('click', 'node', (evt) => {
-  console.log(evt.target.id())
   let event_node_id = evt.target.id();
   let branch_parent_id_form = document.getElementById('branch_event_parent_id');
-  console.log(event_node_id)
-  console.log(branch_parent_id_form)
   branch_parent_id_form.value = event_node_id
 } );
-cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
-cy.on('click', 'node', (evt) => { console.log(evt.target) });
+// TIPPY TOOLTIPS SECTION
 
-var collection = cy.elements('node[master = "true"]');
-console.log(collection);
+// Tippy function
+var makeTippy = function(node, text){
+  return tippy( node.popperRef(), {
+    html: (function(){
+      const myTemplate = document.createElement('div');
+
+      myTemplate.innerHTML = text;
+
+      return myTemplate;
+    })(),
+    trigger: 'manual',
+    arrow: true,
+    placement: 'top',
+    distance: 0,
+    sticky: true,
+    hideOnClick: false,
+    multiple: true,
+  } ).tooltips[0];
+};
+
+// Tippy trigger via mouserover / mouseout
+let tippy_var = null;
+
+cy.on('mouseover', 'node', (e) => {
+  tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
+  tippy_var.show();
+});
+cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
