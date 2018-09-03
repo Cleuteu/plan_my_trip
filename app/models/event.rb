@@ -11,7 +11,6 @@ class Event < ApplicationRecord
   validates :category, presence: true
   # validates :location, presence: true
   validates :date, presence: true
-  validates :duration, presence: true
   validates :trip_id, presence: true
 
   geocoded_by :location

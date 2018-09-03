@@ -1,6 +1,17 @@
+.modal {
+  z-index: 1051;
+}
+
+.pac-container {
+  z-index: 1052;
+}
+
 .radio-categories {
   input {
     visibility:hidden;
+  }
+  .icon-category {
+    font-size: 70px
   }
   .form-check {
     padding-left: 0;
@@ -15,7 +26,7 @@
     background: #b7b7b7;
     padding: 20px 35px;
     border-radius: 5px;
-    opacity: .4;
+    opacity: .6;
     flex: 0 0 30%;
     text-align: center;
     &:hover {
@@ -32,6 +43,9 @@
 
 .modal-body-form {
   padding-bottom: 0px;
+  ::placeholder {
+    opacity: 0.5;
+  }
 }
 
 
