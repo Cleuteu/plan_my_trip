@@ -33,7 +33,7 @@ class EventsController < ApplicationController
     end
 
 
-    if @event.save!
+    if @event.save
       @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
       @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
       unless Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?

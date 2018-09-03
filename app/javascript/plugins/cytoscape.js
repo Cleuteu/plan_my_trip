@@ -46,7 +46,7 @@ relationships.forEach((relationship) => {
   i += 1;
   });
 
-console.log(elements)
+// console.log(elements)
 
 const cy = cytoscape({
   container: document.getElementById('cy'),

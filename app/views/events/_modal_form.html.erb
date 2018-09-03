@@ -10,7 +10,7 @@
     <%# end %>
     <div class="modal-body form-modal modal-body-form">
       <%= simple_form_for [trip, event] do |f| %>
-        <%= f.input :name, input_html: { id: event.id ? "edit_event_name" : "event_name", placeholder: 'e.g., Visit of the White House' } %>
+        <%= f.input :name, input_html: { id: event.id ? "edit_event_name#{event.id}" : "event_name#{event.id}", placeholder: 'e.g., Visit of the White House' } %>
 
 
         <fieldset class="form-group radio_buttons required event_category form-group-valid">
@@ -22,20 +22,20 @@
               <div class="category-choices">
 
                   <div class="form-check">
-                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Housing" name="event[category]">
-                      <label class="collection_radio_buttons category-choice" for="edit_event_category"><i class="icon-category fas fa-home"></i>
+                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_accommodation<%= event.id %>" type="radio" value="Housing" name="event[category]">
+                      <label class="collection_radio_buttons category-choice" for="edit_event_accommodation<%= event.id %>"><i class="icon-category fas fa-home"></i>
                       </label>
 
                   </div>
 
                   <div class="form-check">
-                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Travel" checked="checked" name="event[category]">
-                      <label class="collection_radio_buttons category-choice" for="edit_event_category"><i class="icon-category fas fa-car"></i>
+                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_travel<%= event.id %>" type="radio" value="Travel" checked="checked" name="event[category]">
+                      <label class="collection_radio_buttons category-choice" for="edit_event_travel<%= event.id %>"><i class="icon-category fas fa-car"></i>
                       </label>
                   </div>
 
-                  <div class="form-check"><input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Activity" name="event[category]">
-                      <label class="collection_radio_buttons category-choice" for="edit_event_category"><i class="icon-category fas fa-camera-retro"></i>
+                  <div class="form-check"><input class="form-check-input is-valid radio_buttons required" id="edit_event_activity<%= event.id %>" type="radio" value="Activity" name="event[category]">
+                      <label class="collection_radio_buttons category-choice" for="edit_event_activity<%= event.id %>"><i class="icon-category fas fa-camera-retro"></i>
                     </label>
 
               </div>
@@ -46,26 +46,26 @@
 
         <div class="row">
           <div class="col-md-6">
-            <%= f.input :location, input_html: { class: "event_location", placeholder: 'e.g., 1600 Pennsylvania Ave NW, Washington, DC 20500, États-Unis' } %>
+            <%= f.input :location, input_html: { class: "event_location", placeholder: 'e.g., 1600 Pennsylvania Ave NW, Washington, DC 20500, États-Unis', id: event.id ? "edit_event_location#{event.id}" : "event_location#{event.id}" } %>
           </div>
           <div class="col-md-6">
-            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", id: event.id ? "edit_event_date#{event.id}" : "event_date#{event.id}"} %>
           </div>
         </div>
 
-        <%= f.input :description, placeholder: 'e.g., Tours are scheduled on a first come, first served basis. Requests can be submitted up to three months in advance and no less than 21 days in advance. You are encouraged to submit your request as early as possible as a limited number of spaces are available. The White House tour is free of charge.', input_html: { id: event.id ? "edit_event_description" : "event_description" } %>
+        <%= f.input :description, placeholder: 'e.g., Tours are scheduled on a first come, first served basis. Requests can be submitted up to three months in advance and no less than 21 days in advance. You are encouraged to submit your request as early as possible as a limited number of spaces are available. The White House tour is free of charge.', input_html: { id: event.id ? "edit_event_description#{event.id}" : "event_description#{event.id}" } %>
         <div class="row">
           <div class="col-md-3">
-            <%= f.input :price,:label => "Price in €", placeholder: "0" %>
+            <%= f.input :price, :label => "Price in €", placeholder: 0, input_html: { id: event.id ? "edit_event_price#{event.id}" : "event_price#{event.id}" } %>
           </div>
           <div class="col-md-9">
-            <%= f.input :url, placeholder: 'https://www.nps.gov/whho/planyourvisit/the-white-house-tour.htm', input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
+            <%= f.input :url, placeholder: 'https://www.nps.gov/whho/planyourvisit/the-white-house-tour.htm', input_html: { id: event.id ? "edit_event_url#{event.id}" : "event_url#{event.id}" } %>
           </div>
         </div>
         <%#= f.input :parent_ids, :collection => events_parents, input_html: { id: event.id ? "edit_event_parent_ids" : "event_parent_ids" } %>
         <%#= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids" : "event_child_ids" } %>
-        <%= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_child_id" } %>
-        <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_parent_id" } %>
+        <%= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id#{event.id}" : "event_child_id#{event.id}" } %>
+        <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "edit_event_parent_id#{event.id}" : "event_parent_id#{event.id}" } %>
     </div>
     <div class="modal-footer footer-btn-center">
       <%= f.submit "Add event", class: "btn btn-primary" %>
