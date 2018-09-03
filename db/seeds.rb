@@ -164,7 +164,7 @@ visite_chateau_quebec_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,22),
   duration: 3,
-  description: "The Château Frontenac is one of Canada's grand railway hotels. The hotel is generally recognized as the most photographed hotel in the world, largely for its prominence in the skyline of Quebec City.",
+  description: "The Château Frontenac is one of Canada's grand railway hotels. The hotel is generally recognized as the most photographed hotel in the world, largely for its prominence in the skyline of Quebec City.",
   url: "https://www.fairmont.com/frontenac-quebec/",
   trip_id: trip.id,
   master: true,
