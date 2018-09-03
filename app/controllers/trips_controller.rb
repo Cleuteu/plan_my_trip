@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show]
 
   def index
-    @trips = Trip.all
+    @trips = policy_scope(Trip).order(created_at: :desc)
   end
 
   def new
@@ -12,6 +12,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
+    authorize @trip
     if @trip.save
       @start = Event.new(name: "Start", category: "settings", date: @trip.start_date, location: @trip.start_location, trip_id: @trip.id, duration: 1, price: 0, master: true)
       @start.save!
