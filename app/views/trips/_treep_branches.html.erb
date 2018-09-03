@@ -33,7 +33,7 @@
     <%#= render partial: 'events/modal_form', locals: { trip: @trip, event: event, events_parents: @events_parents, events_children: @events_children } %>
   </div> -->
 
-  <div id="show-tippy<%= event.id %>">
+  <div id="show-tippy<%= event.id %>" class="d-none">
     <div class="test" style='color: pink;'>
       <%= event.name %>
     </div>
