@@ -21,7 +21,7 @@
 
       <div class="modal-body" style="display: flex; justify-content: space-between;">
         <%= simple_form_for [trip, event] do |f| %>
-          <%= f.input :master, :label => "Event in my Trip" %>
+          <%= f.input :master, :label => "Event in my Trip", input_html: { id: event.id ? "edit_event_category#{event.id}" : "event_category#{event.id}" } %>
           <%= f.submit "Submit", class: "btn btn-secondary" %>
         <% end %>
       <div style="margin-top: 42px;">
