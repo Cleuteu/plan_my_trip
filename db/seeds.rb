@@ -434,6 +434,7 @@ ride_back_montreal_event = Event.create!(
   url: "",
   trip_id: trip.id,
   price: 38,
+  master: true,
   position_x: 0,
   position_y: 10*b
   )
