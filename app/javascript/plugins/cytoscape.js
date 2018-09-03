@@ -398,7 +398,3 @@ cy.on('mouseover', 'node', (e) => {
   tippy_var.show();
 });
 cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
-
-
-console.log(cy.elements("edge[master = 'true']"));
-
