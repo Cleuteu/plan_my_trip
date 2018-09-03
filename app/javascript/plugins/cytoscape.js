@@ -1,6 +1,7 @@
 import cytoscape from 'cytoscape';
 import tippy from 'tippy.js'
 import popper from 'cytoscape-popper';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 cytoscape.use( popper );
 
@@ -228,11 +229,13 @@ const cy = cytoscape({
     },{
       selector: 'edge:unselected',
       style: {
-        label: '',
-        // 'font-family': 'Font Awesome Free 5',
-        // 'label': '\uf055',
+        // label: '+',
+        // 'font-family': 'FontAwesome !important',
+        // 'label': '\uf00d',
+        // 'font-family': 'FontAwesome',
+          // 'label': '\uF007 User',
         'font-weight': '900',
-        'font-size': '50',
+        'font-size': '40',
         'color': 'gray',
         'width': 3,
         'line-color': 'gray',
@@ -299,12 +302,21 @@ const cy = cytoscape({
         // 'text-margin-x': 8,
         // 'text-margin-y': 8,
         'color': 'black',
+        'text-background-color': '#F5F5F5',
+        'text-background-opacity': 1,
+        'text-background-padding': 11,
+        'line-style': 'dotted',
         // 'line-color': 'green',
         'line-color': '#5A6268',
         'width': 4,
-        'transition-property': 'color, width',
+        'transition-property': 'text-background-padding, line-color, width',
         // 'transition-timing-function': 'ease',
-        'transition-duration': 150
+        'transition-duration': 100
+      }
+    },{
+      selector: 'edge.master',
+      style: {
+        'line-color': 'green',
       }
     },{
       selector: 'core',
