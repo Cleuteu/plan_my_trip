@@ -8,24 +8,71 @@
     <%# BranchEvent.where(parent_event: event.id).select do |branch| %>
       <%# child_events << Event.find(branch.event_id) %>
     <%# end %>
-    <div class="modal-body">
-      <%= simple_form_for [trip, event], wrapper: :horizontal_form do |f| %>
-        <%= f.input :name, input_html: { id: event.id ? "edit_event_name" : "event_name", placeholder: 'Name' } %>
-        <%= f.input :category, input_html: { id: event.id ? "edit_event_category" : "event_category" }, collection: ["Housing", "Travel", "Activity"], prompt: 'Category' %>
-        <%= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed" : "event_confirmed" } %>
-        <%= f.input :location, input_html: { id: event.id ? "edit_event_location" : "event_location", placeholder: 'Location' } %>
-        <%= f.input :date %>
-        <%= f.input :duration, input_html: { id: event.id ? "edit_event_duration" : "event_duration" } %>
-        <%= f.input :description, input_html: { id: event.id ? "edit_event_description" : "event_description" } %>
-        <%= f.input :url, input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
+    <div class="modal-body form-modal modal-body-form">
+      <%= simple_form_for [trip, event] do |f| %>
+        <%= f.input :name, input_html: { id: event.id ? "edit_event_name" : "event_name", placeholder: 'e.g., Visit of the White House' } %>
+
+
+        <fieldset class="form-group radio_buttons required event_category form-group-valid">
+          <legend class="col-form-label pt-0">Category
+            <abbr title="required">*</abbr>
+          </legend>
+          <input type="hidden" name="event[category]" value="">
+            <div class="radio-categories">
+              <div class="category-choices">
+
+                  <div class="form-check">
+                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Housing" name="event[category]">
+
+                    <label class="collection_radio_buttons category-choice" for="edit_event_category">Housing <i class="fas fa-home"></i>
+
+                    </label>
+
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Travel" checked="checked" name="event[category]">
+                    <label class="collection_radio_buttons category-choice" for="edit_event_category">Travel <i class="fas fa-car"></i>
+
+</label>
+                  </div>
+
+                  <div class="form-check"><input class="form-check-input is-valid radio_buttons required" id="edit_event_category" type="radio" value="Activity" name="event[category]">
+                      <label class="collection_radio_buttons category-choice" for="edit_event_category">Activity <i class="far fa-eye"></i>
+
+</label>
+
+              </div>
+              </div>
+            </div>
+          </fieldset>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :location, input_html: { id: event.id ? "edit_event_location" : "event_location", placeholder: 'e.g., 1600 Pennsylvania Ave NW, Washington, DC 20500, États-Unis' } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          </div>
+        </div>
+
+        <%= f.input :description, placeholder: 'e.g., Tours are scheduled on a first come, first served basis. Requests can be submitted up to three months in advance and no less than 21 days in advance. You are encouraged to submit your request as early as possible as a limited number of spaces are available. The White House tour is free of charge.', input_html: { id: event.id ? "edit_event_description" : "event_description" } %>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.input :price,:label => "Price in €", placeholder: 0 %>
+          </div>
+          <div class="col-md-9">
+            <%= f.input :url, placeholder: 'https://www.nps.gov/whho/planyourvisit/the-white-house-tour.htm', input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
+          </div>
+        </div>
         <%#= f.input :parent_ids, :collection => events_parents, input_html: { id: event.id ? "edit_event_parent_ids" : "event_parent_ids" } %>
         <%#= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids" : "event_child_ids" } %>
         <%= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_child_id" } %>
         <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_parent_id" } %>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= f.submit "Add event", class: "btn btn-primary" %>
+    <div class="modal-footer footer-btn-center">
+      <%= f.submit "Add event", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
