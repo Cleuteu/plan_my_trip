@@ -27,15 +27,40 @@
   </button>
   <div class="modal fade" id="showEvent<%#= event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <%#= render partial: 'events/modal_showevent', locals: {event: event, trip: @trip} %>
-  </div>
-
-  <div class="modal fade" id="update_event<%#= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%#= render partial: 'events/modal_form', locals: { trip: @trip, event: event, events_parents: @events_parents, events_children: @events_children } %>
   </div> -->
 
+  <div class="modal fade" id="update_event<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render partial: 'events/modal_form', locals: { trip: @trip, event: event, events_parents: @events_parents, events_children: @events_children } %>
+  </div>
+
   <div id="show-tippy<%= event.id %>" class="d-none">
-    <div class="test" style='color: pink;'>
-      <%= event.name %>
+    <div class="tippy-container">
+      <div class="tippy-content">
+        <div class="tippy-image">
+          <%= image_tag("montreal.jpg", class: "event-img")%>
+        </div>
+        <div class="tippy-description">
+          <!-- <h4>Description</h4> -->
+          <p><%= event.name %></p>
+          <p><%= event.description %></p>
+          <p class="text-right"><%= link_to "More info", event.url, target: '_blank'%></p>
+        </div>
+        <div class="" style="display: flex; justify-content: space-between;">
+          <%= simple_form_for [@trip, event] do |f| %>
+            <%= f.input :master, :label => "Event in my Trip" %>
+            <%= f.submit "Submit", class: "btn btn-secondary" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="tippy-footer">
+        <button type="button" class="btn btn-primary modal-header-btn-right" data-toggle="modal" data-target="#update_event<%= event.id %>">Edit event</button>
+        <button type="button" class="btn btn-primary modal-header-btn-right add-branch-button" data-toggle="modal" data-target="#addBranch">Add Branch</button>
+      </div>
+      <script>
+        // document.getElementById(`edit_event_${id_node}`.submit());
+      </script>
+      </div>
     </div>
   </div>
 <% end %>

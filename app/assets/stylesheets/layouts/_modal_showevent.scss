@@ -17,3 +17,24 @@
 .modal-header-btn-right {
   margin-left: 0;
 }
+
+
+.tippy-tooltip.treep-theme {
+  background-color: white;
+  max-width: 500px;
+}
+
+.tippy-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  p {
+    color: purple;
+  }
+}
+
+.event-img {
+  max-width: 250px;
+  }
+

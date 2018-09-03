@@ -372,8 +372,12 @@ var makeTippy = function(node, text){
     placement: 'top',
     distance: 0,
     sticky: true,
-    hideOnClick: false,
+    hideOnClick: true,
+    maxWidth: 300,
+    theme: 'treep',
+    interactive: true,
     multiple: true,
+    zIndex: 1000,
   } ).tooltips[0];
 };
 
@@ -385,3 +389,6 @@ cy.on('mouseover', 'node', (e) => {
   tippy_var.show();
 });
 cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
+
+
+
