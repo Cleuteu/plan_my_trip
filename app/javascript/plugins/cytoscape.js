@@ -38,7 +38,8 @@ relationships.forEach((relationship) => {
   elements.push({ data:
                   { id: `${relationships[i].parent_id}-${relationships[i].child_id}`,
                     source: relationships[i].parent_id,
-                    target: relationships[i].child_id
+                    target: relationships[i].child_id,
+                    master: relationships[i].master
                   }
                 },
                 )
@@ -298,7 +299,7 @@ const cy = cytoscape({
         'color': 'black',
         'text-background-color': '#F5F5F5',
         'text-background-opacity': 1,
-        'text-background-padding': 10,
+        'text-background-padding': 7,
         'line-style': 'dotted',
         'line-color': '#5A6268',
         'width': 4,
@@ -306,9 +307,11 @@ const cy = cytoscape({
         'transition-duration': 150
       }
     },{
-      selector: 'edge.master',
+      selector: "edge[master = 'true']",
       style: {
-        'line-color': 'green',
+        'line-color': '#6DB28C',
+        'width': 10,
+        'text-background-padding': 7,
         'line-style': 'solid'
       }
     },{
@@ -395,6 +398,3 @@ cy.on('mouseover', 'node', (e) => {
   tippy_var.show();
 });
 cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
-
-
-

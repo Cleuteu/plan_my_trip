@@ -42,6 +42,11 @@ class TripsController < ApplicationController
       hash_relationship[:child_name] = Event.find(relationship.child_id).name
       hash_relationship[:parent_id] = Event.find(relationship.parent_id).id
       hash_relationship[:parent_name] = Event.find(relationship.parent_id).name
+      if Event.find(relationship.child_id).master == true && Event.find(relationship.parent_id).master == true
+        hash_relationship[:master] = "true"
+      else
+        hash_relationship[:master] = "false"
+      end
       @array_relationships << hash_relationship
       hash_relationship = {}
       unless @array_nodes.include?(relationship.child_id)
