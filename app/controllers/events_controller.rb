@@ -87,14 +87,14 @@ class EventsController < ApplicationController
         parent_event = parent_event.relationships_as_child.first.parent
         parent_parent_count = parent_event.relationships_as_child.count
         parent_child_count = parent_event.relationships_as_parent.count
-        parent_event.update!(master: true)
+        parent_event.update!(master: false)
       end
       while (child_parent_count == 1 && child_child_count == 1)
         #Descend la branche
         child_event = child_event.relationships_as_parent.first.child
         child_child_count = child_event.relationships_as_parent.count
         child_parent_count = child_event.relationships_as_child.count
-        child_event.update!(master: true)
+        child_event.update!(master: false)
       end
     end
 
