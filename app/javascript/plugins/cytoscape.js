@@ -405,7 +405,7 @@ cy.on('mouseover', 'edge', (evt) => {
 } );
 
 // Recupérer l'event parent quand on ajoute un event sur une nouvelle branche
-cy.on('click', 'node', (evt) => {
+cy.on('mouseover', 'node', (evt) => {
   let event_node_id = evt.target.id();
   let branch_parent_id_form = document.getElementById('branch_event_parent_id');
   branch_parent_id_form.value = event_node_id
@@ -465,18 +465,20 @@ var makeTippyEdge = function(edge, text){
     distance: 10,
     sticky: true,
     hideOnClick: false,
+    minHeight: 60,
     maxWidth: 30,
     interactive: true,
     multiple: true,
     zIndex: 1000,
     animateFill: true,
     animation: 'fade',
+    interactiveBorder: 30000,
   } ).tooltips[0];
 };
 
 let tippy_edge = null;
 cy.on('mouseover', 'edge', (e) => {
-  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent">+</p>')
+  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent"> + Add an experience </p>')
   tippy_edge.show();
 });
 cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
