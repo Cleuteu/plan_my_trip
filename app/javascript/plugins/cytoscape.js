@@ -86,8 +86,8 @@ const cy = cytoscape({
         'font-size': 23,
         'text-transform': 'uppercase',
         'color': 'grey',
-        'width': 60,
-        'height': 60,
+        'width': 80,
+        'height': 80,
         'background-color': 'white',
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
@@ -112,8 +112,8 @@ const cy = cytoscape({
         'font-size': 23,
         'text-transform': 'uppercase',
         'color': 'gray',
-        'width': 60,
-        'height': 60,
+        'width': 80,
+        'height': 80,
         'background-color': 'white',
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
@@ -170,8 +170,8 @@ const cy = cytoscape({
         'font-size': 23,
         'text-transform': 'uppercase',
         // 'color': 'black',
-        'width': 60,
-        'height': 60,
+        'width': 80,
+        'height': 80,
         'background-image': [
           'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996217/camera-retro-solid-padded-white.svg'
         ],
@@ -197,8 +197,8 @@ const cy = cytoscape({
         'font-size': 23,
         'text-transform': 'uppercase',
         // 'color': 'black',
-        'width': 60,
-        'height': 60,
+        'width': 80,
+        'height': 80,
         'background-image': [
           // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996660/car-solid-padded-white.svg'
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536058617/plane-solid-padded-white.png'
@@ -225,8 +225,8 @@ const cy = cytoscape({
         'font-size': 23,
         'text-transform': 'uppercase',
         // 'color': 'black',
-        'width': 60,
-        'height': 60,
+        'width': 80,
+        'height': 80,
         'background-image': [
           'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996593/home-solid-padded-white.svg'
         ],
@@ -275,7 +275,7 @@ const cy = cytoscape({
         'font-weight': '900',
         'font-size': '48',
         'color': '#F5F5F5',
-        'width': 3,
+        'width': 6,
         'line-color': 'gray',
         'line-style': 'dashed',
         'overlay-color': 'gray',
@@ -298,7 +298,7 @@ const cy = cytoscape({
         'font-weight': '900',
         'font-size': '48',
         'color': '#F5F5F5',
-        'width': 3,
+        'width': 6,
         'line-color': 'gray',
         'line-style': 'dashed',
         'overlay-color': 'gray',
@@ -319,8 +319,8 @@ const cy = cytoscape({
       style: {
         'color': 'black',
         'text-margin-x': 6,
-        'width': 64,
-        'height': 64,
+        'width': 88,
+        'height': 88,
         // 'background-color': '#24A2B7',
         'background-color': '#E2E6EA',
         'background-fit': 'contain',
@@ -339,7 +339,7 @@ const cy = cytoscape({
         'text-background-padding': 7,
         'line-style': 'dotted',
         'line-color': '#5A6268',
-        'width': 4,
+        'width': 7,
         'transition-property': 'color, text-background-padding, line-color, width',
         'transition-duration': 150
       }
@@ -348,7 +348,7 @@ const cy = cytoscape({
       style: {
         'color': '#F5F5F5',
         'line-color': '#6DB28C',
-        'width': 4,
+        'width': 7,
         'text-background-padding': 1,
         'line-style': 'solid',
       }
@@ -359,7 +359,7 @@ const cy = cytoscape({
         'text-background-color': '#FFFFFF',
         'text-background-opacity': 1,
         'text-background-padding': 7,
-        'width': 5,
+        'width': 8,
         'line-style': 'solid',
         'transition-property': 'color, text-background-padding, width',
         'transition-duration': 150
@@ -517,7 +517,7 @@ cy.on('click', 'edge', (evt) => {
 
 // TEST AIGUILLAGE POUR SWITCH MASTER
 
-let node_test = cy.elements("node#692")
+let node_test = cy.elements("node#121")
 console.log(node_test)
 
 let ref = node_test.popperRef();
@@ -547,5 +547,7 @@ var makeTippySwitch = function(text){
   } ).tooltips[0];
 };
 
-let tippy_switch = makeTippySwitch('<p><i class="fas fa-toggle-on"></i></p>')
+let tippy_switch = makeTippySwitch('<div class="arrow-container"><i class="fa fa-arrow-left"></i></div>')
+// let tippy_switch = makeTippySwitch('<div class="arrow-container"><i class="fa fa-arrow-right"></i></div>')
+
 tippy_switch.show();
