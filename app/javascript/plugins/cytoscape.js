@@ -390,7 +390,7 @@ cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
 // cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
 
 // Trigger la modal d'ajout d'un event
-cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
+// cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
 // Recupérer les events parent et enfant quand on ajoute un event
 cy.on('mouseover', 'edge', (evt) => {
@@ -450,8 +450,7 @@ cy.on('mouseover', 'node', (e) => {
 cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
 
 
-// Click on edge to change master
-
+// ADD EVENT VIA TIPPY BUTTON
 var makeTippyEdge = function(edge, text){
   return tippy( edge.popperRef(), {
     html: (function(){
@@ -462,7 +461,7 @@ var makeTippyEdge = function(edge, text){
       return myTemplate;
     })(),
     trigger: 'manual',
-    placement: 'left-end',
+    placement: 'left',
     distance: 10,
     sticky: true,
     hideOnClick: false,
@@ -476,11 +475,31 @@ var makeTippyEdge = function(edge, text){
 };
 
 let tippy_edge = null;
-
 cy.on('mouseover', 'edge', (e) => {
   tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent">+</p>')
   tippy_edge.show();
 });
 cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
 
+// CLICK ON EDGE TO SWITCH EDGE TO MASTER
+cy.on('click', 'edge', (evt) => {
+  let event_node_id_master = evt.target.id();
+  event_node_id_master = event_node_id_master.split("-");
+  let event_parent_id_master = event_node_id_master[0];
+  let event_child_id_master = event_node_id_master[1];
+  let parent_node = cy.elements(`node#${event_parent_id_master}`);
+  let child_node = cy.elements(`node#${event_child_id_master}`);
+  if (parent_node.data("master") === "true" && child_node.data("master") === "true" ) {
+    // Both nodes are master = true. Do nothing
+  } else if (parent_node.connectedEdges().length > child_node.connectedEdges().length) {
+    // Give child node because he has less edges
+    document.getElementById('switch_master'+child_node.data("id")).click();
+  } else if (parent_node.connectedEdges().length < child_node.connectedEdges().length) {
+    // Give parent node because he has less edges
+    document.getElementById('switch_master'+parent_node.data("id")).click();
+  } else {
+    // Both nodes are master = false and have the same number of edges. Give parent or child node
+    document.getElementById('switch_master'+child_node.data("id")).click();
+  }
+});
 

@@ -20,10 +20,10 @@
       </div>
 
       <div class="modal-body" style="display: flex; justify-content: space-between;">
-        <%= simple_form_for [trip, event] do |f| %>
-          <%= f.input :master, input_html: { id: event.id ? "edit_event_master#{event.id}" : "event_master#{event.id}", label: "Event in my Trip" } %>
-          <%= f.submit "Submit", class: "btn btn-secondary" %>
-        <% end %>
+        <%#= simple_form_for [trip, event] do |f| %>
+          <%#= f.input :master, input_html: { id: event.id ? "edit_event_master#{event.id}" : "event_master#{event.id}", label: "Event in my Trip" } %>
+          <%#= f.submit "Submit", class: "btn btn-secondary" %>
+        <%# end %>
       <div style="margin-top: 42px;">
         <button type="button" class="btn btn-primary modal-header-btn-right" data-toggle="modal" data-target="#update_event<%= event.id %>" data-dismiss="modal">Edit event</button>
         <button type="button" class="btn btn-primary modal-header-btn-right" data-toggle="modal" data-target="#addBranch" data-dismiss="modal">Add Branch</button>
