@@ -61,10 +61,6 @@ class TripsController < ApplicationController
       end
     end
 
-    def final
-      @trip = Trip.find(params[:trip_id].to_i)
-    end
-
     # Afficher les events masters dans le récapitulatif
     @events_master = Event.where(trip_id: @trip.id).where(master: true).order(:date)
     @total_price = 0
@@ -80,6 +76,12 @@ class TripsController < ApplicationController
       }
     end
   end
+
+    def final
+      @trip = Trip.find(params[:trip_id])
+      @events_master = Event.where(trip_id: @trip.id).where(master: true).order(:date)
+    end
+
 
   private
 

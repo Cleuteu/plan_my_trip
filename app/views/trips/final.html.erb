@@ -1,7 +1,11 @@
 <div class="wrapper-final">
   <div class="final-title">
     <h1>
-      <%= Trip.find(params[:trip_id]).name %>
+      <%= @trip.name %>
+      <% @events_master.each do |event| %>
+        <%= event.name %>
+        <%= event.date.strftime('%a %d %b') %>
+      <% end %>
     </h1>
   </div>
   <div class="row">
