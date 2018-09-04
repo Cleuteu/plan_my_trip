@@ -13,17 +13,20 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to trips_path, class: "nav-link" do %>
+        <!-- <li class="nav-item">
+          <%#= link_to trips_path, class: "nav-link" do %>
           <span class="no-icon">My trips</span>
-          <% end %>
-        </li>
+          <%# end %>
+        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="no-icon">Account</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a>
+            <%= link_to trips_path, class: "dropdown-item" do %>
+              <i class="fas fa-suitcase"></i> My trips
+            <% end %>
             <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
             <div class="divider"></div>
             <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
