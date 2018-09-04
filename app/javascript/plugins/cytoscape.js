@@ -469,6 +469,7 @@ var makeTippyEdge = function(edge, text){
     maxWidth: 30,
     interactive: true,
     multiple: true,
+    offset: '10, 0',
     zIndex: 1000,
     animateFill: true,
     animation: 'fade',
