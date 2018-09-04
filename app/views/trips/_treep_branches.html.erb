@@ -40,10 +40,10 @@
         <div>
           <h6><%= event.name %></h6>
           <p><%= event.date.to_time.strftime("%b %d") %> - <%= event.date.to_time.strftime("%b %d") %></p>
-          <%#= simple_form_for [@trip, event] do |f| %>
-            <%#= f.input :master, :label => "" %>
-            <%#= f.submit "Submit", class: "btn btn-light" %>
-          <%# end %>
+          <%= simple_form_for [@trip, event] do |f| %>
+            <%= f.input :master, :label => "" %>
+            <%= f.submit "Submit", class: "btn btn-light" %>
+          <% end %>
         </div>
         <%= image_tag("montreal.jpg", height: "135px")%>
       </div>

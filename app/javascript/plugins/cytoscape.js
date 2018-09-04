@@ -383,7 +383,7 @@ cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
 // cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
 
 // Trigger la modal d'ajout d'un event
-cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
+// cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
 // Recupérer les events parent et enfant quand on ajoute un event
 cy.on('mouseover', 'edge', (evt) => {
@@ -476,4 +476,11 @@ cy.on('mouseover', 'edge', (e) => {
 });
 cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
 
+cy.on('click', 'edge', () => {
+  let event_node_id_master = evt.target.id();
+  event_node_id_master = event_node_id_master.split("-");
+  let event_parent_id_master = event_node_id_master[0];
+  let event_child_id_master = event_node_id_master[1];
+  document.getElementById('add-node').click();
+});
 
