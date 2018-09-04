@@ -322,9 +322,9 @@ const cy = cytoscape({
     },{
       selector: 'edge.hover',
       style: {
-        label: '',
+        label: '+',
         'color': 'black',
-        'text-background-color': '#F5F5F5',
+        'text-background-color': '#FFFFFF',
         'text-background-opacity': 1,
         'text-background-padding': 7,
         'line-style': 'dotted',
@@ -346,7 +346,7 @@ const cy = cytoscape({
       selector: "edge[master = 'true'].hover",
       style: {
         'color': 'black',
-        'text-background-color': '#F5F5F5',
+        'text-background-color': '#FFFFFF',
         'text-background-opacity': 1,
         'text-background-padding': 7,
         'width': 5,
@@ -371,11 +371,10 @@ const cy = cytoscape({
   });
 
 // UNCOMMENT TO CONSOLE LOG A SPECIFIC NODE
-// cy.on('click', 'node', (e) => {
-//  console.log(e.target.id())
-//  console.log(e.target.data());
-// });
-
+cy.on('click', 'node', (e) => {
+ console.log(e.target.id())
+ console.log(e.target.data());
+});
 
 cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
@@ -463,6 +462,7 @@ var makeTippyEdge = function(edge, text){
     trigger: 'manual',
     placement: 'left',
     distance: 10,
+    arrow: true,
     sticky: true,
     hideOnClick: false,
     minHeight: 60,
@@ -505,3 +505,37 @@ cy.on('click', 'edge', (evt) => {
   }
 });
 
+// TEST AIGUILLAGE POUR SWITCH MASTER
+
+let node_test = cy.elements("node#692")
+console.log(node_test)
+
+let ref = node_test.popperRef();
+
+var makeTippySwitch = function(text){
+  return tippy( ref, {
+    html: (function(){
+      const myTemplate = document.createElement('div');
+
+      myTemplate.innerHTML = text;
+
+      return myTemplate;
+    })(),
+    trigger: 'manual',
+    placement: 'bottom',
+    arrow: true,
+    arrowTransform: 'scaleX(0)',
+    distance: 16,
+    sticky: true,
+    hideOnClick: false,
+    minHeight: 60,
+    maxWidth: 30,
+    theme: 'switch',
+    interactive: true,
+    multiple: true,
+    zIndex: 1000,
+  } ).tooltips[0];
+};
+
+let tippy_switch = makeTippySwitch('<p><i class="fas fa-toggle-on"></i></p>')
+tippy_switch.show();
