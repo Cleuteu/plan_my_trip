@@ -1,46 +1,41 @@
 <div class="wrapper-final">
-  <div class="final-title">
-    <h1>
-      <%= @trip.name %>
-      <% @events_master.each do |event| %>
-        <%= event.name %>
-        <%= event.date.strftime('%a %d %b') %>
-      <% end %>
-    </h1>
-  </div>
   <div class="row">
   <!--     TIMELINE SUR LA GAUCHE -->
-    <div class="col-sm-4 timeline-final">
+    <div class="col-sm-5 timeline-final">
+      <h1>
+        <%= @trip.name %>
+      <h3>Congrats <%= @trip.user.first_name %>! Find below a summary of you road trip.</h3>
+      <div class="col">
+        <div class="col-sm-6 offset-sm-3">
+          <a href="#" class="btn btn-primary btn-lg text-center">Export to my calendar</a>
+        </div>
+      </div>
+      </h1>
       <div class="page">
         <div class="page__demo">
           <div class="main-container page__container">
             <div class="timeline">
               <div class="timeline__group">
                 <span class="timeline__year">2008</span>
-                <div class="timeline__box">
-                  <div class="timeline__date">
-                    <span class="timeline__day">2</span>
-                    <span class="timeline__month">Feb</span>
-                  </div>
-                  <div class="timeline__post">
-                    <div class="timeline__content">
-                      <p>Attends the Philadelphia Museum School of Industrial Art. Studies design with Alexey Brodovitch, art director at Harper's Bazaar, and works as his assistant.</p>
+
+                <% @events_master.each do |event| %>
+                  <div class="timeline__box">
+                    <div class="timeline__date">
+                      <span class="timeline__day"><%= event.date.strftime('%d') %></span>
+                      <span class="timeline__month"><%= event.date.strftime('%b') %></span>
+                    </div>
+                    <div class="timeline__post">
+                      <div class="timeline__content">
+                        <h4><%= event.name %></h4>
+                        <p><%= event.location %></p>
+                        <p><%= event.description %></p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="timeline__box">
-                  <div class="timeline__date">
-                    <span class="timeline__day">1</span>
-                    <span class="timeline__month">Sept</span>
-                  </div>
-                  <div class="timeline__post">
-                    <div class="timeline__content">
-                      <p>Started from University of Pennsylvania. This is an important stage of my career. Here I worked in the local magazine. The experience greatly affected me</p>
-                    </div>
-                  </div>
-                </div>
+                <% end %>
               </div>
-              <div class="timeline__group">
+
+              <!-- <div class="timeline__group">
                 <span class="timeline__year">2014</span>
                 <div class="timeline__box">
                   <div class="timeline__date">
@@ -53,21 +48,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="timeline__group">
-                <span class="timeline__year">2016</span>
-                <div class="timeline__box">
-                  <div class="timeline__date">
-                    <span class="timeline__day">28</span>
-                    <span class="timeline__month">Aug</span>
-                  </div>
-                  <div class="timeline__post">
-                    <div class="timeline__content">
-                      <p>Upon moving to Brooklyn that summer, I began photographing weddings in Chicago</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -75,8 +56,6 @@
 
 
     </div>
-    <div class="col-sm-8 map-final">
-
-    </div>
+    <div style="width: 60vw; height: calc(100vh - 60px);" id="map" data-markers="<%= @markers.to_json %>"></div>
   </div>
 </div>

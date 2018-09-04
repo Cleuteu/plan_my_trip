@@ -80,6 +80,15 @@ class TripsController < ApplicationController
     def final
       @trip = Trip.find(params[:trip_id])
       @events_master = Event.where(trip_id: @trip.id).where(master: true).order(:date)
+      @map_events = Event.where.not(latitude: nil, longitude: nil).where(master: true)
+      @markers = @map_events.map do |event|
+        {
+          lat: event.latitude,
+          lng: event.longitude,
+          infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+        }
+      @trip.user = current_user
+      end
     end
 
 
