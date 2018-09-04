@@ -132,7 +132,8 @@ const cy = cytoscape({
       style: {
         label: 'data(name)',
         'background-image': [
-          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
+          // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
+          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536010981/plane-solid-padded.png'
         ],
         'border-color': '#106BA5',
         'transition-property': 'background-color',
@@ -158,17 +159,18 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'color': 'black',
+        // 'color': 'black',
         'width': 60,
         'height': 60,
         'background-image': [
-          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965516/camera-retro-solid-padded.png'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996217/camera-retro-solid-padded-white.svg'
         ],
         'background-color': '#54B589',
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
         'border-width': 3,
+        // 'border-color': '#27873C',
         'border-color': '#54B589',
         'ghost': 'yes',
         'ghost-offset-x': 0,
@@ -184,17 +186,19 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'color': 'black',
+        // 'color': 'black',
         'width': 60,
         'height': 60,
         'background-image': [
-          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996660/car-solid-padded-white.svg'
+          // ''
         ],
         'background-color': '#54B589',
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
         'border-width': 3,
+        // 'border-color': '#27873C',
         'border-color': '#54B589',
         'ghost': 'yes',
         'ghost-offset-x': 0,
@@ -210,22 +214,45 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'color': 'black',
+        // 'color': 'black',
         'width': 60,
         'height': 60,
         'background-image': [
-          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965592/home-solid-padded.png'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996593/home-solid-padded-white.svg'
         ],
         'background-color': '#54B589',
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
         'border-width': 3,
+        // 'border-color': '#27873C',
         'border-color': '#54B589',
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
+      }
+    },{
+    selector: "node[category = 'Accommodation'][master = 'true'].hover",
+      style: {
+        'background-image': [
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965592/home-solid-padded.png'
+        ],
+      }
+    },{
+    selector: "node[category = 'Travel'][master = 'true'].hover",
+      style: {
+        'background-image': [
+          // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
+          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536010981/plane-solid-padded.png'
+        ],
+      }
+    },{
+    selector: "node[category = 'Activity'][master = 'true'].hover",
+      style: {
+        'background-image': [
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965516/camera-retro-solid-padded.png'
+        ],
       }
     },{
       selector: 'edge:unselected',
@@ -309,10 +336,23 @@ const cy = cytoscape({
     },{
       selector: "edge[master = 'true']",
       style: {
+        'color': '#F5F5F5',
         'line-color': '#6DB28C',
-        'width': 10,
+        'width': 4,
+        'text-background-padding': 1,
+        'line-style': 'solid',
+      }
+    },{
+      selector: "edge[master = 'true'].hover",
+      style: {
+        'color': 'black',
+        'text-background-color': '#F5F5F5',
+        'text-background-opacity': 1,
         'text-background-padding': 7,
-        'line-style': 'solid'
+        'width': 5,
+        'line-style': 'solid',
+        'transition-property': 'color, text-background-padding, width',
+        'transition-duration': 150
       }
     },{
       selector: 'core',
@@ -389,6 +429,7 @@ var makeTippy = function(node, text){
     zIndex: 1000,
     animateFill: true,
     animation: 'fade',
+    arrowTransform: 'translateX(10px)',
   } ).tooltips[0];
 };
 
