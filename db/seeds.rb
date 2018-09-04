@@ -285,7 +285,7 @@ pub_crawl_event = Event.create!(
   master: true,
   price: 50,
   position_x: 0,
-  position_y: 11*b
+  position_y: 10*b
   )
 Relationship.create!(parent_id: voiture_montreal_event.id, child_id: pub_crawl_event.id)
 
@@ -320,7 +320,7 @@ airbnb_perce_event = Event.create!(
 Relationship.create!(parent_id: voiture_perce_event.id, child_id: airbnb_perce_event.id)
 
 bateau_perce_event = Event.create!(
-  name: 'Bonaventure Island',
+  name: 'Bonaventure Isl',
   category: 'Activity',
   location: '9 Rue du Quai, Percé, QC G0C 2L0, Canada',
   date: Date.new(2018,9,23),
@@ -436,9 +436,27 @@ ride_back_montreal_event = Event.create!(
   price: 38,
   master: true,
   position_x: 0,
-  position_y: 10*b
+  position_y: 9*b
   )
 Relationship.create!(parent_id: airbnb_toronto_2_event.id, child_id: ride_back_montreal_event.id)
+
+back_flight_event = Event.create!(
+  name: 'Flight back Paris',
+  category: 'Travel',
+  location: 'Airport Montreal, Canada',
+  date: Date.new(2018,9,24),
+  duration: 3,
+  description: "Time to come back to work...",
+  url: "",
+  trip_id: trip.id,
+  master: true,
+  price: 0,
+  position_x: 0,
+  position_y: 11*b
+  )
+
+Relationship.create!(parent_id: pub_crawl_event.id, child_id: back_flight_event.id)
+
 
 
 # DERNIERES RELATIONSHIPS AVEC END
