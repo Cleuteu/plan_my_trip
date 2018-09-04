@@ -62,8 +62,7 @@ class TripsController < ApplicationController
     end
 
     def final
-      @trip = Trip.find(params[:trip_id])
-      @trip = Trip.first
+      @trip = Trip.find(params[:trip_id].to_i)
     end
 
     # Afficher les events masters dans le récapitulatif
