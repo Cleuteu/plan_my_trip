@@ -29,6 +29,11 @@
     <%#= render partial: 'events/modal_showevent', locals: {event: event, trip: @trip} %>
   </div> -->
 
+  <!-- LINK POUR PASSER L'EVENT EN MASTER -->
+  <%= link_to switch_master_event_path(event), :method => :patch, id: "switch_master#{event.id}" do %>
+  <% end %>
+
+
   <div class="modal fade" id="update_event<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <%= render partial: 'events/modal_form', locals: { trip: @trip, event: event, events_parents: @events_parents, events_children: @events_children } %>
   </div>
@@ -58,11 +63,13 @@
 
       <div class="d-flex justify-content-between">
         <div style="padding-bottom: 1px;">
+        <% if event.child_ids.count < 2 %>
           <button type="button" class="btn btn-light modal-header-btn-right add-branch-button" data-toggle="modal" data-target="#addBranch">
             <!-- <i class="fas fa-code-branch"></i> -->
             <i class="fas fa-plus-circle"></i>
             Alternative
           </button>
+        <% end %>
           <button type="button" class="btn btn-light modal-header-btn-right" data-toggle="modal" data-target="#update_event<%= event.id %>">
             <i class="far fa-edit"></i>
           </button>

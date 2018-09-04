@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     get 'final', to: 'trips#final', as: :final
     resources :events, only: [:create, :edit, :update, :destroy]
   end
-  resources :events, only: [:index]
+  resources :events, only: [:index] do
+    member do
+      patch :switch_master
+    end
+  end
 end

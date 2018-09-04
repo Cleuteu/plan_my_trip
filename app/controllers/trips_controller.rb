@@ -26,7 +26,6 @@ class TripsController < ApplicationController
   end
 
   def show
-    @event_show = Event.all[3]
     @event = Event.new
     @trip = Trip.find(params[:id])
     @events_parents = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:parent_id))
@@ -77,8 +76,8 @@ class TripsController < ApplicationController
     @markers = @map_events.map do |event|
       {
         lat: event.latitude,
-        lng: event.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        lng: event.longitude,
+        infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
       }
     end
   end

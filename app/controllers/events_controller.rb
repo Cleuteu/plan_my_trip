@@ -8,6 +8,9 @@ class EventsController < ApplicationController
     @parent_id = params[:event][:parent_ids]
     @child_id = params[:event][:child_ids]
     @parent_event = Event.find(@parent_id)
+    @child_event = Event.find(@child_id)
+
+
 
     #Création de la position et update des positions des descendants
     #Position de l'event créé
@@ -24,12 +27,15 @@ class EventsController < ApplicationController
       elsif Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x - a
       else
-        raise
+        flash[:alert] = "Can't add an event here, sorry!"
+        render 'trips/show'
       end
     #Si branche exitante - mono branche
     else
       @event.position_x = @parent_event.position_x
       @events.each { |event| event.update!(position_y: event.position_y + 150) }
+    # Détection de master
+    @event.master = true if @parent_event.master == true && @child_event.master == true
     end
 
 
@@ -48,49 +54,6 @@ class EventsController < ApplicationController
    def update
     @event = Event.find(params[:id])
     @trip = Trip.find(params[:trip_id])
-    current_nodes = []
-
-    #Changement de l'état master
-    #Activation master
-    if event_params[:master] == "1"
-      parent_parent_count = @event.relationships_as_child.count
-      parent_child_count = @event.relationships_as_child.count
-      child_child_count =  @event.relationships_as_parent.count
-      child_parent_count = @event.relationships_as_child.count
-      parent_event = @event
-      child_event = @event
-      current_nodes << child_event
-      current_nodes << parent_event
-      while (parent_parent_count == 1 && parent_child_count == 1)
-        #Remonte la branche
-        parent_event = parent_event.relationships_as_child.first.parent
-        parent_parent_count = parent_event.relationships_as_child.count
-        parent_child_count = parent_event.relationships_as_parent.count
-        parent_event.update!(master: true)
-        current_nodes << parent_event
-      end
-      while (child_parent_count == 1 && child_child_count == 1)
-        #Descend la branche
-        child_event = child_event.relationships_as_parent.first.child
-        child_child_count = child_event.relationships_as_parent.count
-        child_parent_count = child_event.relationships_as_child.count
-        child_event.update!(master: true)
-        current_nodes << child_event
-      end
-
-      #Désactivation de la master dynamique
-
-
-      event_array = []
-
-      while (parent_event != child_event)
-        parent_event = parent_event.relationships_as_parent.first.child
-        event_array << parent_event
-      end
-      event_array.pop
-      event_array.each { |event| event.update!(master:false) }
-    end
-
 
     if @event.update!(event_params)
       redirect_to trip_path(@trip)
@@ -114,23 +77,54 @@ class EventsController < ApplicationController
       flash[:success] = "Event deleted"
       redirect_to trip_path(@trip)
     end
+  end
 
-    # @event_to_delete = Event.find(params[:id])
-    # @branch = Branch.find(params[:branch_id])
-    # branch_events = BranchEvent.where(event_id: @event_to_delete.id)
-    # @event_to_delete_parent = branch_events.first.parent_event
-    # branch_events.each do |branch_event|
-    #   branch_event.event_id = @event_to_delete_parent
-    #   branch_event.parent_event = Event.find(@event_to_delete.branch_events.first.parent_event)
-    #   branch_event.save
-    # end
-    # branch_event_children = BranchEvent.where(parent_event: @event_to_delete.id)
-    # branch_event_children.each do |branch_event_child|
-    #   branch_event_child.parent_event = @event_to_delete_parent
-    #   branch_event_child.save
-    # end
-    # @event_to_delete.destroy!
-    # redirect_to trip_path(@branch.trip)
+  def switch_master
+    @event = Event.find(params[:id])
+    @trip = @event.trip_id
+    @event.master = true
+    @event.save
+
+    current_nodes = []
+
+    #Changement de l'état master
+    #Activation master
+    parent_parent_count = @event.relationships_as_child.count
+    parent_child_count = @event.relationships_as_child.count
+    child_child_count =  @event.relationships_as_parent.count
+    child_parent_count = @event.relationships_as_child.count
+    parent_event = @event
+    child_event = @event
+    current_nodes << child_event
+    current_nodes << parent_event
+    while (parent_parent_count == 1 && parent_child_count == 1)
+      #Remonte la branche
+      parent_event = parent_event.relationships_as_child.first.parent
+      parent_parent_count = parent_event.relationships_as_child.count
+      parent_child_count = parent_event.relationships_as_parent.count
+      parent_event.update!(master: true)
+      current_nodes << parent_event
+    end
+    while (child_parent_count == 1 && child_child_count == 1)
+      #Descend la branche
+      child_event = child_event.relationships_as_parent.first.child
+      child_child_count = child_event.relationships_as_parent.count
+      child_parent_count = child_event.relationships_as_child.count
+      child_event.update!(master: true)
+      current_nodes << child_event
+    end
+
+    #Désactivation de la master dynamique
+    event_array = []
+
+    while (parent_event != child_event)
+      parent_event = parent_event.relationships_as_parent.first.child
+      event_array << parent_event
+    end
+    event_array.pop
+    event_array.each { |event| event.update!(master:false) }
+
+    redirect_to trip_path(@trip)
   end
 
   private
