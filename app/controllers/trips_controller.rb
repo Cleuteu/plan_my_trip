@@ -26,7 +26,6 @@ class TripsController < ApplicationController
   end
 
   def show
-    @event_show = Event.all[3]
     @event = Event.new
     @trip = Trip.find(params[:id])
     @events_parents = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:parent_id))
@@ -60,6 +59,10 @@ class TripsController < ApplicationController
         @array_nodes << hash_nodes
         hash_nodes = {}
       end
+    end
+
+    def final
+      @trip = Trip.find(params[:trip_id].to_i)
     end
 
     # Afficher les events masters dans le récapitulatif
