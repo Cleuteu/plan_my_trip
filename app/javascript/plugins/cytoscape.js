@@ -12,6 +12,16 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
+// elements.push({ data:
+//                   { id: "-1",
+//                     name: "Start",
+//                     category: "admin",
+//                     master: true
+//                   },
+//                   position: { x: 0, y: 0 }
+//                 },
+//                 );
+
 // console.log(nodes)
 // console.log(relationships)
 
@@ -46,7 +56,7 @@ relationships.forEach((relationship) => {
   i += 1;
   });
 
-// console.log(elements)
+console.log(elements)
 
 const cy = cytoscape({
   container: document.getElementById('cy'),
@@ -478,7 +488,7 @@ var makeTippyEdge = function(edge, text){
 
 let tippy_edge = null;
 cy.on('mouseover', 'edge', (e) => {
-  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent"> + Add an experience </p>')
+  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent"> +</p>')
   tippy_edge.show();
 });
 cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });

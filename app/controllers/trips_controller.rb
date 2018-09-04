@@ -30,11 +30,30 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @events_parents = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:parent_id))
     @events_children = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:child_id))
+    @start_event = Event.find_by(name: 'Start')
+    @end_event = Event.find_by(name: 'End')
 
     # Envoie des datas au JS de Cytoscape
     @relationships = Relationship.where(parent: @trip.events)
     @array_relationships = []
     @array_nodes = []
+    @array_nodes << {
+                      id: @start_event.id,
+                      name: @start_event.name,
+                      category: @start_event.category,
+                      master: @start_event.master,
+                      position_x: 0,
+                      position_y: -150
+                    }
+    @array_nodes << {
+                      id: @end_event.id,
+                      name: @end_event.name,
+                      category: @end_event.category,
+                      master: @end_event.master,
+                      position_x: 0,
+                      position_y: 12*150
+                    }
+
     hash_relationship = {}
     hash_nodes = {}
     @relationships.each do |relationship|

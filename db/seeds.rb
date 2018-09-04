@@ -47,7 +47,7 @@ puts 'Creating Canadian trip...'
 trip = Trip.new(
     name: 'Road trip Canada',
     start_location: 'Montreal',
-    end_location: 'Montereal',
+    end_location: 'Montreal',
     start_date: Date.new(2018,9,20),
     end_date: Date.new(2018,9,24)
     # reset_password_token: '',
@@ -65,25 +65,6 @@ user_trip.user = user
 user_trip.trip = trip
 user_trip.save!
 
-event_start = Event.new(name: "Start", category: "settings", date: trip.start_date, location: trip.start_location, trip_id: trip.id, duration: 1, price: 0, master: true)
-event_start.save!
-event_end = Event.new(name: "End", category: "settings", date: trip.end_date, location: trip.end_location, trip_id: trip.id, duration: 1, price: 0, master: true)
-event_end.save!
-
-
-# def event_create(params)
-#   @event = Event.new(event_params)
-#   @trip = Trip.find(params[:trip_id])
-#   @event.trip_id = @trip.id
-#   @parent_id = params[:event][:parent_ids]
-#   @child_id = params[:event][:child_ids]
-#   @event.save!
-#   @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
-#   @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
-#   Relationship.destroy(Relationship.where(parent_id: @parent_id, child_id: @child_id).first.id)
-# end
-
-
 puts 'Creating Canadian trip events ...'
 
 #Pas pour positions x
@@ -91,6 +72,32 @@ a = 300
 #En y
 b = 150
 
+event_start = Event.new(
+                        position_x: 0,
+                        position_y: -b,
+                        name: "Start",
+                        category: "Setting",
+                        date: trip.start_date,
+                        location: trip.start_location,
+                        trip_id: trip.id,
+                        duration: 1,
+                        price: 0,
+                        master: true
+                        )
+event_start.save!
+event_end = Event.new(
+                      position_x: 0,
+                      position_y: 12*b,
+                      name: "End",
+                      category: "Setting",
+                      date: trip.end_date,
+                      location: trip.end_location,
+                      trip_id: trip.id,
+                      duration: 1,
+                      price: 0,
+                      master: true
+                      )
+event_end.save!
 
 flight_to_montreal = Event.create!(
   name: 'Flight to Montreal',
@@ -456,7 +463,7 @@ back_flight_event = Event.create!(
   )
 
 Relationship.create!(parent_id: pub_crawl_event.id, child_id: back_flight_event.id)
-
+Relationship.create!(parent_id: back_flight_event.id, child_id: event_end.id)
 
 
 # DERNIERES RELATIONSHIPS AVEC END
