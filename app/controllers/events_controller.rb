@@ -45,9 +45,10 @@ class EventsController < ApplicationController
     end
   end
 
-  def update
+   def update
     @event = Event.find(params[:id])
     @trip = Trip.find(params[:trip_id])
+    current_nodes = []
 
     #Changement de l'état master
     #Activation master
@@ -58,12 +59,15 @@ class EventsController < ApplicationController
       child_parent_count = @event.relationships_as_child.count
       parent_event = @event
       child_event = @event
+      current_nodes << child_event
+      current_nodes << parent_event
       while (parent_parent_count == 1 && parent_child_count == 1)
         #Remonte la branche
         parent_event = parent_event.relationships_as_child.first.parent
         parent_parent_count = parent_event.relationships_as_child.count
         parent_child_count = parent_event.relationships_as_parent.count
         parent_event.update!(master: true)
+        current_nodes << parent_event
       end
       while (child_parent_count == 1 && child_child_count == 1)
         #Descend la branche
@@ -71,7 +75,29 @@ class EventsController < ApplicationController
         child_child_count = child_event.relationships_as_parent.count
         child_parent_count = child_event.relationships_as_child.count
         child_event.update!(master: true)
+        current_nodes << child_event
       end
+
+      #Désactivation de la master dynamique
+
+
+      # event_array = []
+
+      # while (parent_event != child_event)
+      #   parent_event = parent_event.relationships_as_parent.first.child
+      #   event_array << parent_event
+      # end
+      # event_array.pop
+      # event_array.each { |event| event.update!(master:false) }
+
+    #Désactivation master
+    if event_params[:master] == "0"
+      parent_event = @event
+      child_event = @event
+
+
+
+    end
     end
 
     #Désactivation master
