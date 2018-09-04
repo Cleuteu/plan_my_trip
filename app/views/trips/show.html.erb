@@ -14,7 +14,7 @@
   <div class="main-panel d-flex">
     <%= render 'shared/dashboard_navbar' %>
     <%= render 'cytoscape' %>
-    <div width="260px" height="260px" id="map" data-markers="<#%= @markers.to_json %>"></div>
+    <div width="260px" height="260px" id="map" data-markers="<%= @markers.to_json %>"></div>
   </div>
 
   <%= render partial: 'treep_branches' %>
