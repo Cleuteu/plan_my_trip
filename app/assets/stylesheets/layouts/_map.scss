@@ -1,6 +1,7 @@
 #map {
   width: 260px;
-  height: 260px;
-  // position: absolute;
-  // bottom: 0px;
+  height: 100vh;
+  position: sticky !important;
+  top: 0 !important;
+  margin-bottom: -18px;
 }
