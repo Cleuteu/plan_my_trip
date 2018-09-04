@@ -29,6 +29,11 @@
     <%#= render partial: 'events/modal_showevent', locals: {event: event, trip: @trip} %>
   </div> -->
 
+  <!-- LINK POUR PASSER L'EVENT EN MASTER -->
+  <%= link_to switch_master_event_path(event), :method => :patch, id: "switch_master#{event.id}" do %>
+  <% end %>
+
+
   <div class="modal fade" id="update_event<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <%= render partial: 'events/modal_form', locals: { trip: @trip, event: event, events_parents: @events_parents, events_children: @events_children } %>
   </div>
@@ -40,10 +45,10 @@
         <div>
           <h6><%= event.name %></h6>
           <p><%= event.date.to_time.strftime("%b %d") %> - <%= event.date.to_time.strftime("%b %d") %></p>
-          <%= simple_form_for [@trip, event] do |f| %>
-            <%= f.input :master, :label => "" %>
-            <%= f.submit "Submit", class: "btn btn-light" %>
-          <% end %>
+          <%#= simple_form_for [@trip, event] do |f| %>
+            <%#= f.input :master, :label => "" %>
+            <%#= f.submit "Submit", class: "btn btn-light" %>
+          <%# end %>
         </div>
         <%= image_tag("montreal.jpg", height: "135px")%>
       </div>
