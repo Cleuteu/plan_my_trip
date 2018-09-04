@@ -472,7 +472,6 @@ var makeTippyEdge = function(edge, text){
     zIndex: 1000,
     animateFill: true,
     animation: 'fade',
-    interactiveBorder: 30000,
   } ).tooltips[0];
 };
 
