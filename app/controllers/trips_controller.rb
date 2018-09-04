@@ -68,7 +68,7 @@ class TripsController < ApplicationController
     @events_master.each { |event| @total_price += event.price if event.price.present?}
 
     # Pour afficher sur la trip-show la map avec des points sur chaque event
-    @map_events = Event.where.not(latitude: nil, longitude: nil)
+    @map_events = Event.where.not(latitude: nil, longitude: nil).where(master: true)
     @markers = @map_events.map do |event|
       {
         lat: event.latitude,
