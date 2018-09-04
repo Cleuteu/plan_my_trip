@@ -32,11 +32,6 @@ function validateRadio(radios)
     return false;
 }
 
-console.log(formAddEvent["event[category]"][0].checked)
-console.log(formAddEvent["event[category]"][1].checked)
-console.log(formAddEvent["event[category]"][2].checked)
-console.log(formAddEvent["event[category]"][3].checked)
-
 const enableButton = () => {
   const all = allFilled();
   console.log(all);
