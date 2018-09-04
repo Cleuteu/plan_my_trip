@@ -17,7 +17,7 @@
           <legend class="col-form-label pt-0">Category
             <abbr title="required">*</abbr>
           </legend>
-          <input type="hidden" name="event[category]" value="">
+          <input type="hidden" name="event[category]" value="" id="event_category">
             <div class="radio-categories">
               <div class="category-choices">
 
@@ -25,19 +25,18 @@
                     <input class="form-check-input is-valid radio_buttons required" id="edit_event_accommodation<%= event.id %>" type="radio" value="Accommodation" name="event[category]">
                       <label class="collection_radio_buttons category-choice" for="edit_event_accommodation<%= event.id %>"><i class="icon-category fas fa-home"></i>
                       </label>
-
                   </div>
 
                   <div class="form-check">
-                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_travel<%= event.id %>" type="radio" value="Travel" checked="checked" name="event[category]">
+                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_travel<%= event.id %>" type="radio" value="Travel" name="event[category]">
                       <label class="collection_radio_buttons category-choice" for="edit_event_travel<%= event.id %>"><i class="icon-category fas fa-car"></i>
                       </label>
                   </div>
 
-                  <div class="form-check"><input class="form-check-input is-valid radio_buttons required" id="edit_event_activity<%= event.id %>" type="radio" value="Activity" name="event[category]">
+                  <div class="form-check">
+                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_activity<%= event.id %>" type="radio" value="Activity" name="event[category]">
                       <label class="collection_radio_buttons category-choice" for="edit_event_activity<%= event.id %>"><i class="icon-category fas fa-camera-retro"></i>
-                    </label>
-
+                      </label>
               </div>
               </div>
             </div>
@@ -49,7 +48,7 @@
             <%= f.input :location, input_html: { class: "event_location", placeholder: 'e.g., 1600 Pennsylvania Ave NW, Washington, DC 20500, États-Unis', id: event.id ? "edit_event_location#{event.id}" : "event_location#{event.id}" } %>
           </div>
           <div class="col-md-6">
-            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", id: event.id ? "edit_event_date#{event.id}" : "event_date#{event.id}"} %>
+            <%= f.input :date, as: :string, required: true, input_html: {class: "datepicker", id: event.id ? "edit_event_date#{event.id}" : "event_date#{event.id}"} %>
           </div>
         </div>
 
@@ -68,7 +67,7 @@
         <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "edit_event_parent_id#{event.id}" : "event_parent_id#{event.id}" } %>
     </div>
     <div class="modal-footer footer-btn-center">
-      <%= f.submit "Add event", class: "btn btn-primary" %>
+      <%= f.submit "Add event", class: "btn btn-primary add-event-submit", disabled: true %>
       <% end %>
     </div>
   </div>
