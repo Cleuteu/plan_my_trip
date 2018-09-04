@@ -332,7 +332,7 @@ const cy = cytoscape({
     },{
       selector: 'edge.hover',
       style: {
-        label: '+',
+        label: '',
         'color': 'black',
         'text-background-color': '#FFFFFF',
         'text-background-opacity': 1,
@@ -470,16 +470,22 @@ var makeTippyEdge = function(edge, text){
       return myTemplate;
     })(),
     trigger: 'manual',
-    placement: 'left',
     distance: 10,
     arrow: true,
+    arrowTransform: 'scaleX(0)',
     sticky: true,
     hideOnClick: false,
     minHeight: 60,
     maxWidth: 30,
+    theme: 'addevent',
     interactive: true,
+    popperOptions: {
+      modifiers: {
+            inner: { enabled: true },
+            preventOverflow: { enabled: false, padding: 0 },
+      }
+    },
     multiple: true,
-    offset: '10, 0',
     zIndex: 1000,
     animateFill: true,
     animation: 'fade',
@@ -488,32 +494,32 @@ var makeTippyEdge = function(edge, text){
 
 let tippy_edge = null;
 cy.on('mouseover', 'edge', (e) => {
-  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent"> +</p>')
+  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent"><i class="fas fa-plus-circle"></i></p>')
   tippy_edge.show();
 });
 cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
 
 // CLICK ON EDGE TO SWITCH EDGE TO MASTER
-cy.on('click', 'edge', (evt) => {
-  let event_node_id_master = evt.target.id();
-  event_node_id_master = event_node_id_master.split("-");
-  let event_parent_id_master = event_node_id_master[0];
-  let event_child_id_master = event_node_id_master[1];
-  let parent_node = cy.elements(`node#${event_parent_id_master}`);
-  let child_node = cy.elements(`node#${event_child_id_master}`);
-  if (parent_node.data("master") === "true" && child_node.data("master") === "true" ) {
-    // Both nodes are master = true. Do nothing
-  } else if (parent_node.connectedEdges().length > child_node.connectedEdges().length) {
-    // Give child node because he has less edges
-    document.getElementById('switch_master'+child_node.data("id")).click();
-  } else if (parent_node.connectedEdges().length < child_node.connectedEdges().length) {
-    // Give parent node because he has less edges
-    document.getElementById('switch_master'+parent_node.data("id")).click();
-  } else {
-    // Both nodes are master = false and have the same number of edges. Give parent or child node
-    document.getElementById('switch_master'+child_node.data("id")).click();
-  }
-});
+// cy.on('click', 'edge', (evt) => {
+//   let event_node_id_master = evt.target.id();
+//   event_node_id_master = event_node_id_master.split("-");
+//   let event_parent_id_master = event_node_id_master[0];
+//   let event_child_id_master = event_node_id_master[1];
+//   let parent_node = cy.elements(`node#${event_parent_id_master}`);
+//   let child_node = cy.elements(`node#${event_child_id_master}`);
+//   if (parent_node.data("master") === "true" && child_node.data("master") === "true" ) {
+//     // Both nodes are master = true. Do nothing
+//   } else if (parent_node.connectedEdges().length > child_node.connectedEdges().length) {
+//     // Give child node because he has less edges
+//     document.getElementById('switch_master'+child_node.data("id")).click();
+//   } else if (parent_node.connectedEdges().length < child_node.connectedEdges().length) {
+//     // Give parent node because he has less edges
+//     document.getElementById('switch_master'+parent_node.data("id")).click();
+//   } else {
+//     // Both nodes are master = false and have the same number of edges. Give parent or child node
+//     document.getElementById('switch_master'+child_node.data("id")).click();
+//   }
+// });
 
 // TEST AIGUILLAGE POUR SWITCH MASTER
 
