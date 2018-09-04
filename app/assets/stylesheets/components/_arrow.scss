@@ -1,0 +1,9 @@
+.arrow i {
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 25px;
+  transition: all 0.7s ease;
+}
+.arrow i:hover {
+  transform: rotateZ(-180deg);
+}

@@ -275,7 +275,7 @@ const cy = cytoscape({
         'font-weight': '900',
         'font-size': '48',
         'color': '#F5F5F5',
-        'width': 6,
+        'width': 7,
         'line-color': 'gray',
         'line-style': 'dashed',
         'overlay-color': 'gray',
@@ -298,7 +298,7 @@ const cy = cytoscape({
         'font-weight': '900',
         'font-size': '48',
         'color': '#F5F5F5',
-        'width': 6,
+        'width': 7,
         'line-color': 'gray',
         'line-style': 'dashed',
         'overlay-color': 'gray',
@@ -332,37 +332,24 @@ const cy = cytoscape({
     },{
       selector: 'edge.hover',
       style: {
-        label: '',
-        'color': 'black',
-        'text-background-color': '#FFFFFF',
-        'text-background-opacity': 1,
-        'text-background-padding': 7,
         'line-style': 'dotted',
-        'line-color': '#5A6268',
-        'width': 7,
-        'transition-property': 'color, text-background-padding, line-color, width',
-        'transition-duration': 150
+        // 'line-color': '#5A6268',
+        'line-color': 'black',
+        'width': 9,
+        'transition-property': 'line-style, line-color',
+        'transition-duration': 250
       }
     },{
       selector: "edge[master = 'true']",
       style: {
-        'color': '#F5F5F5',
         'line-color': '#6DB28C',
-        'width': 7,
-        'text-background-padding': 1,
+        'width': 8,
         'line-style': 'solid',
       }
     },{
       selector: "edge[master = 'true'].hover",
       style: {
-        'color': 'black',
-        'text-background-color': '#FFFFFF',
-        'text-background-opacity': 1,
-        'text-background-padding': 7,
-        'width': 8,
-        'line-style': 'solid',
-        'transition-property': 'color, text-background-padding, width',
-        'transition-duration': 150
+        'width': 10,
       }
     },{
       selector: 'core',
@@ -494,7 +481,7 @@ var makeTippyEdge = function(edge, text){
 
 let tippy_edge = null;
 cy.on('mouseover', 'edge', (e) => {
-  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent"><i class="fas fa-plus-circle"></i></p>')
+  tippy_edge = makeTippyEdge(e.target, '<div id="add-node" data-toggle="modal" data-target="#addEvent"><i class="fas fa-plus-circle"></i></div>')
   tippy_edge.show();
 });
 cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
@@ -523,7 +510,7 @@ cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
 
 // TEST AIGUILLAGE POUR SWITCH MASTER
 
-let node_test = cy.elements("node#121")
+let node_test = cy.elements("node#145")
 console.log(node_test)
 
 let ref = node_test.popperRef();
@@ -553,7 +540,7 @@ var makeTippySwitch = function(text){
   } ).tooltips[0];
 };
 
-let tippy_switch = makeTippySwitch('<div class="arrow-container"><i class="fa fa-arrow-left"></i></div>')
-// let tippy_switch = makeTippySwitch('<div class="arrow-container"><i class="fa fa-arrow-right"></i></div>')
+let tippy_switch = makeTippySwitch('<div class="arrow"><i class="fa fa-arrow-left"></i></div>')
+// let tippy_switch = makeTippySwitch('<div class="arrow"><i class="fa fa-arrow-right"></i></div>')
 
 tippy_switch.show();
