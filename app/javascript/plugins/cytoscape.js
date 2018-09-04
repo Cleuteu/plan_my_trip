@@ -12,7 +12,7 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
-// console.log(nodes)
+console.log(nodes)
 // console.log(relationships)
 
 
@@ -22,7 +22,9 @@ nodes.forEach((node) => {
                   { id: nodes[y].id,
                     name: nodes[y].name,
                     category: nodes[y].category,
-                    master: nodes[y].master
+                    master: nodes[y].master,
+                    switch: nodes[y].switch,
+                    switch_state: nodes[y].switch_state
                   },
                   position: { x: nodes[y].position_x, y: nodes[y].position_y }
                 },
@@ -459,7 +461,7 @@ var makeTippyEdge = function(edge, text){
     popperOptions: {
       modifiers: {
             inner: { enabled: true },
-            preventOverflow: { enabled: false, padding: 0 },
+            // preventOverflow: { enabled: false, padding: 0 },
       }
     },
     multiple: true,
@@ -500,13 +502,18 @@ cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
 
 // TEST AIGUILLAGE POUR SWITCH MASTER
 
-let node_test = cy.elements("node#145")
-console.log(node_test)
+let switch_nodes = cy.elements("node[switch = 1]")
 
-let ref = node_test.popperRef();
+let ref_array = [];
+let ref = switch_nodes.forEach((node) => {
+  let element = {};
+  element.ref_popper = node.popperRef();
+  element.node = node;
+  ref_array.push(element);
+});
 
-var makeTippySwitch = function(text){
-  return tippy( ref, {
+var makeTippySwitch = function(node_ref, text){
+  return tippy( node_ref, {
     html: (function(){
       const myTemplate = document.createElement('div');
 
@@ -530,7 +537,12 @@ var makeTippySwitch = function(text){
   } ).tooltips[0];
 };
 
-let tippy_switch = makeTippySwitch('<div class="arrow"><i class="fa fa-arrow-left"></i></div>')
-// let tippy_switch = makeTippySwitch('<div class="arrow"><i class="fa fa-arrow-right"></i></div>')
-
-tippy_switch.show();
+ref_array.forEach((ref_node) => {
+  if (ref_node["node"].data("switch_state" === "left")) {
+    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow-container"><i class="fa fa-arrow-left"></i></div>');
+    tippy_switch.show();
+  } else {
+    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow-container"><i class="fa fa-arrow-right"></i></div>');
+    tippy_switch.show();
+  };
+});
