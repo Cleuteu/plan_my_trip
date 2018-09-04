@@ -51,7 +51,7 @@ class TripsController < ApplicationController
                       category: @end_event.category,
                       master: @end_event.master,
                       position_x: 0,
-                      position_y: 12*150
+                      position_y: @end_event.position_y
                     }
 
     hash_relationship = {}
@@ -69,16 +69,36 @@ class TripsController < ApplicationController
       @array_relationships << hash_relationship
       hash_relationship = {}
       unless @array_nodes.include?(relationship.child_id)
-        hash_nodes[:id] = Event.find(relationship.child_id).id
-        hash_nodes[:name] = Event.find(relationship.child_id).name
-        hash_nodes[:category] = Event.find(relationship.child_id).category
-        hash_nodes[:master] = Event.find(relationship.child_id).master.to_s
-        hash_nodes[:position_x] = Event.find(relationship.child_id).position_x
-        hash_nodes[:position_y] = Event.find(relationship.child_id).position_y
+        event = Event.find(relationship.child_id)
+        hash_nodes[:id] = event.id
+        hash_nodes[:name] = event.name
+        hash_nodes[:category] = event.category
+        hash_nodes[:master] = event.master.to_s
+        hash_nodes[:position_x] = event.position_x
+        hash_nodes[:position_y] = event.position_y
+        if event.relationships_as_parent.count >= 2 && event.master
+          hash_nodes[:switch] = 1
+          comp_x = event.relationships_as_parent[1].child.position_x - event.relationships_as_parent.first.child.position_x
+          #Si 1er enfant à gauche
+          if comp_x > 0
+            #Et 1er enfant master
+            event.relationships_as_parent.first.child.master ? hash_nodes[:switch_state] = "left" : hash_nodes[:switch_state] = "right"
+            #Si 1er enfant à droite
+          else
+            #Et 1er enfant master
+            event.relationships_as_parent.first.child.master ? hash_nodes[:switch_state] = "right" : hash_nodes[:switch_state] = "left"
+          end
+        else
+          hash_nodes[:switch] = 0
+        end
+
         @array_nodes << hash_nodes
         hash_nodes = {}
       end
     end
+
+    @array_nodes_toggle = []
+    Event.all.each { |event| @array_nodes_toggle << event if event.relationships_as_parent.count >= 2 }
 
     # Afficher les events masters dans le récapitulatif
     @events_master = Event.where(trip_id: @trip.id).where(master: true).order(:date)

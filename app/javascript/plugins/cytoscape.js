@@ -12,17 +12,7 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
-// elements.push({ data:
-//                   { id: "-1",
-//                     name: "Start",
-//                     category: "admin",
-//                     master: true
-//                   },
-//                   position: { x: 0, y: 0 }
-//                 },
-//                 );
-
-// console.log(nodes)
+console.log(nodes)
 // console.log(relationships)
 
 
