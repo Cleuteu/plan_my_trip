@@ -1,31 +1,59 @@
 <div class="container-index">
-  <div class="row">
+  <div class="container">
+    <div class="row">
 
-    <div class="col-lg">
-      <% @trips.each do |trip| %>
-
+      <div class="col-lg">
         <figure class="front">
-          <img src="https://images.unsplash.com/photo-1518929794142-503f5015bad6" alt="front" height="260px", width="433px">
+          <%= image_tag('front.jpg') %>
           <div class="caption">
-            <h2><span><%= trip.name %></span></h2>
-            <p>Manage trip</p>
-            <%= link_to trip.name, trip_path(trip) %>
+            <h2><span class="add-trip-symbol"><i class="fas fa-plus-circle"></i></span></h2>
+            <p>Add new trip</p>
+            <%= link_to "New trip", new_trip_path(@trip) %>
           </div>
         </figure>
+      </div>
 
-      <% end %>
+      <div class="col-lg">
+        <% @trips.each do |trip| %>
+          <figure class="front">
+            <img src="https://images.unsplash.com/photo-1519885277449-12eee5564d68" width="433px">
+            <div class="caption">
+              <h2><span><%= trip.name %> <br> </span></h2>
+              <h6><%= trip.start_date.to_time.strftime("%b %d") %> - <%= trip.end_date.to_time.strftime("%b %d") %></h6>
+              <p>Manage trip</p>
+              <%= link_to trip.name, trip_path(trip) %>
+            </div>
+          </figure>
+
+        <% end %>
+      </div>
+
+      <div class="col-lg">
+        <figure class="front">
+          <img src="https://images.unsplash.com/photo-1520874628750-bed9c0a19086" width="433px">
+          <div class="caption">
+            <h2><span>Journey to Italy</span></h2>
+            <h6>Mar 8 - Apr 1</h6>
+            <p>Manage trip</p>
+            <a href=""></a>
+          </div>
+        </figure>
+      </div>
+
+      <div class="col-lg">
+        <figure class="front">
+          <!-- <img src="https://www.disruptsports.com/wp-content/uploads/2017/01/tumblr_m4c5qjDeYA1qmt1tmo1_500.jpg" width="433px"> -->
+          <img src="http://www.epicgapyear.com/wp-content/uploads/2016/11/south-afriac-mozambique-surf-trip-adventure-surfing-camp-ticket-to-ride-gap-year.jpg"
+          height="260px">
+          <div class="caption">
+            <h2><span>Surf trip Morroco</span></h2>
+            <h6>Jan 3 - Jan 28</h6>
+            <p>Manage trip</p>
+            <a href=""></a>
+          </div>
+        </figure>
+      </div>
+
     </div>
-
-    <div class="col-lg">
-      <figure class="front">
-        <img src="http://www.jboeijenga.nl/img/front.jpg" alt="front">
-        <div class="caption">
-          <h2><span class="add-trip-symbol">+</span></h2>
-          <p>Add new trip</p>
-          <%= link_to "New trip", new_trip_path(@trip) %>
-        </div>
-      </figure>
-    </div>
-
   </div>
 </div>

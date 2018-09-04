@@ -3,14 +3,40 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @trip = Trip.find(params[:trip_id])
+    authorize @event
     @event.trip_id = @trip.id
     @parent_id = params[:event][:parent_ids]
     @child_id = params[:event][:child_ids]
-    if @event.save!
+    @parent_event = Event.find(@parent_id)
+
+    #Création de la position et update des positions des descendants
+    #Position de l'event créé
+    event_position_y = @parent_event.position_y + 150
+    @events = Event.where("position_y >= ?", event_position_y)
+    @event.position_y = event_position_y
+    #Positions des events descendants
+    #Si nouvelle branche:
+    if Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
+      # @parent_event.position_x > 0? a = 300 : a = -300
+      a = 300
+      if Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).empty?
+        @event.position_x = @parent_event.position_x + a
+      elsif Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y).empty?
+        @event.position_x = @parent_event.position_x - a
+      else
+        raise
+      end
+    #Si branche exitante - mono branche
+    else
+      @event.position_x = @parent_event.position_x
+      @events.each { |event| event.update!(position_y: event.position_y + 150) }
+    end
+
+
+    if @event.save
       @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
       @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
-      if Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
-      else
+      unless Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
         Relationship.destroy(Relationship.where(parent_id: @parent_id, child_id: @child_id).first.id)
       end
       redirect_to trip_path(@trip)
@@ -22,28 +48,58 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @trip = Trip.find(params[:trip_id])
+
+    #Changement de l'état master
+    #Activation master
     if event_params[:master] == "1"
-      parent_count = @event.relationships_as_child.count
-      child_count = @event.relationships_as_child.count
+      parent_parent_count = @event.relationships_as_child.count
+      parent_child_count = @event.relationships_as_child.count
+      child_child_count =  @event.relationships_as_parent.count
+      child_parent_count = @event.relationships_as_child.count
       parent_event = @event
-      while (parent_count == 1 && child_count == 1)
+      child_event = @event
+      while (parent_parent_count == 1 && parent_child_count == 1)
+        #Remonte la branche
         parent_event = parent_event.relationships_as_child.first.parent
-        parent_count = parent_event.relationships_as_child.count
-        child_count = parent_event.relationships_as_parent.count
+        parent_parent_count = parent_event.relationships_as_child.count
+        parent_child_count = parent_event.relationships_as_parent.count
         parent_event.update!(master: true)
       end
-    end
-    if event_params[:master] == "0"
-      parent_count = @event.relationships_as_child.count
-      child_count = @event.relationships_as_child.count
-      parent_event = @event
-      while (parent_count == 1 && child_count == 1)
-        parent_event = parent_event.relationships_as_child.first.parent
-        parent_count = parent_event.relationships_as_child.count
-        child_count = parent_event.relationships_as_parent.count
-        parent_event.update!(master: false)
+      while (child_parent_count == 1 && child_child_count == 1)
+        #Descend la branche
+        child_event = child_event.relationships_as_parent.first.child
+        child_child_count = child_event.relationships_as_parent.count
+        child_parent_count = child_event.relationships_as_child.count
+        child_event.update!(master: true)
       end
     end
+
+    #Désactivation master
+    if event_params[:master] == "0"
+      parent_parent_count = @event.relationships_as_child.count
+      parent_child_count = @event.relationships_as_child.count
+      child_child_count =  @event.relationships_as_parent.count
+      child_parent_count = @event.relationships_as_child.count
+      parent_event = @event
+      child_event = @event
+      while (parent_parent_count == 1 && parent_child_count == 1)
+        #Remonte la branche
+        parent_event = parent_event.relationships_as_child.first.parent
+        parent_parent_count = parent_event.relationships_as_child.count
+        parent_child_count = parent_event.relationships_as_parent.count
+        parent_event.update!(master: false)
+      end
+      while (child_parent_count == 1 && child_child_count == 1)
+        #Descend la branche
+        child_event = child_event.relationships_as_parent.first.child
+        child_child_count = child_event.relationships_as_parent.count
+        child_parent_count = child_event.relationships_as_child.count
+        child_event.update!(master: false)
+      end
+    end
+
+
+
     if @event.update!(event_params)
       redirect_to trip_path(@trip)
     end

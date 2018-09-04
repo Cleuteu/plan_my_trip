@@ -1,71 +1,60 @@
 .sidebar {
-    min-width: 260px;
-    color: #fff;
-    // background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%),
-    // url(img-road-sidebar);
-    // background-size: cover;
-    background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%);
+  min-width: 260px;
+  color: #fff;
+  // background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%),
+  // url(img-road-sidebar);
+  // background-size: cover;
+  background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%);
 }
 .sidebar .logo {
-    padding: 10px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    width: 260px;
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 260px;background-color: #4D5B6D;
+  z-index: 1;
   text-align: center;
-  background-color: #4D5B6D;
-  z-index: 2;
-}
-.logo-image {
-  height: 37px;
-}
-.sidebar .logo .simple-text {
-    padding: 1px 0px;
     display: block;
-    text-align: center;
-    line-height: 30px;
+    .logo-image {
+    height: 37px;
+  }
 }
 .sidebar .nav {
-  margin: 0 5px 0 15px;
-}
-.sidebar .nav a {
+  margin: 0 8px 0 8px;
+  a {
     transition: all 150ms ease-in;
-}
-.sidebar .nav .open > a,
-.sidebar .nav li.dropdown .dropdown-menu li:hover > a,
-.sidebar .nav li:hover > a {
+    padding: 8px;
+  }
+  li:hover > a {
     background-color: rgba(255, 255, 255, 0.13);
-}
-.sidebar .nav li {
-  margin: 11px 0 0px 0;
-}
-.sidebar .nav li > a {
+  }
+  li > a {
     opacity: .86;
     border-radius: 4px;
     cursor: pointer;
-}
-.sidebar .nav p {
+  }
+  p {
     margin: 0;
+    margin-left: -10px;
     font-size: 14px;
-    width: 130px;
+    width: 132px;
+  }
+  i {
+    font-size: 16px;
+    padding-bottom: 4px;
+  }
 }
-.sidebar .nav i {
-    font-size: 14px;
-    float: left;
-    line-height: 21px;
-    text-align: center;
-}
-
 .list-group-item {
   background-color: inherit;
-  padding: 0 10px 0 0;
+  padding: 0;
   border: none;
 }
 .total {
   width: 260px;
   position: fixed;
   bottom: 0;
-  padding: 20px 20px 20px 25px;
+  padding: 18px 8px 18px 18px;
   background-color: #677382;
-  z-index: 2;
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }

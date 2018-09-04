@@ -1,7 +1,7 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">Add an event on a new branch</h4>
+      <h4 class="modal-title" id="myModalLabel">Add an alternative for this event</h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <%# child_events = [] %>
@@ -10,18 +10,18 @@
     <%# end %>
     <div class="modal-body">
       <%= simple_form_for [trip, event], wrapper: :horizontal_form do |f| %>
-        <%= f.input :name, input_html: { id: event.id ? "edit_event_name" : "event_name", placeholder: 'Name' } %>
-        <%= f.input :category, input_html: { id: event.id ? "edit_event_category" : "event_category" }, collection: ["Housing", "Travel", "Activity"], prompt: 'Category' %>
-        <%= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed" : "event_confirmed" } %>
-        <%= f.input :location, input_html: { id: event.id ? "edit_event_location" : "event_location", placeholder: 'Location' } %>
+        <%= f.input :name, input_html: { id: event.id ? "edit_event_name#{event.id}" : "event_name#{event.id}", placeholder: 'Name' } %>
+        <%= f.input :category, input_html: { id: event.id ? "edit_event_category#{event.id}" : "event_category#{event.id}" }, collection: ["Housing", "Travel", "Activity"], prompt: 'Category' %>
+        <%= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed#{event.id}" : "event_confirmed#{event.id}" } %>
+        <%= f.input :location, input_html: { id: event.id ? "edit_event_location#{event.id}" : "event_location#{event.id}#{event.id}", placeholder: 'Location' } %>
         <%= f.input :date %>
-        <%= f.input :duration, input_html: { id: event.id ? "edit_event_duration" : "event_duration" } %>
-        <%= f.input :description, input_html: { id: event.id ? "edit_event_description" : "event_description" } %>
+        <%= f.input :duration, input_html: { id: event.id ? "edit_event_duration#{event.id}" : "event_duration#{event.id}" } %>
+        <%= f.input :description, input_html: { id: event.id ? "edit_event_description#{event.id}" : "event_description#{event.id}" } %>
         <%#= f.input :url, input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
         <%#= f.input :parent_ids, :collection => events_parents, input_html: { id: event.id ? "edit_event_parent_ids" : "event_parent_ids" } %>
         <%#= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_child_id" } %>
-        <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "branch_event_parent_id" : "branch_event_parent_id" } %>
-        <%= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids" : "event_child_ids" } %>
+        <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "branch_event_parent_id#{event.id}" : "branch_event_parent_id#{event.id}" } %>
+        <%= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids#{event.id}" : "event_child_ids#{event.id}" } %>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -3,25 +3,21 @@
 <div style="display: flex;">
 
   <div class="sidebar">
-
     <div class="logo">
+      <%= link_to root_path, class: "logo-treep-blue" do %>
       <span class="simple-text"><%= image_tag("small-logo.png", class: "logo-image") %></span>
+      <% end %>
     </div>
-
     <%= render 'recap_master_events' %>
-
     <!-- <div width="260px" height="260px" id="map" data-markers="<#%= @markers.to_json %>"> -->
     <!-- </div> -->
   </div>
 
   <div class="main-panel">
-
     <%= render 'shared/dashboard_navbar' %>
-
-    <div class="content">
-      <%= render 'cytoscape' %>
-      <%= render partial: 'treep_branches' %>
-    </div>
+    <%= render 'cytoscape' %>
+    <%= render partial: 'treep_branches' %>
+  </div>
 
 </div>
 

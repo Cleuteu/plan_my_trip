@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_073509) do
+ActiveRecord::Schema.define(version: 2018_09_02_215415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2018_08_31_073509) do
     t.bigint "trip_id"
     t.boolean "master", default: false
     t.integer "price"
+    t.integer "position_x"
+    t.integer "position_y"
     t.index ["trip_id"], name: "index_events_on_trip_id"
   end
 

@@ -1,7 +1,3 @@
-body {
-  background-color: rgb(246, 246, 246);
-}
-
 .navbar-home {
   position: absolute;
   width: 100%;
@@ -20,8 +16,8 @@ body {
 }
 
 .banner {
-  padding-top: 120px;
-  padding-bottom: 30px;
+  padding-top: 100px;
+  // padding-bottom: 30px;
   color: white;
   text-align: center;
   min-height: 570px;
@@ -41,15 +37,12 @@ body {
     text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   }
   h4 {
-    font-size: 30px;
+    font-size: 1.5rem;
     font-weight: lighter;
     color: rgb(255, 255, 255);
-    opacity: 0.8;
+    opacity: 0.9;
     margin: 25px 0;
   }
-
-
-
 
   .landing-page-form{
     // display: flex;
@@ -76,7 +69,6 @@ body {
 }
 
 // 3 elements sous la banner
-
 .arguments {
   margin-top: 60px;
   display: flex;
@@ -91,8 +83,8 @@ body {
     color: rgba(46, 64, 88, 0.8)
   }
 }
-
 .argument {
+  background-color: white;
   width: 25vw;
   display: flex;
   flex-direction: column;
@@ -107,8 +99,12 @@ body {
     width: 5vw;
     margin-bottom: 37px
   }
+
   .build-icon {
     width: 8vw;
+  }
+  .git {
+    width: 18vw;
   }
 }
 
@@ -116,7 +112,7 @@ body {
   width: 100vw;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   p {
     font-style: italic;
     color: rgba(255, 255, 255, 0.8);
@@ -133,13 +129,10 @@ body {
     height: 100%;
   }
 }
-
-.carousel-home
-{
+.carousel-home {
   max-width: 50vw;
 }
 .carousel-img {
   max-width: 100%;
   background-image: linear-gradient(-225deg, rgba(46, 64, 88,0.8) 0%, rgba(46, 64, 88,0.8) 50%);
 }
-

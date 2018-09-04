@@ -1,19 +1,57 @@
-.modal-event {
-  .event-img {
-  max-width: 250px;
+// .modal-event {
+//   .event-img {
+//   max-width: 250px;
+//   }
+// }
+
+// .event-show-modal-container{
+//   display: flex;
+//   justify-content: space-between;
+//   // align-items: center;
+// }
+
+// .event-show-modal-content {
+//   padding: 15px;
+// }
+
+// .modal-header-btn-right {
+//   margin-left: 0;
+// }
+
+.tippy-tooltip.addevent-theme {
+  background-color: white;
+}
+
+
+.tippy-tooltip.treep-theme {
+  background-color: white;
+  padding: 7px;
+  width: 390px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.tippy-content {
+  color: gray;
+  margin-bottom: 1px;
+  h5 {
+    position: relative;
+    top: 0;
+    right: 0;
+    z-index: 1001;
+  }
+  h6 {
+    font-family: 'Roboto';
+    color: black;
+    padding-right: 10px;
+  }
+  p {
+    margin: 0;
+  }
+  .tippy-description {
+    margin: 12px 0px 0px 0px;
+  }
+  hr {
+    // margin-top: 10px;
+    margin-bottom: 9px;
   }
 }
 
-.event-show-modal-container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.event-show-modal-content {
-  padding: 15px;
-}
-
-.modal-header-btn-right {
-  margin-left: 0;
-}

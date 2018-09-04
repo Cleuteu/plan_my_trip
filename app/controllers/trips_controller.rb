@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show]
 
   def index
-    @trips = Trip.all
+    @trips = policy_scope(Trip).order(created_at: :desc)
   end
 
   def new
@@ -12,6 +12,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
+    authorize @trip
     if @trip.save
       @start = Event.new(name: "Start", category: "settings", date: @trip.start_date, location: @trip.start_location, trip_id: @trip.id, duration: 1, price: 0, master: true)
       @start.save!
@@ -42,6 +43,11 @@ class TripsController < ApplicationController
       hash_relationship[:child_name] = Event.find(relationship.child_id).name
       hash_relationship[:parent_id] = Event.find(relationship.parent_id).id
       hash_relationship[:parent_name] = Event.find(relationship.parent_id).name
+      if Event.find(relationship.child_id).master == true && Event.find(relationship.parent_id).master == true
+        hash_relationship[:master] = "true"
+      else
+        hash_relationship[:master] = "false"
+      end
       @array_relationships << hash_relationship
       hash_relationship = {}
       unless @array_nodes.include?(relationship.child_id)
@@ -49,6 +55,8 @@ class TripsController < ApplicationController
         hash_nodes[:name] = Event.find(relationship.child_id).name
         hash_nodes[:category] = Event.find(relationship.child_id).category
         hash_nodes[:master] = Event.find(relationship.child_id).master.to_s
+        hash_nodes[:position_x] = Event.find(relationship.child_id).position_x
+        hash_nodes[:position_y] = Event.find(relationship.child_id).position_y
         @array_nodes << hash_nodes
         hash_nodes = {}
       end

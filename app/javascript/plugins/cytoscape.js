@@ -1,8 +1,10 @@
 import cytoscape from 'cytoscape';
 import tippy from 'tippy.js'
 import popper from 'cytoscape-popper';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 cytoscape.use( popper );
+
 
 const graph = document.getElementById('cy');
 
@@ -10,8 +12,9 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
-console.log(nodes)
+// console.log(nodes)
 // console.log(relationships)
+
 
 var y = 0;
 nodes.forEach((node) => {
@@ -19,26 +22,31 @@ nodes.forEach((node) => {
                   { id: nodes[y].id,
                     name: nodes[y].name,
                     category: nodes[y].category,
-                    master: nodes[y].master,
-                  }
+                    master: nodes[y].master
+                  },
+                  position: { x: nodes[y].position_x, y: nodes[y].position_y }
                 },
                 );
   y += 1;
   });
+
+ // data: { id: 'n3', parent: 'nparent' },
+ //      position: { x: 123, y: 234 }
 
 var i = 0;
 relationships.forEach((relationship) => {
   elements.push({ data:
                   { id: `${relationships[i].parent_id}-${relationships[i].child_id}`,
                     source: relationships[i].parent_id,
-                    target: relationships[i].child_id
+                    target: relationships[i].child_id,
+                    master: relationships[i].master
                   }
                 },
                 )
   i += 1;
   });
 
-console.log(elements)
+// console.log(elements)
 
 const cy = cytoscape({
   container: document.getElementById('cy'),
@@ -46,13 +54,13 @@ const cy = cytoscape({
       elements,
 
   layout: {
-    name: 'breadthfirst',
-    directed: true,
-    roots: `#${nodes[0].id}`,
+    name: 'preset',
+    // directed: true,
+    // roots: `#${nodes[0].id}`,
     // padding: 20,
-    fit: true,
-    spacingFactor: 1.75,
-    height: undefined,
+    // fit: true,
+    // spacingFactor: 1.75,
+    // height: undefined,
     },
 
   style: [
@@ -60,143 +68,86 @@ const cy = cytoscape({
       selector: 'node:unselected',
       style: {
         label: 'data(name)',
+        // 'min-zoomed-font-size': 46,
+        'text-events': 'yes',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
         'font-size': 23,
-        // 'font-weight': 'bold',
         'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 40,
-        'height': 40,
+        'color': 'grey',
+        'width': 60,
+        'height': 60,
         'background-color': 'white',
+        'background-fit': 'contain',
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
         'border-color': '#106BA5',
-        // 'border-style': 'solid',
-        'overlay-color': 'black',
+        'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 100
       }
     },{
     selector: 'node:selected',
       style: {
         label: 'data(name)',
+        // 'min-zoomed-font-size': 46,
+        'text-events': 'yes',
         'text-halign': 'right',
         'text-valign': 'center',
         'text-margin-x': 8,
         'font-size': 23,
-        // 'font-weight': 'bold',
         'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 40,
-        'height': 40,
-        'background-color': '#FDFDFD',
+        'color': 'gray',
+        'width': 60,
+        'height': 60,
+        'background-color': 'white',
+        'background-fit': 'contain',
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
         'border-color': '#106BA5',
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
         'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 200
       }
     },{
     selector: "node[category = 'Accommodation']",
       style: {
         label: 'data(name)',
-        'text-halign': 'right',
-        'text-valign': 'center',
-        'text-margin-x': 8,
-        'font-size': 18,
-        'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 50,
-        'height': 50,
-        // 'background-color': '#2E6AA0',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720564/home-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965592/home-solid-padded.png'
         ],
-        'background-width': 30,
-        'background-height': 30,
-        'border-opacity': 0,
-        'opacity': 0.8,
-        // 'border-width': 3,
-        // 'border-color': '#106BA5',
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
-        'ghost': 'yes',
-        'ghost-offset-x': 0,
-        'ghost-offset-y': 2,
-        'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
+        'border-color': '#E65158',
+        'transition-property': 'background-color',
         'transition-duration': 200
       }
     },{
     selector: "node[category = 'Travel']",
       style: {
         label: 'data(name)',
-        'text-halign': 'right',
-        'text-valign': 'center',
-        'text-margin-x': 8,
-        'font-size': 18,
-        'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 45,
-        'height': 45,
-        // 'background-color': '#2E6AA0',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720962/car-solid.svg'
+          // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
+          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536010981/plane-solid-padded.png'
         ],
-        'background-width': 25,
-        'background-height': 25,
-        'border-width': 3,
         'border-color': '#106BA5',
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
-        'ghost': 'yes',
-        'ghost-offset-x': 0,
-        'ghost-offset-y': 2,
-        'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
+        'transition-property': 'background-color',
         'transition-duration': 200
       }
     },{
     selector: "node[category = 'Activity']",
       style: {
         label: 'data(name)',
-        'text-halign': 'right',
-        'text-valign': 'center',
-        'text-margin-x': 8,
-        'font-size': 23,
-        'text-transform': 'uppercase',
-        'color': 'black',
-        'width': 60,
-        'height': 60,
-        // 'background-color': '#2E6AA0',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535721084/camera-retro-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965516/camera-retro-solid-padded.png'
         ],
-        'background-width': 30,
-        'background-height': 30,
-        'border-width': 3,
         'border-color': '#F3B548',
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
-        'ghost': 'yes',
-        'ghost-offset-x': 0,
-        'ghost-offset-y': 2,
-        'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
+        'transition-property': 'background-color',
         'transition-duration': 200
       }
     },{
@@ -208,28 +159,23 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'background-color': '#54B589',
-        'color': 'black',
+        // 'color': 'black',
         'width': 60,
         'height': 60,
-        // 'background-color': '#2E6AA0',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535721084/camera-retro-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996217/camera-retro-solid-padded-white.svg'
         ],
-        'background-width': 30,
-        'background-height': 30,
+        'background-color': '#54B589',
+        'background-fit': 'contain',
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
+        // 'border-color': '#27873C',
         'border-color': '#54B589',
-        'opacity': 1,
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 200
       }
     },{
     selector: "node[category = 'Travel'][master = 'true']",
@@ -240,28 +186,24 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'background-color': '#54B589',
-        'color': 'black',
+        // 'color': 'black',
         'width': 60,
         'height': 60,
-        // 'background-color': '#2E6AA0',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720962/car-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996660/car-solid-padded-white.svg'
+          // ''
         ],
-        'background-width': 30,
-        'background-height': 30,
+        'background-color': '#54B589',
+        'background-fit': 'contain',
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
+        // 'border-color': '#27873C',
         'border-color': '#54B589',
-        'opacity': 1,
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 200
       }
     },{
     selector: "node[category = 'Accommodation'][master = 'true']",
@@ -272,46 +214,65 @@ const cy = cytoscape({
         'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
-        'background-color': '#54B589',
-        'color': 'black',
+        // 'color': 'black',
         'width': 60,
         'height': 60,
-        // 'background-color': '#2E6AA0',
         'background-image': [
-          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535720564/home-solid.svg'
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996593/home-solid-padded-white.svg'
         ],
-        'background-width': 30,
-        'background-height': 30,
+        'background-color': '#54B589',
+        'background-fit': 'contain',
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
         'border-width': 3,
+        // 'border-color': '#27873C',
         'border-color': '#54B589',
-        'opacity': 1,
-        // 'border-style': 'double',
-        'overlay-color': 'gray',
-        'overlay-opacity': 0,
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
-        'transition-property': 'overlay-opacity, background-color',
-        'transition-duration': 200
+      }
+    },{
+    selector: "node[category = 'Accommodation'][master = 'true'].hover",
+      style: {
+        'background-image': [
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965592/home-solid-padded.png'
+        ],
+      }
+    },{
+    selector: "node[category = 'Travel'][master = 'true'].hover",
+      style: {
+        'background-image': [
+          // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
+          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536010981/plane-solid-padded.png'
+        ],
+      }
+    },{
+    selector: "node[category = 'Activity'][master = 'true'].hover",
+      style: {
+        'background-image': [
+          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965516/camera-retro-solid-padded.png'
+        ],
       }
     },{
       selector: 'edge:unselected',
       style: {
-        label: '+',
-        // 'font-family': 'Font Awesome Free 5',
-        // 'label': '\uf055',
+        // label: '+',
+        // 'font-family': 'FontAwesome !important',
+        // 'label': '\uf00d',
+        // 'font-family': 'FontAwesome',
+          // 'label': '\uF007 User',
         'font-weight': '900',
-        'font-size': '40',
-        'color': 'black',
+        'font-size': '48',
+        'color': '#F5F5F5',
         'width': 3,
         'line-color': 'gray',
         'line-style': 'dashed',
         'overlay-color': 'gray',
         // 'overlay-padding': 14,
-        'curve-style': 'bezier',
-        'target-arrow-color': 'gray',
-        'target-arrow-shape': 'vee',
+        'curve-style': 'haystack',
+        // 'target-arrow-color': 'gray',
+        // 'target-arrow-shape': 'vee',
         'arrow-scale': 1,
         'ghost': 'yes',
         'ghost-offset-x': 0,
@@ -323,19 +284,18 @@ const cy = cytoscape({
     },{
       selector: 'edge:selected',
       style: {
-        label: '+',
+        label: '',
         'font-weight': '900',
-        'font-size': '40',
-        'color': 'black',
+        'font-size': '48',
+        'color': '#F5F5F5',
         'width': 3,
         'line-color': 'gray',
         'line-style': 'dashed',
-        // 'overlay-padding': 14,
         'overlay-color': 'gray',
-        'overlay-opacity': 0,
-        'curve-style': 'bezier',
-        'target-arrow-color': '#BABABA',
-        'target-arrow-shape': 'vee',
+        // 'overlay-padding': 14,
+        'curve-style': 'haystack',
+        // 'target-arrow-color': '#BABABA',
+        // 'target-arrow-shape': 'vee',
         'arrow-scale': 1,
         'ghost': 'yes',
         'ghost-offset-x': 0,
@@ -343,7 +303,57 @@ const cy = cytoscape({
         'ghost-opacity': 0.1,
         'transition-property': 'line-color, target-arrow-color, overlay-opacity',
         'transition-duration': 100
-      },
+      }
+    },{
+      selector: 'node.hover',
+      style: {
+        'color': 'black',
+        'text-margin-x': 6,
+        'width': 64,
+        'height': 64,
+        // 'background-color': '#24A2B7',
+        'background-color': '#E2E6EA',
+        'background-fit': 'contain',
+        'background-image-opacity': 1,
+        'transition-property': 'color, text-margin-x, width, height, background-color, background-image-opacity',
+        'transition-timing-function': 'ease',
+        'transition-duration': 150
+      }
+    },{
+      selector: 'edge.hover',
+      style: {
+        label: '',
+        'color': 'black',
+        'text-background-color': '#F5F5F5',
+        'text-background-opacity': 1,
+        'text-background-padding': 7,
+        'line-style': 'dotted',
+        'line-color': '#5A6268',
+        'width': 4,
+        'transition-property': 'color, text-background-padding, line-color, width',
+        'transition-duration': 150
+      }
+    },{
+      selector: "edge[master = 'true']",
+      style: {
+        'color': '#F5F5F5',
+        'line-color': '#6DB28C',
+        'width': 4,
+        'text-background-padding': 1,
+        'line-style': 'solid',
+      }
+    },{
+      selector: "edge[master = 'true'].hover",
+      style: {
+        'color': 'black',
+        'text-background-color': '#F5F5F5',
+        'text-background-opacity': 1,
+        'text-background-padding': 7,
+        'width': 5,
+        'line-style': 'solid',
+        'transition-property': 'color, text-background-padding, width',
+        'transition-duration': 150
+      }
     },{
       selector: 'core',
       style: {
@@ -352,22 +362,31 @@ const cy = cytoscape({
     }],
 
   // interaction options:
-  // minZoom: 0.5,
-  // maxZoom: 1,
   userZoomingEnabled: false,
   zoomingEnabled: true,
   userPanningEnabled: false,
   boxSelectionEnabled: false,
   autoungrabify: true,
+  maximalAdjustments: 100,
   });
 
 cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
 cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
-cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
+
+cy.on('mouseover', 'node', (e) => { e.target.addClass('hover'); });
+cy.on('mouseout', 'node', (e) => { e.target.removeClass('hover'); });
+cy.on('mouseover', 'edge', (e) => { e.target.addClass('hover'); });
+cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
+
+// cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
+
+// Trigger la modal d'ajout d'un event
+cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
+
 // Recupérer les events parent et enfant quand on ajoute un event
-cy.on('click', 'edge', (evt) => {
+cy.on('mouseover', 'edge', (evt) => {
   let event_node_id = evt.target.id();
   event_node_id = event_node_id.split("-");
   let event_parent_id = event_node_id[0];
@@ -378,17 +397,83 @@ cy.on('click', 'edge', (evt) => {
   parent_id_form.value = event_parent_id
 } );
 
+// Recupérer l'event parent quand on ajoute un event sur une nouvelle branche
 cy.on('click', 'node', (evt) => {
-  console.log(evt.target.id())
   let event_node_id = evt.target.id();
   let branch_parent_id_form = document.getElementById('branch_event_parent_id');
-  console.log(event_node_id)
-  console.log(branch_parent_id_form)
   branch_parent_id_form.value = event_node_id
 } );
-cy.on('click', 'edge', () => { document.getElementById('add-node').click(); });
 
-cy.on('click', 'node', (evt) => { console.log(evt.target) });
+// TIPPY TOOLTIPS SECTION
 
-var collection = cy.elements('node[master = "true"]');
-console.log(collection);
+// Tippy function
+var makeTippy = function(node, text){
+  return tippy( node.popperRef(), {
+    html: (function(){
+      const myTemplate = document.createElement('div');
+
+      myTemplate.innerHTML = text;
+
+      return myTemplate;
+    })(),
+    trigger: 'manual',
+    arrow: true,
+    placement: 'left-end',
+    distance: 10,
+    sticky: true,
+    hideOnClick: false,
+    maxWidth: 300,
+    theme: 'treep',
+    interactive: true,
+    multiple: true,
+    zIndex: 1000,
+    animateFill: true,
+    animation: 'fade',
+    arrowTransform: 'translateX(10px)',
+  } ).tooltips[0];
+};
+
+// Tippy trigger via mouserover / mouseout
+let tippy_var = null;
+
+cy.on('mouseover', 'node', (e) => {
+  tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
+  tippy_var.show();
+});
+cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
+
+
+// Click on edge to change master
+
+var makeTippyEdge = function(edge, text){
+  return tippy( edge.popperRef(), {
+    html: (function(){
+      const myTemplate = document.createElement('div');
+
+      myTemplate.innerHTML = text;
+
+      return myTemplate;
+    })(),
+    trigger: 'manual',
+    placement: 'left-end',
+    distance: 10,
+    sticky: true,
+    hideOnClick: false,
+    maxWidth: 30,
+    interactive: true,
+    multiple: true,
+    zIndex: 1000,
+    animateFill: true,
+    animation: 'fade',
+  } ).tooltips[0];
+};
+
+let tippy_edge = null;
+
+cy.on('mouseover', 'edge', (e) => {
+  tippy_edge = makeTippyEdge(e.target, '<p id="add-node" data-toggle="modal" data-target="#addEvent">+</p>')
+  tippy_edge.show();
+});
+cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
+
+

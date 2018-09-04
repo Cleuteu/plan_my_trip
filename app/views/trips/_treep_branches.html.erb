@@ -22,16 +22,67 @@
 
 <!--   Modal pour le show d'un event -->
 <% @trip.events.each do |event| %>
-  <button type="button" class="d-none" id="show-node<%= event.id %>" data-toggle="modal" data-target="#showEvent<%= event.id %>">
+<!--   <button type="button" class="d-none" id="show-node<%#= event.id %>" data-toggle="modal" data-target="#showEvent<%#= event.id %>">
     Show an event
   </button>
-  <div class="modal fade" id="showEvent<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <%= render partial: 'events/modal_showevent', locals: {event: event, trip: @trip} %>
-  </div>
+  <div class="modal fade" id="showEvent<%#= event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <%#= render partial: 'events/modal_showevent', locals: {event: event, trip: @trip} %>
+  </div> -->
 
   <div class="modal fade" id="update_event<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <%= render partial: 'events/modal_form', locals: { trip: @trip, event: event, events_parents: @events_parents, events_children: @events_children } %>
   </div>
+
+  <div id="show-tippy<%= event.id %>" class="tippy-content d-none">
+    <div class="text-left">
+
+      <div class="d-flex justify-content-between">
+        <div>
+          <h6><%= event.name %></h6>
+          <p><%= event.date.to_time.strftime("%b %d") %> - <%= event.date.to_time.strftime("%b %d") %></p>
+          <%#= simple_form_for [@trip, event] do |f| %>
+            <%#= f.input :master, :label => "" %>
+            <%#= f.submit "Submit", class: "btn btn-light" %>
+          <%# end %>
+        </div>
+        <%= image_tag("montreal.jpg", height: "135px")%>
+      </div>
+
+      <!-- <h5><%#= event.price %>€</h5> -->
+
+      <div class="tippy-description">
+        <p><%= event.description %></p>
+      </div>
+
+      <hr />
+
+      <div class="d-flex justify-content-between">
+        <div style="padding-bottom: 1px;">
+          <button type="button" class="btn btn-light modal-header-btn-right add-branch-button" data-toggle="modal" data-target="#addBranch">
+            <!-- <i class="fas fa-code-branch"></i> -->
+            <i class="fas fa-plus-circle"></i>
+            Alternative
+          </button>
+          <button type="button" class="btn btn-light modal-header-btn-right" data-toggle="modal" data-target="#update_event<%= event.id %>">
+            <i class="far fa-edit"></i>
+          </button>
+          <button type="button" class="btn btn-light modal-header-btn-right">
+            <!-- <i class="fas fa-trash-alt"></i> -->
+            <!-- <i class="fas fa-trash"></i> -->
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
+        <div class="d-flex align-items-end">
+          <p class="text-right"><%= link_to "More info", event.url, target: '_blank'%></p>
+        </div>
+      </div>
+      <script>
+        // document.getElementById(`edit_event_${id_node}`.submit());
+      </script>
+
+    </div>
+  </div>
+
 <% end %>
 
 
