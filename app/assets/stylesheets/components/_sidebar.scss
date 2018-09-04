@@ -5,6 +5,7 @@
   // url(img-road-sidebar);
   // background-size: cover;
   background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .sidebar .logo {
   padding: 10px 15px;
@@ -12,7 +13,7 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 260px;background-color: #4D5B6D;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
     display: block;
     .logo-image {

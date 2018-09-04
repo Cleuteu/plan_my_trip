@@ -72,8 +72,8 @@ class TripsController < ApplicationController
     @markers = @map_events.map do |event|
       {
         lat: event.latitude,
-        lng: event.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        lng: event.longitude,
+        infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
       }
     end
   end

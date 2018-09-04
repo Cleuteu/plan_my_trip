@@ -1,7 +1,7 @@
 .navbar {
   position: fixed;
   z-index: 1;
-  width: calc(100% - 510px);
+  width: calc(100% - 260px);
     // border: 0;
     // font-size: 16px;
     border-radius: 0;
@@ -36,11 +36,9 @@
     border-radius: 1px;
     margin: 4px auto;
 }
-.navbar .dropdown.nav-item .dropdown-toggle:after {
-    margin-top: 8px;
-}
 .navbar .navbar-nav {
     align-items: center;
+    padding-right: 50px;
 }
 .navbar .navbar-nav .nav-item .nav-link {
     color: #888888;
@@ -62,4 +60,16 @@
     margin: 5px 0;
     overflow: hidden;
     background-color: #e5e5e5;
+}
+.avatar-dashboard {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  opacity: 0.9;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.avatar-dashboard:hover {
+  opacity: 1;
 }

@@ -190,8 +190,8 @@ const cy = cytoscape({
         'width': 60,
         'height': 60,
         'background-image': [
-          'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996660/car-solid-padded-white.svg'
-          // ''
+          // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996660/car-solid-padded-white.svg'
+          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536058617/plane-solid-padded-white.png'
         ],
         'background-color': '#54B589',
         'background-fit': 'contain',
