@@ -11,8 +11,6 @@ class EventsController < ApplicationController
     @child_event = Event.find(@child_id)
 
 
-    # Détection de master
-    @event.master = true if @parent_event.master == true && @child_event.master == true
 
     #Création de la position et update des positions des descendants
     #Position de l'event créé
@@ -29,12 +27,15 @@ class EventsController < ApplicationController
       elsif Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x - a
       else
-        raise
+        flash[:alert] = "Can't add an event here, sorry!"
+        render 'trips/show'
       end
     #Si branche exitante - mono branche
     else
       @event.position_x = @parent_event.position_x
       @events.each { |event| event.update!(position_y: event.position_y + 150) }
+    # Détection de master
+    @event.master = true if @parent_event.master == true && @child_event.master == true
     end
 
 

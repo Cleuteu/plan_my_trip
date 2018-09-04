@@ -26,7 +26,6 @@ class TripsController < ApplicationController
   end
 
   def show
-    @event_show = Event.all[3]
     @event = Event.new
     @trip = Trip.find(params[:id])
     @events_parents = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:parent_id))
