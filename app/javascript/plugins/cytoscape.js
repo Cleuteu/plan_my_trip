@@ -370,10 +370,11 @@ const cy = cytoscape({
   maximalAdjustments: 100,
   });
 
-cy.on('click', 'node', (e) => {
-  console.log(e.target.id())
-  console.log(e.target.data());
-});
+// UNCOMMENT TO CONSOLE LOG A SPECIFIC NODE
+// cy.on('click', 'node', (e) => {
+//  console.log(e.target.id())
+//  console.log(e.target.data());
+// });
 
 
 cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
