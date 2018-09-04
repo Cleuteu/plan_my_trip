@@ -436,7 +436,7 @@ var makeTippy = function(node, text){
     zIndex: 1000,
     animateFill: true,
     animation: 'fade',
-    arrowTransform: 'translateX(10px)',
+    arrowTransform: 'scaleX(0)',
   } ).tooltips[0];
 };
 
