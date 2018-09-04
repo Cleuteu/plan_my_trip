@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     @parent_id = params[:event][:parent_ids]
     @child_id = params[:event][:child_ids]
     @parent_event = Event.find(@parent_id)
-    @child_event = Event.find(@parent_id)
+    @child_event = Event.find(@child_id)
 
 
     # Détection de master
