@@ -47,7 +47,7 @@ puts 'Creating Canadian trip...'
 trip = Trip.new(
     name: 'Road trip Canada',
     start_location: 'Montreal',
-    end_location: 'Dallas, USA',
+    end_location: 'Montereal',
     start_date: Date.new(2018,9,20),
     end_date: Date.new(2018,9,24)
     # reset_password_token: '',

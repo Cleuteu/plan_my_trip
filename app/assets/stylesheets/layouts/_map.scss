@@ -1,7 +1,15 @@
 #map {
   width: 260px;
-  height: 100vh;
-  position: sticky !important;
-  top: 0 !important;
-  margin-bottom: -18px;
+  height: 260px;
+  position: fixed !important;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: 500ms;
+  z-index: 1;
+}
+#map:hover {
+  width: 390px;
+  height: 390px;
+  transition: 500ms;
 }
