@@ -2,18 +2,31 @@
   min-height: calc(100vh - 120px);
 }
 
-.final-title {
-  text-align: center;
-  padding: 10px 0;
-}
 
-.map-final {
+.map-final-container {
   background-color: red;
   min-height: calc(100vh - 196px);
 }
 
 // TIMELINE SUR LA GAUCHE
 .timeline-final {
+  h1 {
+    text-align: center;
+    padding: 10px 0;
+  }
+  h3 {
+    text-align: center;
+    font-size: 18px;
+    opacity: 0.8;
+  }
+  h4 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
   .timeline{
     position: relative;
     padding-top: 3rem;
@@ -258,4 +271,11 @@
       display: none;
     }
   }
+
+// MAPPING
+
+  // .map-final {
+  //   width: 60% !important;
+  //   height: 80% !important;
+  // }
 }
