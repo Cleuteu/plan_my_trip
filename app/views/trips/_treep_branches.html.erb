@@ -6,9 +6,9 @@
 <!-- </div> -->
 
 <!--   Modal pour l'ajout d'un event -->
-<button type="button" class="d-none" id="add-node" data-toggle="modal" data-target="#addEvent">
+<!-- <button type="button" class="d-none" id="add-node" data-toggle="modal" data-target="#addEvent">
   Add an event
-</button>
+</button> -->
 <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <%= render partial: 'events/modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
 </div>
