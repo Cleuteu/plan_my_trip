@@ -1,13 +1,13 @@
 <div class="wrapper-final">
   <div class="row">
   <!--     TIMELINE SUR LA GAUCHE -->
-    <div class="col-sm-5 timeline-final">
+    <div class="col-sm-6 timeline-final">
       <h1>
         <%= @trip.name %>
       <h3>Congrats <%= @trip.user.first_name %>! Find below a summary of you road trip.</h3>
-      <div class="col">
-        <div class="col-sm-6 offset-sm-3">
-          <a href="#" class="btn btn-primary btn-lg text-center">Export to my calendar</a>
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3 text-center">
+          <a href="#" class="btn btn-primary btn-lg text-center btn-final">Export <i class="fas fa-calendar-check"></i></a>
         </div>
       </div>
       </h1>
@@ -29,6 +29,9 @@
                         <h4><%= event.name %></h4>
                         <p><%= event.location %></p>
                         <p><%= event.description %></p>
+                        <p> <a href="<%= event.url %>" target="_blank">More info</a></p>
+                        <p><%= event.category %></p>
+                        <p><%= event.price %></p>
                       </div>
                     </div>
                   </div>
@@ -56,6 +59,6 @@
 
 
     </div>
-    <div style="width: 60vw; height: calc(100vh - 60px);" id="map" data-markers="<%= @markers.to_json %>"></div>
+    <div style="width: 50vw; height: 100vh; z-index: -1;" id="map" data-markers="<%= @markers.to_json %>"></div>
   </div>
 </div>
