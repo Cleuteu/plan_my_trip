@@ -1,8 +1,7 @@
 #map {
   width: 260px;
-  height: 260px;
-  z-index: 3;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
+  height: 100vh;
+  position: sticky !important;
+  top: 0 !important;
+  margin-bottom: -18px;
 }
