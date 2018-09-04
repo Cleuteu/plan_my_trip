@@ -10,7 +10,7 @@
         <div class="col-sm-4 offset-sm-4">
           <%= simple_form_for(@trip) do |f| %>
 
-                    <%= f.input :name, label: false, placeholder: "Name your Trip" %>
+                    <%#= f.input :name, label: false, placeholder: "Name your Trip" %>
                 <div class="form-row">
                   <%= f.input :start_date,
                     as: :string,
@@ -33,7 +33,9 @@
                   <%= f.input :end_location, as: :string, input_html: {id: "end_location" }, wrapper_html: {class: "col"},
                    label: false, placeholder: "Ending city" %>
                 </div>
-              <%= f.submit "Create", class: "btn btn-primary btn-lg btn-block text-center"  %>
+                <div class="form-row" style="margin-left: 5px;">
+                <%= f.submit "Create", class: "btn btn-primary btn-lg btn-block text-center" %>
+                </div>
           <% end %>
 
         </div>
