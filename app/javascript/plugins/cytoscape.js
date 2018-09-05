@@ -77,7 +77,7 @@ const cy = cytoscape({
         'text-events': 'yes',
         'text-halign': 'right',
         'text-valign': 'center',
-        'text-margin-x': 8,
+        'text-margin-x': 12,
         'font-size': 23,
         'text-transform': 'uppercase',
         'color': 'grey',
@@ -87,7 +87,7 @@ const cy = cytoscape({
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
-        'border-width': 3,
+        'border-width': 6,
         'border-color': '#106BA5',
         'overlay-opacity': 0,
         'ghost': 'yes',
@@ -105,7 +105,6 @@ const cy = cytoscape({
         'text-events': 'yes',
         'text-halign': 'right',
         'text-valign': 'center',
-        'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
         'color': 'gray',
@@ -115,7 +114,7 @@ const cy = cytoscape({
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
-        'border-width': 3,
+        'border-width': 6,
         'border-color': '#106BA5',
         'overlay-opacity': 0,
         'ghost': 'yes',
@@ -126,13 +125,29 @@ const cy = cytoscape({
         'border-opacity': 1
       }
     },{
+    selector: "node[category = 'Setting']",
+      style: {
+        'background-color': '#299fc6',
+        'width': 40,
+        'height': 40,
+        'border-opacity': 0
+      }
+    },{
+    selector: "node[category = 'Setting'].hover",
+      style: {
+        'width': 40,
+        'height': 40,
+        'background-color': '#299fc6',
+        'border-opacity': 1
+      }
+    },{
     selector: "node[category = 'Accommodation']",
       style: {
         label: 'data(name)',
         'background-image': [
           'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965592/home-solid-padded.png'
         ],
-        'border-color': '#E65158',
+        'border-color': '#592916',
         'transition-property': 'background-color',
         'transition-duration': '.3s',
       }
@@ -144,7 +159,7 @@ const cy = cytoscape({
           // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536010981/plane-solid-padded.png'
         ],
-        'border-color': '#106BA5',
+        'border-color': '#28112B',
         'transition-property': 'background-color',
         'transition-duration': '.3s',
       }
@@ -155,7 +170,7 @@ const cy = cytoscape({
         'background-image': [
           'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965516/camera-retro-solid-padded.png'
         ],
-        'border-color': '#F3B548',
+        'border-color': '#293F14',
         'transition-property': 'background-color',
         'transition-duration': '.3s',
       }
@@ -165,7 +180,6 @@ const cy = cytoscape({
         label: 'data(name)',
         'text-halign': 'right',
         'text-valign': 'center',
-        'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
         // 'color': 'black',
@@ -174,13 +188,12 @@ const cy = cytoscape({
         'background-image': [
           'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996217/camera-retro-solid-padded-white.svg'
         ],
-        'background-color': '#54B589',
+        'background-color': '#299fc6',
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
-        'border-width': 3,
         // 'border-color': '#27873C',
-        'border-color': '#54B589',
+        'border-color': '#299fc6',
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
@@ -194,7 +207,6 @@ const cy = cytoscape({
         label: 'data(name)',
         'text-halign': 'right',
         'text-valign': 'center',
-        'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
         // 'color': 'black',
@@ -204,13 +216,12 @@ const cy = cytoscape({
           // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996660/car-solid-padded-white.svg'
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536058617/plane-solid-padded-white.png'
         ],
-        'background-color': '#54B589',
+        'background-color': '#299fc6',
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
-        'border-width': 3,
         // 'border-color': '#27873C',
-        'border-color': '#54B589',
+        'border-color': '#299fc6',
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
@@ -224,7 +235,6 @@ const cy = cytoscape({
         label: 'data(name)',
         'text-halign': 'right',
         'text-valign': 'center',
-        'text-margin-x': 8,
         'font-size': 23,
         'text-transform': 'uppercase',
         // 'color': 'black',
@@ -233,13 +243,12 @@ const cy = cytoscape({
         'background-image': [
           'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996593/home-solid-padded-white.svg'
         ],
-        'background-color': '#54B589',
+        'background-color': '#299fc6',
         'background-fit': 'contain',
         'background-image-opacity': 0.9,
         'background-repeat': 'no-repeat',
-        'border-width': 3,
         // 'border-color': '#27873C',
-        'border-color': '#54B589',
+        'border-color': '#299fc6',
         'ghost': 'yes',
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
@@ -293,7 +302,7 @@ const cy = cytoscape({
         'ghost-opacity': 0.1,
         'transition-property': 'line-style, line-color, width',
         'transition-duration': '.3s',
-        'opacity': 0.7
+        'opacity': 0.6
       }
     },{
       selector: 'edge:selected',
@@ -320,7 +329,7 @@ const cy = cytoscape({
       selector: 'node.hover',
       style: {
         'color': 'black',
-        'text-margin-x': 6,
+        'text-margin-x': 8,
         'width': 88,
         'height': 88,
         // 'background-color': '#24A2B7',
@@ -330,6 +339,7 @@ const cy = cytoscape({
         'transition-property': 'color, text-margin-x, width, height, background-color, background-image-opacity',
         'transition-timing-function': 'ease',
         'transition-duration': '.3s',
+        'border-opacity': 1
       }
     },{
       selector: 'edge.hover',
@@ -345,7 +355,7 @@ const cy = cytoscape({
     },{
       selector: "edge[master = 'true']",
       style: {
-        'line-color': '#6DB28C',
+        'line-color': '#299fc6',
         'width': 8,
         'line-style': 'solid',
         'opacity': 0.7
@@ -574,13 +584,13 @@ ref_array.forEach((ref_node) => {
     let node_id = ref_node["node"].data("id")
     let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
       <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
-      <i class="fa fa-arrow-left"></i></a></div>`);
+      <i class="fas fa-exchange-alt faa-flash animated"></i></a></div>`);
     tippy_switch.show();
   } else {
     let node_id = ref_node["node"].data("id")
     let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
       <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
-      <i class="fa fa-arrow-right"></i></a></div>`);
+      <i class="fas fa-exchange-alt faa-flash animated"></i></a></div>`);
     tippy_switch.show();
   };
 });
