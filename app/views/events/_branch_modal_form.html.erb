@@ -1,31 +1,72 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">Add an alternative for this event</h4>
+      <h4 class="modal-title" id="myModalLabel">Create an event as an alternative</h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <%# child_events = [] %>
     <%# BranchEvent.where(parent_event: event.id).select do |branch| %>
       <%# child_events << Event.find(branch.event_id) %>
     <%# end %>
-    <div class="modal-body">
-      <%= simple_form_for [trip, event], wrapper: :horizontal_form do |f| %>
-        <%= f.input :name, input_html: { id: event.id ? "edit_event_name#{event.id}" : "event_name#{event.id}", placeholder: 'Name' } %>
-        <%= f.input :category, input_html: { id: event.id ? "edit_event_category#{event.id}" : "event_category#{event.id}" }, collection: ["Housing", "Travel", "Activity"], prompt: 'Category' %>
-        <%= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed#{event.id}" : "event_confirmed#{event.id}" } %>
-        <%= f.input :location, input_html: { id: event.id ? "edit_event_location#{event.id}" : "event_location#{event.id}#{event.id}", placeholder: 'Location' } %>
-        <%= f.input :date %>
-        <%= f.input :duration, input_html: { id: event.id ? "edit_event_duration#{event.id}" : "event_duration#{event.id}" } %>
-        <%= f.input :description, input_html: { id: event.id ? "edit_event_description#{event.id}" : "event_description#{event.id}" } %>
+    <div class="modal-body form-modal modal-body-form">
+      <%= simple_form_for [trip, event] do |f| %>
+        <%= f.input :name, label: false, input_html: { id: event.id ? "edit_event_name#{event.id}" : "event_name#{event.id}", placeholder: 'Name of your event' } %>
+        <fieldset class="form-group radio_buttons required event_category form-group-valid">
+        <!--           <legend class="col-form-label pt-0">Category
+                    <abbr title="required">*</abbr>
+                  </legend> -->
+                  <input type="hidden" name="event[category]" value="" id="event_category">
+                    <div class="radio-categories">
+                      <div class="category-choices">
+                        <div class="form-check">
+                          <input class="form-check-input is-valid radio_buttons required" id="edit_event_accommodation<%= event.id %>" type="radio" value="Accommodation" name="event[category]">
+                          <label class="collection_radio_buttons category-choice" for="edit_event_accommodation<%= event.id %>"><i class="icon-category fas fa-home"></i><br><p>Housing</p>
+                          </label>
+                        </div>
+
+                          <div class="form-check">
+                            <input class="form-check-input is-valid radio_buttons required" id="edit_event_travel<%= event.id %>" type="radio" value="Travel" name="event[category]">
+                              <label class="collection_radio_buttons category-choice" for="edit_event_travel<%= event.id %>"><i class="icon-category fas fa-plane"></i><br><p>Travel</p>
+                              </label>
+                          </div>
+
+                          <div class="form-check">
+                            <input class="form-check-input is-valid radio_buttons required" id="edit_event_activity<%= event.id %>" type="radio" value="Activity" name="event[category]">
+                              <label class="collection_radio_buttons category-choice" for="edit_event_activity<%= event.id %>"><i class="icon-category fas fa-camera-retro"></i><br><p>Activity</p>
+                              </label>
+                      </div>
+                      </div>
+                    </div>
+                  </fieldset>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :location, label: false, input_html: { class: "event_location", placeholder: 'Location', id: event.id ? "edit_event_location#{event.id}" : "event_location#{event.id}" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :date, as: :string, required: true, label: false, input_html: {class: "datepicker", placeholder: 'Date', id: event.id ? "edit_event_date#{event.id}" : "event_date#{event.id}"} %>
+          </div>
+        </div>
+
+        <%= f.input :description, label: false, input_html: { id: event.id ? "edit_event_description#{event.id}" : "event_description#{event.id}" }, placeholder: 'Add a quick description' %>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.input :price, label: false, placeholder: 'Price', input_html: { id: event.id ? "edit_event_price#{event.id}" : "event_price#{event.id}" } %>
+          </div>
+          <div class="col-md-9">
+            <%= f.input :url, label: false, placeholder: 'Associated URL if necessary', input_html: { id: event.id ? "edit_event_url#{event.id}" : "event_url#{event.id}" } %>
+          </div>
+        </div>
+        <%= f.input :photo, class: 'form-control' %>
+        <%= f.input :photo_cache, as: :hidden, wrapper_html: {class: "col"}  %>
+        <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "branch_event_parent_id#{event.id}" : "branch_event_parent_id#{event.id}" } %>
+        <%#= f.input :duration, input_html: { id: event.id ? "edit_event_duration#{event.id}" : "event_duration#{event.id}" } %>
+        <%#= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed#{event.id}" : "event_confirmed#{event.id}" } %>
         <%#= f.input :url, input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
         <%#= f.input :parent_ids, :collection => events_parents, input_html: { id: event.id ? "edit_event_parent_ids" : "event_parent_ids" } %>
         <%#= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id" : "event_child_id" } %>
-        <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "branch_event_parent_id#{event.id}" : "branch_event_parent_id#{event.id}" } %>
-        <%= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids#{event.id}" : "event_child_ids#{event.id}" } %>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= f.submit "Add event", class: "btn btn-primary" %>
+    <div class="modal-footer footer-btn-center">
+        <%= f.submit "Add event", class: "btn btn-primary add-event-submit" %>
       <% end %>
     </div>
   </div>
