@@ -471,8 +471,7 @@ var makeTippyEdge = function(edge, text){
     interactive: true,
     popperOptions: {
       modifiers: {
-            inner: { enabled: true },
-            preventOverflow: { enabled: false, padding: 0 },
+            inner: { enabled: true }
       }
     },
     multiple: true,
