@@ -38,28 +38,22 @@
   </div>
 
   <div id="show-tippy<%= event.id %>" class="tippy-content d-none">
-    <div class="text-left">
 
-      <div class="d-flex justify-content-between">
-        <div>
-          <h6><%= event.name %></h6>
-          <p><%= event.date.to_time.strftime("%b %d") %> - <%= event.date.to_time.strftime("%b %d") %></p>
-          <%#= simple_form_for [@trip, event] do |f| %>
-            <%#= f.input :master, :label => "" %>
-            <%#= f.submit "Submit", class: "btn btn-light" %>
-          <%# end %>
-        </div>
-        <h5><%= event.price %>€</h5>
-        <%= image_tag("montreal.jpg", height: "135px")%>
+    <div class="top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'montreal.jpg'%>)">
+      <h4><i class="fas fa-map-marker-alt"></i> <%= event.name %></h4>
+      <%#= image_tag("montreal.jpg", width: "390px")%>
+      <h5><%= event.price %>€</h5>
+      <div class="date">
+        <div class="day"><%= event.date.to_time.strftime('%d') %></div>
+        <div class="month"><%= event.date.to_time.strftime('%b') %></div>
       </div>
+    </div>
 
-
+    <div class="text-left bottom">
       <div class="tippy-description">
         <p><%= event.description %></p>
       </div>
-
       <hr />
-
       <div class="d-flex justify-content-between">
         <div style="padding-bottom: 1px;">
         <% if event.child_ids.count < 2 %>
@@ -85,8 +79,8 @@
       <script>
         // document.getElementById(`edit_event_${id_node}`.submit());
       </script>
-
     </div>
+
   </div>
 
 <% end %>
