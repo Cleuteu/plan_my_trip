@@ -33,6 +33,11 @@
                 placeholder: "Ending city"
               %>
             </div>
+            <div>
+              <%= f.input :photo %>
+              <%= f.input :photo_cache, as: :hidden,
+                wrapper_html: {class: "col"} %>
+            </div>
           <%= f.submit "Create", class: "btn btn-primary btn-lg btn-block text-center"  %>
         <% end %>
       </div>

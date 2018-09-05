@@ -1,16 +1,16 @@
 .container-form {
   height: 100vh;
-  height: calc(100vh - 170px);
-
+  width: 25vw;
+  padding-top: 60px;
+  height: calc(100vh - 120px);
 }
-
 .form-login {
   min-width: 350px;
   background: white;
   padding: 10px 20px;
   border-radius: 4px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-
+  // box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   h2 {
     margin-top: 16px;
     font-size: 25px;
