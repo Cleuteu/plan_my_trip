@@ -266,20 +266,20 @@ airbnb_saguenay_event = Event.create!(
   )
 Relationship.create!(parent_id: randonnee_event.id, child_id: airbnb_saguenay_event.id)
 
-voiture_montreal_event = Event.create!(
-  name: 'Ride to Montreal',
-  category: 'Travel',
-  # location: 'Washington',
-  date: Date.new(2018,9,24),
-  duration: 5,
-  description: "We can easily book a car in Saguenay. It should not cost more than 75 euros",
-  url: "",
-  trip_id: trip.id,
-  master: true,
-  price: 75,
-  position_x: -a,
-  position_y: 9*b
-  )
+# voiture_montreal_event = Event.create!(
+#   name: 'Ride to Montreal',
+#   category: 'Travel',
+#   # location: 'Washington',
+#   date: Date.new(2018,9,24),
+#   duration: 5,
+#   description: "We can easily book a car in Saguenay. It should not cost more than 75 euros",
+#   url: "",
+#   trip_id: trip.id,
+#   master: true,
+#   price: 75,
+#   position_x: -a,
+#   position_y: 9*b
+#   )
 
 pub_crawl_event = Event.create!(
   name: 'Montreal Pub Crawl Night',
@@ -295,7 +295,7 @@ pub_crawl_event = Event.create!(
   position_x: 0,
   position_y: 10*b
   )
-Relationship.create!(parent_id: voiture_montreal_event.id, child_id: pub_crawl_event.id)
+# Relationship.create!(parent_id: voiture_montreal_event.id, child_id: pub_crawl_event.id)
 
 voiture_perce_event = Event.create!(
   name: 'Ride to Percé',
