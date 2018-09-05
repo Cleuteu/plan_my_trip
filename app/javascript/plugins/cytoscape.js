@@ -91,6 +91,8 @@ const cy = cytoscape({
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
+        'background-image-opacity': 0.6,
+        'border-opacity': 0.7
       }
     },{
     selector: 'node:selected',
@@ -117,6 +119,8 @@ const cy = cytoscape({
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
+        'background-image-opacity': 1,
+        'border-opacity': 1
       }
     },{
     selector: "node[category = 'Accommodation']",
@@ -178,6 +182,8 @@ const cy = cytoscape({
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
+        'background-image-opacity': 1,
+        'border-opacity': 1
       }
     },{
     selector: "node[category = 'Travel'][master = 'true']",
@@ -206,6 +212,8 @@ const cy = cytoscape({
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
+        'background-image-opacity': 1,
+        'border-opacity': 1
       }
     },{
     selector: "node[category = 'Accommodation'][master = 'true']",
@@ -233,6 +241,8 @@ const cy = cytoscape({
         'ghost-offset-x': 0,
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
+        'background-image-opacity': 1,
+        'border-opacity': 1
       }
     },{
     selector: "node[category = 'Accommodation'][master = 'true'].hover",
@@ -281,7 +291,8 @@ const cy = cytoscape({
         'ghost-offset-y': 1,
         'ghost-opacity': 0.1,
         'transition-property': 'line-color, target-arrow-color, overlay-opacity',
-        'transition-duration': 100
+        'transition-duration': 100,
+        'opacity': 0.7
       }
     },{
       selector: 'edge:selected',
@@ -329,7 +340,8 @@ const cy = cytoscape({
         'line-color': 'black',
         'width': 9,
         'transition-property': 'line-style, line-color',
-        'transition-duration': 250
+        'transition-duration': 250,
+        'opacity': 1
       }
     },{
       selector: "edge[master = 'true']",
@@ -337,11 +349,18 @@ const cy = cytoscape({
         'line-color': '#6DB28C',
         'width': 8,
         'line-style': 'solid',
+        'opacity': 0.7
+      }
+    },{
+      selector: "edge[master = 'true']:selected",
+      style: {
+        'opacity': 1
       }
     },{
       selector: "edge[master = 'true'].hover",
       style: {
         'width': 10,
+        'opacity': 1
       }
     },{
       selector: 'core',
@@ -539,10 +558,10 @@ var makeTippySwitch = function(node_ref, text){
 
 ref_array.forEach((ref_node) => {
   if (ref_node["node"].data("switch_state" === "left")) {
-    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow-container"><i class="fa fa-arrow-left"></i></div>');
+    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow"><i class="fa fa-arrow-left"></i></div>');
     tippy_switch.show();
   } else {
-    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow-container"><i class="fa fa-arrow-right"></i></div>');
+    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow"><i class="fa fa-arrow-right"></i></div>');
     tippy_switch.show();
   };
 });

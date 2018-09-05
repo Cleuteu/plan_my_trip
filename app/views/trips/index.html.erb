@@ -4,7 +4,7 @@
 
       <div class="col-lg">
         <figure class="front">
-          <%= image_tag('front.jpg') %>
+          <%= image_tag('photo-new-trip.jpg') %>
           <div class="caption">
             <h2><span class="add-trip-symbol"><i class="fas fa-plus-circle"></i></span></h2>
             <p>Add new trip</p>
@@ -16,7 +16,8 @@
       <div class="col-lg">
         <% @trips.each do |trip| %>
           <figure class="front">
-            <img src="https://images.unsplash.com/photo-1519885277449-12eee5564d68" width="433px">
+            <!-- <img src="https://images.unsplash.com/photo-1519885277449-12eee5564d68" width="433px"> -->
+            <%= cl_image_tag trip.photo, width: 433, crop: :fill %>
             <div class="caption">
               <h2><span><%= trip.name %> <br> </span></h2>
               <h6><%= trip.start_date.to_time.strftime("%b %d") %> - <%= trip.end_date.to_time.strftime("%b %d") %></h6>

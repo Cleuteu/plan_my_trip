@@ -12,4 +12,7 @@ class Trip < ApplicationRecord
   validates :end_date, presence: true
   validates :start_location, presence: true
   validates :end_location, presence: true
+  validates :photo, presence: true
+
+  mount_uploader :photo, PhotoUploader
 end

@@ -58,6 +58,7 @@ trip = Trip.new(
     # t.string "photo"
   )
 trip.user = user
+trip.remote_photo_url = "https://images.unsplash.com/photo-1519885277449-12eee5564d68"
 trip.save!
 
 user_trip = UserTrip.new
