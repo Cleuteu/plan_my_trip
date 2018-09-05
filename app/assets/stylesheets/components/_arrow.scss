@@ -4,29 +4,8 @@
   font-size: 25px;
   transition: all 0.7s ease;
   color: black;
-  animation: shake 0.5s;
-  animation-iteration-count: infinite;
-  animation-delay: 5s;
 }
 
 .arrow i:hover {
   transform: rotateZ(-180deg);
 }
-
-@keyframes shake {
-    0% { transform: translate(2px, 0px) rotate(0deg); }
-    10% { transform: translate(0px, 0px) rotate(0deg); }
-    20% { transform: translate(-2px, 0px) rotate(0deg); }
-    30% { transform: translate(0px, 0px) rotate(0deg); }
-    40% { transform: translate(2px, 0px) rotate(0deg); }
-    50% { transform: translate(0px, 0px) rotate(0deg); }
-    70% { }
-    100% {  }
-    80% {  }
-    90% { }
-    100% {  }
-}
-
-@-moz-keyframes spin { 100% { -moz-transform: rotate(180deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(180deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(180deg); transform:rotate(180deg); } }

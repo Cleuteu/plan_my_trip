@@ -14,7 +14,7 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
-console.log(nodes)
+// console.log(nodes)
 // console.log(relationships)
 
 
@@ -26,7 +26,8 @@ nodes.forEach((node) => {
                     category: nodes[y].category,
                     master: nodes[y].master,
                     switch: nodes[y].switch,
-                    switch_state: nodes[y].switch_state
+                    switch_state: nodes[y].switch_state,
+                    no_child: nodes[y].no_child
                   },
                   position: { x: nodes[y].position_x, y: nodes[y].position_y }
                 },
@@ -50,7 +51,7 @@ relationships.forEach((relationship) => {
   i += 1;
   });
 
-console.log(elements)
+// console.log(elements)
 
 const cy = cytoscape({
   container: document.getElementById('cy'),
@@ -346,12 +347,14 @@ const cy = cytoscape({
         'width': 10,
       }
     },{
+      // Selecteur quand on ajoute une branche
       selector: ".eh-handle",
       style: {
         // 'color': 'black',
-        'width': 20,
-        'height': 20,
-        'background-color': '#54B589',
+        'width': 30,
+        'height': 30,
+        'background-color': '#505C6D',
+        'border-width': 0,
       }
     },{
       selector: 'core',
@@ -442,8 +445,10 @@ var makeTippy = function(node, text){
 let tippy_var = null;
 
 cy.on('mouseover', 'node', (e) => {
+  if (document.getElementById('show-tippy'+ e.target.id())) {
   tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
   tippy_var.show();
+  }
 });
 cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
 
@@ -510,7 +515,7 @@ cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
 //   }
 // });
 
-// TEST AIGUILLAGE POUR SWITCH MASTER
+// AIGUILLAGE POUR SWITCH MASTER
 
 let switch_nodes = cy.elements("node[switch = 1]")
 
@@ -576,87 +581,44 @@ ref_array.forEach((ref_node) => {
 //   });
 // });
 
-// TEST HANDLES POUR ADD BRANCH
-
-let add_eventnodes = cy.elements("node")
-const array = add_eventnodes.filter(node => {
-  return node.connectedEdges().length === 1;
-});
-
-console.log(add_eventnodes)
+// EDGE HANDLES POUR ADD BRANCH
 
 let eh_defaults = {
-  preview: true, // whether to show added edges preview before releasing selection
-  hoverDelay: 150, // time spent hovering over a target node before it is considered selected
-  handleNodes: 'node', // selector/filter function for whether edges can be made from a given node
+  handleNodes: 'node[no_child = "no_child"]', // selector/filter function for whether edges can be made from a given node
   snap: false, // when enabled, the edge can be drawn by just moving close to a target node (can be confusing on compound graphs)
-  snapThreshold: 50, // the target node must be less than or equal to this many pixels away from the cursor/finger
-  snapFrequency: 15, // the number of times per second (Hz) that snap checks done (lower is less expensive)
-  noEdgeEventsInDraw: false, // set events:no to edges during draws, prevents mouseouts on compounds
-  disableBrowserGestures: true, // during an edge drawing gesture, disable browser gestures such as two-finger trackpad swipe and pinch-to-zoom
   handlePosition: function( node ){
     return 'middle bottom'; // sets the position of the handle in the format of "X-AXIS Y-AXIS" such as "left top", "middle top"
   },
-  handleInDrawMode: false, // whether to show the handle in draw mode
-  edgeType: function( sourceNode, targetNode ){
-    // can return 'flat' for flat edges between nodes or 'node' for intermediate node between them
-    // returning null/undefined means an edge can't be added between the two nodes
-    return 'flat';
-  },
-  loopAllowed: function( node ){
-    // for the specified node, return whether edges from itself to itself are allowed
-    return false;
-  },
-  nodeLoopOffset: -50, // offset for edgeType: 'node' loops
-  nodeParams: function( sourceNode, targetNode ){
-    // for edges between the specified source and target
-    // return element object to be passed to cy.add() for intermediary node
-    return {};
-  },
-  edgeParams: function( sourceNode, targetNode, i ){
-    // for edges between the specified source and target
-    // return element object to be passed to cy.add() for edge
-    // NB: i indicates edge index in case of edgeType: 'node'
-    return {};
-  },
-  show: function( sourceNode ){
-    // fired when handle is shown
-  },
-  hide: function( sourceNode ){
-    // fired when the handle is hidden
-  },
-  start: function( sourceNode ){
-    // fired when edgehandles interaction starts (drag on handle)
-  },
-  complete: function( sourceNode, targetNode, addedEles ){
-    // fired when edgehandles is done and elements are added
-  },
-  stop: function( sourceNode ){
-    // fired when edgehandles interaction is stopped (either complete with added edges or incomplete)
-  },
-  cancel: function( sourceNode, cancelledTargets ){
-    // fired when edgehandles are cancelled (incomplete gesture)
-  },
-  hoverover: function( sourceNode, targetNode ){
-    // fired when a target is hovered
-  },
-  hoverout: function( sourceNode, targetNode ){
-    // fired when a target isn't hovered anymore
-  },
-  previewon: function( sourceNode, targetNode, previewEles ){
-    // fired when preview is shown
-  },
-  previewoff: function( sourceNode, targetNode, previewEles ){
-    // fired when preview is hidden
-  },
-  drawon: function(){
-    // fired when draw mode enabled
-  },
-  drawoff: function(){
-    // fired when draw mode disabled
-  }
 };
 
 let eh = cy.edgehandles( eh_defaults );
 
+cy.on('ehcomplete', (event, sourceNode, targetNode, addedEles) => {
+  let parent_node_id = sourceNode.data("id");
+  let child_node_id = targetNode.data("id");
+  post(`/events/${child_node_id}/add_branch_relationship`, {child_id: `${child_node_id}`, parent_id: `${parent_node_id}`});
+});
 
+// // Fonction pour créer un formulaire et envoyer les données pour connecter la nouvelle branche
+function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+    document.body.appendChild(form);
+    form.submit();
+}

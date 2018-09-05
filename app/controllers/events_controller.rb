@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:add_branch_relationship]
 
   def create
     @event = Event.new(event_params)
@@ -113,6 +114,10 @@ class EventsController < ApplicationController
     unmaster_nodes.each { |event| event.update!(master: true) }
 
     redirect_to trip_path(@trip)
+  end
+
+  def add_branch_relationship
+    raise
   end
 
   private
