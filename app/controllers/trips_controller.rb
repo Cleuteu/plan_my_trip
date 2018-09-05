@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show]
+  skip_before_action :authenticate_user, only: [:calendar], raise: false
 
   def index
     @trips = policy_scope(Trip).order(created_at: :desc)
@@ -23,6 +24,12 @@ class TripsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def calendar
+    trip = Trip.find(params[:id])
+    calendar = trip.calendar
+    render plain: calendar.publish.to_ical
   end
 
   def show
@@ -74,6 +81,7 @@ class TripsController < ApplicationController
         hash_nodes[:name] = event.name
         hash_nodes[:category] = event.category
         hash_nodes[:master] = event.master.to_s
+        hash_nodes[:no_child] = 'no_child' if event.relationships_as_parent.count == 0
         hash_nodes[:position_x] = event.position_x
         hash_nodes[:position_y] = event.position_y
         if event.relationships_as_parent.count >= 2 && event.master

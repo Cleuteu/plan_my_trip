@@ -15,4 +15,28 @@ class Trip < ApplicationRecord
   validates :photo, presence: true
 
   mount_uploader :photo, PhotoUploader
+
+   def calendar
+      c = Icalendar::Calendar.new
+      name = "#{self.name}"
+      c.append_custom_property("NAME", name)
+      c.append_custom_property("X-WR-CALNAME", name)
+
+      self.events.each do |point|
+        c.add_event event(point)
+      end
+      c
+  end
+
+  def event(point)
+    # transformation du point du chemin en event ical
+    event = Icalendar::Event.new
+    event.dtstart = Icalendar::Values::DateTime.new(point.date)
+    event.dtend = Icalendar::Values::DateTime.new(point.date)
+    event.summary = point.name
+    event.description = point.description
+    event.location = point.location
+    event.ip_class = "PUBLIC" # Ne pas changer
+    return event
+  end
 end
