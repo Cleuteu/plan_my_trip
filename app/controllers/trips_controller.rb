@@ -81,6 +81,7 @@ class TripsController < ApplicationController
         hash_nodes[:name] = event.name
         hash_nodes[:category] = event.category
         hash_nodes[:master] = event.master.to_s
+        hash_nodes[:no_child] = 'no_child' if event.relationships_as_parent.count == 0
         hash_nodes[:position_x] = event.position_x
         hash_nodes[:position_y] = event.position_y
         if event.relationships_as_parent.count >= 2 && event.master
