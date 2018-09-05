@@ -522,6 +522,7 @@ let ref = switch_nodes.forEach((node) => {
   ref_array.push(element);
 });
 
+
 var makeTippySwitch = function(node_ref, text){
   return tippy( node_ref, {
     html: (function(){
@@ -548,13 +549,15 @@ var makeTippySwitch = function(node_ref, text){
 };
 
 ref_array.forEach((ref_node) => {
-  if (ref_node["node"].data("switch_state" === "left")) {
+  // console.log(ref_node["node"].data("switch_state") === "left")
+  if (ref_node["node"].data("switch_state") === "left") {
     let node_id = ref_node["node"].data("id")
     let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
       <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
       <i class="fa fa-arrow-left"></i></a></div>`);
     tippy_switch.show();
   } else {
+    let node_id = ref_node["node"].data("id")
     let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
       <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
       <i class="fa fa-arrow-right"></i></a></div>`);

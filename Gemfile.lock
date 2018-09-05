@@ -90,6 +90,7 @@ GEM
       domain_name (~> 0.5)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    icalendar (2.4.1)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -243,6 +244,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass (~> 5.0.9)
   geocoder
+  icalendar
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
