@@ -8,6 +8,10 @@ class TripPolicy < ApplicationPolicy
     return true
   end
 
+  def calendar?
+    return true
+  end
+
   def show?
     return true
   end
