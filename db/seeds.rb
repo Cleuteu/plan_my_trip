@@ -42,9 +42,31 @@ user2 = User.create!(
     # t.string "photo"
   )
 
-puts 'Creating Canadian trip...'
+puts 'Creating trips...'
 
 trip = Trip.new(
+    name: 'Surf trip Morocco',
+    start_location: 'Essaouira',
+    end_location: 'Essaouira',
+    start_date: Date.new(2018,1,3),
+    end_date: Date.new(2018,1,28)
+  )
+trip.user = user
+trip.remote_photo_url = "http://www.epicgapyear.com/wp-content/uploads/2016/11/south-afriac-mozambique-surf-trip-adventure-surfing-camp-ticket-to-ride-gap-year.jpg"
+trip.save!
+
+trip2 = Trip.new(
+    name: 'Journey to Italy',
+    start_location: 'Venise',
+    end_location: 'Venise',
+    start_date: Date.new(2018,3,8),
+    end_date: Date.new(2018,4,1)
+  )
+trip2.user = user
+trip2.remote_photo_url = "https://images.unsplash.com/photo-1520874628750-bed9c0a19086"
+trip2.save!
+
+trip3 = Trip.new(
     name: 'Road trip Canada',
     start_location: 'Montreal',
     end_location: 'Montreal',
@@ -57,9 +79,9 @@ trip = Trip.new(
     # updated_at", null: false,
     # t.string "photo"
   )
-trip.user = user
-trip.remote_photo_url = "https://images.unsplash.com/photo-1519885277449-12eee5564d68"
-trip.save!
+trip3.user = user
+trip3.remote_photo_url = "https://images.unsplash.com/photo-1519885277449-12eee5564d68"
+trip3.save!
 
 user_trip = UserTrip.new
 user_trip.user = user
@@ -97,7 +119,6 @@ event_end = Event.new(
                       duration: 1,
                       price: 0,
                       master: true,
-                      position_y: 12*b
                       )
 event_end.save!
 
