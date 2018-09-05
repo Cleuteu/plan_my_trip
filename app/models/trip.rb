@@ -17,15 +17,14 @@ class Trip < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
    def calendar
-      c = Icalendar::Calendar.new
-      name = "#{self.name}"
-      c.append_custom_property("NAME", name)
-      c.append_custom_property("X-WR-CALNAME", name)
+    c = Icalendar::Calendar.new
+    c.append_custom_property("NAME", name)
+    c.append_custom_property("X-WR-CALNAME", name)
 
-      self.events.each do |point|
-        c.add_event event(point)
-      end
-      c
+    events.each do |point|
+      c.add_event event(point)
+    end
+    c
   end
 
   def event(point)
