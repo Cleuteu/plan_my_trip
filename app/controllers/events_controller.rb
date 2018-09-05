@@ -13,19 +13,24 @@ class EventsController < ApplicationController
 
 
     #Création de la position et update des positions des descendants
+      a = 300 #Pas en x
+      b = 150 #Pas en y
     #Position de l'event créé
-    event_position_y = @parent_event.position_y + 150
-    @events = Event.where("position_y >= ?", event_position_y)
+    event_position_y = @parent_event.position_y + b
+    events = Event.where("position_y >= ?", event_position_y)
     @event.position_y = event_position_y
     #Positions des events descendants
     #Si nouvelle branche:
     if Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
       # @parent_event.position_x > 0? a = 300 : a = -300
-      a = 300
       if Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x + a
+        events_x = Event.where("position_y >= ? AND position_y < ?", event_position_y, @child_event.position_y)
+        events_x.each { |event| event.update!(position_x: event.position_x - a) }
       elsif Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x - a
+        events_x = Event.where("position_y >= ? AND position_y < ?", event_position_y, @child_event.position_y)
+        events_x.each { |event| event.update!(position_x: event.position_x + a) }
       else
         flash[:alert] = "Can't add an event here, sorry!"
         render 'trips/show'
@@ -33,7 +38,7 @@ class EventsController < ApplicationController
     #Si branche exitante - mono branche
     else
       @event.position_x = @parent_event.position_x
-      @events.each { |event| event.update!(position_y: event.position_y + 150) }
+      events.each { |event| event.update!(position_y: event.position_y + b) }
     # Détection de master
     @event.master = true if @parent_event.master == true && @child_event.master == true
     end
