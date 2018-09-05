@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show]
+  skip_before_action :authenticate_user, only: [:calendar], raise: false
 
   def index
     @trips = policy_scope(Trip).order(created_at: :desc)
@@ -23,6 +24,12 @@ class TripsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def calendar
+    trip = Trip.find(params[:id])
+    calendar = trip.calendar
+    render plain: calendar.publish.to_ical
   end
 
   def show

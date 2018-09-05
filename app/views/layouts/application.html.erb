@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= favicon_link_tag asset_path('logo.ico'), :rel => 'icon', :type => "image/x-icon" %>
+
+    <%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type => "image/x-icon" %>
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
 
@@ -22,6 +23,7 @@
     <meta name="twitter:description" content="<%= meta_description %>">
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
+
 
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
