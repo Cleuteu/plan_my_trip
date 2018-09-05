@@ -1,0 +1,5 @@
+meta_product_name: "Treep"
+meta_title: "Treep - Stop wasting time planning your trip."
+meta_description: "With Treep, stop wasting time planning your trips. Gather all the potential points of interest along your way, visualize your different options and collaborate with your friend to build a trip tailored to your dreams."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "#"   # required for Twitter Cards
