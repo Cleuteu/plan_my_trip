@@ -59,8 +59,8 @@
             <%= f.input :url, label: false, placeholder: 'Associated URL if necessary', input_html: { id: event.id ? "edit_event_url#{event.id}" : "event_url#{event.id}" } %>
           </div>
         </div>
-        <%= f.input :photo, class: 'form-control' %>
-        <%= f.input :photo_cache, as: :hidden, wrapper_html: {class: "col"}  %>
+        <%= f.input :photo, class: 'form-control', input_html: { id: event.id ? "edit_event_photo#{event.id}" : "event_photo#{event.id}" } %>
+        <%= f.input :photo_cache, as: :hidden, wrapper_html: {class: "col"}, input_html: { id: event.id ? "edit_photo_cache#{event.id}" : "event_photo_cache#{event.id}" }  %>
         <%#= f.input :parent_ids, :collection => events_parents, input_html: { id: event.id ? "edit_event_parent_ids" : "event_parent_ids" } %>
         <%#= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids" : "event_child_ids" } %>
         <%= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id#{event.id}" : "event_child_id#{event.id}" } %>

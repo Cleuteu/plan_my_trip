@@ -8,6 +8,8 @@ class EventsController < ApplicationController
     @event.trip_id = @trip.id
     @parent_id = params[:event][:parent_ids]
     @parent_event = Event.find(@parent_id)
+    @child_id = params[:event][:child_ids]
+    @child_event = Event.find(@child_id)
 
     #Création de la position et update des positions des descendants
       a = 300 #Pas en x
@@ -23,26 +25,25 @@ class EventsController < ApplicationController
       # @parent_event.position_x > 0? a = 300 : a = -300
       if Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x + a
-        events_x = Event.where("position_y >= ? AND position_y < ?", event_position_y, @child_event.position_y)
-        events_x.each { |event| event.update!(position_x: event.position_x - a) }
+        # events_x = Event.where("position_y >= ? AND position_y < ?", event_position_y, @child_event.position_y)
+        # events_x.each { |event| event.update!(position_x: event.position_x - a) }
       elsif Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x - a
-        events_x = Event.where("position_y >= ? AND position_y < ?", event_position_y, @child_event.position_y)
-        events_x.each { |event| event.update!(position_x: event.position_x + a) }
+        # events_x = Event.where("position_y >= ? AND position_y < ?", event_position_y, @child_event.position_y)
+        # events_x.each { |event| event.update!(position_x: event.position_x + a) }
       else
         flash[:alert] = "Can't add an event here, sorry!"
         render 'trips/show'
       end
     #Si branche exitante - mono branche
     else
-      @child_id = params[:event][:child_ids]
-      @child_event = Event.find(@child_id)
+
       @event.position_x = @parent_event.position_x
       events.each { |event| event.update!(position_y: event.position_y + b) }
     # Détection de master
     @event.master = true if @parent_event.master == true && @child_event.master == true
     end
-    if @event.save
+    if @event.save!
       @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
       unless bool
         @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
