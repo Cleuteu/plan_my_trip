@@ -122,22 +122,6 @@ const cy = cytoscape({
         'border-opacity': 1
       }
     },{
-    selector: "node[category = 'Setting']",
-      style: {
-        'background-color': '#299fc6',
-        'width': 40,
-        'height': 40,
-        'border-opacity': 0
-      }
-    },{
-    selector: "node[category = 'Setting'].hover",
-      style: {
-        'width': 40,
-        'height': 40,
-        'background-color': '#299fc6',
-        'border-opacity': 1
-      }
-    },{
     selector: "node[category = 'Accommodation']",
       style: {
         label: 'data(name)',
@@ -251,6 +235,22 @@ const cy = cytoscape({
         'ghost-offset-y': 2,
         'ghost-opacity': 0.1,
         'background-image-opacity': 1,
+        'border-opacity': 1
+      }
+    },{
+    selector: "node[category = 'Setting']",
+      style: {
+        'background-color': '#299fc6',
+        'width': 40,
+        'height': 40,
+        'border-opacity': 0
+      }
+    },{
+    selector: "node[category = 'Setting'].hover",
+      style: {
+        'width': 40,
+        'height': 40,
+        'background-color': '#299fc6',
         'border-opacity': 1
       }
     },{
@@ -569,13 +569,13 @@ ref_array.forEach((ref_node) => {
     let node_id = ref_node["node"].data("id")
     let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
       <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
-      <i class="fas fa-exchange-alt faa-flash animated"></i></a></div>`);
+      <i class="fas fa-exchange-alt faa-pulse animated faa-slow"></i></a></div>`);
     tippy_switch.show();
   } else {
     let node_id = ref_node["node"].data("id")
     let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
       <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
-      <i class="fas fa-exchange-alt faa-flash animated"></i></a></div>`);
+      <i class="fas fa-exchange-alt faa-pulse animated faa-slow"></i></a></div>`);
     tippy_switch.show();
   };
 });

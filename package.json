@@ -8,6 +8,7 @@
     "cytoscape": "^3.2.16",
     "cytoscape-popper": "^1.0.2",
     "flatpickr": "^4.5.1",
+    "font-awesome-animation": "^0.2.1",
     "gmaps": "^0.4.24",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.4",

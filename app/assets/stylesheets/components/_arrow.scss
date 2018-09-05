@@ -3,11 +3,11 @@
   cursor: pointer;
   margin-top: 20px;
   font-size: 25px;
-  transition: all 0.7s ease;
+  padding: 2px 4px 2px 4px;
+  border-radius: 4px;
+  // transition: all 0.7s ease;
 }
 .arrow i:hover {
-  transform: rotateZ(-180deg);
-}
-.arrow i:active {
-
+  // transform: rotateZ(-180deg);
+  background-color: rgba(0, 0, 0, 0.13);
 }
