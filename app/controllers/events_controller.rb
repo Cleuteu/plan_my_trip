@@ -81,11 +81,20 @@ class EventsController < ApplicationController
 
   def switch_master
     @event = Event.find(params[:id])
-    @trip = @event.trip_id
-    @event.master = true
-    @event.save
 
-    current_nodes = []
+    master_nodes = []
+
+    first_child_event = @event.relationships_as_parent.first.child
+    second_child_event = @event.relationships_as_parent[1].child
+
+    #Désactivation de la master
+    while first_child_event.master && first_child_event.relationships_as_child.count < 3
+      master_nodes << first_child_event
+      first_child_event.update!(master: false)
+      first_child_event = first_child_event.relationships_as_parent.child
+    end
+
+
 
     #Changement de l'état master
     #Activation master

@@ -539,10 +539,10 @@ var makeTippySwitch = function(node_ref, text){
 
 ref_array.forEach((ref_node) => {
   if (ref_node["node"].data("switch_state" === "left")) {
-    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow-container"><i class="fa fa-arrow-left"></i></div>');
+    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow"><i class="fa fa-arrow-left"></i></div>');
     tippy_switch.show();
   } else {
-    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow-container"><i class="fa fa-arrow-right"></i></div>');
+    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], '<div class="arrow"><i class="fa fa-arrow-right"></i></div>');
     tippy_switch.show();
   };
 });
