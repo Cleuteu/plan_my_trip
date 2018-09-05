@@ -2,8 +2,10 @@ import cytoscape from 'cytoscape';
 import tippy from 'tippy.js'
 import popper from 'cytoscape-popper';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import edgehandles from 'cytoscape-edgehandles';
 
 cytoscape.use( popper );
+cytoscape.use( edgehandles );
 
 
 const graph = document.getElementById('cy');
@@ -12,7 +14,7 @@ const nodes = JSON.parse(graph.dataset.nodes);
 const relationships = JSON.parse(graph.dataset.relationships);
 var elements = [];
 
-console.log(nodes)
+// console.log(nodes)
 // console.log(relationships)
 
 
@@ -24,7 +26,8 @@ nodes.forEach((node) => {
                     category: nodes[y].category,
                     master: nodes[y].master,
                     switch: nodes[y].switch,
-                    switch_state: nodes[y].switch_state
+                    switch_state: nodes[y].switch_state,
+                    no_child: nodes[y].no_child
                   },
                   position: { x: nodes[y].position_x, y: nodes[y].position_y }
                 },
@@ -48,7 +51,7 @@ relationships.forEach((relationship) => {
   i += 1;
   });
 
-console.log(elements)
+// console.log(elements)
 
 const cy = cytoscape({
   container: document.getElementById('cy'),
@@ -359,6 +362,16 @@ const cy = cytoscape({
         'opacity': 1
       }
     },{
+      // Selecteur quand on ajoute une branche
+      selector: ".eh-handle",
+      style: {
+        // 'color': 'black',
+        'width': 30,
+        'height': 30,
+        'background-color': '#505C6D',
+        'border-width': 0,
+      }
+    },{
       selector: 'core',
       style: {
         'active-bg-opacity': 0
@@ -447,8 +460,10 @@ var makeTippy = function(node, text){
 let tippy_var = null;
 
 cy.on('mouseover', 'node', (e) => {
+  if (document.getElementById('show-tippy'+ e.target.id())) {
   tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
   tippy_var.show();
+  }
 });
 cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
 
@@ -515,7 +530,7 @@ cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
 //   }
 // });
 
-// TEST AIGUILLAGE POUR SWITCH MASTER
+// AIGUILLAGE POUR SWITCH MASTER
 
 let switch_nodes = cy.elements("node[switch = 1]")
 
@@ -581,3 +596,44 @@ ref_array.forEach((ref_node) => {
 //   });
 // });
 
+// EDGE HANDLES POUR ADD BRANCH
+
+let eh_defaults = {
+  handleNodes: 'node[no_child = "no_child"]', // selector/filter function for whether edges can be made from a given node
+  snap: false, // when enabled, the edge can be drawn by just moving close to a target node (can be confusing on compound graphs)
+  handlePosition: function( node ){
+    return 'middle bottom'; // sets the position of the handle in the format of "X-AXIS Y-AXIS" such as "left top", "middle top"
+  },
+};
+
+let eh = cy.edgehandles( eh_defaults );
+
+cy.on('ehcomplete', (event, sourceNode, targetNode, addedEles) => {
+  let parent_node_id = sourceNode.data("id");
+  let child_node_id = targetNode.data("id");
+  post(`/events/${child_node_id}/add_branch_relationship`, {child_id: `${child_node_id}`, parent_id: `${parent_node_id}`});
+});
+
+// // Fonction pour créer un formulaire et envoyer les données pour connecter la nouvelle branche
+function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+    document.body.appendChild(form);
+    form.submit();
+}

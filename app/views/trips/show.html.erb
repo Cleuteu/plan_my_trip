@@ -13,7 +13,7 @@
     <%= render 'trips/recap_master_events' %>
   </div>
 
-  <div class="main-panel d-flex">
+  <div class="main-panel d-flex fade-in">
     <%= render 'shared/dashboard_navbar' %>
     <%= render 'cytoscape' %>
     <div id="map" data-markers="<%= @markers.to_json %>">

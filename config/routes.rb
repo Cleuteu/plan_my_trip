@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index] do
     member do
       patch :switch_master
+      post :add_branch_relationship
     end
   end
 end

@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:add_branch_relationship]
 
   def create
     @event = Event.new(event_params)
@@ -6,11 +7,7 @@ class EventsController < ApplicationController
     authorize @event
     @event.trip_id = @trip.id
     @parent_id = params[:event][:parent_ids]
-    @child_id = params[:event][:child_ids]
     @parent_event = Event.find(@parent_id)
-    @child_event = Event.find(@child_id)
-
-
 
     #Création de la position et update des positions des descendants
       a = 300 #Pas en x
@@ -21,7 +18,8 @@ class EventsController < ApplicationController
     @event.position_y = event_position_y
     #Positions des events descendants
     #Si nouvelle branche:
-    if Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
+    bool = Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
+    if bool
       # @parent_event.position_x > 0? a = 300 : a = -300
       if Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x + a
@@ -37,17 +35,17 @@ class EventsController < ApplicationController
       end
     #Si branche exitante - mono branche
     else
+      @child_id = params[:event][:child_ids]
+      @child_event = Event.find(@child_id)
       @event.position_x = @parent_event.position_x
       events.each { |event| event.update!(position_y: event.position_y + b) }
     # Détection de master
     @event.master = true if @parent_event.master == true && @child_event.master == true
     end
-
-
     if @event.save
       @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
-      @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
-      unless Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
+      unless bool
+        @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
         Relationship.destroy(Relationship.where(parent_id: @parent_id, child_id: @child_id).first.id)
       end
       redirect_to trip_path(@trip)
@@ -121,6 +119,10 @@ class EventsController < ApplicationController
     unmaster_nodes.each { |event| event.update!(master: true) }
 
     redirect_to trip_path(@trip)
+  end
+
+  def add_branch_relationship
+    raise
   end
 
   private
