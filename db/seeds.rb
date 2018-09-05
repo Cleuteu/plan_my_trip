@@ -96,7 +96,6 @@ event_end = Event.new(
                       duration: 1,
                       price: 0,
                       master: true,
-                      position_y: 12*b
                       )
 event_end.save!
 
