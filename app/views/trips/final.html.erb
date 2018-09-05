@@ -21,7 +21,7 @@
  -->                <% @events_master.each do |event| %>
                   <% unless event.name == "End" || event.name == "Start" %>
                   <div class="timeline__box">
-                    <div class="timeline__date">
+                    <div class="timeline__date" style="border-radius: 50%;">
                       <span class="timeline__day"><%= event.date.strftime('%d') %></span>
                       <span class="timeline__month"><%= event.date.strftime('%b') %></span>
                     </div>
