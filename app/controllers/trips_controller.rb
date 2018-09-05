@@ -26,10 +26,16 @@ class TripsController < ApplicationController
     end
   end
 
+
   def calendar
-    trip = Trip.find(params[:id])
-    calendar = trip.calendar
-    render plain: calendar.publish.to_ical
+    respond_to do |format|
+      format.ics do
+        trip = Trip.find(params[:id])
+        calendar = trip.calendar
+      end
+      cal.publish
+      render plain: cal.to_ical
+    end
   end
 
   def show
