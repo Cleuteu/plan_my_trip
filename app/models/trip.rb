@@ -31,8 +31,8 @@ class Trip < ApplicationRecord
   def event(point)
     # transformation du point du chemin en event ical
     event = Icalendar::Event.new
-    event.dtstart = Icalendar::Values::DateTime.new(point.date)
-    event.dtend = Icalendar::Values::DateTime.new(point.date)
+    event.dtstart = Icalendar::Values::Date.new(point.date)
+    event.dtend = Icalendar::Values::Date.new(point.date)
     event.summary = point.name
     event.description = point.description
     event.location = point.location

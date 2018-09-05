@@ -567,7 +567,7 @@ var makeTippySwitch = function(node_ref, text){
     arrow: true,
     arrowTransform: 'scaleX(0)',
     distance: 16,
-    sticky: true,
+    // sticky: true,
     hideOnClick: false,
     minHeight: 60,
     maxWidth: 30,
@@ -580,19 +580,11 @@ var makeTippySwitch = function(node_ref, text){
 
 ref_array.forEach((ref_node) => {
   // console.log(ref_node["node"].data("switch_state") === "left")
-  if (ref_node["node"].data("switch_state") === "left") {
-    let node_id = ref_node["node"].data("id")
-    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
-      <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
-      <i class="fas fa-exchange-alt faa-pulse animated faa-slow"></i></a></div>`);
-    tippy_switch.show();
-  } else {
-    let node_id = ref_node["node"].data("id")
-    let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
-      <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
-      <i class="fas fa-exchange-alt faa-pulse animated faa-slow"></i></a></div>`);
-    tippy_switch.show();
-  };
+  let node_id = ref_node["node"].data("id");
+  let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
+    <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
+    <i class="fas fa-exchange-alt"></i></a></div>`);
+  tippy_switch.show();
 });
 
 
