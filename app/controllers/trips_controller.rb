@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show]
-  skip_before_action :authenticate_user, only: [:calendar], raise: false
+  skip_before_action :authenticate_user!, only: [:calendar]
 
   def index
     @trips = policy_scope(Trip).order(created_at: :desc)

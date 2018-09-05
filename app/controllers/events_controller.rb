@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     event_position_y = @parent_event.position_y + b
     events = Event.where("position_y >= ?", event_position_y)
     @event.position_y = event_position_y
+
     #Si branche exitante - mono branche
     bool = params[:event][:child_ids].present?
     if bool
@@ -29,16 +30,11 @@ class EventsController < ApplicationController
 
     #Si nouvelle branche:
     else
-    #Positions des events descendants
-    # bool = Relationship.where(parent_id: @parent_id, child_id: @child_id).empty?
-      if Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).empty?
+      if Event.where("position_x = ? AND position_y <= ?", @parent_event.position_x + a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x + a
-        # events_x = Event.where("position_y >= ? AND position_y < ?", event_position_y, @child_event.position_y)
-        # events_x.each { |event| event.update!(position_x: event.position_x - a) }
-      elsif Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y).empty?
+      elsif Event.where("position_x = ? AND position_y >= ?", @parent_event.position_x - a, @event.position_y).empty?
         @event.position_x = @parent_event.position_x - a
-        # events_x = Event.where("position_y >= ? AND position_y < ?", event_position_y, @child_event.position_y)
-        # events_x.each { |event| event.update!(position_x: event.position_x + a) }
+
       else
         flash[:alert] = "Can't add an event here, sorry!"
         render 'trips/show'
