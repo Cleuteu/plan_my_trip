@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :trips, only: [:show, :index, :new, :create] do
     get 'final', to: 'trips#final', as: :final
+    get 'calendar', on: :member
     resources :events, only: [:create, :edit, :update, :destroy]
   end
   resources :events, only: [:index] do
