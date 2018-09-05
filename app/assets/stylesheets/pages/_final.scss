@@ -13,14 +13,17 @@
 
 // TIMELINE SUR LA GAUCHE
 .timeline-final {
+  background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%);
   h1 {
     text-align: center;
     padding: 10px 0;
+    color: white;
   }
   h3 {
     text-align: center;
     font-size: 18px;
-    opacity: 0.8;
+
+    color: white;
   }
   h4 {
     font-size: 20px;
@@ -113,7 +116,7 @@
     padding: 1.5rem 2rem;
     border-radius: 2px;
     border-left: 3px solid rgb(253, 179, 35);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+    box-shadow: 4px 4px 22px -1px rgb(58, 70, 84);
     background-color: #fff;
   }
 
