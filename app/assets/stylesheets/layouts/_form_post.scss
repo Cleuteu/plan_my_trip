@@ -6,6 +6,10 @@
   z-index: 1052;
 }
 
+.btn-primary:disabled {
+  background-color: rgb(190, 189, 189);
+}
+
 .radio-categories {
   input {
     visibility:hidden;
