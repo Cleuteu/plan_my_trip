@@ -105,7 +105,11 @@ class EventsController < ApplicationController
     #Désactivation de la master
     while master_child_event.master && unmaster_nodes.exclude?(master_child_event)
       master_nodes << master_child_event
-      master_child_event = master_child_event.relationships_as_parent.first.child
+      if master_child_event.relationships_as_parent.first.child.master
+        master_child_event = master_child_event.relationships_as_parent.first.child
+      else
+        master_child_event = master_child_event.relationships_as_parent[1].child
+      end
     end
 
     master_nodes.each { |event| event.update!(master: false) }
