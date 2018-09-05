@@ -6,6 +6,7 @@
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
     "cytoscape": "^3.2.16",
+    "cytoscape-edgehandles": "^3.4.1",
     "cytoscape-popper": "^1.0.2",
     "flatpickr": "^4.5.1",
     "font-awesome-animation": "^0.2.1",

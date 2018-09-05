@@ -6,9 +6,16 @@
   z-index: 1052;
 }
 
+.btn-primary:disabled {
+  background-color: rgb(190, 189, 189);
+}
+
 .radio-categories {
   input {
     visibility:hidden;
+  }
+  p {
+    margin: 0px;
   }
   .icon-category {
     font-size: 70px

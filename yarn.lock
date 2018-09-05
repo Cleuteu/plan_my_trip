@@ -1576,6 +1576,13 @@ cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
 
+cytoscape-edgehandles@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/cytoscape-edgehandles/-/cytoscape-edgehandles-3.4.1.tgz#450dc7706218c8b89ef8e82bafa511c5b8d4a132"
+  dependencies:
+    lodash.memoize "^4.1.2"
+    lodash.throttle "^4.1.1"
+
 cytoscape-popper@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cytoscape-popper/-/cytoscape-popper-1.0.2.tgz#0c2bab6cf5ca504144c7eb42fe44638ff0e3bb9c"
@@ -3180,6 +3187,10 @@ lodash.templatesettings@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
   dependencies:
     lodash._reinterpolate "~3.0.0"
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
