@@ -189,7 +189,7 @@ bus_quebec_event = Event.create!(
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: bus_quebec_event.id)
 
 visite_chateau_quebec_event = Event.create!(
-  name: 'Visit Chateau Frontenac',
+  name: 'Chateau Frontenac',
   category: 'Activity',
   # location: 'Washington',
   date: Date.new(2018,9,22),
@@ -304,7 +304,7 @@ Relationship.create!(parent_id: randonnee_event.id, child_id: airbnb_saguenay_ev
 #   )
 
 pub_crawl_event = Event.create!(
-  name: 'Montreal Pub Crawl Night',
+  name: 'Pub Crawl Night',
   category: 'Activity',
   location: '3979 Rue Saint-Denis, Montreal, Canada',
   date: Date.new(2018,9,24),
@@ -350,7 +350,7 @@ airbnb_perce_event = Event.create!(
 Relationship.create!(parent_id: voiture_perce_event.id, child_id: airbnb_perce_event.id)
 
 bateau_perce_event = Event.create!(
-  name: 'Bonaventure Isl',
+  name: 'Bonaventure',
   category: 'Activity',
   location: '9 Rue du Quai, Percé, QC G0C 2L0, Canada',
   date: Date.new(2018,9,23),
@@ -425,7 +425,7 @@ voiture_niagarafalls_event = Event.create!(
 Relationship.create!(parent_id: visite_toronto_event.id, child_id: voiture_niagarafalls_event.id)
 
 visite_niagarafalls_event = Event.create!(
-  name: 'Visite Niagara Falls',
+  name: 'Niagara Falls',
   category: 'Activity',
   location: 'Niagara Falls',
   date: Date.new(2018,9,23),
@@ -455,7 +455,7 @@ airbnb_toronto_2_event = Event.create!(
 Relationship.create!(parent_id: visite_niagarafalls_event.id, child_id: airbnb_toronto_2_event.id)
 
 ride_back_montreal_event = Event.create!(
-  name: 'Ride back to Montréal',
+  name: 'Back to Montréal',
   category: 'Travel',
   location: 'Toronto',
   date: Date.new(2018,9,24),

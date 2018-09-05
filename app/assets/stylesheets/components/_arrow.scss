@@ -1,4 +1,5 @@
 .arrow i {
+  color: #FBB238;
   cursor: pointer;
   margin-top: 20px;
   font-size: 25px;
@@ -6,4 +7,7 @@
 }
 .arrow i:hover {
   transform: rotateZ(-180deg);
+}
+.arrow i:active {
+
 }
