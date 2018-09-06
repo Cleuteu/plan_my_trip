@@ -1,7 +1,11 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="myModalLabel">Add an event</h5>
+      <% if event.id.nil? %>
+        <h5 class="modal-title" id="myModalLabel">Add a new step</h5>
+      <% else %>
+        <h5 class="modal-title" id="myModalLabel">Edit this step</h5>
+      <% end %>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <%# child_events = [] %>
@@ -67,7 +71,7 @@
         <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "edit_event_parent_id#{event.id}" : "event_parent_id#{event.id}" } %>
     </div>
     <div class="modal-footer footer-btn-center">
-      <%= f.submit "Add event", class: "btn btn-primary add-event-submit", disabled: event.new_record? %>
+      <%= f.submit "Submit", class: "btn btn-primary add-event-submit", disabled: event.new_record? %>
       <% end %>
     </div>
   </div>

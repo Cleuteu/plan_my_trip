@@ -25,11 +25,19 @@
             <%= image_tag "http://kitt.lewagon.com/placeholder/users/cleuteu", class: 'avatar-dashboard' %>
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a>
+            <!-- <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a> -->
             <!-- <%#= link_to trips_path, class: "dropdown-item" do %><i class="fas fa-suitcase"></i> My trips<%# end %> -->
-            <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
-            <div class="divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+            <!-- <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a> -->
+            <%#= link_to edit_user_registration_path do %>
+              <!-- <i class="fa fa-cog"> Settings</i> -->
+              <%#= t(".settings", default: "Edit profile") %>
+            <%# end %>
+            <!-- <div class="divider"></div> -->
+            <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+              <i class="fas fa-sign-out-alt"></i>
+              <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+            <!-- <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a> -->
           </div>
         </li>
       </ul>
