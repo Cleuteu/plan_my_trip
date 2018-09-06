@@ -515,7 +515,7 @@ back_flight_event = Event.create!(
   name: 'Flight back Paris',
   category: 'Travel',
   location: 'Airport Montreal, Canada',
-  date: Date.new(2018,9,24),
+  date: Date.new(2018,9,26),
   duration: 3,
   description: "Time to come back to work. Your booking number is TH8CKL and your check-in will take place at the counter number 12 on the 1st floor of the airport. We hope you enjoyed your trip and our service. Feel free to send us some pictures :)",
   url: "https://www.airfrance.fr/FR/fr/local/core/engine/mmb/MmbAction.do",
