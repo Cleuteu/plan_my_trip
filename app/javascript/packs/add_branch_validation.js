@@ -1,7 +1,7 @@
 const addEventButton = document.getElementById('add-node');
 
 const formBranchEvent = document.querySelector('.add_branch').firstElementChild;
-console.log(formBranchEvent)
+// console.log(formBranchEvent)
 
 if (formBranchEvent) {
   const allInputsBranch = [];
@@ -9,7 +9,7 @@ if (formBranchEvent) {
   allInputsBranch.push(event_name)
   const event_date = formBranchEvent.querySelector('#event_date_branch')
   allInputsBranch.push(event_date)
-  console.log(allInputsBranch)
+  // console.log(allInputsBranch)
 
   // console.log(formBranchEvent["event[category]"])
 
