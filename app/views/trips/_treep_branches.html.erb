@@ -58,8 +58,14 @@
         <div style="padding-bottom: 1px;">
         <% before_x = event.position_x - 300 %>
         <% after_x = event.position_x + 300 %>
-        <% if event.child_ids.count < 2 && Event.where('position_x = ? OR position_x = ? AND position_y < ?', before_x, after_x, event.position_y).where.not(name:event.name).count > 0 %>
+        <% if event.child_ids.count < 2 %>
           <button type="button" class="btn btn-light modal-header-btn-right add-branch-button" data-toggle="modal" data-target="#addBranch">
+            <!-- <i class="fas fa-code-branch"></i> -->
+            <i class="fas fa-plus-circle"></i>
+            Alternative
+          </button>
+          <% else %>
+           <button type="button" class="btn btn-light modal-header-btn-right add-branch-button disabled" data-toggle="modal" data-target="#addBranch">
             <!-- <i class="fas fa-code-branch"></i> -->
             <i class="fas fa-plus-circle"></i>
             Alternative

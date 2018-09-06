@@ -8,8 +8,6 @@ class EventsController < ApplicationController
     @event.trip_id = @trip.id
     @parent_id = params[:event][:parent_ids]
     @parent_event = Event.find(@parent_id)
-    @child_id = params[:event][:child_ids]
-    @child_event = Event.find(@child_id)
 
     #Création de la position et update des positions des descendants
       a = 300 #Pas en x
