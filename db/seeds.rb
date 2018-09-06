@@ -137,6 +137,8 @@ flight_to_montreal = Event.create!(
   position_x: 0,
   position_y: 0
   )
+  flight_to_montreal.remote_photo_url = "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0d424e0c724d80f5f3b23c02201b8648&auto=format&fit=crop&w=749&q=80"
+  flight_to_montreal.save
 Relationship.create!(parent_id: event_start.id, child_id: flight_to_montreal.id)
 
 visit_of_montreal = Event.create!(
@@ -155,6 +157,8 @@ visit_of_montreal = Event.create!(
   position_x: 0,
   position_y: b
   )
+  visit_of_montreal.remote_photo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Montreal_-_Rue_Crescent.jpg/800px-Montreal_-_Rue_Crescent.jpg"
+  visit_of_montreal.save
 Relationship.create!(parent_id: flight_to_montreal.id, child_id: visit_of_montreal.id)
 
 airbnb_montreal_event = Event.create!(
@@ -171,6 +175,8 @@ airbnb_montreal_event = Event.create!(
   position_x: 0,
   position_y: 2*b
   )
+  airbnb_montreal_event.remote_photo_url = "https://www.aubergesaint-paul.com/img/dorm1.jpg"
+  airbnb_montreal_event.save
 Relationship.create!(parent_id: visit_of_montreal.id, child_id: airbnb_montreal_event.id)
 
 bus_quebec_event = Event.create!(
@@ -187,6 +193,8 @@ bus_quebec_event = Event.create!(
   position_x: -a,
   position_y: 3*b
   )
+  bus_quebec_event.remote_photo_url = "https://images.unsplash.com/photo-1494523637905-2c470e4312d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6bcf4ba2fdfaee0f4e548c2bd5d634f9&auto=format&fit=crop&w=1350&q=80"
+  bus_quebec_event.save
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: bus_quebec_event.id)
 
 visite_chateau_quebec_event = Event.create!(
@@ -203,6 +211,8 @@ visite_chateau_quebec_event = Event.create!(
   position_x: -a,
   position_y: 4*b
   )
+  visite_chateau_quebec_event.remote_photo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Ch%C3%A2teau_Frontenac_02.jpg/800px-Ch%C3%A2teau_Frontenac_02.jpg"
+  visite_chateau_quebec_event.save
 Relationship.create!(parent_id: bus_quebec_event.id, child_id: visite_chateau_quebec_event.id)
 
 hotel_quebec_event = Event.create!(
@@ -219,6 +229,8 @@ hotel_quebec_event = Event.create!(
   position_x: -a,
   position_y: 5*b
   )
+  hotel_quebec_event.remote_photo_url = "http://aubergeinternationaledequebec.com/workspace/uploads/2016/12/aubi_homepage.jpg"
+  hotel_quebec_event.save
 Relationship.create!(parent_id: visite_chateau_quebec_event.id, child_id: hotel_quebec_event.id)
 
 voiture_saguenay_event = Event.create!(
@@ -235,6 +247,8 @@ voiture_saguenay_event = Event.create!(
   position_x: -2*a,
   position_y: 6*b
   )
+  voiture_saguenay_event.remote_photo_url = "https://images.unsplash.com/photo-1494523637905-2c470e4312d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6bcf4ba2fdfaee0f4e548c2bd5d634f9&auto=format&fit=crop&w=1350&q=80"
+  voiture_saguenay_event.save
 
 # Activer pour seed qui fonctionne
 Relationship.create!(parent_id: hotel_quebec_event.id, child_id: voiture_saguenay_event.id)
@@ -271,6 +285,8 @@ randonnee_event = Event.create!(
   position_x: -2*a,
   position_y: 7*b
   )
+  randonnee_event.remote_photo_url = "https://images.unsplash.com/photo-1510951366214-f8ce654864ac?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=193535ae0e037baf33a156bab867549a&auto=format&fit=crop&w=750&q=80"
+  randonnee_event.save
 Relationship.create!(parent_id: voiture_saguenay_event.id, child_id: randonnee_event.id)
 
 airbnb_saguenay_event = Event.create!(
@@ -287,6 +303,8 @@ airbnb_saguenay_event = Event.create!(
   position_x: -2*a,
   position_y: 8*b
   )
+  airbnb_saguenay_event.remote_photo_url = "https://media-cdn.tripadvisor.com/media/photo-s/08/69/ad/84/la-maison-price.jpg"
+  airbnb_saguenay_event.save
 Relationship.create!(parent_id: randonnee_event.id, child_id: airbnb_saguenay_event.id)
 
 # voiture_montreal_event = Event.create!(
@@ -310,7 +328,7 @@ pub_crawl_event = Event.create!(
   location: '3979 Rue Saint-Denis, Montreal, Canada',
   date: Date.new(2018,9,24),
   duration: 3,
-  description: "It's a local tradition to do a pub crawl on the 1st of November in Montreal!!!",
+  description: "It's a local tradition to do a pub crawl on the 1st of November in Montreal!!! Here is the address of the Lockhart. It's only a suggestion but the staff is really friendly and you'll have a discount if say you come from our agency. The Traveling Wilburys will be playing this night.",
   url: "https://www.lockhartmtl.com/rservations",
   trip_id: trip3.id,
   master: true,
@@ -318,6 +336,8 @@ pub_crawl_event = Event.create!(
   position_x: 0,
   position_y: 10*b
   )
+  pub_crawl_event.remote_photo_url = "https://images.unsplash.com/photo-1513309914637-65c20a5962e1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=228f272007b6369007faeba1901c3274&auto=format&fit=crop&w=750&q=80"
+  pub_crawl_event.save
 # Relationship.create!(parent_id: voiture_montreal_event.id, child_id: pub_crawl_event.id)
 
 voiture_perce_event = Event.create!(
@@ -326,28 +346,32 @@ voiture_perce_event = Event.create!(
   location: '1200 Rue Stanley, Montréal, QC H3B 2S8, Canada',
   date: Date.new(2018,9,23),
   duration: 8,
-  description: "We recommend you yo contact Alamo Rent a Car. They have the best quality per service deals in the area.",
+  description: "We recommend you yo contact Alamo Rent a Car. They have the best quality per service deals in the area. You won't need any insurance if you subscribed to our global travel insurance.",
   url: "https://www.alamo.ca/fr_CA/car-rental/locations/ca/ymqc71-montreal-stanley-st.html?mcid=yext:245709",
   trip_id: trip3.id,
   price: 90,
   position_x: 0,
   position_y: 6*b
   )
+  voiture_perce_event.remote_photo_url = "https://images.unsplash.com/photo-1461712132323-d60b5db21dba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35c0d37100efaadce3126654bda08687&auto=format&fit=crop&w=749&q=80"
+  voiture_perce_event.save
 Relationship.create!(parent_id: hotel_quebec_event.id, child_id: voiture_perce_event.id)
 
 airbnb_perce_event = Event.create!(
-  name: 'Airbnb Percé',
+  name: 'Maison Rouge',
   category: 'Accommodation',
   location: '125 QC-132, Percé, QC G0C 2L0, Canada',
   date: Date.new(2018,9,23),
   duration: 8,
-  description: "It's next to the La Maison Rouge Youth Hostel so we'll be able to meet a lot of people",
-  url: "https://www.airbnb.fr/rooms/10546184?location=Perc%C3%A9%2C%20QC%2C%20Canada&search_id=d17d0a05-c71e-4d6f-a403-fdce94e8933c&federated_search_id=e005b1e9-cc30-4659-b380-0b8346989c8f",
+  description: "Your stay at La Maison Rouge gives you access to all the facilities of the establishment such as the living room, the solarium, the terrace and the kitchen. You will also be near a lot of activities such as the Percé rock, Mount Sainte-Anne, Emerald River, Bonaventure Island, hiking trails, museums, theatres and more !",
+  url: "https://lamaisonrouge.ca/fr/index.html",
   trip_id: trip3.id,
   price: 76,
   position_x: 0,
   position_y: 7*b
   )
+  airbnb_perce_event.remote_photo_url = "https://lamaisonrouge.ca/image/photo/intro/2.jpg"
+  airbnb_perce_event.save
 Relationship.create!(parent_id: voiture_perce_event.id, child_id: airbnb_perce_event.id)
 
 bateau_perce_event = Event.create!(
@@ -356,13 +380,15 @@ bateau_perce_event = Event.create!(
   location: '9 Rue du Quai, Percé, QC G0C 2L0, Canada',
   date: Date.new(2018,9,23),
   duration: 3,
-  description: "Julien Cloutier will take us to the Bonaventure Island with his boat. 218 different species of birds have been recorded as visiting, migrating to, or living on Bonaventure island. The most common bird found on the island is the northern gannet. The island is home to one of the largest colonies of gannets in the world, with 51,700 pairs in 2011.",
+  description: "Julien Cloutier will take you to the Bonaventure Island with his boat. 218 different species of birds have been recorded as visiting, migrating to, or living on Bonaventure island. The most common bird found on the island is the northern gannet. The island is home to one of the largest colonies of gannets in the world, with 51,700 pairs in 2011. Located in the island’s reception area, the restaurant of Parc national de l'île-Bonaventure-et-du-Rocher-Percé, Resto des Margaulx, offers a wholesome menu with a maritime spirit.",
   url: "https://www.sepaq.com/pq/bon/index.dot?language_id=2",
   trip_id: trip3.id,
   price: 17,
   position_x: 0,
   position_y: 8*b
   )
+  bateau_perce_event.remote_photo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Perc%C3%A9_Rock_%283%29.jpg/800px-Perc%C3%A9_Rock_%283%29.jpg"
+  bateau_perce_event.save
 Relationship.create!(parent_id: airbnb_perce_event.id, child_id: bateau_perce_event.id)
 
 voiture_toronto_event = Event.create!(
@@ -371,28 +397,32 @@ voiture_toronto_event = Event.create!(
   # location: 'Washington',
   date: Date.new(2018,9,22),
   duration: 3,
-  description: "We need to make a quick stop at St Lewis Village along the way.",
+  description: "We recommend you to make a quick stop at St Lewis Village along the way. It's a must see! The legend says it was Neil Young's haven of peace.",
   url: "",
   trip_id: trip3.id,
   price: 35,
   position_x: a,
   position_y: 3*b
   )
+  voiture_toronto_event.remote_photo_url = "https://images.unsplash.com/photo-1461712132323-d60b5db21dba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35c0d37100efaadce3126654bda08687&auto=format&fit=crop&w=749&q=80"
+  voiture_toronto_event.save
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: voiture_toronto_event.id)
 
 airbnb_toronto_event = Event.create!(
-  name: 'Airbnb Toronto',
+  name: 'All Days Hostel',
   category: 'Accommodation',
   location: '5 Selby St, Toronto, ON M4Y 1W3, Canada',
   date: Date.new(2018,9,22),
   duration: 8,
-  description: "Pick up the keys at the laundry",
-  url: "https://www.airbnb.fr/rooms/plus/10521800?location=Toronto%2C%20ON%2C%20Canada&children=0&guests=1&search_id=7617340e-4a5a-42d1-9dfe-5bf6dc2c805a&federated_search_id=e83c328e-9116-4ebb-8f33-04a6716eb18f",
+  description: "Pick up the keys at the laundry on the ground floor if you arrive after 10pm",
+  url: "https://www.alldayshostel.com/",
   trip_id: trip3.id,
   price: 69,
   position_x: a,
   position_y: 4*b
   )
+  airbnb_toronto_event.remote_photo_url = "https://images.ixigo.com/image/upload/t_large/5331b6d6e4b05a8f20264308"
+  airbnb_toronto_event.save
 Relationship.create!(parent_id: voiture_toronto_event.id, child_id: airbnb_toronto_event.id)
 
 visite_toronto_event = Event.create!(
@@ -401,13 +431,15 @@ visite_toronto_event = Event.create!(
   location: 'Toronto',
   date: Date.new(2018,9,23),
   duration: 3,
-  description: "We need to choose among the unique Bata Shoe Museum, the Royal Ontario Museum (ROM),St Lawrence Market and the the CN Tower.",
+  description: "Our suggestions: the unique Bata Shoe Museum, the Royal Ontario Museum (ROM),St Lawrence Market and the the CN Tower.",
   url: "https://everynationgta.org/2018/the-5-things-you-need-to-do-in-toronto/?gclid=CjwKCAjwzqPcBRAnEiwAzKRgS5GK56BLLezHApq-SVPF1vPeGGcLTMLd9c7k2krrBb5gkrtwvTfrGxoCc6oQAvD_BwE",
   trip_id: trip3.id,
   price: 0,
   position_x: a,
   position_y: 5*b
   )
+  visite_toronto_event.remote_photo_url = "https://images.unsplash.com/photo-1490623970972-ae8bb3da443e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d883196e1c8ce6f8a736cba0a6ebdcca&auto=format&fit=crop&w=749&q=80"
+  visite_toronto_event.save
 Relationship.create!(parent_id: airbnb_toronto_event.id, child_id: visite_toronto_event.id)
 
 voiture_niagarafalls_event = Event.create!(
@@ -416,13 +448,15 @@ voiture_niagarafalls_event = Event.create!(
   location: 'Toronto',
   date: Date.new(2018,9,23),
   duration: 1,
-  description: "We can either keep the car we used or ride motorbikes",
+  description: "You can either keep the car you used or ride motorbikes you can rent everywhere. The ride shouldn't take you more than 1h30.",
   url: "",
   trip_id: trip3.id,
   price: 24,
   position_x: a,
   position_y: 6*b
   )
+  voiture_niagarafalls_event.remote_photo_url = "https://images.unsplash.com/photo-1481926843113-ac9cb3fb9c8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d4cbe6845ddba7e4ddcd8fa84abc0d8&auto=format&fit=crop&w=750&q=80"
+  voiture_niagarafalls_event.save
 Relationship.create!(parent_id: visite_toronto_event.id, child_id: voiture_niagarafalls_event.id)
 
 visite_niagarafalls_event = Event.create!(
@@ -431,44 +465,50 @@ visite_niagarafalls_event = Event.create!(
   location: 'Niagara Falls',
   date: Date.new(2018,9,23),
   duration: 4,
-  description: "I'm so excited about this visit !!! Take your gopro Tom !",
+  description: "Niagara Falls is a geological wonder and one of the most famous waterfalls in the world. Straddling the border between the United States and Canada, it has been a popular tourist attraction for over 200 years, as well as a major source of hydroelectric power.  ",
   url: "https://fr.niagarafallstourism.com/",
   trip_id: trip3.id,
   price: 8,
   position_x: a,
   position_y: 7*b
   )
+  visite_niagarafalls_event.remote_photo_url = "https://images.unsplash.com/photo-1522048991513-c503bb322b93?ixlib=rb-0.3.5&s=6668acef3e1baa61b69ec2b5f27ced49&auto=format&fit=crop&w=749&q=80"
+  visite_niagarafalls_event.save
 Relationship.create!(parent_id: voiture_niagarafalls_event.id, child_id: visite_niagarafalls_event.id)
 
 airbnb_toronto_2_event = Event.create!(
-  name: 'Airbnb Toronto 2',
+  name: 'All Days Hostel',
   category: 'Accommodation',
-  location: 'Pick up the keys at the laundry',
+  location: 'Pick up the keys at the laundry on the ground floor if you arrive after 10pm',
   date: Date.new(2018,9,23),
   duration: 8,
   description: "5 Selby St, Toronto, ON M4Y 1W3, Canada",
-  url: "https://www.airbnb.fr/rooms/plus/10521800?location=Toronto%2C%20ON%2C%20Canada&children=0&guests=1&search_id=7617340e-4a5a-42d1-9dfe-5bf6dc2c805a&federated_search_id=e83c328e-9116-4ebb-8f33-04a6716eb18f",
+  url: "https://www.alldayshostel.com/",
   trip_id: trip3.id,
   price: 84,
   position_x: a,
   position_y: 8*b
   )
+  airbnb_toronto_2_event.remote_photo_url = "https://images.ixigo.com/image/upload/t_large/5331b6d6e4b05a8f20264308"
+  airbnb_toronto_2_event.save
 Relationship.create!(parent_id: visite_niagarafalls_event.id, child_id: airbnb_toronto_2_event.id)
 
 ride_back_montreal_event = Event.create!(
   name: 'Back to Montréal',
   category: 'Travel',
-  location: 'Toronto',
+  location: 'Toronto Train Station, ON M5J 1E6, Canada',
   date: Date.new(2018,9,24),
   duration: 4,
-  description: "We'll be exhausted, let's take a better car this time",
-  url: "",
+  description: "At this time you'll be exhausted, so we recommend you to take the train",
+  url: "https://torontounion.ca/",
   trip_id: trip3.id,
   price: 38,
   master: true,
   position_x: 0,
   position_y: 9*b
   )
+  ride_back_montreal_event.remote_photo_url = "https://images.unsplash.com/photo-1474579141827-94112b73ba39?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=57d0204b0b0b625ae8407f16a84cd81b&auto=format&fit=crop&w=753&q=80"
+  ride_back_montreal_event.save
 Relationship.create!(parent_id: airbnb_toronto_2_event.id, child_id: ride_back_montreal_event.id)
 
 back_flight_event = Event.create!(
@@ -477,14 +517,16 @@ back_flight_event = Event.create!(
   location: 'Airport Montreal, Canada',
   date: Date.new(2018,9,24),
   duration: 3,
-  description: "Time to come back to work...",
-  url: "",
+  description: "Time to come back to work. Your booking number is TH8CKL and your check-in will take place at the counter number 12 on the 1st floor of the airport. We hope you enjoyed your trip and our service. Feel free to send us some pictures :)",
+  url: "https://www.airfrance.fr/FR/fr/local/core/engine/mmb/MmbAction.do",
   trip_id: trip3.id,
   master: true,
   price: 0,
   position_x: 0,
   position_y: 11*b
   )
+  back_flight_event.remote_photo_url = "https://images.unsplash.com/photo-1533942295064-8cfcfee30ac7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=da1b72f9cf1501b5f4abc83684152e6c&auto=format&fit=crop&w=500&q=60"
+  back_flight_event.save
 
 Relationship.create!(parent_id: pub_crawl_event.id, child_id: back_flight_event.id)
 Relationship.create!(parent_id: back_flight_event.id, child_id: event_end.id)
