@@ -493,30 +493,6 @@ cy.on('click', (e) => {
   }
 });
 
-// if (tippy_var != null) {
-//     let tippy_instance = tippy_var.popper._tippy
-//     console.log(tippy_instance)
-//     tippy_instance.addEventListener('mouseout', (event) => {
-//       console.log(event)
-//     })
-//   }
-
-
-// tippy_div.addEventListener('mouseout', (event) => {
-//   console.log(event)
-// })
-
-// if (null != tippy_var) {
-//   cy.on('mouseover', 'node', (e) => {
-//     setTimeout(function () {
-//        tippy_var.hide();
-//     }, 1000);
-//   });
-// }
-
-
-
-
 // ADD EVENT VIA TIPPY BUTTON
 var makeTippyEdge = function(edge, text){
   return tippy( edge.popperRef(), {
