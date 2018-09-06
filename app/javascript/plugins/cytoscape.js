@@ -62,10 +62,10 @@ const cy = cytoscape({
     name: 'preset',
     // directed: true,
     // roots: `#${nodes[0].id}`,
-    // padding: 20,
+    padding: 20,
     // fit: true,
     // spacingFactor: 1.75,
-    // height: undefined,
+    height: undefined,
     },
 
   style: [
@@ -278,22 +278,6 @@ const cy = cytoscape({
         'border-opacity': 1
       }
     },{
-    selector: "node[category = 'Setting']",
-      style: {
-        'background-color': '#299fc6',
-        'width': 40,
-        'height': 40,
-        'border-opacity': 0
-      }
-    },{
-    selector: "node[category = 'Setting'].hover",
-      style: {
-        'width': 40,
-        'height': 40,
-        'background-color': '#299fc6',
-        'border-opacity': 1
-      }
-    },{
     selector: "node[category = 'Accommodation'][master = 'true'].hover",
       style: {
         'background-image': [
@@ -396,6 +380,15 @@ const cy = cytoscape({
         'opacity': 1
       }
     },{
+    selector: "node[category = 'Setting']",
+      style: {
+        label: '',
+        'background-color': '#299fc6',
+        'width': 40,
+        'height': 40,
+        'border-opacity': 0
+      }
+    },{
       selector: "edge[master = 'true']",
       style: {
         'line-color': '#299fc6',
@@ -453,8 +446,8 @@ cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
 
 cy.on('mouseover', 'node', (e) => { e.target.addClass('hover'); });
 cy.on('mouseout', 'node', (e) => { e.target.removeClass('hover'); });
-// cy.on('mouseover', 'edge', (e) => { e.target.addClass('hover'); });
-// cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
+cy.on('mouseover', 'edge', (e) => { e.target.addClass('hover'); });
+cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
 
 // cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
 
