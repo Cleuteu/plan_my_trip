@@ -26,8 +26,14 @@
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input is-valid radio_buttons required" id="branch_edit_event_travel<%= event.id %>" type="radio" value="Travel" name="event[category]">
-                    <label class="collection_radio_buttons category-choice" for="branch_edit_event_travel<%= event.id %>"><i class="icon-category fas fa-plane"></i><br><p>Travel</p>
+                  <input class="form-check-input is-valid radio_buttons required" id="branch_edit_event_plane<%= event.id %>" type="radio" value="Plane" name="event[category]">
+                    <label class="collection_radio_buttons category-choice" for="branch_edit_event_plane<%= event.id %>"><i class="icon-category fas fa-plane"></i><br><p>Flight</p>
+                    </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input is-valid radio_buttons required" id="branch_edit_event_car<%= event.id %>" type="radio" value="Car" name="event[category]">
+                    <label class="collection_radio_buttons category-choice" for="branch_edit_event_car<%= event.id %>"><i class="icon-category fas fa-car"></i><br><p>Car</p>
                     </label>
                 </div>
 
