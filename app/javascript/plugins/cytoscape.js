@@ -461,7 +461,6 @@ var makeTippy = function(node, text){
     interactiveBorder: 5,
     multiple: true,
     zIndex: 1000,
-    delay: [0, 5000],
     animateFill: true,
     animation: 'fade',
     arrowTransform: 'scaleX(0)',
