@@ -9,7 +9,6 @@ class EventsController < ApplicationController
     @parent_id = params[:event][:parent_ids]
     @parent_event = Event.find(@parent_id)
 
-
     #Création de la position et update des positions des descendants
       a = 300 #Pas en x
       b = 150 #Pas en y
