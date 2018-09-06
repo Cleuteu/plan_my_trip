@@ -3,21 +3,17 @@
 //   max-width: 250px;
 //   }
 // }
-
 // .event-show-modal-container{
 //   display: flex;
 //   justify-content: space-between;
 //   // align-items: center;
 // }
-
 // .event-show-modal-content {
 //   padding: 15px;
 // }
-
 // .modal-header-btn-right {
 //   margin-left: 0;
 // }
-
 .tippy-tooltip.addevent-theme {
   background-color: white;
   color: white;
@@ -26,49 +22,78 @@
   border-radius: 50%;
   padding: 0;
 }
-
 .tippy-tooltip.switch-theme {
   background-color: transparent;
   color: #7DB08F;
   font-size: 20px;
   margin-top: -17px;
 }
-
 .tippy-tooltip.treep-theme {
   background-color: white;
-  padding: 9px;
+  padding: 0;
+  margin: 0;
   width: 390px;
   box-shadow: 0 30px 60px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .tippy-content {
-  color: gray;
   margin-bottom: 1px;
-  h5 {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background-color: $light;
-    padding: 0 5px 0 5px;
-    border-radius: 3px;
-    opacity: 0.9;
+  .top {
+    color: white;
+    width: 390px;
+    height: 234px;
+    position: relative;
+    background-size: cover;
+    h4 {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 0 5px 0 5px;
+      border-radius: 2px;
+    }
+    h5 {
+      position: absolute;
+      bottom: 6px;
+      left: 12px;
+      background-color: rgba(251, 178, 56, 0.8);
+      padding: 0 10px 0 10px;
+      border-radius: 3px;
+    }
+    .date {
+      line-height: 1.2em;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #FBB238;
+      width: 45px;
+      height: 45px;
+      padding: 6px 0;
+      border-radius: 100%;
+      font-weight: 700;
+      text-align: center;
+      .day {
+        font-size: 17px;
+      }
+      .month {
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+    }
   }
-  h6 {
-    font-family: 'Roboto';
-    color: black;
-    padding-right: 10px;
-  }
-  p {
-    margin: 0;
-  }
-  .tippy-description {
-    margin: 12px 0px 0px 0px;
-  }
-  hr {
-    margin-top: 10px;
-    margin-bottom: 9px;
+  .bottom {
+    color: gray;
+    padding: 0 9px 9px 9px;
+    .tippy-description {
+      margin: 12px 0px 0px 0px;
+    }
+    p {
+      margin: 0;
+    }
+    hr {
+      margin-top: 10px;
+      margin-bottom: 9px;
+    }
   }
 }
-
 .flatpickr-calendar {
   z-index: 1052 !important;
 }
