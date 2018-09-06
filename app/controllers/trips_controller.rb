@@ -119,7 +119,8 @@ class TripsController < ApplicationController
           {
             lat: event.latitude,
             lng: event.longitude,
-            infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+            infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) },
+            location: event.location
           }
         end
       end
@@ -146,7 +147,9 @@ class TripsController < ApplicationController
         {
           lat: event.latitude,
           lng: event.longitude,
-          infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+          infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) },
+          location: event.location
+
         }
       end
     end
