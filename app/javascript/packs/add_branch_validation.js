@@ -39,7 +39,7 @@ if (formBranchEvent) {
 
   const enableButton = () => {
     const all = allFilled();
-    console.log(all);
+    // console.log(all);
     if (all && validateRadio(formBranchEvent["event[category]"])) {
       button.disabled = false;
     }
