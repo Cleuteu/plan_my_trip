@@ -470,27 +470,59 @@ var makeTippy = function(node, text){
 // Tippy trigger via mouserover / mouseout
 let tippy_var = null;
 let tippy_div = null;
+let node_target = null;
+
+cy.on('mouseout', 'node', (e) => {
+  window.t = setTimeout(function() {
+              tippy_var.hide();
+              tippy_var = null;
+              node_target = null;
+              window.t = undefined;
+          }, 200);
+})
 
 cy.on('mouseover', 'node', (e) => {
-  if (document.getElementById('show-tippy'+ e.target.id())) {
-    if (tippy_var === null) {
-      tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
-      tippy_var.show();
+  if(window.t){
+    if (e.target.id() === node_target) {
+      customClearTimeOut(e);
     } else {
+      customClearTimeOut(e);
       tippy_var.hide();
       tippy_var = null;
-      tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
-      tippy_var.show();
+      node_target = null;
+      makeAndShowTippy(e);
+      tippy_div.addEventListener('mouseenter', (e) => {
+        customClearTimeOut(e);
+      })
+      tippy_div.addEventListener('mouseleave', (e) => {
+        tippy_var.hide();
+        tippy_var = null;
+        node_target = null;
+      })
     }
+  } else {
+    makeAndShowTippy(e);
+    tippy_div.addEventListener('mouseenter', (e) => {
+      customClearTimeOut(e);
+    })
+    tippy_div.addEventListener('mouseleave', (e) => {
+      tippy_var.hide();
+    })
   }
-});
+})
 
-cy.on('click', (e) => {
-  if (tippy_var != null) {
-    tippy_var.hide();
-    tippy_var = null;
-  }
-});
+function customClearTimeOut(e) {
+  clearTimeout(window.t);
+  window.t = undefined;
+}
+
+function makeAndShowTippy(e) {
+  tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
+  tippy_var.show();
+  tippy_div = tippy_var.popper;
+  node_target = e.target.id();
+}
+
 
 // ADD EVENT VIA TIPPY BUTTON
 var makeTippyEdge = function(edge, text){
