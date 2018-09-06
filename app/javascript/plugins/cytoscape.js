@@ -458,6 +458,7 @@ var makeTippy = function(node, text){
     maxWidth: 300,
     theme: 'treep',
     interactive: true,
+    interactiveBorder: 5,
     multiple: true,
     zIndex: 1000,
     animateFill: true,
@@ -468,15 +469,28 @@ var makeTippy = function(node, text){
 
 // Tippy trigger via mouserover / mouseout
 let tippy_var = null;
+let tippy_div = null;
 
 cy.on('mouseover', 'node', (e) => {
   if (document.getElementById('show-tippy'+ e.target.id())) {
-  tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
-  tippy_var.show();
+    if (tippy_var === null) {
+      tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
+      tippy_var.show();
+    } else {
+      tippy_var.hide();
+      tippy_var = null;
+      tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
+      tippy_var.show();
+    }
   }
 });
-cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
 
+cy.on('click', (e) => {
+  if (tippy_var != null) {
+    tippy_var.hide();
+    tippy_var = null;
+  }
+});
 
 // ADD EVENT VIA TIPPY BUTTON
 var makeTippyEdge = function(edge, text){
