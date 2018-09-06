@@ -137,6 +137,8 @@ flight_to_montreal = Event.create!(
   position_x: 0,
   position_y: 0
   )
+  flight_to_montreal.remote_photo_url = "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0d424e0c724d80f5f3b23c02201b8648&auto=format&fit=crop&w=749&q=80"
+  flight_to_montreal.save
 Relationship.create!(parent_id: event_start.id, child_id: flight_to_montreal.id)
 
 visit_of_montreal = Event.create!(
@@ -155,6 +157,8 @@ visit_of_montreal = Event.create!(
   position_x: 0,
   position_y: b
   )
+  visit_of_montreal.remote_photo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Montreal_-_Rue_Crescent.jpg/800px-Montreal_-_Rue_Crescent.jpg"
+  visit_of_montreal.save
 Relationship.create!(parent_id: flight_to_montreal.id, child_id: visit_of_montreal.id)
 
 airbnb_montreal_event = Event.create!(
@@ -171,6 +175,8 @@ airbnb_montreal_event = Event.create!(
   position_x: 0,
   position_y: 2*b
   )
+  airbnb_montreal_event.remote_photo_url = "https://www.aubergesaint-paul.com/img/dorm1.jpg"
+  airbnb_montreal_event.save
 Relationship.create!(parent_id: visit_of_montreal.id, child_id: airbnb_montreal_event.id)
 
 bus_quebec_event = Event.create!(
@@ -187,6 +193,8 @@ bus_quebec_event = Event.create!(
   position_x: -a,
   position_y: 3*b
   )
+  bus_quebec_event.remote_photo_url = "https://images.unsplash.com/photo-1494523637905-2c470e4312d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6bcf4ba2fdfaee0f4e548c2bd5d634f9&auto=format&fit=crop&w=1350&q=80"
+  bus_quebec_event.save
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: bus_quebec_event.id)
 
 visite_chateau_quebec_event = Event.create!(
@@ -203,6 +211,8 @@ visite_chateau_quebec_event = Event.create!(
   position_x: -a,
   position_y: 4*b
   )
+  visite_chateau_quebec_event.remote_photo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Ch%C3%A2teau_Frontenac_02.jpg/800px-Ch%C3%A2teau_Frontenac_02.jpg"
+  visite_chateau_quebec_event.save
 Relationship.create!(parent_id: bus_quebec_event.id, child_id: visite_chateau_quebec_event.id)
 
 hotel_quebec_event = Event.create!(
@@ -219,6 +229,8 @@ hotel_quebec_event = Event.create!(
   position_x: -a,
   position_y: 5*b
   )
+  hotel_quebec_event.remote_photo_url = "http://aubergeinternationaledequebec.com/workspace/uploads/2016/12/aubi_homepage.jpg"
+  hotel_quebec_event.save
 Relationship.create!(parent_id: visite_chateau_quebec_event.id, child_id: hotel_quebec_event.id)
 
 voiture_saguenay_event = Event.create!(
@@ -235,6 +247,8 @@ voiture_saguenay_event = Event.create!(
   position_x: -2*a,
   position_y: 6*b
   )
+  voiture_saguenay_event.remote_photo_url = "https://images.unsplash.com/photo-1494523637905-2c470e4312d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6bcf4ba2fdfaee0f4e548c2bd5d634f9&auto=format&fit=crop&w=1350&q=80"
+  voiture_saguenay_event.save
 
 # Activer pour seed qui fonctionne
 Relationship.create!(parent_id: hotel_quebec_event.id, child_id: voiture_saguenay_event.id)
@@ -271,6 +285,8 @@ randonnee_event = Event.create!(
   position_x: -2*a,
   position_y: 7*b
   )
+  randonnee_event.remote_photo_url = "https://images.unsplash.com/photo-1510951366214-f8ce654864ac?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=193535ae0e037baf33a156bab867549a&auto=format&fit=crop&w=750&q=80"
+  randonnee_event.save
 Relationship.create!(parent_id: voiture_saguenay_event.id, child_id: randonnee_event.id)
 
 airbnb_saguenay_event = Event.create!(
@@ -287,6 +303,8 @@ airbnb_saguenay_event = Event.create!(
   position_x: -2*a,
   position_y: 8*b
   )
+  airbnb_saguenay_event.remote_photo_url = "https://media-cdn.tripadvisor.com/media/photo-s/08/69/ad/84/la-maison-price.jpg"
+  airbnb_saguenay_event.save
 Relationship.create!(parent_id: randonnee_event.id, child_id: airbnb_saguenay_event.id)
 
 # voiture_montreal_event = Event.create!(
@@ -318,6 +336,8 @@ pub_crawl_event = Event.create!(
   position_x: 0,
   position_y: 10*b
   )
+  pub_crawl_event.remote_photo_url = "https://images.unsplash.com/photo-1513309914637-65c20a5962e1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=228f272007b6369007faeba1901c3274&auto=format&fit=crop&w=750&q=80"
+  pub_crawl_event.save
 # Relationship.create!(parent_id: voiture_montreal_event.id, child_id: pub_crawl_event.id)
 
 voiture_perce_event = Event.create!(
@@ -333,10 +353,12 @@ voiture_perce_event = Event.create!(
   position_x: 0,
   position_y: 6*b
   )
+  voiture_perce_event.remote_photo_url = "https://images.unsplash.com/photo-1461712132323-d60b5db21dba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35c0d37100efaadce3126654bda08687&auto=format&fit=crop&w=749&q=80"
+  voiture_perce_event.save
 Relationship.create!(parent_id: hotel_quebec_event.id, child_id: voiture_perce_event.id)
 
 airbnb_perce_event = Event.create!(
-  name: 'La Maison Rouge',
+  name: 'Maison Rouge',
   category: 'Accommodation',
   location: '125 QC-132, Percé, QC G0C 2L0, Canada',
   date: Date.new(2018,9,23),
@@ -348,10 +370,12 @@ airbnb_perce_event = Event.create!(
   position_x: 0,
   position_y: 7*b
   )
+  airbnb_perce_event.remote_photo_url = "https://lamaisonrouge.ca/image/photo/intro/2.jpg"
+  airbnb_perce_event.save
 Relationship.create!(parent_id: voiture_perce_event.id, child_id: airbnb_perce_event.id)
 
 bateau_perce_event = Event.create!(
-  name: 'Bonaventure Island',
+  name: 'Bonaventure',
   category: 'Activity',
   location: '9 Rue du Quai, Percé, QC G0C 2L0, Canada',
   date: Date.new(2018,9,23),
@@ -363,6 +387,8 @@ bateau_perce_event = Event.create!(
   position_x: 0,
   position_y: 8*b
   )
+  bateau_perce_event.remote_photo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Perc%C3%A9_Rock_%283%29.jpg/800px-Perc%C3%A9_Rock_%283%29.jpg"
+  bateau_perce_event.save
 Relationship.create!(parent_id: airbnb_perce_event.id, child_id: bateau_perce_event.id)
 
 voiture_toronto_event = Event.create!(
@@ -378,6 +404,8 @@ voiture_toronto_event = Event.create!(
   position_x: a,
   position_y: 3*b
   )
+  voiture_toronto_event.remote_photo_url = "https://images.unsplash.com/photo-1461712132323-d60b5db21dba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35c0d37100efaadce3126654bda08687&auto=format&fit=crop&w=749&q=80"
+  voiture_toronto_event.save
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: voiture_toronto_event.id)
 
 airbnb_toronto_event = Event.create!(
@@ -393,6 +421,8 @@ airbnb_toronto_event = Event.create!(
   position_x: a,
   position_y: 4*b
   )
+  airbnb_toronto_event.remote_photo_url = "https://images.ixigo.com/image/upload/t_large/5331b6d6e4b05a8f20264308"
+  airbnb_toronto_event.save
 Relationship.create!(parent_id: voiture_toronto_event.id, child_id: airbnb_toronto_event.id)
 
 visite_toronto_event = Event.create!(
@@ -408,6 +438,8 @@ visite_toronto_event = Event.create!(
   position_x: a,
   position_y: 5*b
   )
+  visite_toronto_event.remote_photo_url = "https://images.unsplash.com/photo-1490623970972-ae8bb3da443e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d883196e1c8ce6f8a736cba0a6ebdcca&auto=format&fit=crop&w=749&q=80"
+  visite_toronto_event.save
 Relationship.create!(parent_id: airbnb_toronto_event.id, child_id: visite_toronto_event.id)
 
 voiture_niagarafalls_event = Event.create!(
@@ -423,6 +455,8 @@ voiture_niagarafalls_event = Event.create!(
   position_x: a,
   position_y: 6*b
   )
+  voiture_niagarafalls_event.remote_photo_url = "https://images.unsplash.com/photo-1481926843113-ac9cb3fb9c8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d4cbe6845ddba7e4ddcd8fa84abc0d8&auto=format&fit=crop&w=750&q=80"
+  voiture_niagarafalls_event.save
 Relationship.create!(parent_id: visite_toronto_event.id, child_id: voiture_niagarafalls_event.id)
 
 visite_niagarafalls_event = Event.create!(
@@ -438,6 +472,8 @@ visite_niagarafalls_event = Event.create!(
   position_x: a,
   position_y: 7*b
   )
+  visite_niagarafalls_event.remote_photo_url = "https://images.unsplash.com/photo-1522048991513-c503bb322b93?ixlib=rb-0.3.5&s=6668acef3e1baa61b69ec2b5f27ced49&auto=format&fit=crop&w=749&q=80"
+  visite_niagarafalls_event.save
 Relationship.create!(parent_id: voiture_niagarafalls_event.id, child_id: visite_niagarafalls_event.id)
 
 airbnb_toronto_2_event = Event.create!(
@@ -453,6 +489,8 @@ airbnb_toronto_2_event = Event.create!(
   position_x: a,
   position_y: 8*b
   )
+  airbnb_toronto_2_event.remote_photo_url = "https://images.ixigo.com/image/upload/t_large/5331b6d6e4b05a8f20264308"
+  airbnb_toronto_2_event.save
 Relationship.create!(parent_id: visite_niagarafalls_event.id, child_id: airbnb_toronto_2_event.id)
 
 ride_back_montreal_event = Event.create!(
@@ -469,6 +507,8 @@ ride_back_montreal_event = Event.create!(
   position_x: 0,
   position_y: 9*b
   )
+  ride_back_montreal_event.remote_photo_url = "https://images.unsplash.com/photo-1474579141827-94112b73ba39?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=57d0204b0b0b625ae8407f16a84cd81b&auto=format&fit=crop&w=753&q=80"
+  ride_back_montreal_event.save
 Relationship.create!(parent_id: airbnb_toronto_2_event.id, child_id: ride_back_montreal_event.id)
 
 back_flight_event = Event.create!(
@@ -485,6 +525,8 @@ back_flight_event = Event.create!(
   position_x: 0,
   position_y: 11*b
   )
+  back_flight_event.remote_photo_url = "https://images.unsplash.com/photo-1533942295064-8cfcfee30ac7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=da1b72f9cf1501b5f4abc83684152e6c&auto=format&fit=crop&w=500&q=60"
+  back_flight_event.save
 
 Relationship.create!(parent_id: pub_crawl_event.id, child_id: back_flight_event.id)
 Relationship.create!(parent_id: back_flight_event.id, child_id: event_end.id)
