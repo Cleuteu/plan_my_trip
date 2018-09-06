@@ -16,7 +16,7 @@
 <!--           <legend class="col-form-label pt-0">Category
             <abbr title="required">*</abbr>
           </legend> -->
-          <input type="" name="event[category]" value="" id="event_category">
+          <input type="hidden" name="event[category]" value="" id="event_category">
             <div class="radio-categories">
               <div class="category-choices">
                 <div class="form-check">
@@ -59,8 +59,8 @@
             <%= f.input :url, label: false, placeholder: 'Associated URL if necessary', input_html: { id: event.id ? "edit_event_url#{event.id}" : "event_url#{event.id}" } %>
           </div>
         </div>
-        <%= f.input :photo, class: 'form-control' %>
-        <%= f.input :photo_cache, as: :hidden, wrapper_html: {class: "col"}  %>
+        <%= f.input :photo, label: false, input_html: { class: 'form-control upload-photo' } %>
+        <%= f.input :photo_cache, as: :hidden  %>
         <%#= f.input :parent_ids, :collection => events_parents, input_html: { id: event.id ? "edit_event_parent_ids" : "event_parent_ids" } %>
         <%#= f.input :child_ids, :collection => events_children, input_html: { id: event.id ? "edit_event_child_ids" : "event_child_ids" } %>
         <%= f.input :child_ids, as: :hidden, input_html: { id: event.id ? "edit_event_child_id#{event.id}" : "event_child_id#{event.id}" } %>
