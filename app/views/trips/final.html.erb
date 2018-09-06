@@ -6,7 +6,10 @@
     <div class="col-sm-6 timeline-final">
       <h1>
         <%= @trip.name %>
-      <h3>Congrats <%= @trip.user.first_name %>! Find below a summary of you road trip.</h3>
+      </h1>
+      <div class="congrats">
+        <p>Congrats Adrien and Julie!<br> Find below a summary of your road trip with our recommendations.</p>
+      </div>
       <div class="row">
         <div class="col-sm-6 offset-sm-3 text-center">
           <%= link_to trip_path(@trip, format: :ics), class: "btn btn-primary btn-lg btn-final" do  %>
@@ -14,7 +17,6 @@
           <% end %>
         </div>
       </div>
-      </h1>
       <div class="page">
         <div class="page__demo">
           <div class="main-container page__container">
