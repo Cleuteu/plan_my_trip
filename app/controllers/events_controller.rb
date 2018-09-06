@@ -29,10 +29,18 @@ class EventsController < ApplicationController
 
     #Si nouvelle branche:
     else
-      if Event.where("position_x = ? AND position_y <= ?", @parent_event.position_x + a, @event.position_y).empty?
-        @event.position_x = @parent_event.position_x + a
-      elsif Event.where("position_x = ? AND position_y >= ?", @parent_event.position_x - a, @event.position_y).empty?
+      right_position = Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y)
+      left_position = Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y)
+
+      if left_position.empty?
         @event.position_x = @parent_event.position_x - a
+        events_right_bottom = Event.where("position_x >= ? AND position_y >= ?", @event.position_x, @event.position_y).where.not(name:'End')
+        events_right_bottom.each { |event| event.update!(position_x: event.position_x + a)}
+
+      elsif right_position.empty?
+        @event.position_x = @parent_event.position_x + a
+        events_left_bottom = Event.where("position_x <= ? AND position_y >= ?", @event.position_x, @event.position_y).where.not(name:'End')
+        events_left_bottom.each { |event| event.update!(position_x: event.position_x - a)}
       else
         flash[:alert] = "Can't add an event here, sorry!"
         render 'trips/show'
