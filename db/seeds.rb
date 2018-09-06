@@ -124,7 +124,7 @@ event_end.save!
 
 flight_to_montreal = Event.create!(
   name: 'Flight to Montreal',
-  category: 'Travel',
+  category: 'Plane',
   confirmed: true,
   location: 'Montreal',
   date: Date.new(2018,9,20),
@@ -181,7 +181,7 @@ Relationship.create!(parent_id: visit_of_montreal.id, child_id: airbnb_montreal_
 
 bus_quebec_event = Event.create!(
   name: 'Bus Quebec City',
-  category: 'Travel',
+  category: 'Car',
   location: 'Montreal Bus Station',
   date: Date.new(2018,9,22),
   duration: 3,
@@ -235,7 +235,7 @@ Relationship.create!(parent_id: visite_chateau_quebec_event.id, child_id: hotel_
 
 voiture_saguenay_event = Event.create!(
   name: 'Bus to Saguenay',
-  category: 'Travel',
+  category: 'Car',
   location: '320, rue Abraham-Martin, Québec, Québec, Canada, G1K 8N2',
   date: Date.new(2018,9,23),
   duration: 2,
@@ -309,7 +309,7 @@ Relationship.create!(parent_id: randonnee_event.id, child_id: airbnb_saguenay_ev
 
 # voiture_montreal_event = Event.create!(
 #   name: 'Ride to Montreal',
-#   category: 'Travel',
+#   category: 'Car',
 #   # location: 'Washington',
 #   date: Date.new(2018,9,24),
 #   duration: 5,
@@ -342,7 +342,7 @@ pub_crawl_event = Event.create!(
 
 voiture_perce_event = Event.create!(
   name: 'Ride to Percé',
-  category: 'Travel',
+  category: 'Car',
   location: '1200 Rue Stanley, Montréal, QC H3B 2S8, Canada',
   date: Date.new(2018,9,23),
   duration: 8,
@@ -393,7 +393,7 @@ Relationship.create!(parent_id: airbnb_perce_event.id, child_id: bateau_perce_ev
 
 voiture_toronto_event = Event.create!(
   name: 'Ride to Toronto',
-  category: 'Travel',
+  category: 'Car',
   # location: 'Washington',
   date: Date.new(2018,9,22),
   duration: 3,
@@ -495,7 +495,7 @@ Relationship.create!(parent_id: visite_niagarafalls_event.id, child_id: airbnb_t
 
 ride_back_montreal_event = Event.create!(
   name: 'Back to Montréal',
-  category: 'Travel',
+  category: 'Car',
   location: 'Toronto Train Station, ON M5J 1E6, Canada',
   date: Date.new(2018,9,24),
   duration: 4,
@@ -513,7 +513,7 @@ Relationship.create!(parent_id: airbnb_toronto_2_event.id, child_id: ride_back_m
 
 back_flight_event = Event.create!(
   name: 'Flight back Paris',
-  category: 'Travel',
+  category: 'Plane',
   location: 'Airport Montreal, Canada',
   date: Date.new(2018,9,26),
   duration: 3,

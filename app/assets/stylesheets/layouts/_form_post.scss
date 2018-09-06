@@ -18,24 +18,28 @@
     margin: 0px;
   }
   .icon-category {
-    font-size: 70px
+    font-size: 30px
   }
   .form-check {
     padding-left: 0;
+    width: 25%;
   }
   .category-choices {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
   }
-
   .category-choice {
     background: #b7b7b7;
-    padding: 20px 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-right: 8px;
     border-radius: 5px;
     opacity: .6;
-    flex: 0 0 30%;
+    // flex: 0 0 30%;
+    display: block;
     text-align: center;
+    // margin-right: 8px;
     &:hover {
       opacity: 1;
       cursor: pointer;

@@ -12,7 +12,8 @@
         <li class="list-group-item event">
           <a class="d-flex justify-content-between align-items-center">
           <% category = 'home' if event.category == 'Accommodation' %>
-          <% category = 'plane' if event.category == 'Travel' %>
+          <% category = 'plane' if event.category == 'Plane' %>
+          <% category = 'car' if event.category == 'Car' %>
           <% category = 'camera-retro' if event.category == 'Activity' %>
           <i class="fas fa-<%= category %>"></i>
             <p style="font-weight: lighter;"><%= event.name %></p>
