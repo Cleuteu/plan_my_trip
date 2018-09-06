@@ -69,6 +69,10 @@ class EventsController < ApplicationController
 
     @relationship = Relationship.create!(parent_id: @parent_id, child_id: @child_id)
 
+
+    events = Event.where("position_x <= ? AND position_y >= ?", @child_event.position_x, @child_event.position_y)
+    events.each { |event| event.update!(position_x: event.position_x - a)}
+
     # if Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).empty?
         # events_x = Event.where("position_y >= ? AND position_y < ?", @parent_event.position_y, @child_event.position_y)
         # events_x.each { |event| event.update!(position_x: event.position_x - a) }
