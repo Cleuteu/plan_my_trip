@@ -105,6 +105,7 @@ const cy = cytoscape({
         'text-events': 'yes',
         'text-halign': 'right',
         'text-valign': 'center',
+        'text-margin-x': 12,
         'font-size': 23,
         'text-transform': 'uppercase',
         'color': 'gray',
@@ -136,12 +137,22 @@ const cy = cytoscape({
         'transition-duration': '.3s',
       }
     },{
-    selector: "node[category = 'Travel']",
+    selector: "node[category = 'Plane']",
       style: {
         label: 'data(name)',
         'background-image': [
-          // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536010981/plane-solid-padded.png'
+        ],
+        'border-color': '#28112B',
+        'transition-property': 'background-color',
+        'transition-duration': '.3s',
+      }
+    },{
+    selector: "node[category = 'Car']",
+      style: {
+        label: 'data(name)',
+        'background-image': [
+          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
         ],
         'border-color': '#28112B',
         'transition-property': 'background-color',
@@ -186,7 +197,7 @@ const cy = cytoscape({
         'border-opacity': 1
       }
     },{
-    selector: "node[category = 'Travel'][master = 'true']",
+    selector: "node[category = 'Plane'][master = 'true']",
       style: {
         label: 'data(name)',
         'text-halign': 'right',
@@ -197,8 +208,34 @@ const cy = cytoscape({
         'width': 80,
         'height': 80,
         'background-image': [
-          // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535996660/car-solid-padded-white.svg'
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536058617/plane-solid-padded-white.png'
+        ],
+        'background-color': '#299fc6',
+        'background-fit': 'contain',
+        'background-image-opacity': 0.9,
+        'background-repeat': 'no-repeat',
+        // 'border-color': '#27873C',
+        'border-color': '#299fc6',
+        'ghost': 'yes',
+        'ghost-offset-x': 0,
+        'ghost-offset-y': 2,
+        'ghost-opacity': 0.1,
+        'background-image-opacity': 1,
+        'border-opacity': 1
+      }
+    },{
+      selector: "node[category = 'Car'][master = 'true']",
+      style: {
+        label: 'data(name)',
+        'text-halign': 'right',
+        'text-valign': 'center',
+        'font-size': 23,
+        'text-transform': 'uppercase',
+        // 'color': 'black',
+        'width': 80,
+        'height': 80,
+        'background-image': [
+          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535996660/car-solid-padded-white.svg'
         ],
         'background-color': '#299fc6',
         'background-fit': 'contain',
@@ -264,11 +301,17 @@ const cy = cytoscape({
         ],
       }
     },{
-    selector: "node[category = 'Travel'][master = 'true'].hover",
+    selector: "node[category = 'Plane'][master = 'true'].hover",
       style: {
         'background-image': [
-          // 'http://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
           'https://res.cloudinary.com/dnddzhvyj/image/upload/v1536010981/plane-solid-padded.png'
+        ],
+      }
+    },{
+      selector: "node[category = 'Car'][master = 'true'].hover",
+      style: {
+        'background-image': [
+          'https://res.cloudinary.com/dnddzhvyj/image/upload/v1535965554/car-solid-padded.png'
         ],
       }
     },{

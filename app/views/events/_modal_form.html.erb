@@ -17,8 +17,10 @@
             <abbr title="required">*</abbr>
           </legend> -->
           <input type="hidden" name="event[category]" value="">
+
             <div class="radio-categories">
               <div class="category-choices">
+
                 <div class="form-check">
                   <input class="form-check-input is-valid radio_buttons required" id="edit_event_accommodation<%= event.id %>" type="radio" value="Accommodation" name="event[category]">
                   <label class="collection_radio_buttons category-choice" for="edit_event_accommodation<%= event.id %>"><i class="icon-category fas fa-home"></i><br><p>Housing</p>
@@ -26,8 +28,14 @@
                 </div>
 
                   <div class="form-check">
-                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_travel<%= event.id %>" type="radio" value="Travel" name="event[category]">
-                      <label class="collection_radio_buttons category-choice" for="edit_event_travel<%= event.id %>"><i class="icon-category fas fa-car"></i><br><p>Travel</p>
+                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_plane<%= event.id %>" type="radio" value="Plane" name="event[category]">
+                      <label class="collection_radio_buttons category-choice" for="edit_event_plane<%= event.id %>"><i class="icon-category fas fa-plane"></i><br><p>Flight</p>
+                      </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input is-valid radio_buttons required" id="edit_event_car<%= event.id %>" type="radio" value="Car" name="event[category]">
+                      <label class="collection_radio_buttons category-choice" for="edit_event_car<%= event.id %>"><i class="icon-category fas fa-car"></i><br><p>Ride</p>
                       </label>
                   </div>
 
@@ -35,8 +43,9 @@
                     <input class="form-check-input is-valid radio_buttons required" id="edit_event_activity<%= event.id %>" type="radio" value="Activity" name="event[category]">
                       <label class="collection_radio_buttons category-choice" for="edit_event_activity<%= event.id %>"><i class="icon-category fas fa-camera-retro"></i><br><p>Activity</p>
                       </label>
+                </div>
               </div>
-              </div>
+
             </div>
           </fieldset>
 
