@@ -16,10 +16,10 @@ class TripsController < ApplicationController
     authorize @trip
     if @trip.save
       @start = Event.new(name: "Start", category: "settings", date: @trip.start_date, location: @trip.start_location, trip_id: @trip.id, duration: 1, price: 0, master: true)
-      @start.save!
+      @start.save
       @end = Event.new(name: "End", category: "settings", date: @trip.end_date, location: @trip.end_location, trip_id: @trip.id, duration: 1, price: 0, master: true)
-      @end.save!
-      Relationship.create!(parent_id: @start.id, child_id: @end.id)
+      @end.save
+      Relationship.create(parent_id: @start.id, child_id: @end.id)
       redirect_to trip_path(@trip)
     else
       render :new
