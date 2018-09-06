@@ -46,10 +46,10 @@ class EventsController < ApplicationController
         render 'trips/show'
       end
     end
-    if @event.save!
-      @relationship = Relationship.create!(parent_id: @parent_id, child_id: @event.id)
+    if @event.save
+      @relationship = Relationship.create(parent_id: @parent_id, child_id: @event.id)
       if bool
-        @relationship = Relationship.create!(parent_id: @event.id, child_id: @child_id)
+        @relationship = Relationship.create(parent_id: @event.id, child_id: @child_id)
         Relationship.destroy(Relationship.where(parent_id: @parent_id, child_id: @child_id).first.id)
       end
       redirect_to trip_path(@trip)
@@ -67,7 +67,7 @@ class EventsController < ApplicationController
     a = 300 #Pas en x
     b = 150 #Pas en y
 
-    @relationship = Relationship.create!(parent_id: @parent_id, child_id: @child_id)
+    @relationship = Relationship.create(parent_id: @parent_id, child_id: @child_id)
 
 
     events = Event.where("position_x <= ? AND position_y >= ?", @child_event.position_x, @child_event.position_y)

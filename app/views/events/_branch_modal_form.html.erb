@@ -1,7 +1,7 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">Create an event as an alternative</h4>
+      <h4 class="modal-title" id="myModalLabel">Create a new option path</h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <%# child_events = [] %>
@@ -71,7 +71,7 @@
           <%#= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed#{event.id}" : "event_confirmed#{event.id}" } %>
           <%#= f.input :url, input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
         <div class="modal-footer footer-btn-center">
-            <%= f.submit "Add event", class: "btn btn-primary add-branch-submit", disabled: true %>
+            <%= f.submit "Submit", class: "btn btn-primary add-branch-submit", disabled: true %>
           <% end %>
         </div>
       </div>
