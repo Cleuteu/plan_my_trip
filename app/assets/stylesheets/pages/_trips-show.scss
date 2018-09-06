@@ -6,7 +6,6 @@
   visibility: hidden;
   height: 0;
 }
-
 .logo-treep-blue {
    vertical-align: middle;
   max-height: 45px;
@@ -19,7 +18,6 @@ svg {
 //   justify-content: space-around;
 //   z-index: 1,
 // }
-
 .content {
   // background: linear-gradient(180deg, rgba(246,246,246,1), rgba(246,246,246,.8)),
   // url('https://images.unsplash.com/photo-1520790552719-b5cfd6b21953');
@@ -30,7 +28,6 @@ svg {
   margin-bottom: -40px;
   padding-top: 50px;
 }
-
 .main-panel {
     // float: right;
     // width: calc(100% - 660px);
@@ -39,24 +36,39 @@ svg {
     // padding: 30px 15px;
     // min-height: calc(100% - 123px);
 }
-
-
 // .main-panel .navbar {
 //     margin-bottom: 0;
 // }
-
 #cy {
   min-height: 100vh;
 }
 #add-node {
-  height: 27px;
-  width: 27px;
   color: gray;
+  height: 15px;
+  width: 15px;
   position: absolute;
-  right: -11px;
-  top: -4px;
+  top: 2px;
+  right: -5px;
   background-color: white;
   border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 12px;
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
+  }
 }
-
-
+#add-node:hover {
+  height: 22px;
+  width: 22px;
+  top: -2px;
+  right: -9px;
+  i {
+    font-size: 18px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+}

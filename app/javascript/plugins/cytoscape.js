@@ -405,13 +405,13 @@ cy.on('click', 'node', (e) => {
 
 cy.on('mouseover', 'node', () =>$('html,body').css('cursor', 'pointer'));
 cy.on('mouseout', 'node', () =>$('html,body').css('cursor', 'default'));
-cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
-cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
+// cy.on('mouseover', 'edge', () =>$('html,body').css('cursor', 'pointer'));
+// cy.on('mouseout', 'edge', () =>$('html,body').css('cursor', 'default'));
 
 cy.on('mouseover', 'node', (e) => { e.target.addClass('hover'); });
 cy.on('mouseout', 'node', (e) => { e.target.removeClass('hover'); });
-cy.on('mouseover', 'edge', (e) => { e.target.addClass('hover'); });
-cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
+// cy.on('mouseover', 'edge', (e) => { e.target.addClass('hover'); });
+// cy.on('mouseout', 'edge', (e) => { e.target.removeClass('hover'); });
 
 // cy.on('click', 'node', (evt) => { document.getElementById('show-node'+ evt.target.id()).click() });
 
@@ -492,7 +492,7 @@ var makeTippyEdge = function(edge, text){
     distance: 10,
     arrow: true,
     arrowTransform: 'scaleX(0)',
-    sticky: true,
+    // sticky: false,  /!\ must be false for performance /!\
     hideOnClick: false,
     minHeight: 60,
     maxWidth: 30,
@@ -511,12 +511,17 @@ var makeTippyEdge = function(edge, text){
   } ).tooltips[0];
 };
 
-let tippy_edge = null;
-cy.on('mouseover', 'edge', (e) => {
-  tippy_edge = makeTippyEdge(e.target, '<div id="add-node" data-toggle="modal" data-target="#addEvent"><i class="fas fa-plus-circle"></i></div>')
-  tippy_edge.show();
+// let tippy_edge = null;
+// cy.on('mouseover', 'edge', (e) => {
+//   tippy_edge = makeTippyEdge(e.target, '<div id="add-node" data-toggle="modal" data-target="#addEvent"><i class="fas fa-plus-circle"></i></div>')
+//   tippy_edge.show();
+// });
+// cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
+
+cy.edges().forEach((edge) => {
+  let tippy_plus = makeTippyEdge(edge, '<div id="add-node" data-toggle="modal" data-target="#addEvent"><i class="fas fa-plus-circle"></i></div>');
+  tippy_plus.show();
 });
-cy.on('mouseout', 'edge', (e) => { tippy_edge.hide(); });
 
 // CLICK ON EDGE TO SWITCH EDGE TO MASTER
 // cy.on('click', 'edge', (evt) => {
@@ -567,7 +572,7 @@ var makeTippySwitch = function(node_ref, text){
     arrow: true,
     arrowTransform: 'scaleX(0)',
     distance: 16,
-    // sticky: true,
+    // sticky: false,  /!\ must be false for performance /!\
     hideOnClick: false,
     minHeight: 60,
     maxWidth: 30,
@@ -583,7 +588,7 @@ ref_array.forEach((ref_node) => {
   let node_id = ref_node["node"].data("id");
   let tippy_switch = makeTippySwitch(ref_node["ref_popper"], `<div class="arrow">
     <a id="switch_master_v2_${node_id}" rel="nofollow" data-method="patch" href="/events/${node_id}/switch_master">
-    <i class="fas fa-exchange-alt"></i></a></div>`);
+    <i class="fas fa-exchange-alt faa-pulse animated faa-slow"></i></a></div>`);
   tippy_switch.show();
 });
 
