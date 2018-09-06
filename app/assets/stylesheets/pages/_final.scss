@@ -21,7 +21,7 @@
   }
   h3 {
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
 
     color: white;
   }
@@ -36,7 +36,6 @@
 
   .timeline{
     position: relative;
-    padding-top: 3rem;
     padding-bottom: 3rem;
   }
 
@@ -48,6 +47,65 @@
 
     position: absolute;
     top: 0;
+  }
+
+  .timeline__content {
+    .background-card-final {
+      position: relative;
+      background-color: red;
+      height: 280px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      background-size: cover !important;
+      background-position: center;
+      color: white;
+      position: relative;
+      padding: 10px;
+      overflow: hidden;
+      h4 {
+        font-size: 30px;
+      }
+      p {
+        font-size: 20px;
+      }
+      .name {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+      .price-bandeau {
+        padding: 0px 43px 0px 97px;
+        background-color: #fdb323;
+        position: absolute;
+        top: -2px;
+        right: -38px;
+        z-index: 1;
+        text-align: center;
+        -webkit-transform: rotate(45deg);
+        -moz-transform:    rotate(45deg);
+        -ms-transform:     rotate(45deg);
+        -o-transform:      rotate(45deg);
+      }
+      .price {
+
+      }
+
+    }
+    .card-content {
+      padding: 10px;
+      position: relative;
+      h4 {
+        font-size: 30px;
+        color: rgba(75,75,75,1);
+      }
+      p {
+        color: rgba(75,75,75,1);
+      }
+      .category {
+        position: absolute;
+        bottom: 0px;
+        right: 10px;
+      }
+    }
   }
 
   .timeline__group{
@@ -113,7 +171,6 @@
   }
 
   .timeline__post{
-    padding: 1.5rem 2rem;
     border-radius: 2px;
     border-left: 3px solid rgb(253, 179, 35);
     box-shadow: 4px 4px 22px -1px rgb(58, 70, 84);
@@ -127,7 +184,7 @@
     }
 
     .timeline__group{
-      padding-top: 55px;
+      padding-top: 0px;
     }
 
     .timeline__box{

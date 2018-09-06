@@ -24,11 +24,9 @@
   </ul>
 </div>
 
-<div class="total">
-  <ul class="nav list-group">
-    <li class="d-flex justify-content-between align-items-center">
-      <p>TOTAL PRICE</p>
-      <span class="badge badge-info badge-pill"><%= @total_price %>€</span>
-    </li>
-  </ul>
+<div class="total d-flex justify-content-between">
+  <%= link_to "Confirm trip", trip_final_path(@trip), class: "btn btn-primary btn-to-final" %>
+  <div class="d-flex align-items-center">
+    <span class="badge badge-info badge-pill"><%= @total_price %>€</span>
+  </div>
 </div>

@@ -1,11 +1,13 @@
 .arrow i {
+  color: #FBB238;
   cursor: pointer;
   margin-top: 20px;
   font-size: 25px;
-  transition: all 0.7s ease;
-  color: black;
+  padding: 2px 4px 2px 4px;
+  border-radius: 4px;
+  // transition: all 0.7s ease;
 }
-
 .arrow i:hover {
-  transform: rotateZ(-180deg);
+  // transform: rotateZ(-180deg);
+  background-color: rgba(0, 0, 0, 0.13);
 }

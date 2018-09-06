@@ -129,7 +129,7 @@ flight_to_montreal = Event.create!(
   location: 'Montreal',
   date: Date.new(2018,9,20),
   duration: 1,
-  description: "Our booking number is NBX87B. Please guys, this time do not forget to put ALL your liquids in your suitcase. Not like last time...",
+  description: "Your booking number is NBX87B and your check-in will take place at the counter number 23 on the 3rd floor of the airport. Do not forget to put ALL your liquids in your suitcase. At the arrival, you can contact John Dow's Taxi (+11907657654). It's the cheapest company in Montreal and the service is good.",
   url: "https://www.airfrance.fr/FR/fr/local/core/engine/mmb/MmbAction.do",
   trip_id: trip3.id,
   master: true,
@@ -146,9 +146,10 @@ visit_of_montreal = Event.create!(
   location: 'Montreal',
   date: Date.new(2018,9,21),
   duration: 3,
-  description: "Marc Marichal will be our guide. He has been living in the city since 2010 so he'll show us the best non-touristic places. We could go up the Mont-Royal, eat poutine, visit one of the markets, browse the boutiques of the Mile End and visit Basilique Notre-Dame ",
+  description: "Marc Boutayer will be your guide. He has been living in the city since 1976 so he'll show you the best non-touristic places and adapt the journey to your expections. You could go up the Mont-Royal, eat poutine, visit one of the markets, browse the boutiques of the Mile End and visit Basilique Notre-Dame. Enjoy this wonderful city, the local people are really friendly and they love meeting foreign people.",
   url: "https://www.votretourdumonde.com/que-visiter-a-montreal/",
   trip_id: trip3.id,
+  photo: '';
   master: true,
   price: 0,
   position_x: 0,
@@ -157,13 +158,13 @@ visit_of_montreal = Event.create!(
 Relationship.create!(parent_id: flight_to_montreal.id, child_id: visit_of_montreal.id)
 
 airbnb_montreal_event = Event.create!(
-  name: 'Airbnb Montreal',
+  name: 'St Paul Youth Hostel Montreal',
   category: 'Accommodation',
   location: '1030 Rue Mackay, Montréal, QC H3G 2H1, Canada',
   date: Date.new(2018,9,21),
   duration: 8,
-  description: "Our Airbnb is in a nice downtown. We have everything we need and to collect the keys, we'll need to open the little box on the left of the front door. Code is 7942",
-  url: "https://www.airbnb.fr/rooms/plus/11008204?location=montreal&search_id=54eef90d-2111-4dda-91e8-2235119e426e&federated_search_id=9c698e08-41c4-4da7-913e-1ff56f42e132",
+  description: "This Youth Hostel is in a nice downtown. You'll have everything you need and to collect the keys if you arrive after 10pm, you'll need to open the little box on the left of the front door. Code is 7942",
+  url: "https://www.aubergesaint-paul.com/",
   trip_id: trip3.id,
   master: true,
   price: 67,
@@ -178,7 +179,7 @@ bus_quebec_event = Event.create!(
   location: 'Montreal Bus Station',
   date: Date.new(2018,9,22),
   duration: 3,
-  description: "We have to leave early to book the tickets. Not possible to do it online and we need cash to pay.",
+  description: "You'll have to leave early to book the tickets. Not possible to do it online and or with a credit card at the counter of the company. This company provide free WiFi during the trip.",
   url: "http://www.gamtl.com/fr/Bienvenue/",
   trip_id: trip3.id,
   master: true,
@@ -189,9 +190,9 @@ bus_quebec_event = Event.create!(
 Relationship.create!(parent_id: airbnb_montreal_event.id, child_id: bus_quebec_event.id)
 
 visite_chateau_quebec_event = Event.create!(
-  name: 'Visit Chateau Frontenac',
+  name: 'Chateau Frontenac',
   category: 'Activity',
-  # location: 'Washington',
+  location: '1 Rue des Carrières, Québec, QC G1R 4P5, Canada',
   date: Date.new(2018,9,22),
   duration: 3,
   description: "The Château Frontenac is one of Canada's grand railway hotels. The hotel is generally recognized as the most photographed hotel in the world, largely for its prominence in the skyline of Quebec City.",
@@ -210,7 +211,7 @@ hotel_quebec_event = Event.create!(
   location: '19 Rue Sainte-Ursule, Québec, QC G1R 4E1, Canada',
   date: Date.new(2018,9,22),
   duration: 8,
-  description: "Kevin recommended this youth hostel. It has one of the best rooftop in the area and local beers.",
+  description: "Our customers recommended this youth hostel. It has one of the best rooftop in the area and local beers. Breakfast is included and on the 22nd you'll be able to compete with other guests at the massive trivia quizz!",
   url: "http://aubergeinternationaledequebec.com/",
   trip_id: trip3.id,
   master: true,
@@ -226,7 +227,7 @@ voiture_saguenay_event = Event.create!(
   location: '320, rue Abraham-Martin, Québec, Québec, Canada, G1K 8N2',
   date: Date.new(2018,9,23),
   duration: 2,
-  description: "Leaving from the Gare du Palais. Built in 1915 by the Canadian Pacific Railway, the two-storey châteauesque station is similar in design to the Château Frontenac.",
+  description: "You'll take the bus at the Gare du Palais. Built in 1915 by the Canadian Pacific Railway, the two-storey châteauesque station is similar in design to the Château Frontenac.",
   url: "https://www.quebecoriginal.com/fr-fr/fiche/transport-et-organismes-touristiques/autocar/gares-routieres-et-ferroviaires/gare-du-palais-terminus-dautobus-de-gare-du-palais-4500244",
   trip_id: trip3.id,
   master: true,
@@ -262,8 +263,8 @@ randonnee_event = Event.create!(
   location: 'Saguenay Quebec',
   date: Date.new(2018,9,23),
   duration: 5,
-  description: "It should take about 5 hours and we need to buy food in Saguenay",
-  url: "",
+  description: "Peter we'll be you're guide during this hike. He knows the best spots! It should take about 5 hours and you'll need to buy food in Saguenay to avoid buying expensive commercial food at the departure point.",
+  url: "https://tourisme.saguenay.ca/fr/quoi-faire/sports-et-plein-air/randonnees-et-observation/randonnees-pedestres",
   trip_id: trip3.id,
   master: true,
   price: 10,
@@ -273,13 +274,13 @@ randonnee_event = Event.create!(
 Relationship.create!(parent_id: voiture_saguenay_event.id, child_id: randonnee_event.id)
 
 airbnb_saguenay_event = Event.create!(
-  name: 'Airbnb Saguenay',
+  name: 'Saguenay Youth Hostel',
   category: 'Accommodation',
   location: '110 Rue Price O, Chicoutimi, QC G7J 1G8, Canada',
   date: Date.new(2018,9,23),
   duration: 8,
-  description: "Paul will be there to give us the keys",
-  url: "https://www.airbnb.fr/rooms/773017",
+  description: "In this youth hostel, you'll have a dormitory just for your group and will be able to enjoy the swimming pool in the basement 24/7. Feel free to ask the staff if you need any advice for the local restaurants.",
+  url: "https://ajsaguenay.com/",
   trip_id: trip3.id,
   master: true,
   price: 45,
@@ -304,12 +305,12 @@ Relationship.create!(parent_id: randonnee_event.id, child_id: airbnb_saguenay_ev
 #   )
 
 pub_crawl_event = Event.create!(
-  name: 'Montreal Pub Crawl Night',
+  name: 'Pub Crawl Night',
   category: 'Activity',
   location: '3979 Rue Saint-Denis, Montreal, Canada',
   date: Date.new(2018,9,24),
   duration: 3,
-  description: "It's a local tradition to do a pub crawl on the 1st of November !!!",
+  description: "It's a local tradition to do a pub crawl on the 1st of November in Montreal!!!",
   url: "https://www.lockhartmtl.com/rservations",
   trip_id: trip3.id,
   master: true,
@@ -325,7 +326,7 @@ voiture_perce_event = Event.create!(
   location: '1200 Rue Stanley, Montréal, QC H3B 2S8, Canada',
   date: Date.new(2018,9,23),
   duration: 8,
-  description: "We booked a nice Audi at Alamo Rent a Car",
+  description: "We recommend you yo contact Alamo Rent a Car. They have the best quality per service deals in the area.",
   url: "https://www.alamo.ca/fr_CA/car-rental/locations/ca/ymqc71-montreal-stanley-st.html?mcid=yext:245709",
   trip_id: trip3.id,
   price: 90,
@@ -350,7 +351,7 @@ airbnb_perce_event = Event.create!(
 Relationship.create!(parent_id: voiture_perce_event.id, child_id: airbnb_perce_event.id)
 
 bateau_perce_event = Event.create!(
-  name: 'Bonaventure Isl',
+  name: 'Bonaventure',
   category: 'Activity',
   location: '9 Rue du Quai, Percé, QC G0C 2L0, Canada',
   date: Date.new(2018,9,23),
@@ -425,7 +426,7 @@ voiture_niagarafalls_event = Event.create!(
 Relationship.create!(parent_id: visite_toronto_event.id, child_id: voiture_niagarafalls_event.id)
 
 visite_niagarafalls_event = Event.create!(
-  name: 'Visite Niagara Falls',
+  name: 'Niagara Falls',
   category: 'Activity',
   location: 'Niagara Falls',
   date: Date.new(2018,9,23),
@@ -455,7 +456,7 @@ airbnb_toronto_2_event = Event.create!(
 Relationship.create!(parent_id: visite_niagarafalls_event.id, child_id: airbnb_toronto_2_event.id)
 
 ride_back_montreal_event = Event.create!(
-  name: 'Ride back to Montréal',
+  name: 'Back to Montréal',
   category: 'Travel',
   location: 'Toronto',
   date: Date.new(2018,9,24),
