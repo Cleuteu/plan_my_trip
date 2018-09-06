@@ -1,3 +1,5 @@
+<%= content_for(:navbar_class, "sticky-top") %>
+
 <div class="wrapper-final">
   <div class="row">
   <!--     TIMELINE SUR LA GAUCHE -->
@@ -78,6 +80,6 @@
 
 
     </div>
-    <div style="width: 50vw; height: 100vh; z-index: -1;" id="map" data-markers="<%= @markers.to_json %>"></div>
+    <div style="width: 50vw; height: 100vh; z-index: 0px !important" id="map" data-markers="<%= @markers.to_json %>"></div>
   </div>
 </div>

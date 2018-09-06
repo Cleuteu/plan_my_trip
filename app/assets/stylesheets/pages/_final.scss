@@ -13,6 +13,7 @@
 
 // TIMELINE SUR LA GAUCHE
 .timeline-final {
+  padding-top: 20px;
   background: linear-gradient(to bottom, rgba(66, 82, 102, 0.94) 0%, rgba(66, 82, 102, 0.93) 100%);
   h1 {
     text-align: center;
@@ -22,6 +23,7 @@
   h3 {
     text-align: center;
     font-size: 14px;
+    padding-bottom: 10px;
 
     color: white;
   }
@@ -52,7 +54,6 @@
   .timeline__content {
     .background-card-final {
       position: relative;
-      background-color: red;
       height: 280px;
       text-shadow: 0 1px 3px rgba(0,0,0,0.6);
       background-size: cover !important;
