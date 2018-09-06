@@ -9,8 +9,9 @@ if (formBranchEvent) {
   allInputsBranch.push(event_name)
   const event_date = formBranchEvent.querySelector('#event_date_branch')
   allInputsBranch.push(event_date)
+  console.log(allInputsBranch)
 
-  console.log(formBranchEvent["branch_event[category]"])
+  // console.log(formBranchEvent["event[category]"])
 
   // input[type=radio]
 
@@ -39,11 +40,11 @@ if (formBranchEvent) {
   const enableButton = () => {
     const all = allFilled();
     console.log(all);
-    if (all && validateRadio(formBranchEvent["branch_event[category]"])) {
+    if (all && validateRadio(formBranchEvent["event[category]"])) {
       button.disabled = false;
     }
   };
 
   allInputsBranch.forEach(input => input.addEventListener('change', enableButton));
-  formBranchEvent["branch_event[category]"].forEach(choice => choice.addEventListener('change', enableButton));
+  formBranchEvent["event[category]"].forEach(choice => choice.addEventListener('change', enableButton));
 }

@@ -1,13 +1,15 @@
 const addEventButton = document.getElementById('add-node');
 
 const formAddEvent = document.getElementById('new_event');
+// console.log(formAddEvent)
 
 if (formAddEvent) {
   const allInputs = [];
-  const event_name = formAddEvent.querySelector('#event_name')
+  const event_name = formAddEvent.querySelector('.event_name').firstElementChild;
   allInputs.push(event_name)
-  const event_date = formAddEvent.querySelector('#event_date')
+  const event_date = formAddEvent.querySelector('.event_date').firstElementChild;
   allInputs.push(event_date)
+  // console.log(allInputs)
 
   // input[type=radio]
 

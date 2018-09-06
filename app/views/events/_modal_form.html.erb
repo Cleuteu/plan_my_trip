@@ -16,7 +16,7 @@
 <!--           <legend class="col-form-label pt-0">Category
             <abbr title="required">*</abbr>
           </legend> -->
-          <input type="hidden" name="event[category]" value="" id="event_category">
+          <input type="hidden" name="event[category]" value="">
             <div class="radio-categories">
               <div class="category-choices">
                 <div class="form-check">
@@ -46,7 +46,7 @@
             <%= f.input :location, label: false, input_html: { class: "event_location", placeholder: 'Location', id: event.id ? "edit_event_location#{event.id}" : "event_location#{event.id}" } %>
           </div>
           <div class="col-md-6">
-            <%= f.input :date, as: :string, required: true, label: false, input_html: {class: "datepicker", placeholder: 'Date', id: event.id ? "edit_event_date#{event.id}" : "event_date#{event.id}"} %>
+            <%= f.input :date, as: :string, required: true, label: false, input_html: {class: "datepicker event_date", placeholder: 'Date', id: event.id ? "edit_event_date#{event.id}" : "event_date#{event.id}"} %>
           </div>
         </div>
 
@@ -67,7 +67,7 @@
         <%= f.input :parent_ids, as: :hidden, input_html: { id: event.id ? "edit_event_parent_id#{event.id}" : "event_parent_id#{event.id}" } %>
     </div>
     <div class="modal-footer footer-btn-center">
-      <%= f.submit "Add event", class: "btn btn-primary add-event-submit", disabled: true %>
+      <%= f.submit "Add event", class: "btn btn-primary add-event-submit", disabled: event.new_record? %>
       <% end %>
     </div>
   </div>
