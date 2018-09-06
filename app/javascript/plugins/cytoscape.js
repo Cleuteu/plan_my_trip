@@ -458,8 +458,10 @@ var makeTippy = function(node, text){
     maxWidth: 300,
     theme: 'treep',
     interactive: true,
+    interactiveBorder: 5,
     multiple: true,
     zIndex: 1000,
+    delay: [0, 5000],
     animateFill: true,
     animation: 'fade',
     arrowTransform: 'scaleX(0)',
@@ -468,14 +470,51 @@ var makeTippy = function(node, text){
 
 // Tippy trigger via mouserover / mouseout
 let tippy_var = null;
+let tippy_div = null;
 
 cy.on('mouseover', 'node', (e) => {
   if (document.getElementById('show-tippy'+ e.target.id())) {
-  tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
-  tippy_var.show();
+    if (tippy_var === null) {
+      tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
+      tippy_var.show();
+    } else {
+      tippy_var.hide();
+      tippy_var = null;
+      tippy_var = makeTippy(e.target, document.getElementById('show-tippy'+ e.target.id()).innerHTML)
+      tippy_var.show();
+    }
   }
 });
-cy.on('mouseout', 'node', (e) => { tippy_var.hide(); });
+
+cy.on('click', (e) => {
+  if (tippy_var != null) {
+    tippy_var.hide();
+    tippy_var = null;
+  }
+});
+
+// if (tippy_var != null) {
+//     let tippy_instance = tippy_var.popper._tippy
+//     console.log(tippy_instance)
+//     tippy_instance.addEventListener('mouseout', (event) => {
+//       console.log(event)
+//     })
+//   }
+
+
+// tippy_div.addEventListener('mouseout', (event) => {
+//   console.log(event)
+// })
+
+// if (null != tippy_var) {
+//   cy.on('mouseover', 'node', (e) => {
+//     setTimeout(function () {
+//        tippy_var.hide();
+//     }, 1000);
+//   });
+// }
+
+
 
 
 // ADD EVENT VIA TIPPY BUTTON
