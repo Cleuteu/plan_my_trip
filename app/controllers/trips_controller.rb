@@ -30,6 +30,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
 
+    #Pour calendar
     respond_to do |format|
       format.html do
         @event = Event.new
