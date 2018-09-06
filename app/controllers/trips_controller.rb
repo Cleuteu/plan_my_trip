@@ -104,6 +104,7 @@ class TripsController < ApplicationController
             hash_nodes = {}
           end
         end
+        @array_nodes_master = @array_nodes.select { |node| node[:master] == 'true' }
 
         @array_nodes_toggle = []
         Event.all.each { |event| @array_nodes_toggle << event if event.relationships_as_parent.count >= 2 }

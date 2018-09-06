@@ -1,4 +1,4 @@
-<div id="cy" style="height: <%= @array_nodes.count*51 %>px;" data-nodes="<%= @array_nodes.to_json %>" data-relationships="<%= @array_relationships.to_json %>"></div>
+<div id="cy" style="height: <%= @array_nodes_master.count*85 %>px;" data-nodes="<%= @array_nodes.to_json %>" data-relationships="<%= @array_relationships.to_json %>"></div>
 <% content_for :after_js do %>
   <%= javascript_pack_tag 'diagramme' %>
 <% end %>
