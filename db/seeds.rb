@@ -45,7 +45,7 @@ user2 = User.create(
 puts 'Creating trips...'
 
 trip = Trip.new(
-    name: 'Surf trip Morocco',
+    name: 'Batch#177 Surf trip Morocco',
     start_location: 'Essaouira',
     end_location: 'Essaouira',
     start_date: Date.new(2018,1,3),
@@ -56,7 +56,7 @@ trip.remote_photo_url = "http://www.epicgapyear.com/wp-content/uploads/2016/11/s
 trip.save
 
 trip2 = Trip.new(
-    name: 'Journey to Italy',
+    name: 'Journey to Italy - Capucine\'s Birthday',
     start_location: 'Venise',
     end_location: 'Venise',
     start_date: Date.new(2018,3,8),
@@ -67,7 +67,7 @@ trip2.remote_photo_url = "https://images.unsplash.com/photo-1520874628750-bed9c0
 trip2.save
 
 trip3 = Trip.new(
-    name: 'Road trip Canada',
+    name: 'Road trip Canada - Adrien & Julie',
     start_location: 'Montreal',
     end_location: 'Montreal',
     start_date: Date.new(2018,9,20),

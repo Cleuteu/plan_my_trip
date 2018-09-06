@@ -20,8 +20,10 @@
   <%= render partial: 'events/branch_modal_form', locals: { trip: @trip, event: @event, events_parents: @events_parents, events_children: @events_children } %>
 </div>
 
-<!--   Modal pour le show d'un event -->
-<% @trip.events.each do |event| %>
+<!--   Tippy pour le show d'un event -->
+<% selected_trips = @trip.events.select{ |event| event.category != "Setting" }%>
+
+<% selected_trips.each do |event| %>
 <!--   <button type="button" class="d-none" id="show-node<%#= event.id %>" data-toggle="modal" data-target="#showEvent<%#= event.id %>">
     Show an event
   </button>
@@ -62,13 +64,13 @@
           <button type="button" class="btn btn-light modal-header-btn-right add-branch-button" data-toggle="modal" data-target="#addBranch">
             <!-- <i class="fas fa-code-branch"></i> -->
             <i class="fas fa-plus-circle"></i>
-            New option path
+            New itinerary
           </button>
           <% else %>
            <button type="button" class="btn btn-light modal-header-btn-right add-branch-button disabled">
             <!-- <i class="fas fa-code-branch"></i> -->
             <i class="fas fa-ban"></i>
-            New option path
+            New itinerary
           </button>
         <% end %>
           <button type="button" class="btn btn-light modal-header-btn-right" data-toggle="modal" data-target="#update_event<%= event.id %>">
