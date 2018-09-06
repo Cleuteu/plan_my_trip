@@ -83,18 +83,19 @@ class TripsController < ApplicationController
             hash_nodes[:no_child] = 'no_child' if event.relationships_as_parent.count == 0
             hash_nodes[:position_x] = event.position_x
             hash_nodes[:position_y] = event.position_y
-            if event.relationships_as_parent.count >= 2 && event.master
+           if event.relationships_as_parent.count >= 2 && event.master && event.relationships_as_parent[0].child.relationships_as_parent.count > 0 && event.relationships_as_parent[1].child.relationships_as_parent.count > 0
               hash_nodes[:switch] = 1
-              comp_x = event.relationships_as_parent[1].child.position_x - event.relationships_as_parent.first.child.position_x
-              #Si 1er enfant à gauche
-              if comp_x > 0
-                #Et 1er enfant master
-                event.relationships_as_parent.first.child.master ? hash_nodes[:switch_state] = "left" : hash_nodes[:switch_state] = "right"
-                #Si 1er enfant à droite
-              else
-                #Et 1er enfant master
-                event.relationships_as_parent.first.child.master ? hash_nodes[:switch_state] = "right" : hash_nodes[:switch_state] = "left"
-              end
+              #Pour savoir si la master est à droite ou à gauche
+              # comp_x = event.relationships_as_parent[1].child.position_x - event.relationships_as_parent.first.child.position_x
+              # #Si 1er enfant à gauche
+              # if comp_x > 0
+              #   #Et 1er enfant master
+              #   event.relationships_as_parent.first.child.master ? hash_nodes[:switch_state] = "left" : hash_nodes[:switch_state] = "right"
+              #   #Si 1er enfant à droite
+              # else
+              #   #Et 1er enfant master
+              #   event.relationships_as_parent.first.child.master ? hash_nodes[:switch_state] = "right" : hash_nodes[:switch_state] = "left"
+              # end
             else
               hash_nodes[:switch] = 0
             end
