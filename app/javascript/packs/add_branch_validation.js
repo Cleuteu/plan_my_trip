@@ -1,6 +1,7 @@
 const addEventButton = document.getElementById('add-node');
 
 const formBranchEvent = document.querySelector('.add_branch').firstElementChild;
+console.log(formBranchEvent)
 
 if (formBranchEvent) {
   const allInputsBranch = [];
@@ -17,7 +18,7 @@ if (formBranchEvent) {
   const allInputsBranchArr = Array.from(allInputsBranch);
   // console.log(allInputsBranchArr)
 
-  const button = document.querySelector('.branch-event-submit');
+  const button = document.querySelector('.add-branch-submit');
 
   const isFilled = input => input.value;
 

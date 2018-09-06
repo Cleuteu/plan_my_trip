@@ -149,7 +149,7 @@ visit_of_montreal = Event.create!(
   description: "Marc Boutayer will be your guide. He has been living in the city since 1976 so he'll show you the best non-touristic places and adapt the journey to your expections. You could go up the Mont-Royal, eat poutine, visit one of the markets, browse the boutiques of the Mile End and visit Basilique Notre-Dame. Enjoy this wonderful city, the local people are really friendly and they love meeting foreign people.",
   url: "https://www.votretourdumonde.com/que-visiter-a-montreal/",
   trip_id: trip3.id,
-  photo: '';
+  photo: '',
   master: true,
   price: 0,
   position_x: 0,

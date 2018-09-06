@@ -64,11 +64,11 @@
           <%#= f.input :duration, input_html: { id: event.id ? "edit_event_duration#{event.id}" : "event_duration#{event.id}" } %>
           <%#= f.input :confirmed, input_html: { id: event.id ? "edit_event_confirmed#{event.id}" : "event_confirmed#{event.id}" } %>
           <%#= f.input :url, input_html: { id: event.id ? "edit_event_url" : "event_url" } %>
+        <div class="modal-footer footer-btn-center">
+            <%= f.submit "Add event", class: "btn btn-primary add-branch-submit", disabled: true %>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="modal-footer footer-btn-center">
-        <%= f.submit "Add event", class: "btn btn-primary add-event-submit", disabled: true %>
-      <% end %>
     </div>
   </div>
 </div>
