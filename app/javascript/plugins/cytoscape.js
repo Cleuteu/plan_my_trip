@@ -594,6 +594,7 @@ var makeTippySwitch = function(node_ref, text){
     interactive: true,
     multiple: true,
     zIndex: 1000,
+    flip: false, // force the popover to stay in place
   } ).tooltips[0];
 };
 
