@@ -7,8 +7,9 @@
       <h3>Congrats <%= @trip.user.first_name %>! Find below a summary of you road trip.</h3>
       <div class="row">
         <div class="col-sm-6 offset-sm-3 text-center">
-<!--           <a href="#" class="btn btn-primary btn-lg text-center btn-final">Export <i class="fas fa-calendar-check"></i></a>
- -->          <%#= link_to 'Export to calendar', calendar_trip_url(@trip, protocol: :webcal, format: :ics) %>
+          <%= link_to trip_path(@trip, format: :ics), class: "btn btn-primary btn-lg btn-final" do  %>
+            <i class="fas fa-calendar-check"></i> Export to my calendar
+          <% end %>
         </div>
       </div>
       </h1>
