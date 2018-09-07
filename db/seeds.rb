@@ -496,7 +496,7 @@ Relationship.create(parent_id: visite_niagarafalls_event.id, child_id: airbnb_to
 ride_back_montreal_event = Event.create(
   name: 'Back to Montréal',
   category: 'Car',
-  location: 'Toronto Train Station, ON M5J 1E6, Canada',
+  location: 'Montréal, QC, Canada',
   date: Date.new(2018,9,24),
   duration: 4,
   description: "At this time you'll be exhausted, so we recommend you to take the train",
