@@ -143,6 +143,8 @@ class TripsController < ApplicationController
       @trip = Trip.find(params[:trip_id])
       @trip.user = current_user
       @events_master = Event.where(trip_id: @trip.id).where(master: true).order(:date)
+      @total_price = 0
+      @events_master.each { |event| @total_price += event.price if event.price.present?}
       @map_events = Event.where.not(latitude: nil, longitude: nil).where(master: true)
       @markers = @map_events.map do |event|
         {
