@@ -5,6 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" />
+  <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Rubik:500|Roboto:300,400,700" />
   <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 
 
@@ -90,6 +91,7 @@
   position:relative;
   opacity:0;
   text-align: center;
+  padding-top: 30px;
 }
 
 .plain.error-page-wrapper .content-container.in {
@@ -110,6 +112,7 @@
   transition: color .2s linear;
   font-size:36px;
   line-height:46px;
+  margin-top: 30px;
   color:#fff;
 }
 .plain.error-page-wrapper hr {
@@ -191,19 +194,24 @@
 <style>
 
 .background-color {
-  background-color: rgba(253, 179, 35, 1) !important;
+  background-color: #505C6D !important;
 }
 
 
 .primary-text-color {
-  color: rgba(78, 93, 111, 1) !important;
+  color: #FFFFFF !important;
 }
 
 .secondary-text-color {
-  color: rgba(78, 93, 111, 1) !important;
+  color: #FFFFFF !important;
 }
 
 
+.head-line-top {
+  font-family: 'Rubik' !important, sans-serif;
+  color: #FFFFFF !important;
+  font-weight: bold;
+}
 
 
 .border-button {
@@ -215,14 +223,27 @@
   color:  !important;
 }
 
+.badge-500-404 {
+  color: #fff;
+  background-color: #17a2b8;
+  border-radius: 60px;
+  padding: 60px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-size: 60px !important;
+}
+
 
 </style>
 
 </head>
 <body class="plain error-page-wrapper background-color background-image">
   <div class="content-container">
-    <div class="head-line secondary-text-color">
-      Oups :/
+    <img class="logo-image" src="/assets/small-logo-32501095e4157eb7952cbd3d97b130044876f2e6b4d366fdac6842127ade8204.png">
+    <div class="head-line-top badge-500-404">
+      Wrong itinerary!
     </div>
     <div class="subheader primary-text-color">
       The page you were looking for doesn't exist.
