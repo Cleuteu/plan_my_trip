@@ -133,7 +133,7 @@ flight_to_montreal = Event.create(
   url: "https://www.airfrance.fr/FR/fr/local/core/engine/mmb/MmbAction.do",
   trip_id: trip3.id,
   master: true,
-  price: 350,
+  price: 249,
   position_x: 0,
   position_y: 0
   )
@@ -521,7 +521,7 @@ back_flight_event = Event.create(
   url: "https://www.airfrance.fr/FR/fr/local/core/engine/mmb/MmbAction.do",
   trip_id: trip3.id,
   master: true,
-  price: 0,
+  price: 187,
   position_x: 0,
   position_y: 11*b
   )
