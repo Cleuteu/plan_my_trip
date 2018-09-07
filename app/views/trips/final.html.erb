@@ -79,13 +79,11 @@
                 </div>
               </div> -->
             </div>
-            <div class="row" style="margin-bottom: 30px;">
-              <div class="col-sm-6 offset-sm-3 text-center">
-                <%= link_to trip_path(@trip, format: :ics), class: "btn btn-primary btn-lg btn-final" do  %>
-                  <div class="blink_me">
-                    <i class="fas fa-calendar-check"></i> Export to calendar
-                  </div>
-                <% end %>
+            <div class="row d-flex justify-content-center " style="margin-bottom: 30px;">
+              <div class="d-flex align-items-center">
+                <span class="badge badge-info badge-pill badge-final">
+                  TOTAL <strong><%= @total_price %>€</strong>
+                </span>
               </div>
             </div>
           </div>

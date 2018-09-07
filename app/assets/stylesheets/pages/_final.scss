@@ -315,7 +315,7 @@
   }
 
   .page__container{
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 30px;
     max-width: 800px;
   }
@@ -362,4 +362,12 @@
   50% {
     opacity: 0.5;
   }
+}
+.badge-final {
+  font-size: 24px;
+  font-weight: normal;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid lightgray;
+  opacity: .8;
 }
