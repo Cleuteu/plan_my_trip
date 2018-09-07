@@ -101,14 +101,69 @@ import { autocomplete } from '../components/autocomplete';
 
 
 
+// Get directions et draw map
+
 function calculateRoute(from, to, array) {
     // Center initialized to Naples, Italy
 
-
     var myOptions = {
       zoom: 10,
-      center: new google.maps.LatLng(40.84, 14.25),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: [ {
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#008eff"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": "0"
+            },
+            {
+                "lightness": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "saturation": "-60"
+            },
+            {
+                "lightness": "-20"
+            }
+        ]
+    } ]
+
     };
     // Draw the map
     var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
@@ -136,6 +191,27 @@ function calculateRoute(from, to, array) {
           $("#error").append("Unable to retrieve your route<br />");
       }
     );
+    // Map marker animation
+  // Select all events
+  const events = document.querySelectorAll('.event');
+  events.forEach((event, index) => {
+    // Put a microphone on each event listenning for a hover event
+    event.addEventListener('mouseenter', () => {
+      // Here we trigger the display of the corresponding marker infoWindow as it is the default behavior of a click on a  marker
+      google.maps.event.trigger(mapMarkers[index], 'click');
+    });
+  });
+  const mapElement = document.getElementById('map');
+
+  const markers = JSON.parse(mapElement.dataset.markers);
+
+  // Here we store map markers in an array BEFORE adding them to the map
+  const mapMarkers = [];
+    markers.forEach((marker) => {
+      const mapMarker = map.createMarker(marker);
+      mapMarkers.push(mapMarker);
+      map.addMarker(mapMarker);
+    });
   }
 
 
@@ -177,7 +253,6 @@ function calculateRoute(from, to, array) {
 
 
    locationsArray.forEach((location) => {
-    // console.log(location.toString())
      steps.push(
 
     {
@@ -186,20 +261,8 @@ function calculateRoute(from, to, array) {
       })
     });
 
-   console.log(steps)
-      var i = 0;
-      // JSON.parse(mapElement.dataset.markers).forEach((marker) => {
-        // var first = JSON.parse(mapElement.dataset.markers)[3].location;
-        // console.log(first)
-        // var second = JSON.parse(mapElement.dataset.markers)[4].location;
-        // console.log(second)
-        calculateRoute('Montreal', 'Montreal', steps);
-        // console.log(JSON.parse(mapElement.dataset.markers)[0].location);
-  // console.log(...locationsArray);
-  // console.log(locationsArray);
-
-  // console.log(JSON.parse( mapElement.dataset.markers));
-      // })
+   // console.log(steps)
+      calculateRoute('Montreal', 'Montreal', steps);
     });
 
 
