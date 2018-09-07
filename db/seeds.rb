@@ -45,7 +45,7 @@ user2 = User.create(
 puts 'Creating trips...'
 
 trip = Trip.new(
-    name: 'Batch#177 Surf trip Morocco',
+    name: 'Surf trip Morocco - Batch#177',
     start_location: 'Essaouira',
     end_location: 'Essaouira',
     start_date: Date.new(2018,1,3),

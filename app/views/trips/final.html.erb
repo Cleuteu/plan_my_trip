@@ -1,19 +1,21 @@
 <%= content_for(:navbar_class, "sticky-top") %>
 
-<div class="wrapper-final">
+<div class="wrapper-final" style="overflow: hidden;">
   <div class="row">
   <!--     TIMELINE SUR LA GAUCHE -->
     <div class="col-sm-6 timeline-final">
       <h1>
-        <%= @trip.name %>
+        <%= @trip.name.upcase %>
       </h1>
       <div class="congrats">
-        <p>Congrats Adrien and Julie!<br> Find below a summary of your road trip with our recommendations.</p>
+        <p><strong>Congrats Adrien and Julie!</strong><br> Find below a summary of your road trip with our recommendations.</p>
       </div>
-      <div class="row">
+      <div class="row" style="margin-bottom: 30px;">
         <div class="col-sm-6 offset-sm-3 text-center">
           <%= link_to trip_path(@trip, format: :ics), class: "btn btn-primary btn-lg btn-final" do  %>
-            <i class="fas fa-calendar-check"></i> Export to my calendar
+            <div class="blink_me">
+              <i class="fas fa-calendar-check"></i> Export to my calendar
+            </div>
           <% end %>
         </div>
       </div>
@@ -62,6 +64,7 @@
                 <% end %>
               </div>
 
+
               <!-- <div class="timeline__group">
                 <span class="timeline__year">2014</span>
                 <div class="timeline__box">
@@ -76,6 +79,15 @@
                   </div>
                 </div>
               </div> -->
+            </div>
+            <div class="row" style="margin-bottom: 30px;">
+              <div class="col-sm-6 offset-sm-3 text-center">
+                <%= link_to trip_path(@trip, format: :ics), class: "btn btn-primary btn-lg btn-final" do  %>
+                  <div class="blink_me">
+                    <i class="fas fa-calendar-check"></i> Export to my calendar
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
