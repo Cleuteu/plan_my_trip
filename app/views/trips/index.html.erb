@@ -21,7 +21,7 @@
               <h2>
                 <span><%= trip.name.split("-").first.upcase %></span>
                 <br>
-                <normal><%= trip.name.split("-").last %></normal>
+                <div class="normal"><%= trip.name.split("-").last %></div>
               </h2>
               <h6><%= trip.start_date.to_time.strftime("%b %d") %> - <%= trip.end_date.to_time.strftime("%b %d") %></h6>
               <p>Manage trip</p>
