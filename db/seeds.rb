@@ -45,7 +45,7 @@ user2 = User.create(
 puts 'Creating trips...'
 
 trip = Trip.new(
-    name: 'Batch#177 Surf trip Morocco',
+    name: 'Surf trip Morocco - Batch#177',
     start_location: 'Essaouira',
     end_location: 'Essaouira',
     start_date: Date.new(2018,1,3),
@@ -547,7 +547,6 @@ Relationship.create(parent_id: back_flight_event.id, child_id: event_end.id)
   # )
 # Relationship.create(parent_id: pub_crawl_event.id, child_id: nuit_25_event.id)
 
-
 # nuit_26_event = Event.create(
 #   name: 'Night of September 26th',
 #   category: 'Accommodation',
@@ -588,11 +587,69 @@ Relationship.create(parent_id: back_flight_event.id, child_id: event_end.id)
 # # Relationship.create(parent_id: nuit_27_event.id, child_id: nuit_28_event.id)
 # Relationship.create(parent_id: nuit_25_event.id, child_id: event_end.id)
 
-
-
-
 Relationship.create(parent_id: bateau_perce_event.id, child_id: ride_back_montreal_event.id)
 Relationship.create(parent_id: airbnb_saguenay_event.id, child_id: ride_back_montreal_event.id)
 Relationship.create(parent_id: ride_back_montreal_event.id, child_id: pub_crawl_event.id)
+
+
+# puts 'Creating Morrocan trip events ...'
+
+# event_start = Event.new(
+#                         position_x: 0,
+#                         position_y: -b,
+#                         name: "Start",
+#                         category: "Setting",
+#                         date: trip.start_date,
+#                         location: trip.start_location,
+#                         trip_id: trip.id,
+#                         duration: 1,
+#                         price: 0,
+#                         master: true
+#                         )
+# event_start.save
+# event_end = Event.new(
+#                       position_x: 0,
+#                       position_y: 12*b,
+#                       name: "End",
+#                       category: "Setting",
+#                       date: trip.end_date,
+#                       location: trip.end_location,
+#                       trip_id: trip.id,
+#                       duration: 1,
+#                       price: 0,
+#                       master: true,
+#                       )
+# event_end.save
+
+
+# puts 'Creating Italian trip events ...'
+
+# event_start = Event.new(
+#                         position_x: 0,
+#                         position_y: -b,
+#                         name: "Start",
+#                         category: "Setting",
+#                         date: trip2.start_date,
+#                         location: trip2.start_location,
+#                         trip_id: trip2.id,
+#                         duration: 1,
+#                         price: 0,
+#                         master: true
+#                         )
+# event_start.save
+# event_end = Event.new(
+#                       position_x: 0,
+#                       position_y: 12*b,
+#                       name: "End",
+#                       category: "Setting",
+#                       date: trip2.end_date,
+#                       location: trip2.end_location,
+#                       trip_id: trip2.id,
+#                       duration: 1,
+#                       price: 0,
+#                       master: true,
+#                       )
+# event_end.save
+
 
 puts 'Done!'

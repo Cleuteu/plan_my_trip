@@ -18,7 +18,11 @@
           <figure class="front">
             <%= cl_image_tag trip.photo.url(:thumnail), width: 433, height: 260, crop: :fill %>
             <div class="caption">
-              <h2><span><%= trip.name %> <br> </span></h2>
+              <h2>
+                <span><%= trip.name.split("-").first.upcase %></span>
+                <br>
+                <normal><%= trip.name.split("-").last %></normal>
+              </h2>
               <h6><%= trip.start_date.to_time.strftime("%b %d") %> - <%= trip.end_date.to_time.strftime("%b %d") %></h6>
               <p>Manage trip</p>
               <%= link_to trip.name, trip_path(trip) %>

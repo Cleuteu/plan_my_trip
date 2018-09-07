@@ -55,10 +55,15 @@ figure .caption {
   color: white;
   transition: transform 0.35s, color 0.35s;
   transform: translate3d(0,-50%,0);
-  text-transform: uppercase;
+  // text-transform: uppercase;
+  opacity: 0.9;
 }
 .front h2 span {
   font-weight: bold;
+}
+.front h2 normal {
+  font-size: 24px;
+  opacity: 0.9;
 }
 .front h2:after{
   position: absolute;
@@ -74,6 +79,7 @@ figure .caption {
 .front:hover h2 {
   color: #fff;
   transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+  opacity: 1;
 }
 .front:hover h2:after {
   transform: translate3d(0,0,0);

@@ -47,7 +47,7 @@
 
   .timeline{
     position: relative;
-    padding-bottom: 3rem;
+    margin-bottom: 3rem;
   }
 
   .timeline:before{
@@ -139,6 +139,7 @@
 
   .timeline__box{
     position: relative;
+    // padding-top: 30px;
   }
 
   .timeline__box:not(:last-of-type){
@@ -352,4 +353,13 @@
   //   width: 60% !important;
   //   height: 80% !important;
   // }
+}
+
+.blink_me {
+  animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0.5;
+  }
 }
