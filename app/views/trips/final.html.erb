@@ -5,16 +5,16 @@
   <!--     TIMELINE SUR LA GAUCHE -->
     <div class="col-sm-6 timeline-final">
       <h1>
-        <%= @trip.name.upcase %>
+        <%= @trip.name.upcase.split('-').first %>
       </h1>
       <div class="congrats">
-        <p><strong>Congrats Adrien and Julie!</strong><br> Find below a summary of your road trip with our recommendations.</p>
+        <p>Congrats <strong>Adrien and Julie!</strong><br> Find below a summary of your road trip with our recommendations.</p>
       </div>
       <div class="row" style="margin-bottom: 30px;">
         <div class="col-sm-6 offset-sm-3 text-center">
           <%= link_to trip_path(@trip, format: :ics), class: "btn btn-primary btn-lg btn-final" do  %>
             <div class="blink_me">
-              <i class="fas fa-calendar-check"></i> Export to my calendar
+              <i class="fas fa-calendar-check"></i> Export to calendar
             </div>
           <% end %>
         </div>
@@ -24,10 +24,10 @@
           <div class="main-container page__container">
             <div class="timeline">
               <div class="timeline__group">
-<!--                 <span class="timeline__year">2008</span>
- -->                <% @events_master.each do |event| %>
+                <!-- <span class="timeline__year">2008</span> -->
+                <% @events_master.each do |event| %>
                   <% unless event.name == "End" || event.name == "Start" %>
-                  <div class="timeline__box">
+                  <div class="timeline__box event">
                     <div class="timeline__date" style="border-radius: 50%;">
                       <span class="timeline__day"><%= event.date.strftime('%d') %></span>
                       <span class="timeline__month"><%= event.date.strftime('%b') %></span>
@@ -64,7 +64,6 @@
                 <% end %>
               </div>
 
-
               <!-- <div class="timeline__group">
                 <span class="timeline__year">2014</span>
                 <div class="timeline__box">
@@ -84,7 +83,7 @@
               <div class="col-sm-6 offset-sm-3 text-center">
                 <%= link_to trip_path(@trip, format: :ics), class: "btn btn-primary btn-lg btn-final" do  %>
                   <div class="blink_me">
-                    <i class="fas fa-calendar-check"></i> Export to my calendar
+                    <i class="fas fa-calendar-check"></i> Export to calendar
                   </div>
                 <% end %>
               </div>
@@ -93,8 +92,8 @@
         </div>
       </div>
 
-
     </div>
-    <div style="width: 50vw; height: 100vh; z-index: 0px !important" id="map" data-markers="<%= @markers.to_json %>"></div>
+    <div style="width: 50vw; height: 100vh; z-index: 0 !important" id="map" data-markers="<%= @markers.to_json %>">
+    </div>
   </div>
 </div>

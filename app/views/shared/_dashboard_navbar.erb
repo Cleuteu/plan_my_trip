@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
     <div class="navbar-brand">
-      <%= @trip.name %>
+      <strong><%= @trip.name.split(' -').first %>:</strong><%= @trip.name.split('-').last %>
     </div>
 
     <button class="navbar-toggler">
