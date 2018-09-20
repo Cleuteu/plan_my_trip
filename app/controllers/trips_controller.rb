@@ -15,11 +15,47 @@ class TripsController < ApplicationController
     @trip.user = current_user
     authorize @trip
     if @trip.save
-      @start = Event.new(name: "Start", category: "settings", date: @trip.start_date, location: @trip.start_location, trip_id: @trip.id, duration: 1, price: 0, master: true)
+      a = 300
+      b = 150
+      @start = Event.new(
+        name: "Start",
+        category: "Setting",
+        date: @trip.start_date,
+        location: @trip.start_location,
+        trip_id: @trip.id,
+        duration: 1,
+        price: 0,
+        position_x: 0,
+        position_y: 0,
+        master: true)
       @start.save
-      @end = Event.new(name: "End", category: "settings", date: @trip.end_date, location: @trip.end_location, trip_id: @trip.id, duration: 1, price: 0, master: true)
+      @event_example = Event.new(
+        name: "Activity Example",
+        category: "Activity",
+        date: @trip.start_date,
+        location: @trip.start_location,
+        trip_id: @trip.id,
+        duration: 1,
+        price: 0,
+        description: "This is an activity example",
+        position_x: 0,
+        position_y: 0,
+        master: true)
+      @event_example.save
+      @end = Event.new(
+        name: "End",
+        category: "Setting",
+        date: @trip.end_date,
+        location: @trip.end_location,
+        trip_id: @trip.id,
+        duration: 1,
+        price: 0,
+        position_x: 0,
+        position_y: b*3,
+        master: true)
       @end.save
-      Relationship.create(parent_id: @start.id, child_id: @end.id)
+      Relationship.create(parent_id: @start.id, child_id: @event_example.id)
+      Relationship.create(parent_id: @event_example.id, child_id: @end.id)
       redirect_to trip_path(@trip)
     else
       render :new
@@ -36,8 +72,8 @@ class TripsController < ApplicationController
         @event = Event.new
         @events_parents = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:parent_id))
         @events_children = Event.where(trip_id: @trip.id).where(id: Relationship.pluck(:child_id))
-        @start_event = Event.find_by(name: 'Start')
-        @end_event = Event.find_by(name: 'End')
+        @start_event = Event.where(trip_id: @trip.id).find_by(name: 'Start')
+        @end_event = Event.where(trip_id: @trip.id).find_by(name: 'End')
 
         # Envoie des datas au JS de Cytoscape
         @relationships = Relationship.where(parent: @trip.events)
