@@ -1,0 +1,64 @@
+
+.img-contact {
+  height:230px;
+}
+
+.container-contact {
+  margin-top: 30px;
+  h1 {
+    text-align: center;
+    color: rgb(46, 64, 88);
+    padding-bottom: 30px;
+  }
+}
+
+.contact-description-container {
+  margin-top: 10px;
+}
+
+.card-container-contact {
+  display: flex;
+  justify-content: space-around;
+  h2 {
+    text-align: center;
+    font-size: 16px;
+    color: rgba(40,40,40,0.9);
+
+  }
+  p {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(40,40,40,0.9);
+
+  }
+}
+
+/* Add some shadows to create a card effect */
+.contact-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width:230px;
+    margin: 30px, 5px;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-links a {
+  color: rgba(40,40,40,0.5);
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.contact-links a:hover {
+  color: rgba(40,40,40,0.9);
+}
+
+.youtube-vid {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  p {
+    margin-bottom: 20px;
+  }
+}
