@@ -14,7 +14,7 @@
 
         <!-- Links when logged in -->
         <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "About", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Contact", pages_contact_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "My trips", trips_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%#= link_to "Support", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
@@ -49,6 +49,8 @@
         <!-- nouveau loginlink -->
 
         <div class="text-center">
+            <%= link_to "Contact", pages_contact_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
             <a href="" class="btn btn-default navbar-wagon-link" data-toggle="modal" data-target="#modalLoginForm">Login</a>
         </div>
       <% end %>
