@@ -10,17 +10,17 @@
         <div class="col-sm-4 offset-sm-4">
           <%= simple_form_for(@trip) do |f| %>
 
-                    <%#= f.input :name, label: false, placeholder: "Name your Trip" %>
+                    <%= f.input :name, label: false, placeholder: "Name your Trip" %>
                 <div class="form-row">
                   <%= f.input :start_date,
                     as: :string,
-                    input_html: {class: "datepicker", id: "range_start" },
+                    input_html: {id: "range_start" },
                     wrapper_html: {class: "col"},
                     label: false, placeholder: "Starting date"
                   %>
                   <%= f.input :end_date,
                     as: :string,
-                    input_html: {class: "datepicker", id: "range_end" },
+                    input_html: {id: "range_end" },
                     wrapper_html: {class: "col"},
                     label: false, placeholder: "Ending date"
                   %>
