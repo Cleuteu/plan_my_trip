@@ -20,6 +20,7 @@
   height: 45px;
   width: 45px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 /* Right section */
@@ -31,8 +32,7 @@
 
 /* Basic navbar item */
 .navbar-wagon-item {
-  cursor: pointer;
-  padding: 0 20px;
+  padding-left: 20px;
 }
 
 /* Navbar link */

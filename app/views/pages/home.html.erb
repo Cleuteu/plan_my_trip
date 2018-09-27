@@ -1,61 +1,53 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(46, 64, 88,0.4) 0%, rgba(46, 64, 88,0.5) 50%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c2e086325efab49ac1c075b97afc495b&auto=format&fit=crop&w=1308&q=80');">
-
   <div class="banner-content">
     <%= link_to image_tag('logo-treep-big.png'), root_path %>
     <h4>Tired of wasting time planning trips?</h4>
     <div class="container">
-      <div class="form-row">
-        <div class="col-sm-4 offset-sm-4">
-          <%= simple_form_for(@trip) do |f| %>
-
-                    <%= f.input :name, label: false, placeholder: "Name your Trip" %>
-                <div class="form-row">
-                  <%= f.input :start_date,
-                    as: :string,
-                    input_html: {id: "range_start" },
-                    wrapper_html: {class: "col"},
-                    label: false, placeholder: "Starting date"
-                  %>
-                  <%= f.input :end_date,
-                    as: :string,
-                    input_html: {id: "range_end" },
-                    wrapper_html: {class: "col"},
-                    label: false, placeholder: "Ending date"
-                  %>
-
-                </div>
-                <div class="form-row">
-                  <%= f.input :start_location, as: :string, input_html: {id: "start_location" },
-                  wrapper_html: {class: "col"},
-                   label: false, placeholder: "Starting city" %>
-                  <%= f.input :end_location, as: :string, input_html: {id: "end_location" }, wrapper_html: {class: "col"},
-                   label: false, placeholder: "Ending city" %>
-                </div>
-                <div class="form-row" style="margin-left: 5px;">
-                <%= f.submit "Generate the trip!", class: "btn btn-primary btn-lg btn-block text-center" %>
-                </div>
-          <% end %>
-
-        </div>
+      <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4">
+        <%= simple_form_for(@trip) do |f| %>
+          <%= f.input :name, label: false, placeholder: "Name your Trip" %>
+          <div class="form-row">
+            <%= f.input :start_date,
+              as: :string,
+              input_html: {id: "range_start" },
+              wrapper_html: {class: "col"},
+              label: false, placeholder: "Starting date"
+            %>
+            <%= f.input :end_date,
+              as: :string,
+              input_html: {id: "range_end" },
+              wrapper_html: {class: "col"},
+              label: false, placeholder: "Ending date"
+            %>
+          </div>
+          <div class="form-row">
+            <%= f.input :start_location, as: :string, input_html: {id: "start_location" },
+            wrapper_html: {class: "col"},
+             label: false, placeholder: "Starting city" %>
+            <%= f.input :end_location, as: :string, input_html: {id: "end_location" }, wrapper_html: {class: "col"},
+             label: false, placeholder: "Ending city" %>
+          </div>
+          <div class="form-row" style="margin-left: 5px;">
+          <%= f.submit "Generate the trip!", class: "btn btn-primary btn-lg btn-block text-center" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-
 </div>
 
-<%# end %>
-<div class="wrapper-langing-page col-sm-10 offset-sm-1">
-  <div class="arguments">
-    <div class="argument argument-collaborate">
+<div class="container wrapper-langing-page col-sm-10 offset-sm-1">
+  <div class="row arguments">
+    <div class="col argument argument-collaborate">
       <%= image_tag('1*qSYzfDqtyL6ESBzvxatL4A.svg', class: 'arguments-icon git')%>
       <div class="argument-text">
         <h4>Build your trips</h4>
         <p>Gather all the points of interest and different itineraries along the journey.</p>
       </div>
     </div>
-    <div class="argument">
+    <div class="col argument">
       <%= image_tag("collaborate-icon.png", class: "arguments-icon collaborate-icon")%>
       <div class="argument-text">
         <h4>Collaborate</h4>
@@ -63,7 +55,7 @@
         </p>
       </div>
     </div>
-    <div class="argument">
+    <div class="col argument">
       <%= image_tag("export-icon.png", class: "arguments-icon export-icon")%>
       <div class="argument-text">
         <h4>Export and enjoy!</h4>
@@ -71,8 +63,7 @@
       </div>
     </div>
   </div>
-
-  <div class="pricing">
+  <div class="container pricing">
     <%= render partial: 'pricing.html.erb' %>
   </div>
 </div>

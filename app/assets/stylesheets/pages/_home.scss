@@ -16,19 +16,16 @@
 }
 
 .banner {
-  padding-top: 100px;
-  // padding-bottom: 30px;
+  padding-top: 90px;
   color: white;
   text-align: center;
   min-height: 570px;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   background-position: 0% 75%;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   img {
-    width: 500px;
+    width: 80%;
+    max-width: 433px;
     margin-bottom: 20px;
   }
   h1 {
@@ -70,10 +67,7 @@
 
 // 3 elements sous la banner
 .arguments {
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 60px;
+  margin: 30px;
   h4 {
     text-align: center;
     color: rgb(46, 64, 88)
@@ -85,7 +79,7 @@
 }
 .argument {
   background-color: white;
-  width: 25vw;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,7 +87,7 @@
   box-shadow: 4px 4px 22px -1px #dcdcdc;
   // border-radius: 6px;
   padding: 35px 22px;
-  margin: 0 1vw;
+  margin: 30px;
   border-top: 4px solid rgb(46, 64, 88);
   img {
     width: 5vw;
