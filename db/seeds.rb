@@ -97,6 +97,64 @@ b = 150
 
 event_start = Event.new(
                         position_x: 0,
+                        position_y: 0,
+                        name: "Start",
+                        category: "Setting",
+                        date: trip.start_date,
+                        location: trip.start_location,
+                        trip_id: trip.id,
+                        duration: 1,
+                        price: 0,
+                        master: true
+                        )
+event_start.save
+event_end = Event.new(
+                      position_x: 0,
+                      position_y: b,
+                      name: "End",
+                      category: "Setting",
+                      date: trip.end_date,
+                      location: trip.end_location,
+                      trip_id: trip.id,
+                      duration: 1,
+                      price: 0,
+                      master: true,
+                      )
+event_end.save
+
+Relationship.create(parent_id: event_start.id, child_id: event_end.id)
+
+event_start = Event.new(
+                        position_x: 0,
+                        position_y: 0,
+                        name: "Start",
+                        category: "Setting",
+                        date: trip2.start_date,
+                        location: trip2.start_location,
+                        trip_id: trip2.id,
+                        duration: 1,
+                        price: 0,
+                        master: true
+                        )
+event_start.save
+event_end = Event.new(
+                      position_x: 0,
+                      position_y: b,
+                      name: "End",
+                      category: "Setting",
+                      date: trip2.end_date,
+                      location: trip2.end_location,
+                      trip_id: trip2.id,
+                      duration: 1,
+                      price: 0,
+                      master: true,
+                      )
+event_end.save
+Relationship.create(parent_id: event_start.id, child_id: event_end.id)
+
+
+event_start = Event.new(
+                        position_x: 0,
                         position_y: -b,
                         name: "Start",
                         category: "Setting",
