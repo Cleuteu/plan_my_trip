@@ -312,7 +312,7 @@ const cy = cytoscape({
         // 'font-family': 'FontAwesome !important',
         // 'label': '\uf00d',
         // 'font-family': 'FontAwesome',
-          // 'label': '\uF007 User',
+        // 'label': '\uF007 User',
         'font-weight': '900',
         'font-size': '48',
         'color': '#F5F5F5',
@@ -382,7 +382,11 @@ const cy = cytoscape({
     },{
     selector: "node[category = 'Setting']",
       style: {
-        label: '',
+        label: 'data(name)',
+        'text-halign': 'right',
+        'text-valign': 'center',
+        'font-size': 23,
+        'text-transform': 'uppercase',
         'background-color': '#299fc6',
         'width': 40,
         'height': 40,

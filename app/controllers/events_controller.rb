@@ -14,7 +14,7 @@ class EventsController < ApplicationController
       b = 150 #Pas en y
     #Position de l'event créé
     event_position_y = @parent_event.position_y + b
-    events = Event.where("position_y >= ?", event_position_y)
+    events = Event.where("position_y >= ?", event_position_y).where(trip_id:@trip.id)
     @event.position_y = event_position_y
 
     #Si branche exitante - mono branche
@@ -29,17 +29,17 @@ class EventsController < ApplicationController
 
     #Si nouvelle branche:
     else
-      right_position = Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y)
-      left_position = Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y)
+      right_position = Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).where(trip_id:@trip.id)
+      left_position = Event.where("position_x = ? AND position_y = ?", @parent_event.position_x - a, @event.position_y).where(trip_id:@trip.id)
 
       if left_position.empty?
         @event.position_x = @parent_event.position_x - a
-        events_right_bottom = Event.where("position_x >= ? AND position_y >= ?", @event.position_x, @event.position_y).where.not(name:'End')
+        events_right_bottom = Event.where("position_x >= ? AND position_y >= ?", @event.position_x, @event.position_y).where.not(name:'End').where(trip_id:@trip.id)
         events_right_bottom.each { |event| event.update!(position_x: event.position_x + a)}
 
       elsif right_position.empty?
         @event.position_x = @parent_event.position_x + a
-        events_left_bottom = Event.where("position_x <= ? AND position_y >= ?", @event.position_x, @event.position_y).where.not(name:'End')
+        events_left_bottom = Event.where("position_x <= ? AND position_y >= ?", @event.position_x, @event.position_y).where.not(name:'End').where(trip_id:@trip.id)
         events_left_bottom.each { |event| event.update!(position_x: event.position_x - a)}
       else
         flash[:alert] = "Can't add an event here, sorry!"
@@ -70,7 +70,7 @@ class EventsController < ApplicationController
     @relationship = Relationship.create(parent_id: @parent_id, child_id: @child_id)
 
 
-    events = Event.where("position_x <= ? AND position_y >= ?", @child_event.position_x, @child_event.position_y)
+    events = Event.where("position_x <= ? AND position_y >= ?", @child_event.position_x, @child_event.position_y).where(trip_id:@trip.id)
     events.each { |event| event.update!(position_x: event.position_x - a)}
 
     # if Event.where("position_x = ? AND position_y = ?", @parent_event.position_x + a, @event.position_y).empty?

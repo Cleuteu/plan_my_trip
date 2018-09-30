@@ -51,7 +51,7 @@ trip = Trip.new(
     start_date: Date.new(2018,1,3),
     end_date: Date.new(2018,1,28)
   )
-trip.user = user
+trip.user = user2
 trip.remote_photo_url = "http://www.epicgapyear.com/wp-content/uploads/2016/11/south-afriac-mozambique-surf-trip-adventure-surfing-camp-ticket-to-ride-gap-year.jpg"
 trip.save
 
@@ -94,6 +94,64 @@ puts 'Creating Canadian trip events ...'
 a = 300
 #En y
 b = 150
+
+event_start = Event.new(
+                        position_x: 0,
+                        position_y: 0,
+                        name: "Start",
+                        category: "Setting",
+                        date: trip.start_date,
+                        location: trip.start_location,
+                        trip_id: trip.id,
+                        duration: 1,
+                        price: 0,
+                        master: true
+                        )
+event_start.save
+event_end = Event.new(
+                      position_x: 0,
+                      position_y: b,
+                      name: "End",
+                      category: "Setting",
+                      date: trip.end_date,
+                      location: trip.end_location,
+                      trip_id: trip.id,
+                      duration: 1,
+                      price: 0,
+                      master: true,
+                      )
+event_end.save
+
+Relationship.create(parent_id: event_start.id, child_id: event_end.id)
+
+event_start = Event.new(
+                        position_x: 0,
+                        position_y: 0,
+                        name: "Start",
+                        category: "Setting",
+                        date: trip2.start_date,
+                        location: trip2.start_location,
+                        trip_id: trip2.id,
+                        duration: 1,
+                        price: 0,
+                        master: true
+                        )
+event_start.save
+event_end = Event.new(
+                      position_x: 0,
+                      position_y: b,
+                      name: "End",
+                      category: "Setting",
+                      date: trip2.end_date,
+                      location: trip2.end_location,
+                      trip_id: trip2.id,
+                      duration: 1,
+                      price: 0,
+                      master: true,
+                      )
+event_end.save
+Relationship.create(parent_id: event_start.id, child_id: event_end.id)
+
 
 event_start = Event.new(
                         position_x: 0,

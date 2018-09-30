@@ -3,7 +3,7 @@ class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:calendar]
 
   def index
-    @trips = policy_scope(Trip).order(created_at: :desc)
+    @trips = policy_scope(Trip).order(created_at: :desc).where(user_id: current_user.id)
   end
 
   def new
