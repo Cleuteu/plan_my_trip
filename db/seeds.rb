@@ -51,7 +51,7 @@ trip = Trip.new(
     start_date: Date.new(2018,1,3),
     end_date: Date.new(2018,1,28)
   )
-trip.user = user
+trip.user = user2
 trip.remote_photo_url = "http://www.epicgapyear.com/wp-content/uploads/2016/11/south-afriac-mozambique-surf-trip-adventure-surfing-camp-ticket-to-ride-gap-year.jpg"
 trip.save
 
