@@ -312,7 +312,7 @@ const cy = cytoscape({
         // 'font-family': 'FontAwesome !important',
         // 'label': '\uf00d',
         // 'font-family': 'FontAwesome',
-          // 'label': '\uF007 User',
+        // 'label': '\uF007 User',
         'font-weight': '900',
         'font-size': '48',
         'color': '#F5F5F5',

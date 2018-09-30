@@ -4,7 +4,7 @@
     <div class="">
       <div class="form-login">
 
-        <h2>Sorry the sign up is disabled for the moment!</h2>
+        <!-- <h2>Sorry the sign up is disabled for the moment!</h2> -->
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
@@ -24,7 +24,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Sign up", :class => 'btn-primary', disabled: true %>
+            <%= f.button :submit, "Sign up", :class => 'btn-primary', disabled: false %>
           </div>
         <% end %>
         <%= render "devise/shared/links" %>
