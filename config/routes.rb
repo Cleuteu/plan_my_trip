@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'pages/contact'
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
   root to: 'pages#home'
   resources :trips, only: [:show, :index, :new, :create] do
     get 'final', to: 'trips#final', as: :final

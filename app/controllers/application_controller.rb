@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   # Pundit: white-list approach.
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :first_name, :last_name])
