@@ -11,8 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
 
+    super
     trip = Trip.new(
     name: 'Road trip Canada - Adrien & Julie',
     start_location: 'Montreal',
@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     trip.user = User.last
     trip.remote_photo_url = "https://images.unsplash.com/photo-1519885277449-12eee5564d68"
-    trip.save!
+    trip.save
 
     # user_trip = UserTrip.new
     # user_trip.user = current_user
